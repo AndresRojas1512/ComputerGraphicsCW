@@ -2,7 +2,7 @@
 #define FACADE_H
 
 #include <iostream>
-#include "objects.hpp"
+#include "sceneinf.hpp"
 #include "drawer.hpp"
 #include <QGraphicsScene>
 #include "placeobjects.hpp"

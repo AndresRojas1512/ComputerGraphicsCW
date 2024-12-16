@@ -28,7 +28,7 @@ set(PROJECT_SOURCES
     objectchange.cpp
     objectdelete.cpp
     objectmove.cpp
-    objects.cpp
+    sceneinf.cpp
     placeobjects.cpp
     specialgraphicsview.cpp
 )
@@ -44,7 +44,7 @@ set(PROJECT_HEADERS
     objectchange.hpp
     objectdelete.hpp
     objectmove.hpp
-    objects.hpp
+    sceneinf.hpp
     placeobjects.hpp
     specialgraphicsview.hpp
 )
@@ -75,6 +75,18 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         drawer.cpp
         vertex.hpp
         vertex.cpp
+
+        facet.hpp
+        facet.cpp
+        polygonmodel.hpp
+        polygonmodel.cpp
+        light.hpp
+        light.cpp
+
+        atxmotherboard.hpp
+        microatxmotherboard.hpp
+        miniitxmotherboard.hpp
+        microatxmotherboard.cpp
 
     )
 else()

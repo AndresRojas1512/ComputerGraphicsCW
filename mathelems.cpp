@@ -1,5 +1,4 @@
 #include "mathelems.hpp"
-#include "QDebug"
 
 double Dot3D::getXCoordinate() const { return xCoordinate; }
 

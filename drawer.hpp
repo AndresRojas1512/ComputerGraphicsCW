@@ -6,7 +6,7 @@
 #include <QGraphicsScene>
 #include "placeobjects.hpp"
 #include "config.hpp"
-#include "objects.hpp"
+#include "sceneinf.hpp"
 
 class Drawer
 {

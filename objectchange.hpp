@@ -2,7 +2,7 @@
 #define OBJECTCHANGE_H
 
 #include <QDialog>
-#include "objects.hpp"
+#include "sceneinf.hpp"
 #include "facade.hpp"
 #include "objectmove.hpp"
 #include <iostream>

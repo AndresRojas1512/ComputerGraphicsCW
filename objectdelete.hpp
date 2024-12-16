@@ -2,7 +2,7 @@
 #define OBJECTDELETE_H
 
 #include <QDialog>
-#include "objects.hpp"
+#include "sceneinf.hpp"
 #include <QErrorMessage>
 #include <QDebug>
 

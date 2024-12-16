@@ -1,144 +1,4 @@
-#include "objects.hpp"
-
-const std::vector<size_t> Facet::getVertices() { return vertices; }
-
-//void Facet::setUsedVertices(std::vector<size_t> usedVertices_) { usedVertices = usedVertices_; }
-
-const std::vector<Vertex> PolygonModel::getVertices() { return vertices; }
-
-//void PolygonModel::setVertices(std::vector<Vertex> &vertices_) { vertices = vertices_; }
-
-const std::vector<Facet> PolygonModel::getFacets() { return facets; }
-
-//void PolygonModel::setFacets(std::vector<Facet> facets_) { facets = facets_; }
-
-QString PolygonModel::getName()
-{
-    std::cout << "PolygonModel::getName" << std::endl;
-    return modelName;
-}
-
-void PolygonModel::setName(QString modelName_)
-{
-    std::cout << "PolygonModel::setName" << std::endl;
-    modelName = modelName_;
-}
-
-void PolygonModel::setLengthModel(int lengthModel_)
-{
-    std::cout << "PolygonModel::setLengthModel" << std::endl;
-    lengthModel = lengthModel_;
-}
-
-int  PolygonModel::getLengthModel()
-{
-    std::cout << "PolygonModel::getLengthModel" << std::endl;
-    return lengthModel;
-}
-
-void PolygonModel::setWidthModel(int widthModel_) { widthModel = widthModel_; }
-
-int  PolygonModel::getWidthModel() { return widthModel; }
-
-void PolygonModel::setModelNum(size_t modelNum_) { modelNum = modelNum_; }
-
-size_t PolygonModel::getModelNum() { return modelNum; }
-
-void PolygonModel::setUsedCell(int xCell_, int yCell_, double zCell_)
-{
-    xCell = xCell_;
-    yCell = yCell_;
-    zCell = zCell_;
-}
-int PolygonModel::getUsedXCell() { return xCell; }
-
-int PolygonModel::getUsedYCell() { return yCell; }
-
-int PolygonModel::getUsedZCell() { return zCell; }
-
-void PolygonModel::setModelType(model_t modelType_) { modelType = modelType_; }
-
-PolygonModel::model_t PolygonModel::getModelType()
-{
-    std::cout << "PolygonModel::getModelType" << std::endl;
-    return modelType;
-}
-
-//void PolygonModel::rotateZ(int angle)
-//{
-//    double radianAngle = (double) angle * M_PI / 180.0;
-
-//    Dot3D start(BASE_START);
-//    double xCenter = start.getXCoordinate() + xCell * SIZE_SC + SIZE_SC / 2;
-//    double yCenter = start.getYCoordinate() + yCell * SIZE_SC + SIZE_SC / 2;
-
-//    for (size_t i = 0; i < vertices.size(); i++)
-//    {
-//        Dot3D curDot = vertices.at(i).getPosition();
-//        curDot.rotateZ(radianAngle, xCenter, yCenter, 0);
-//        vertices.at(i).setPosition(curDot);
-//    }
-//}
-
-//void PolygonModel::moveTo(int newXCell, int newYCell)
-//{
-//    Dot3D start(BASE_START);
-
-//    int xInc = SIZE_SC * newXCell - SIZE_SC * xCell;
-//    int yInc = SIZE_SC * newYCell - SIZE_SC * yCell;
-
-//    for (size_t i = 0; i < vertices.size(); i++)
-//    {
-//        Dot3D curDot = vertices.at(i).getPosition();
-//        curDot.move(xInc, yInc, 0);
-//        vertices.at(i).setPosition(curDot);
-//    }
-
-//    xCell = newXCell;
-//    yCell = newYCell;
-//}
-
-std::vector<std::vector<double>> &Light::getShadowMap() { return shadowMap; }
-
-Light::Light(Eigen::Matrix4f &transMatrix_)
-{
-    transMatrix = transMatrix_;
-    for (size_t i = 0; i < LIGHT_X; i++)
-    { shadowMap.push_back(std::vector<double>(LIGHT_Y, 0)); }
-}
-
-void Light::setShadowMap(std::vector<std::vector<double>> &setShadowMap)
-{
-    shadowMap = setShadowMap;
-}
-
-void Light::clearShadowMap()
-{
-    for (size_t i = 0; i < shadowMap.size(); i++)
-    {
-        for (size_t j = 0; j < shadowMap.at(0).size(); j++)
-            shadowMap.at(i).at(j) = 0;
-    }
-}
-
-void Light::setAngles(int xAngle_, int yAngle_)
-{
-    xAngle = xAngle_;
-    yAngle = yAngle_;
-}
-
-int Light::getXAngle() { return xAngle; }
-
-int Light::getYAngle() { return yAngle; }
-
-Eigen::Matrix4f &Light::getTransMat() { return transMatrix; }
-
-void Light::setTransMat(Eigen::Matrix4f &mat) { transMatrix = mat; }
-
-
-/*
- * SceneInf
-*/
+#include "sceneinf.hpp"
 
 SceneInf::SceneInf()
 {
@@ -147,7 +7,7 @@ SceneInf::SceneInf()
 
 SceneInf::SceneInf(size_t width_, size_t height_)
 {
-    std::cout << "SceneInf::SceneInf(width, height)" << std::endl;
+    std::cout << "SceneInf::SceneInf(width = " << width_ << ", height = " << height_ << ")" << std::endl;
     width = width_;
     height = height_;
 
@@ -423,6 +283,9 @@ void SceneInf::buildBaseModel(Dot3D startOfPlate_, Dot3D endOfPlate_)
     std::cout << "SceneInf::buildBaseModel: startOfPlate_: " << startOfPlate_;
     std::cout << "SceneInf::buildBaseModel: endOfPlate_: " << endOfPlate_;
 
+    std::cout << "StartOfPlate: " << startOfPlate_ << std::endl;
+    std::cout << "EndOfPlate: " << endOfPlate_ << std::endl;
+
     std::vector<Vertex> vertices;
     std::vector<Facet> facets;
 
@@ -444,15 +307,15 @@ void SceneInf::buildBaseModel(Dot3D startOfPlate_, Dot3D endOfPlate_)
             startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10,
             componentBaseZ, blockWidth, blockHeight, blockDepth);
 
-    // // Video Block - below USB
-    // addCube(vertices, facets,
-    //         startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight,
-    //         componentBaseZ, blockWidth, blockHeight, blockDepth);
+    // Video Block - below USB
+    addCube(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight,
+            componentBaseZ, blockWidth, blockHeight, blockDepth);
 
-    // // LAN Block - below Video
-    // addCube(vertices, facets,
-    //         startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
-    //         componentBaseZ, blockWidth, blockHeight, blockDepth);
+    // LAN Block - below Video
+    addCube(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
+            componentBaseZ, blockWidth, blockHeight, blockDepth);
 
     // body
     addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
