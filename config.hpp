@@ -5,16 +5,20 @@
 #define ROTATE_VAL              3.14159265358979323846 / 16
 #define EPS 1e-3
 
-#define SIZE_SC                 50
+// #define SIZE_SC                 50
+#define SIZE_SC                 3
 #define BRICK_TOP_HEIGHT        10
 #define BRICK_TOP_SIZE_SC       0.3
 
-#define PLATE_HEIGHT            20
+// #define PLATE_HEIGHT            20
+#define PLATE_HEIGHT            10
 #define BASE_Z                  8000
 #define BASE_START              10, 10, BASE_Z
 
-#define X_CENTER                500
-#define Y_CENTER                390
+// #define X_CENTER                500
+#define X_CENTER                720
+// #define Y_CENTER                390
+#define Y_CENTER                470
 
 #define SCALE_VAL               0.1
 

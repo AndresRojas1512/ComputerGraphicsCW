@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include <QMainWindow>
 #include <QMouseEvent>
+#include <QMessageBox>
 #include "facade.hpp"
 #include <iostream>
 #include "QDebug"
@@ -75,7 +76,10 @@ private slots:
 
     void on_pushButton_addCastle_clicked();
 
+    // From here start the motherboard features
     void on_comboBoxMotherboardType_currentIndexChanged(int index);
+
+    void on_pushButtonCreateMotherboard_clicked();
 
 private:
     Ui::MainWindow *ui;

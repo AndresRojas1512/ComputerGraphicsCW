@@ -258,6 +258,34 @@ void MainWindow::on_pushButton_createScene_clicked()
     ui->graphicsView->setScene(setScene);
 }
 
+void MainWindow::on_pushButtonCreateMotherboard_clicked()
+{
+    int index = ui->comboBoxMotherboardType->currentIndex();
+    QStringList motherboardTypes = {"ATX", "Micro-ATX", "Mini-ITX"};
+    QString selectedType = motherboardTypes.at(index);
+
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Confirm Motherboard Type",
+                                  "The mother to build is of type: " + selectedType + ". Are you sure you want to build it?",
+                                  QMessageBox::Yes | QMessageBox::No);
+
+    if (reply == QMessageBox::Yes)
+    {
+        std::cout << "Yes was clicked" << std::endl;
+        facade->setSceneInfMotherboard(index);
+        QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+
+        if (ui->graphicsView->scene())
+            delete ui->graphicsView->scene();
+        ui->graphicsView->setScene(setScene);
+    }
+}
+
+void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
+{
+    std::cout << "Selected motherboard type: " << index << std::endl;
+}
+
 void MainWindow::on_pushButton_addModel_clicked()
 {
     if (!facade->isSceneSet())
@@ -674,8 +702,6 @@ void MainWindow::on_pushButton_right_scene_clicked()
     pictureRight();
 }
 
-
-
 void MainWindow::on_pushButton_zoom_clicked()
 {
     if (!facade->isSceneSet())
@@ -699,9 +725,3 @@ void MainWindow::on_pushButton_distance_clicked()
 
     pictureScaleDown();
 }
-
-void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
-{
-    std::cout << "Selected motherboard type: " << index << std::endl;
-}
-

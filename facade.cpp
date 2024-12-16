@@ -15,13 +15,47 @@ void Facade::setSceneInf(size_t width_, size_t height_)
     scene = new SceneInf(width_, height_);
 }
 
+void Facade::setSceneInfMotherboard(int index)
+{
+    std::cout << "Facade::setSceneInfMotherboard" << std::endl;
+    size_t width = 0;
+    size_t height = 0;
+
+    switch (index)
+    {
+        case 0:
+            width = 244;
+            height = 305;
+            break;
+        case 1:
+            width = 244;
+            height = 244;
+            break;
+        case 2:
+            width = 170;
+            height = 170;
+            break;
+        default:
+            std::cout << "Unknown motherboard type selected" << std::endl;
+            return;
+    }
+    if (scene)
+    {
+        delete scene;
+    }
+    scene = new SceneInf(width, height);
+}
+
 void Facade::changeSceneInf(size_t newWidth, size_t newheight)
 {
     std::cout << "changeSceneInf" << std::endl;
     scene->changeSize(newWidth, newheight);
 }
 
-bool Facade::isSceneSet() { return scene; }
+bool Facade::isSceneSet()
+{
+    return scene;
+}
 
 QGraphicsScene *Facade::drawScene(QRectF rect)
 {
