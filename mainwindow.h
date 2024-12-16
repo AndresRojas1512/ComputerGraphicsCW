@@ -75,6 +75,8 @@ private slots:
 
     void on_pushButton_addCastle_clicked();
 
+    void on_comboBoxMotherboardType_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     Facade *facade;

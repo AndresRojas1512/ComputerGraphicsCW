@@ -700,4 +700,8 @@ void MainWindow::on_pushButton_distance_clicked()
     pictureScaleDown();
 }
 
+void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
+{
+    std::cout << "Selected motherboard type: " << index << std::endl;
+}
 
