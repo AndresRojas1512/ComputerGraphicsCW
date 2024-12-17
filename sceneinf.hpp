@@ -12,6 +12,8 @@
 #include "light.hpp"
 #include "placeobjects.hpp"
 #include "microatxmotherboardconfig.hpp"
+#include "atxmotherboardconfig.hpp"
+#include "miniitxmotherboardconfig.hpp"
 
 struct ComponentSpec
 {

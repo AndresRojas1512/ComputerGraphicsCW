@@ -296,74 +296,6 @@ void SceneInf::buildBaseModel(Dot3D startOfPlate_, Dot3D endOfPlate_)
     }
 }
 
-void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
-{
-    std::cout << "SceneInf::buildATXMotherboard" << std::endl;
-    std::vector<Vertex> vertices;
-    std::vector<Facet> facets;
-
-    // double blockHeight = 60;
-    // double blockDepth = 30;
-    // double blockWidth = 20;
-
-    buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
-
-    // double componentBaseZ = BASE_Z + blockDepth;
-
-    // // USB Block - at the top
-    // addParallelepiped(vertices, facets,
-    //                   startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10, componentBaseZ,
-    //                   blockWidth, blockHeight, blockDepth);
-
-    // // Video Block - below USB
-    // addParallelepiped(vertices, facets,
-    //                   startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight, componentBaseZ,
-    //                   blockWidth, blockHeight, blockDepth);
-
-    // // LAN Block - below Video
-    // addParallelepiped(vertices, facets,
-    //                   startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight, componentBaseZ,
-    //                   blockWidth, blockHeight, blockDepth);
-
-    if (plateModel)
-        delete plateModel;
-    plateModel = new PolygonModel(vertices, facets);
-}
-
-void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
-{
-    std::cout << "SceneInf::buildMiniITXMotherboard" << std::endl;
-    std::vector<Vertex> vertices;
-    std::vector<Facet> facets;
-
-    double blockHeight = 60;
-    double blockDepth = 30;
-    double blockWidth = 20;
-
-    double componentBaseZ = BASE_Z + blockDepth;
-
-    buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
-
-    // USB Block - at the top
-    addParallelepiped(vertices, facets,
-                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10, componentBaseZ,
-                      blockWidth, blockHeight, blockDepth);
-
-    // Video Block - below USB
-    addParallelepiped(vertices, facets,
-                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight, componentBaseZ,
-                      blockWidth, blockHeight, blockDepth);
-
-    // LAN Block - below Video
-    addParallelepiped(vertices, facets,
-                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight, componentBaseZ,
-                      blockWidth, blockHeight, blockDepth);
-
-    if (plateModel)
-        delete plateModel;
-    plateModel = new PolygonModel(vertices, facets);
-}
-
 void SceneInf::addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets, int x1,
                        int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3, int x4, int y4, int z4)
 {
@@ -524,6 +456,39 @@ std::vector<std::vector<std::vector<double>>> &SceneInf::getUsedCellsZ()
 }
 
 /*
+ * ======================= ATX build logic =======================
+*/
+
+void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
+{
+    std::cout << "SceneInf::buildATXMotherboard" << std::endl;
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+    ATXMotherboardConfig ATXConfig(startOfPlate_, endOfPlate_);
+
+    buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
+    addBaseComponent(vertices, facets, ATXConfig.HDMI_DP);
+    addBaseComponent(vertices, facets, ATXConfig.BIOS_FLBK);
+    addBaseComponent(vertices, facets, ATXConfig.U32G2_1_4);
+    addBaseComponent(vertices, facets, ATXConfig.LAN2_U32G2_56);
+    addBaseComponent(vertices, facets, ATXConfig.U3252_C8_LAN1_U32G2_7);
+    addBaseComponent(vertices, facets, ATXConfig.M2_WIFI);
+    addBaseComponent(vertices, facets, ATXConfig.AUDIO);
+    addBaseComponent(vertices, facets, ATXConfig.socketM4);
+    addBaseComponent(vertices, facets, ATXConfig.DDR4_DIMM_B1);
+    addBaseComponent(vertices, facets, ATXConfig.DDR4_DIMM_B2);
+    addBaseComponent(vertices, facets, ATXConfig.DDR4_DIMM_A1);
+    addBaseComponent(vertices, facets, ATXConfig.DDR4_DIMM_A2);
+    addBaseComponent(vertices, facets, ATXConfig.PCIEX16_1);
+    addBaseComponent(vertices, facets, ATXConfig.PCIEX16_2);
+    addBaseComponent(vertices, facets, ATXConfig.PCIEX16_3);
+
+    if (plateModel)
+        delete plateModel;
+    plateModel = new PolygonModel(vertices, facets);
+}
+
+/*
  * ======================= Micro-ATX build logic =======================
 */
 
@@ -549,6 +514,32 @@ void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addBaseComponent(vertices, facets, microATXConfig.DDR4_DIMM_B2);
     addBaseComponent(vertices, facets, microATXConfig.PCIEX16_1);
     addBaseComponent(vertices, facets, microATXConfig.PCIEX16_2);
+
+    if (plateModel)
+        delete plateModel;
+    plateModel = new PolygonModel(vertices, facets);
+}
+
+/*
+ * ======================= Mini-ITX build logic =======================
+*/
+void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
+{
+    std::cout << "SceneInf::buildMiniITXMotherboard" << std::endl;
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+    MiniITXMotherboardConfig miniITXConfig(startOfPlate_, endOfPlate_);
+
+    buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
+    addBaseComponent(vertices, facets, miniITXConfig.USB3_5);
+    addBaseComponent(vertices, facets, miniITXConfig.USB7_10);
+    addBaseComponent(vertices, facets, miniITXConfig.HDMI_DP);
+    addBaseComponent(vertices, facets, miniITXConfig.LAN_USB3_34);
+    addBaseComponent(vertices, facets, miniITXConfig.M2_WIFI);
+    addBaseComponent(vertices, facets, miniITXConfig.AUDIO);
+    addBaseComponent(vertices, facets, miniITXConfig.DDR4_DIMM_A1);
+    addBaseComponent(vertices, facets, miniITXConfig.DDR4_DIMM_B1);
+    addBaseComponent(vertices, facets, miniITXConfig.PCIEX16_1);
 
     if (plateModel)
         delete plateModel;

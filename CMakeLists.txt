@@ -89,6 +89,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         microatxmotherboardconfig.hpp
         motherboardprimitives.hpp
+        atxmotherboardconfig.hpp
+        miniitxmotherboardconfig.hpp
 
     )
 else()

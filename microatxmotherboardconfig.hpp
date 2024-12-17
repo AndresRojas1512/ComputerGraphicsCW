@@ -60,8 +60,8 @@
 // RAM
 #define MICROATX_DDR4_DIMM_WIDTH 24
 #define MICROATX_DDR4_DIMM_HEIGHT 420
-#define MICROATX_DDR4_DIMM_TOPFRAMEWIDTH 3
-#define MICROATX_DDR4_DIMM_BOTTOMFRAMEWIDTH 3
+#define MICROATX_DDR4_DIMM_TOPFRAMEWIDTH 5
+#define MICROATX_DDR4_DIMM_BOTTOMFRAMEWIDTH 5
 #define MICROATX_DDR4_DIMM_LEFTFRAMEWIDTH 9
 #define MICROATX_DDR4_DIMM_RIGHTFRAMEWIDTH 9
 
@@ -82,8 +82,8 @@
 #define MICROATX_PCIEX16_HEIGHT 24
 #define MICROATX_PCIEX16_TOPFRAMEWIDTH 9
 #define MICROATX_PCIEX16_BOTTOMFRAMEWIDTH 9
-#define MICROATX_PCIEX16_LEFTFRAMEWIDTH 3
-#define MICROATX_PCIEX16_RIGHTFRAMEWIDTH 2
+#define MICROATX_PCIEX16_LEFTFRAMEWIDTH 5
+#define MICROATX_PCIEX16_RIGHTFRAMEWIDTH 5
 
 
 #define MICROATX_PCIEX16_1_OFFSET_X 126
@@ -123,20 +123,23 @@ public:
     {
     }
 
+    // peripheria
     BasePlateComponentConfig HDMI1_DP;
     BasePlateComponentConfig HDMI2;
     BasePlateComponentConfig KBMS_USB_E32;
     BasePlateComponentConfig U32G2_C2;
     BasePlateComponentConfig LAN_USB_E12;
     BasePlateComponentConfig AUDIO;
-
+    // processor
     BasePlateComponentConfig LGA1200;
 
+    // ram
     BasePlateComponentConfig DDR4_DIMM_A1;
     BasePlateComponentConfig DDR4_DIMM_A2;
     BasePlateComponentConfig DDR4_DIMM_B1;
     BasePlateComponentConfig DDR4_DIMM_B2;
 
+    // gpu
     BasePlateComponentConfig PCIEX16_1;
     BasePlateComponentConfig PCIEX16_2;
 
