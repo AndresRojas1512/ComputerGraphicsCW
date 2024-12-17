@@ -16,7 +16,8 @@ class SceneInf
 {
 public:
     SceneInf();
-    SceneInf(size_t width_, size_t height_);
+    SceneInf(size_t width_, size_t height);
+    SceneInf(size_t width_, size_t height_, int type_);
 
     operator bool() const;
 
@@ -24,6 +25,10 @@ public:
     size_t getHeight();
 
     void buildBaseModel(Dot3D startOfPlate_, Dot3D endOfPlate_);
+    void buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_);
+    void buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_);
+    void buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_);
+
     PolygonModel &getBaseModel();
 
     void changeSize(size_t newWidth, size_t newHeight);
@@ -64,16 +69,8 @@ public:
     void printUsedCellsZ();
 
 private:
-    void addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
-                 int x1, int y1, int z1,
-                 int x2, int y2, int z2,
-                 int x3, int y3, int z3,
-                 int x4, int y4, int z4);
-
-    void addCube(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
-                           double x, double y, double z, double width, double height, double depth);
-
     size_t width, height;
+    int type;
 
     PolygonModel *plateModel = nullptr;
 
@@ -88,6 +85,17 @@ private:
     Dot3D centerDot;
 
     std::vector<std::vector<std::vector<double>>> usedCellsZ;
+
+    void addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
+                 int x1, int y1, int z1,
+                 int x2, int y2, int z2,
+                 int x3, int y3, int z3,
+                 int x4, int y4, int z4);
+
+    void addParallelepiped(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
+                 double x, double y, double z, double width, double height, double depth);
+
+    void buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_);
 
 };
 

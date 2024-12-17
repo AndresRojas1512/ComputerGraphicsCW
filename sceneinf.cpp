@@ -18,35 +18,18 @@ SceneInf::SceneInf(size_t width_, size_t height_)
     toCenter();
 }
 
-void SceneInf::addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets, int x1,
-                       int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3, int x4, int y4, int z4)
+SceneInf::SceneInf(size_t width_, size_t height_, int type_)
 {
-    Dot3D dot;
-    std::vector<size_t> vec;
+    std::cout << "SceneInf::SceneInf(width = " << width_ << ", height = " << height_ << ", type = " << type_ << ")" << std::endl;
+    type = type_;
+    width = width_;
+    height = height_;
 
-    size_t size = facets.size();
+    modelsNum = 0;
+    lightNum = 0;
 
-    dot = Dot3D(x1, y1, z1);
-    vec = {size, size + 1};
-    vertices.push_back(Vertex(dot, vec));
-
-    dot = Dot3D(x2, y2, z2);
-    vec = {size};
-    vertices.push_back(Vertex(dot, vec));
-
-    dot = Dot3D(x3, y3, z3);
-    vec = {size, size + 1};
-    vertices.push_back(Vertex(dot, vec));
-
-    dot = Dot3D(x4, y4, z4);
-    vec = {size + 1};
-    vertices.push_back(Vertex(dot, vec));
-
-    size = vertices.size();
-    vec = {size - 4, size - 3, size - 2};
-    facets.push_back(vec);
-    vec = {size - 4, size - 2, size - 1};
-    facets.push_back(vec);
+    initUsedCellsZ();
+    toCenter();
 }
 
 size_t SceneInf::getWidth()
@@ -214,12 +197,20 @@ void SceneInf::toCenter()
 }
 
 
-size_t SceneInf::getModelsNum() { return modelsNum; }
+size_t SceneInf::getModelsNum()
+{
+    return modelsNum;
+}
 
-PolygonModel &SceneInf::getModel(size_t num) { return models.at(num); }
+PolygonModel &SceneInf::getModel(size_t num)
+{
+    return models.at(num);
+}
 
-void SceneInf::setModel(size_t num, PolygonModel &newModel) { models.at(num) = newModel; }
-
+void SceneInf::setModel(size_t num, PolygonModel &newModel)
+{
+    models.at(num) = newModel;
+}
 
 void SceneInf::addModel(PolygonModel &model)
 {
@@ -230,11 +221,20 @@ void SceneInf::addModel(PolygonModel &model)
     //    printUsedCellsZ();
 }
 
-size_t SceneInf::getLightNum() { return lightNum; }
+size_t SceneInf::getLightNum()
+{
+    return lightNum;
+}
 
-Light &SceneInf::getLight(size_t num) { return Lights.at(num); }
+Light &SceneInf::getLight(size_t num)
+{
+    return Lights.at(num);
+}
 
-void SceneInf::setLight(Light &light, size_t i) { Lights.at(i) = light; }
+void SceneInf::setLight(Light &light, size_t i)
+{
+    Lights.at(i) = light;
+}
 
 void SceneInf::addLight(Light &light)
 {
@@ -280,12 +280,25 @@ PolygonModel &SceneInf::getBaseModel()
 void SceneInf::buildBaseModel(Dot3D startOfPlate_, Dot3D endOfPlate_)
 {
     std::cout << "--> SceneInf::buildBaseModel" << std::endl;
-    std::cout << "SceneInf::buildBaseModel: startOfPlate_: " << startOfPlate_;
-    std::cout << "SceneInf::buildBaseModel: endOfPlate_: " << endOfPlate_;
+    switch (type)
+    {
+    case 0:
+        buildATXMotherboard(startOfPlate_, endOfPlate_);
+        break;
+    case 1:
+        buildMicroATXMotherboard(startOfPlate_, endOfPlate_);
+        break;
+    case 2:
+        buildMiniITXMotherboard(startOfPlate_, endOfPlate_);
+        break;
+    default:
+        std::cout << "unknown motherboard type" << std::endl;
+    }
+}
 
-    std::cout << "StartOfPlate: " << startOfPlate_ << std::endl;
-    std::cout << "EndOfPlate: " << endOfPlate_ << std::endl;
-
+void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
+{
+    std::cout << "SceneInf::buildATXMotherboard" << std::endl;
     std::vector<Vertex> vertices;
     std::vector<Facet> facets;
 
@@ -303,17 +316,17 @@ void SceneInf::buildBaseModel(Dot3D startOfPlate_, Dot3D endOfPlate_)
     double componentBaseZ = BASE_Z + blockDepth;
 
     // USB Block - at the top
-    addCube(vertices, facets,
+    addParallelepiped(vertices, facets,
             startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10,
             componentBaseZ, blockWidth, blockHeight, blockDepth);
 
     // Video Block - below USB
-    addCube(vertices, facets,
+    addParallelepiped(vertices, facets,
             startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight,
             componentBaseZ, blockWidth, blockHeight, blockDepth);
 
     // LAN Block - below Video
-    addCube(vertices, facets,
+    addParallelepiped(vertices, facets,
             startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
             componentBaseZ, blockWidth, blockHeight, blockDepth);
 
@@ -353,7 +366,178 @@ void SceneInf::buildBaseModel(Dot3D startOfPlate_, Dot3D endOfPlate_)
     plateModel = new PolygonModel(vertices, facets);
 }
 
-void SceneInf::addCube(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
+void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
+{
+    std::cout << "SceneInf::buildMicroATXMotherboard" << std::endl;
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+
+    double blockHeight = 60;
+    double blockDepth = 30;
+    double blockWidth = 20;
+
+    // upp
+    addQuad(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate(), BASE_Z,
+            endOfPlate_.getXCoordinate() + 10 , startOfPlate_.getYCoordinate(), BASE_Z,
+            endOfPlate_.getXCoordinate() + 10 , endOfPlate_.getYCoordinate() + 10 , BASE_Z,
+            startOfPlate_.getXCoordinate(), endOfPlate_.getYCoordinate() + 10 , BASE_Z);
+
+    double componentBaseZ = BASE_Z + blockDepth;
+
+    // USB Block - at the top
+    addParallelepiped(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10,
+            componentBaseZ, blockWidth, blockHeight, blockDepth);
+
+    // Video Block - below USB
+    addParallelepiped(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight,
+            componentBaseZ, blockWidth, blockHeight, blockDepth);
+
+    // LAN Block - below Video
+    addParallelepiped(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
+            componentBaseZ, blockWidth, blockHeight, blockDepth);
+
+    // body
+    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT);
+
+    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z);
+
+    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z);
+
+    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z);
+
+    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z);
+
+    if (plateModel)
+        delete plateModel;
+    plateModel = new PolygonModel(vertices, facets);
+}
+
+void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
+{
+    std::cout << "SceneInf::buildMiniITXMotherboard" << std::endl;
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+
+    double blockHeight = 60;
+    double blockDepth = 30;
+    double blockWidth = 20;
+
+    // upp
+    addQuad(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate(), BASE_Z,
+            endOfPlate_.getXCoordinate() + 10 , startOfPlate_.getYCoordinate(), BASE_Z,
+            endOfPlate_.getXCoordinate() + 10 , endOfPlate_.getYCoordinate() + 10 , BASE_Z,
+            startOfPlate_.getXCoordinate(), endOfPlate_.getYCoordinate() + 10 , BASE_Z);
+
+    double componentBaseZ = BASE_Z + blockDepth;
+
+    // USB Block - at the top
+    addParallelepiped(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10,
+            componentBaseZ, blockWidth, blockHeight, blockDepth);
+
+    // Video Block - below USB
+    addParallelepiped(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight,
+            componentBaseZ, blockWidth, blockHeight, blockDepth);
+
+    // LAN Block - below Video
+    addParallelepiped(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
+            componentBaseZ, blockWidth, blockHeight, blockDepth);
+
+    // body
+    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT);
+
+    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z);
+
+    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z);
+
+    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z);
+
+    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z);
+
+    if (plateModel)
+        delete plateModel;
+    plateModel = new PolygonModel(vertices, facets);
+}
+
+void SceneInf::addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets, int x1,
+                       int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3, int x4, int y4, int z4)
+{
+    Dot3D dot;
+    std::vector<size_t> vec;
+
+    size_t size = facets.size();
+
+    dot = Dot3D(x1, y1, z1);
+    vec = {size, size + 1};
+    vertices.push_back(Vertex(dot, vec));
+
+    dot = Dot3D(x2, y2, z2);
+    vec = {size};
+    vertices.push_back(Vertex(dot, vec));
+
+    dot = Dot3D(x3, y3, z3);
+    vec = {size, size + 1};
+    vertices.push_back(Vertex(dot, vec));
+
+    dot = Dot3D(x4, y4, z4);
+    vec = {size + 1};
+    vertices.push_back(Vertex(dot, vec));
+
+    size = vertices.size();
+    vec = {size - 4, size - 3, size - 2};
+    facets.push_back(vec);
+    vec = {size - 4, size - 2, size - 1};
+    facets.push_back(vec);
+}
+
+void SceneInf::addParallelepiped(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
                        double x, double y, double z, double width, double height, double depth)
 {
     // Front face
@@ -369,6 +553,45 @@ void SceneInf::addCube(std::vector<Vertex> &vertices, std::vector<Facet> &facets
     // Bottom face
     addQuad(vertices, facets, x, y, z, x + width, y, z, x + width, y, z - depth, x, y, z - depth);
 }
+
+void SceneInf::buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_)
+{
+    addQuad(vertices, facets,
+            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate(), BASE_Z,
+            endOfPlate_.getXCoordinate() + 10 , startOfPlate_.getYCoordinate(), BASE_Z,
+            endOfPlate_.getXCoordinate() + 10 , endOfPlate_.getYCoordinate() + 10 , BASE_Z,
+            startOfPlate_.getXCoordinate(), endOfPlate_.getYCoordinate() + 10 , BASE_Z);
+    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT);
+
+    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z);
+
+    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
+            endOfPlate_.getYCoordinate() + 10, BASE_Z);
+
+    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
+            endOfPlate_.getYCoordinate() + 10, BASE_Z);
+
+    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
+            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
+            startOfPlate_.getYCoordinate(), BASE_Z);
+}
+
 
 void SceneInf::changeSize(size_t newWidth, size_t newHeight)
 {

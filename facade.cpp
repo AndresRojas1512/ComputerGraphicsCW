@@ -43,7 +43,7 @@ void Facade::setSceneInfMotherboard(int index)
     {
         delete scene;
     }
-    scene = new SceneInf(width, height);
+    scene = new SceneInf(width, height, index);
 }
 
 void Facade::changeSceneInf(size_t newWidth, size_t newheight)
