@@ -312,18 +312,18 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
 
     // USB Block - at the top
     addParallelepiped(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10,
-            componentBaseZ, blockWidth, blockHeight, blockDepth);
+                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10, componentBaseZ,
+                      blockWidth, blockHeight, blockDepth);
 
     // Video Block - below USB
     addParallelepiped(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight,
-            componentBaseZ, blockWidth, blockHeight, blockDepth);
+                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight, componentBaseZ,
+                      blockWidth, blockHeight, blockDepth);
 
     // LAN Block - below Video
     addParallelepiped(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
-            componentBaseZ, blockWidth, blockHeight, blockDepth);
+                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight, componentBaseZ,
+                      blockWidth, blockHeight, blockDepth);
 
     if (plateModel)
         delete plateModel;
@@ -346,18 +346,18 @@ void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
 
     // USB Block - at the top
     addParallelepiped(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10,
-            componentBaseZ, blockWidth, blockHeight, blockDepth);
+                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10, componentBaseZ,
+                      blockWidth, blockHeight, blockDepth);
 
     // Video Block - below USB
     addParallelepiped(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight,
-            componentBaseZ, blockWidth, blockHeight, blockDepth);
+                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight, componentBaseZ,
+                      blockWidth, blockHeight, blockDepth);
 
     // LAN Block - below Video
     addParallelepiped(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
-            componentBaseZ, blockWidth, blockHeight, blockDepth);
+                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight, componentBaseZ,
+                      blockWidth, blockHeight, blockDepth);
 
     if (plateModel)
         delete plateModel;
@@ -380,18 +380,18 @@ void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
 
     // USB Block - at the top
     addParallelepiped(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10,
-            componentBaseZ, blockWidth, blockHeight, blockDepth);
+                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10, componentBaseZ,
+                      blockWidth, blockHeight, blockDepth);
 
     // Video Block - below USB
     addParallelepiped(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight,
-            componentBaseZ, blockWidth, blockHeight, blockDepth);
+                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight, componentBaseZ,
+                      blockWidth, blockHeight, blockDepth);
 
     // LAN Block - below Video
     addParallelepiped(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
-            componentBaseZ, blockWidth, blockHeight, blockDepth);
+                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight, componentBaseZ,
+                      blockWidth, blockHeight, blockDepth);
 
     if (plateModel)
         delete plateModel;

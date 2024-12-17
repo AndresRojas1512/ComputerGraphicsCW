@@ -12,6 +12,16 @@
 #include "light.hpp"
 #include "placeobjects.hpp"
 
+struct ComponentSpec
+{
+    double width, height, depth;
+
+
+    std::vector<std::tuple<double, double, double>> positions;
+
+    ComponentSpec(double width_, double height_, double depth_);
+};
+
 class SceneInf
 {
 public:
@@ -97,6 +107,10 @@ private:
 
     void buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_);
 
+    void add_PCIEX16_Slots(int motherboardType); // GPU slots
+    void add_DDR4_Slots(int motherboardType); // RAM slots
+    void add_LGA_Slot(int motherboardType); // Processor slot
+    void add_Capacitors(int motherboardType); // Capacitors
 };
 
 #endif
