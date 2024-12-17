@@ -11,7 +11,7 @@
 #include "polygonmodel.hpp"
 #include "light.hpp"
 #include "placeobjects.hpp"
-#include "configmotherboards.hpp"
+#include "microatxmotherboardconfig.hpp"
 
 struct ComponentSpec
 {
@@ -107,44 +107,13 @@ private:
                            double x, double y, double z,
                            double width, double height, double depth);
 
+
     void addFrame(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
-                  double x, double y, double z,
-                  double width, double height, double depth,
-                  double frameWidth);
+                            double x, double y, double z, double width, double height, double depth,
+                            double topFrameWidth, double bottomFrameWidth, double leftFrameWidth, double rightFrameWidth);
 
     void buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_);
-
-    // ============ ATX Layout build ============
-    // TODO
-
-    // ============ Micro-ATX Layout build ============
-    // periferial slots
-    void microATXAdd_HDMI1_DP(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config);
-    void microATXAdd_HDMI2(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config);
-    void microATXAdd_KBMS_USB_E32(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config);
-    void microATXAdd_U32G2_C2(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config);
-    void microATXAdd_LAN_USB_E12(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config);
-    void microATXAdd_AUDIO(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config);
-
-    // Batery
-    void microATXAdd_Batery();
-
-    // GPU slots
-    void microATXAdd_PCIEX16_1();
-    void add_PCIEX16_2();
-
-    // RAM Slots
-    void add_DDR4_DIMM_A1();
-    void add_DDR4_DIMM_A2();
-    void add_DDR4_DIMM_B1();
-    void add_DDR4_DIMM_B2();
-
-    // Processor slot
-    void add_LGA1200();
-
-    // ============ Mini-ITX Layout build ============
-    // TODO
-
+    void addBaseComponent(std::vector<Vertex> &vertices, std::vector<Facet> &facets, BasePlateComponentConfig &config);
 };
 
 #endif

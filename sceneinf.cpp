@@ -413,16 +413,17 @@ void SceneInf::addParallelepiped(std::vector<Vertex> &vertices, std::vector<Face
 }
 
 void SceneInf::addFrame(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
-                        double x, double y, double z, double width, double height, double depth, double frameWidth)
+                        double x, double y, double z, double width, double height, double depth,
+                        double topFrameWidth, double bottomFrameWidth, double leftFrameWidth, double rightFrameWidth)
 {
     // Top border
-    addParallelepiped(vertices, facets, x, y, z, width, frameWidth, depth);
+    addParallelepiped(vertices, facets, x, y, z, width, topFrameWidth, depth);
     // Bottom border
-    addParallelepiped(vertices, facets, x, y + height - frameWidth, z, width, frameWidth, depth);
+    addParallelepiped(vertices, facets, x, y + height - bottomFrameWidth, z, width, bottomFrameWidth, depth);
     // Left border
-    addParallelepiped(vertices, facets, x, y + frameWidth, z, frameWidth, height - 2 * frameWidth, depth);
+    addParallelepiped(vertices, facets, x, y + topFrameWidth, z, leftFrameWidth, height - topFrameWidth - bottomFrameWidth, depth);
     // Right border
-    addParallelepiped(vertices, facets, x + width - frameWidth, y + frameWidth, z, frameWidth, height - 2 * frameWidth, depth);
+    addParallelepiped(vertices, facets, x + width - rightFrameWidth, y + topFrameWidth, z, rightFrameWidth, height - topFrameWidth - bottomFrameWidth, depth);
 }
 
 void SceneInf::buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_)
@@ -535,74 +536,33 @@ void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
 
     buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
 
-    microATXAdd_HDMI1_DP(vertices, facets, microATXConfig.HDMI1_DP);
-    microATXAdd_HDMI2(vertices, facets, microATXConfig.HDMI2);
-    microATXAdd_KBMS_USB_E32(vertices, facets, microATXConfig.KBMS_USB_E32);
-    microATXAdd_U32G2_C2(vertices, facets, microATXConfig.U32G2_C2);
-    microATXAdd_LAN_USB_E12(vertices, facets, microATXConfig.LAN_USB_E12);
-    microATXAdd_AUDIO(vertices, facets, microATXConfig.AUDIO);
-
-    // test
-    double blockHeight = 60;
-    double blockDepth = 30;
-    double blockWidth = 20;
-    double componentBaseZ = BASE_Z + blockDepth;
-    double frameWidth = 30;
-    double frameX = startOfPlate_.getXCoordinate() + 100;
-    double frameY = startOfPlate_.getYCoordinate() + 100;
-    double frameWidthTotal = 300;
-    double frameHeightTotal = 200;
-    addFrame(vertices, facets, frameX, frameY, componentBaseZ, frameWidthTotal, frameHeightTotal, blockDepth, frameWidth);
+    addBaseComponent(vertices, facets, microATXConfig.HDMI1_DP);
+    addBaseComponent(vertices, facets, microATXConfig.HDMI2);
+    addBaseComponent(vertices, facets, microATXConfig.KBMS_USB_E32);
+    addBaseComponent(vertices, facets, microATXConfig.U32G2_C2);
+    addBaseComponent(vertices, facets, microATXConfig.LAN_USB_E12);
+    addBaseComponent(vertices, facets, microATXConfig.AUDIO);
+    addBaseComponent(vertices, facets, microATXConfig.LGA1200);
+    addBaseComponent(vertices, facets, microATXConfig.DDR4_DIMM_A1);
+    addBaseComponent(vertices, facets, microATXConfig.DDR4_DIMM_A2);
+    addBaseComponent(vertices, facets, microATXConfig.DDR4_DIMM_B1);
+    addBaseComponent(vertices, facets, microATXConfig.DDR4_DIMM_B2);
+    addBaseComponent(vertices, facets, microATXConfig.PCIEX16_1);
+    addBaseComponent(vertices, facets, microATXConfig.PCIEX16_2);
 
     if (plateModel)
         delete plateModel;
     plateModel = new PolygonModel(vertices, facets);
 }
 
-void SceneInf::microATXAdd_HDMI1_DP(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
+void SceneInf::addBaseComponent(std::vector<Vertex> &vertices, std::vector<Facet> &facets, BasePlateComponentConfig &config)
 {
-    for (auto &c : config)
+    for (auto &p : config.parallelepipeds)
     {
-        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
+        addParallelepiped(vertices, facets, p.x, p.y, p.z, p.width, p.height, p.depth);
     }
-}
-
-void SceneInf::microATXAdd_HDMI2(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
-{
-    for (auto &c : config)
+    for (auto &f : config.frames)
     {
-        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
-    }
-}
-
-void SceneInf::microATXAdd_KBMS_USB_E32(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
-{
-    for (auto &c : config)
-    {
-        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
-    }
-}
-
-void SceneInf::microATXAdd_U32G2_C2(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
-{
-    for (auto &c : config)
-    {
-        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
-    }
-}
-
-void SceneInf::microATXAdd_LAN_USB_E12(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
-{
-    for (auto &c : config)
-    {
-        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
-    }
-}
-
-void SceneInf::microATXAdd_AUDIO(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
-{
-    for (auto &c : config)
-    {
-        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
+        addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
     }
 }
