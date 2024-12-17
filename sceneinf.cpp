@@ -306,12 +306,7 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     double blockDepth = 30;
     double blockWidth = 20;
 
-    // upp
-    addQuad(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate(), BASE_Z,
-            endOfPlate_.getXCoordinate() + 10 , startOfPlate_.getYCoordinate(), BASE_Z,
-            endOfPlate_.getXCoordinate() + 10 , endOfPlate_.getYCoordinate() + 10 , BASE_Z,
-            startOfPlate_.getXCoordinate(), endOfPlate_.getYCoordinate() + 10 , BASE_Z);
+    buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
 
     double componentBaseZ = BASE_Z + blockDepth;
 
@@ -329,37 +324,6 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addParallelepiped(vertices, facets,
             startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
             componentBaseZ, blockWidth, blockHeight, blockDepth);
-
-    // body
-    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT);
-
-    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z);
-
-    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z);
-
-    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z);
-
-    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z);
 
     if (plateModel)
         delete plateModel;
@@ -376,14 +340,9 @@ void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     double blockDepth = 30;
     double blockWidth = 20;
 
-    // upp
-    addQuad(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate(), BASE_Z,
-            endOfPlate_.getXCoordinate() + 10 , startOfPlate_.getYCoordinate(), BASE_Z,
-            endOfPlate_.getXCoordinate() + 10 , endOfPlate_.getYCoordinate() + 10 , BASE_Z,
-            startOfPlate_.getXCoordinate(), endOfPlate_.getYCoordinate() + 10 , BASE_Z);
-
     double componentBaseZ = BASE_Z + blockDepth;
+
+    buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
 
     // USB Block - at the top
     addParallelepiped(vertices, facets,
@@ -399,37 +358,6 @@ void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addParallelepiped(vertices, facets,
             startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
             componentBaseZ, blockWidth, blockHeight, blockDepth);
-
-    // body
-    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT);
-
-    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z);
-
-    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z);
-
-    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z);
-
-    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z);
 
     if (plateModel)
         delete plateModel;
@@ -446,14 +374,9 @@ void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     double blockDepth = 30;
     double blockWidth = 20;
 
-    // upp
-    addQuad(vertices, facets,
-            startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate(), BASE_Z,
-            endOfPlate_.getXCoordinate() + 10 , startOfPlate_.getYCoordinate(), BASE_Z,
-            endOfPlate_.getXCoordinate() + 10 , endOfPlate_.getYCoordinate() + 10 , BASE_Z,
-            startOfPlate_.getXCoordinate(), endOfPlate_.getYCoordinate() + 10 , BASE_Z);
-
     double componentBaseZ = BASE_Z + blockDepth;
+
+    buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
 
     // USB Block - at the top
     addParallelepiped(vertices, facets,
@@ -469,37 +392,6 @@ void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addParallelepiped(vertices, facets,
             startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight,
             componentBaseZ, blockWidth, blockHeight, blockDepth);
-
-    // body
-    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT);
-
-    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z);
-
-    addQuad(vertices, facets, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z, startOfPlate_.getXCoordinate(),
-            endOfPlate_.getYCoordinate() + 10, BASE_Z);
-
-    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
-            endOfPlate_.getYCoordinate() + 10, BASE_Z);
-
-    addQuad(vertices, facets, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z - PLATE_HEIGHT, startOfPlate_.getXCoordinate(),
-            startOfPlate_.getYCoordinate(), BASE_Z, endOfPlate_.getXCoordinate() + 10,
-            startOfPlate_.getYCoordinate(), BASE_Z);
 
     if (plateModel)
         delete plateModel;
