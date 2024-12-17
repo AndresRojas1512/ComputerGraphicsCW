@@ -87,6 +87,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         microatxmotherboard.hpp
         miniitxmotherboard.hpp
         microatxmotherboard.cpp
+        configmotherboards.hpp
 
     )
 else()

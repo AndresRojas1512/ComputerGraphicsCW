@@ -24,16 +24,16 @@ void Facade::setSceneInfMotherboard(int index)
     switch (index)
     {
         case 0:
-            width = 244;
-            height = 305;
+            width = ATX_WIDTH;
+            height = ATX_HEIGHT;
             break;
         case 1:
-            width = 244;
-            height = 244;
+            width = MICROATX_WIDTH;
+            height = MICROATX_HEIGHT;
             break;
         case 2:
-            width = 170;
-            height = 170;
+            width = MINIITX_WIDTH;
+            height = MINIITX_HEIGHT;
             break;
         default:
             std::cout << "Unknown motherboard type selected" << std::endl;

@@ -302,62 +302,28 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     std::vector<Vertex> vertices;
     std::vector<Facet> facets;
 
-    double blockHeight = 60;
-    double blockDepth = 30;
-    double blockWidth = 20;
+    // double blockHeight = 60;
+    // double blockDepth = 30;
+    // double blockWidth = 20;
 
     buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
 
-    double componentBaseZ = BASE_Z + blockDepth;
+    // double componentBaseZ = BASE_Z + blockDepth;
 
-    // USB Block - at the top
-    addParallelepiped(vertices, facets,
-                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10, componentBaseZ,
-                      blockWidth, blockHeight, blockDepth);
+    // // USB Block - at the top
+    // addParallelepiped(vertices, facets,
+    //                   startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10, componentBaseZ,
+    //                   blockWidth, blockHeight, blockDepth);
 
-    // Video Block - below USB
-    addParallelepiped(vertices, facets,
-                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight, componentBaseZ,
-                      blockWidth, blockHeight, blockDepth);
+    // // Video Block - below USB
+    // addParallelepiped(vertices, facets,
+    //                   startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight, componentBaseZ,
+    //                   blockWidth, blockHeight, blockDepth);
 
-    // LAN Block - below Video
-    addParallelepiped(vertices, facets,
-                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight, componentBaseZ,
-                      blockWidth, blockHeight, blockDepth);
-
-    if (plateModel)
-        delete plateModel;
-    plateModel = new PolygonModel(vertices, facets);
-}
-
-void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
-{
-    std::cout << "SceneInf::buildMicroATXMotherboard" << std::endl;
-    std::vector<Vertex> vertices;
-    std::vector<Facet> facets;
-
-    double blockHeight = 60;
-    double blockDepth = 30;
-    double blockWidth = 20;
-
-    double componentBaseZ = BASE_Z + blockDepth;
-
-    buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
-
-    // USB Block - at the top
-    addParallelepiped(vertices, facets,
-                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 10, componentBaseZ,
-                      blockWidth, blockHeight, blockDepth);
-
-    // Video Block - below USB
-    addParallelepiped(vertices, facets,
-                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + blockHeight, componentBaseZ,
-                      blockWidth, blockHeight, blockDepth);
-
-    // LAN Block - below Video
-    addParallelepiped(vertices, facets,
-                      startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight, componentBaseZ,
-                      blockWidth, blockHeight, blockDepth);
+    // // LAN Block - below Video
+    // addParallelepiped(vertices, facets,
+    //                   startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + 2 * blockHeight, componentBaseZ,
+    //                   blockWidth, blockHeight, blockDepth);
 
     if (plateModel)
         delete plateModel;
@@ -444,6 +410,19 @@ void SceneInf::addParallelepiped(std::vector<Vertex> &vertices, std::vector<Face
     addQuad(vertices, facets, x, y + height, z, x + width, y + height, z, x + width, y + height, z - depth, x, y + height, z - depth);
     // Bottom face
     addQuad(vertices, facets, x, y, z, x + width, y, z, x + width, y, z - depth, x, y, z - depth);
+}
+
+void SceneInf::addFrame(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
+                        double x, double y, double z, double width, double height, double depth, double frameWidth)
+{
+    // Top border
+    addParallelepiped(vertices, facets, x, y, z, width, frameWidth, depth);
+    // Bottom border
+    addParallelepiped(vertices, facets, x, y + height - frameWidth, z, width, frameWidth, depth);
+    // Left border
+    addParallelepiped(vertices, facets, x, y + frameWidth, z, frameWidth, height - 2 * frameWidth, depth);
+    // Right border
+    addParallelepiped(vertices, facets, x + width - frameWidth, y + frameWidth, z, frameWidth, height - 2 * frameWidth, depth);
 }
 
 void SceneInf::buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_)
@@ -538,4 +517,92 @@ void SceneInf::initUsedCellsZ()
 
 }
 
-std::vector<std::vector<std::vector<double>>> &SceneInf::getUsedCellsZ() { return usedCellsZ; }
+std::vector<std::vector<std::vector<double>>> &SceneInf::getUsedCellsZ()
+{
+    return usedCellsZ;
+}
+
+/*
+ * ======================= Micro-ATX build logic =======================
+*/
+
+void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
+{
+    std::cout << "SceneInf::buildMicroATXMotherboard" << std::endl;
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+    MicroATXMotherboardConfig microATXConfig(startOfPlate_, endOfPlate_);
+
+    buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
+
+    microATXAdd_HDMI1_DP(vertices, facets, microATXConfig.HDMI1_DP);
+    microATXAdd_HDMI2(vertices, facets, microATXConfig.HDMI2);
+    microATXAdd_KBMS_USB_E32(vertices, facets, microATXConfig.KBMS_USB_E32);
+    microATXAdd_U32G2_C2(vertices, facets, microATXConfig.U32G2_C2);
+    microATXAdd_LAN_USB_E12(vertices, facets, microATXConfig.LAN_USB_E12);
+    microATXAdd_AUDIO(vertices, facets, microATXConfig.AUDIO);
+
+    // test
+    double blockHeight = 60;
+    double blockDepth = 30;
+    double blockWidth = 20;
+    double componentBaseZ = BASE_Z + blockDepth;
+    double frameWidth = 30;
+    double frameX = startOfPlate_.getXCoordinate() + 100;
+    double frameY = startOfPlate_.getYCoordinate() + 100;
+    double frameWidthTotal = 300;
+    double frameHeightTotal = 200;
+    addFrame(vertices, facets, frameX, frameY, componentBaseZ, frameWidthTotal, frameHeightTotal, blockDepth, frameWidth);
+
+    if (plateModel)
+        delete plateModel;
+    plateModel = new PolygonModel(vertices, facets);
+}
+
+void SceneInf::microATXAdd_HDMI1_DP(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
+{
+    for (auto &c : config)
+    {
+        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
+    }
+}
+
+void SceneInf::microATXAdd_HDMI2(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
+{
+    for (auto &c : config)
+    {
+        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
+    }
+}
+
+void SceneInf::microATXAdd_KBMS_USB_E32(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
+{
+    for (auto &c : config)
+    {
+        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
+    }
+}
+
+void SceneInf::microATXAdd_U32G2_C2(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
+{
+    for (auto &c : config)
+    {
+        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
+    }
+}
+
+void SceneInf::microATXAdd_LAN_USB_E12(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
+{
+    for (auto &c : config)
+    {
+        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
+    }
+}
+
+void SceneInf::microATXAdd_AUDIO(std::vector<Vertex> &vertices, std::vector<Facet> &facets, std::vector<ParallelepipedConfig> &config)
+{
+    for (auto &c : config)
+    {
+        addParallelepiped(vertices, facets, c.x, c.y, c.z, c.width, c.height, c.depth);
+    }
+}

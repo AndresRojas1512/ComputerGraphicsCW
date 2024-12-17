@@ -1,6 +1,15 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 
+#define ATX_WIDTH 244
+#define ATX_HEIGHT 305
+
+#define MICROATX_WIDTH 234
+#define MICROATX_HEIGHT 244
+
+#define MINIITX_WIDTH 170
+#define MINIITX_HEIGHT 170
+
 #define PI                      3.14159265
 #define ROTATE_VAL              3.14159265358979323846 / 16
 #define EPS 1e-3
