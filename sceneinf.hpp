@@ -71,6 +71,8 @@ public:
     void clearUsedCellsZ(size_t num);
     void printUsedCellsZ();
 
+    std::vector<PolygonModel> getModels() const;
+
 private:
     size_t width, height;
     int type;
@@ -106,7 +108,7 @@ private:
 
     void buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_);
 
-    void addMotherboardLayoutComponent(BasePlateComponentConfig &config);
+    void addMotherboardLayoutComponent(BasePlateComponentConfig &config, QString modelName, PolygonModel::model_t modelType);
 };
 
 #endif

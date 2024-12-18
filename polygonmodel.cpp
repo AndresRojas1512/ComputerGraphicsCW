@@ -52,6 +52,15 @@ void PolygonModel::setModelType(model_t modelType_) { modelType = modelType_; }
 
 PolygonModel::model_t PolygonModel::getModelType()
 {
-    std::cout << "PolygonModel::getModelType" << std::endl;
     return modelType;
+}
+
+std::ostream &operator<<(std::ostream &os, const PolygonModel &model)
+{
+    os << "Model name: " << model.modelName.toStdString() << std::endl
+       << "Model Type: " << model.modelType << std::endl
+       << "Model index: " << model.modelNum << std::endl
+       << "Number of vertices: " << model.vertices.size() << std::endl
+       << "Number of facets: " << model.facets.size() << std::endl;
+    return os;
 }

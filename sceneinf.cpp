@@ -214,7 +214,7 @@ void SceneInf::setModel(size_t num, PolygonModel &newModel)
 
 void SceneInf::addModel(PolygonModel &model)
 {
-    std::cout << "SceneIng::addModel" << std::endl;
+    std::cout << "SceneInf::addModel" << std::endl;
     modelsNum++;
     models.push_back(model);
     // markUsedCellsZ(modelsNum - 1);
@@ -269,6 +269,11 @@ void SceneInf::printUsedCellsZ()
 
             qDebug() << "(" << i + 1<< "; " << j + 1<< ") " << getUsedCellsZ()[i][j];
     }
+}
+
+std::vector<PolygonModel> SceneInf::getModels() const
+{
+    return models;
 }
 
 
@@ -466,25 +471,26 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     ATXMotherboardConfig ATXConfig(startOfPlate_, endOfPlate_);
 
     buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
-    addMotherboardLayoutComponent(ATXConfig.HDMI_DP);
-    addMotherboardLayoutComponent(ATXConfig.BIOS_FLBK);
-    addMotherboardLayoutComponent(ATXConfig.U32G2_1_4);
-    addMotherboardLayoutComponent(ATXConfig.LAN2_U32G2_56);
-    addMotherboardLayoutComponent(ATXConfig.U3252_C8_LAN1_U32G2_7);
-    addMotherboardLayoutComponent(ATXConfig.M2_WIFI);
-    addMotherboardLayoutComponent(ATXConfig.AUDIO);
-    addMotherboardLayoutComponent(ATXConfig.socketM4);
-    addMotherboardLayoutComponent(ATXConfig.DDR4_DIMM_B1);
-    addMotherboardLayoutComponent(ATXConfig.DDR4_DIMM_B2);
-    addMotherboardLayoutComponent(ATXConfig.DDR4_DIMM_A1);
-    addMotherboardLayoutComponent(ATXConfig.DDR4_DIMM_A2);
-    addMotherboardLayoutComponent(ATXConfig.PCIEX16_1);
-    addMotherboardLayoutComponent(ATXConfig.PCIEX16_2);
-    addMotherboardLayoutComponent(ATXConfig.PCIEX16_3);
 
     if (plateModel)
         delete plateModel;
     plateModel = new PolygonModel(vertices, facets);
+
+    addMotherboardLayoutComponent(ATXConfig.HDMI_DP, "ATX_HDMI_DP", PolygonModel::ATX_HDMI_DP);
+    addMotherboardLayoutComponent(ATXConfig.BIOS_FLBK, "ATX_BIOS_FLBK", PolygonModel::ATX_BIOS_FLBK);
+    addMotherboardLayoutComponent(ATXConfig.U32G2_1_4, "ATX_U32G2_1_4", PolygonModel::ATX_U32G2_1_4);
+    addMotherboardLayoutComponent(ATXConfig.LAN2_U32G2_56, "ATX_LAN2_U32G2_56", PolygonModel::ATX_LAN2_U32G2_56);
+    addMotherboardLayoutComponent(ATXConfig.U3252_C8_LAN1_U32G2_7, "ATX_U3252_C8_LAN1_U32G2_7", PolygonModel::ATX_U3252_C8_LAN1_U32G2_7);
+    addMotherboardLayoutComponent(ATXConfig.M2_WIFI, "ATX_M2_WIFI", PolygonModel::ATX_M2_WIFI);
+    addMotherboardLayoutComponent(ATXConfig.AUDIO, "ATX_AUDIO", PolygonModel::ATX_AUDIO);
+    addMotherboardLayoutComponent(ATXConfig.socketM4, "ATX_socketM4", PolygonModel::ATX_socketM4);
+    addMotherboardLayoutComponent(ATXConfig.DDR4_DIMM_B1, "ATX_DDR4_DIMM_B1", PolygonModel::ATX_DDR4_DIMM_B1);
+    addMotherboardLayoutComponent(ATXConfig.DDR4_DIMM_B2, "ATX_DDR4_DIMM_B2", PolygonModel::ATX_DDR4_DIMM_B2);
+    addMotherboardLayoutComponent(ATXConfig.DDR4_DIMM_A1, "ATX_DDR4_DIMM_A1", PolygonModel::ATX_DDR4_DIMM_A1);
+    addMotherboardLayoutComponent(ATXConfig.DDR4_DIMM_A2, "ATX_DDR4_DIMM_A2", PolygonModel::ATX_DDR4_DIMM_A2);
+    addMotherboardLayoutComponent(ATXConfig.PCIEX16_1, "ATX_PCIEX16_1", PolygonModel::ATX_PCIEX16_1);
+    addMotherboardLayoutComponent(ATXConfig.PCIEX16_2, "ATX_PCIEX16_2", PolygonModel::ATX_PCIEX16_2);
+    addMotherboardLayoutComponent(ATXConfig.PCIEX16_3, "ATX_PCIEX16_3", PolygonModel::ATX_PCIEX16_3);
 }
 
 /*
@@ -500,23 +506,23 @@ void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
 
     buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
 
-    addMotherboardLayoutComponent(microATXConfig.HDMI1_DP);
-    addMotherboardLayoutComponent(microATXConfig.HDMI2);
-    addMotherboardLayoutComponent(microATXConfig.KBMS_USB_E32);
-    addMotherboardLayoutComponent(microATXConfig.U32G2_C2);
-    addMotherboardLayoutComponent(microATXConfig.LAN_USB_E12);
-    addMotherboardLayoutComponent(microATXConfig.AUDIO);
-    addMotherboardLayoutComponent(microATXConfig.LGA1200);
-    addMotherboardLayoutComponent(microATXConfig.DDR4_DIMM_A1);
-    addMotherboardLayoutComponent(microATXConfig.DDR4_DIMM_A2);
-    addMotherboardLayoutComponent(microATXConfig.DDR4_DIMM_B1);
-    addMotherboardLayoutComponent(microATXConfig.DDR4_DIMM_B2);
-    addMotherboardLayoutComponent(microATXConfig.PCIEX16_1);
-    addMotherboardLayoutComponent(microATXConfig.PCIEX16_2);
-
     if (plateModel)
         delete plateModel;
     plateModel = new PolygonModel(vertices, facets);
+
+    addMotherboardLayoutComponent(microATXConfig.HDMI1_DP, "MICROATX_HDMI1_DP", PolygonModel::MICROATX_HDMI1_DP);
+    addMotherboardLayoutComponent(microATXConfig.HDMI2, "MICROATX_HDMI2", PolygonModel::MICROATX_HDMI2);
+    addMotherboardLayoutComponent(microATXConfig.KBMS_USB_E32, "MICROATX_KBMS_USB_E32", PolygonModel::MICROATX_KBMS_USB_E32);
+    addMotherboardLayoutComponent(microATXConfig.U32G2_C2, "MICROATX_U32G2_C2", PolygonModel::MICROATX_U32G2_C2);
+    addMotherboardLayoutComponent(microATXConfig.LAN_USB_E12, "MICROATX_LAN_USB_E12", PolygonModel::MICROATX_LAN_USB_E12);
+    addMotherboardLayoutComponent(microATXConfig.AUDIO, "MICROATX_AUDIO", PolygonModel::MICROATX_AUDIO);
+    addMotherboardLayoutComponent(microATXConfig.LGA1200, "MICROATX_LGA1200", PolygonModel::MICROATX_LGA1200);
+    addMotherboardLayoutComponent(microATXConfig.DDR4_DIMM_A1, "MICROATX_DDR4_DIMM_A1", PolygonModel::MICROATX_DDR4_DIMM_A1);
+    addMotherboardLayoutComponent(microATXConfig.DDR4_DIMM_A2, "MICROATX_DDR4_DIMM_A2", PolygonModel::MICROATX_DDR4_DIMM_A2);
+    addMotherboardLayoutComponent(microATXConfig.DDR4_DIMM_B1, "MICROATX_DDR4_DIMM_B1", PolygonModel::MICROATX_DDR4_DIMM_B1);
+    addMotherboardLayoutComponent(microATXConfig.DDR4_DIMM_B2, "MICROATX_DDR4_DIMM_B2", PolygonModel::MICROATX_DDR4_DIMM_B2);
+    addMotherboardLayoutComponent(microATXConfig.PCIEX16_1, "MICROATX_PCIEX16_1", PolygonModel::MICROATX_PCIEX16_1);
+    addMotherboardLayoutComponent(microATXConfig.PCIEX16_2, "MICROATX_PCIEX16_2", PolygonModel::MICROATX_PCIEX16_2);
 }
 
 /*
@@ -530,22 +536,23 @@ void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     MiniITXMotherboardConfig miniITXConfig(startOfPlate_, endOfPlate_);
 
     buildBasePlate(vertices, facets, startOfPlate_, endOfPlate_);
-    addMotherboardLayoutComponent(miniITXConfig.USB3_5);
-    addMotherboardLayoutComponent(miniITXConfig.USB7_10);
-    addMotherboardLayoutComponent(miniITXConfig.HDMI_DP);
-    addMotherboardLayoutComponent(miniITXConfig.LAN_USB3_34);
-    addMotherboardLayoutComponent(miniITXConfig.M2_WIFI);
-    addMotherboardLayoutComponent(miniITXConfig.AUDIO);
-    addMotherboardLayoutComponent(miniITXConfig.DDR4_DIMM_A1);
-    addMotherboardLayoutComponent(miniITXConfig.DDR4_DIMM_B1);
-    addMotherboardLayoutComponent(miniITXConfig.PCIEX16_1);
 
     if (plateModel)
         delete plateModel;
     plateModel = new PolygonModel(vertices, facets);
+
+    addMotherboardLayoutComponent(miniITXConfig.USB3_5, "MINIITX_USB3_5", PolygonModel::MINIITX_USB3_5);
+    addMotherboardLayoutComponent(miniITXConfig.USB7_10, "MINIITX_USB7_10", PolygonModel::MINIITX_USB7_10);
+    addMotherboardLayoutComponent(miniITXConfig.HDMI_DP, "MINIITX_HDMI_DP", PolygonModel::MINIITX_HDMI_DP);
+    addMotherboardLayoutComponent(miniITXConfig.LAN_USB3_34, "MINIITX_LAN_USB3_34", PolygonModel::MINIITX_LAN_USB3_34);
+    addMotherboardLayoutComponent(miniITXConfig.M2_WIFI, "MINIITX_M2_WIFI", PolygonModel::MINIITX_M2_WIFI);
+    addMotherboardLayoutComponent(miniITXConfig.AUDIO, "MINIITX_AUDIO", PolygonModel::MINIITX_AUDIO);
+    addMotherboardLayoutComponent(miniITXConfig.DDR4_DIMM_A1, "MINIITX_DDR4_DIMM_A1", PolygonModel::MINIITX_DDR4_DIMM_A1);
+    addMotherboardLayoutComponent(miniITXConfig.DDR4_DIMM_B1, "MINIITX_DDR4_DIMM_B1", PolygonModel::MINIITX_DDR4_DIMM_B1);
+    addMotherboardLayoutComponent(miniITXConfig.PCIEX16_1, "MINIITX_PCIEX16_1", PolygonModel::MINIITX_PCIEX16_1);
 }
 
-void SceneInf::addMotherboardLayoutComponent(BasePlateComponentConfig &config)
+void SceneInf::addMotherboardLayoutComponent(BasePlateComponentConfig &config, QString modelName, PolygonModel::model_t modelType)
 {
     std::vector<Vertex> vertices;
     std::vector<Facet> facets;
@@ -557,6 +564,8 @@ void SceneInf::addMotherboardLayoutComponent(BasePlateComponentConfig &config)
     {
         addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
     }
-    PolygonModel layoutComponent(vertices, facets);
+    PolygonModel layoutComponent(vertices, facets, modelName);
+    layoutComponent.setModelType(modelType);
+    layoutComponent.setModelNum(modelsNum);
     addModel(layoutComponent);
 }
