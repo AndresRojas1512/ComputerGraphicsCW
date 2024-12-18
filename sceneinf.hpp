@@ -105,7 +105,8 @@ private:
                             double topFrameWidth, double bottomFrameWidth, double leftFrameWidth, double rightFrameWidth);
 
     void buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_);
-    void addBaseComponent(std::vector<Vertex> &vertices, std::vector<Facet> &facets, BasePlateComponentConfig &config);
+
+    void addMotherboardLayoutComponent(BasePlateComponentConfig &config);
 };
 
 #endif
