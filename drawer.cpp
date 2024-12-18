@@ -192,6 +192,9 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
                           Eigen::Matrix4f &transMat, size_t color, SceneInf *scene, size_t bufWidth,
                           size_t bufHeight)
 {
+    std::cout << "Drawer::zBufForModel" << std::endl;
+    std::cout << "---> color: " << color << std::endl;
+
     std::array<Dot3D, 3> dotsArr;
     Eigen::Matrix4f toCenter;
 
@@ -441,10 +444,12 @@ void Drawer::zBufferAlg(SceneInf *scene, size_t bufHeight, size_t bufWidth)
 QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
 {
     std::cout << "Drawer::drawScene" << std::endl;
+    std::cout << "Drawer::drawScene -> rect: " << rect.height() << ", " << rect.width() << std::endl;
     size_t width = scene->getWidth() * SIZE_SC;
     size_t height = scene->getHeight() * SIZE_SC;
 
     scene->buildBaseModel(Dot3D(BASE_START), Dot3D(width, height, BASE_Z));
+    std::cout << "---> modelsNum: " << scene->getModelsNum() << std::endl;
 
     using namespace std::chrono;
     nanoseconds start = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
@@ -460,8 +465,10 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
         new QImage(rect.size().width(), rect.size().height(), QImage::Format_RGB32);
     image->fill(Qt::white);
 
-    uint baseColor              = qRgb(BASE_COLOR);
-    uint baseColorShadow        = qRgb(BASE_COLOR_SHADOW);
+    // uint baseColor              = qRgb(BASE_COLOR);
+    uint baseColor              = qRgb(ATX_MOTHERBOARD_COLOR);
+    uint baseColorShadow        = qRgb(ATX_MOTHERBOARD_COLOR_SHADOW);
+
     uint borderColor            = qRgb(BLACK_COLOR);
 
     uint brickColor             = qRgb(BRICK_COLOR);
@@ -480,6 +487,10 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
     uint cylinderColorShadow    = qRgb(CYLINDER_COLOR_SHADOW);
 
     nanoseconds start2 = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
+
+    std::cout << "START DEBUG (borderBuffer)" << std::endl;
+    std::cout << "size: " << borderBuffer.size() << " x " << borderBuffer[0].size() << std::endl;
+    std::cout << "END DEBUG (borderBuffer)" << std::endl;
 
     for (size_t i = 0; i < rect.size().width() - 1; i++)
         for (size_t j = 0; j < rect.size().height() - 1; j++)
