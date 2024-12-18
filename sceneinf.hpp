@@ -15,16 +15,6 @@
 #include "atxmotherboardconfig.hpp"
 #include "miniitxmotherboardconfig.hpp"
 
-struct ComponentSpec
-{
-    double width, height, depth;
-
-
-    std::vector<std::tuple<double, double, double>> positions;
-
-    ComponentSpec(double width_, double height_, double depth_);
-};
-
 class SceneInf
 {
 public:

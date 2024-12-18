@@ -396,7 +396,6 @@ void SceneInf::buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> 
             startOfPlate_.getYCoordinate(), BASE_Z);
 }
 
-
 void SceneInf::changeSize(size_t newWidth, size_t newHeight)
 {
     if (newWidth)

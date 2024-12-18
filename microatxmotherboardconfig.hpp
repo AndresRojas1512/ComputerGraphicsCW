@@ -133,13 +133,13 @@ public:
     // processor
     BasePlateComponentConfig LGA1200;
 
-    // ram
+    // RAM
     BasePlateComponentConfig DDR4_DIMM_A1;
     BasePlateComponentConfig DDR4_DIMM_A2;
     BasePlateComponentConfig DDR4_DIMM_B1;
     BasePlateComponentConfig DDR4_DIMM_B2;
 
-    // gpu
+    // GPU
     BasePlateComponentConfig PCIEX16_1;
     BasePlateComponentConfig PCIEX16_2;
 

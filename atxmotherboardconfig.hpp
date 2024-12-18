@@ -128,13 +128,13 @@ public:
     // processor
     BasePlateComponentConfig socketM4;
 
-    // ram
+    // RAM
     BasePlateComponentConfig DDR4_DIMM_B1;
     BasePlateComponentConfig DDR4_DIMM_B2;
     BasePlateComponentConfig DDR4_DIMM_A1;
     BasePlateComponentConfig DDR4_DIMM_A2;
 
-    // gpu
+    // GPU
     BasePlateComponentConfig PCIEX16_1;
     BasePlateComponentConfig PCIEX16_2;
     BasePlateComponentConfig PCIEX16_3;
