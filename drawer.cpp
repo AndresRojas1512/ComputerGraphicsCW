@@ -573,6 +573,34 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
     uint microAtx_PCIEX16_2_Color = qRgb(MICROATX_PCIEX16_2_COLOR);
     uint microAtx_PCIEX16_2_ColorShadow = qRgb(MICROATX_PCIEX16_2_COLOR_SHADOW);
 
+    // MINIITX_USB3_5
+    uint miniItx_USB3_5_Color = qRgb(MINIITX_USB3_5_COLOR);
+    uint miniItx_USB3_5_ColorShadow = qRgb(MINIITX_USB3_5_COLOR_SHADOW);
+    // MINIITX_USB7_10
+    uint miniItx_USB7_10_Color = qRgb(MINIITX_USB7_10_COLOR);
+    uint miniItx_USB7_10_ColorShadow = qRgb(MINIITX_USB7_10_COLOR_SHADOW);
+    // MINIITX_HDMI_DP
+    uint miniItx_HDMI_DP_Color = qRgb(MINIITX_HDMI_DP_COLOR);
+    uint miniItx_HDMI_DP_ColorShadow = qRgb(MINIITX_HDMI_DP_COLOR_SHADOW);
+    // MINIITX_LAN_USB3_34
+    uint miniItx_LAN_USB3_34_Color = qRgb(MINIITX_LAN_USB3_34_COLOR);
+    uint miniItx_LAN_USB3_34_ColorShadow = qRgb(MINIITX_LAN_USB3_34_COLOR_SHADOW);
+    // MINIITX_M2_WIFI
+    uint miniItx_M2_WIFI_Color = qRgb(MINIITX_M2_WIFI_COLOR);
+    uint miniItx_M2_WIFI_ColorShadow = qRgb(MINIITX_M2_WIFI_COLOR_SHADOW);
+    // MINIITX_AUDIO
+    uint miniItx_AUDIO_Color = qRgb(MINIITX_AUDIO_COLOR);
+    uint miniItx_AUDIO_ColorShadow = qRgb(MINIITX_AUDIO_COLOR_SHADOW);
+    // MINIITX_DDR4_DIMM_A1
+    uint miniItx_DDR4_DIMM_A1_Color = qRgb(MINIITX_DDR4_DIMM_A1_COLOR);
+    uint miniItx_DDR4_DIMM_A1_ColorShadow = qRgb(MINIITX_DDR4_DIMM_A1_COLOR_SHADOW);
+    // MINIITX_DDR4_DIMM_B1
+    uint miniItx_DDR4_DIMM_B1_Color = qRgb(MINIITX_DDR4_DIMM_B1_COLOR);
+    uint miniItx_DDR4_DIMM_B1_ColorShadow = qRgb(MINIITX_DDR4_DIMM_B1_COLOR_SHADOW);
+    // MINIITX_PCIEX16_1
+    uint miniItx_PCIEX16_1_Color = qRgb(MINIITX_PCIEX16_1_COLOR);
+    uint miniItx_PCIEX16_1_ColorShadow = qRgb(MINIITX_PCIEX16_1_COLOR_SHADOW);
+
     nanoseconds start2 = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
 
     std::cout << "START DEBUG (borderBuffer)" << std::endl;
@@ -886,6 +914,87 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             else if (borderBuffer.at(i).at(j) == 73)
             {
                 image->setPixel(i, j, microAtx_PCIEX16_2_Color);
+            }
+            // MINIITX_USB3_5
+            else if (borderBuffer.at(i).at(j) == 74)
+            {
+                image->setPixel(i, j, miniItx_USB3_5_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 75)
+            {
+                image->setPixel(i, j, miniItx_USB3_5_Color);
+            }
+            // MINIITX_USB7_10
+            else if (borderBuffer.at(i).at(j) == 76)
+            {
+                image->setPixel(i, j, miniItx_USB7_10_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 77)
+            {
+                image->setPixel(i, j, miniItx_USB7_10_Color);
+            }
+            // MINIITX_HDMI_DP
+            else if (borderBuffer.at(i).at(j) == 78)
+            {
+                image->setPixel(i, j, miniItx_HDMI_DP_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 79)
+            {
+                image->setPixel(i, j, miniItx_HDMI_DP_Color);
+            }
+            // MINIITX_LAN_USB3_34
+            else if (borderBuffer.at(i).at(j) == 80)
+            {
+                image->setPixel(i, j, miniItx_LAN_USB3_34_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 81)
+            {
+                image->setPixel(i, j, miniItx_LAN_USB3_34_Color);
+            }
+            // MINIITX_M2_WIFI
+            else if (borderBuffer.at(i).at(j) == 82)
+            {
+                image->setPixel(i, j, miniItx_M2_WIFI_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 83)
+            {
+                image->setPixel(i, j, miniItx_M2_WIFI_Color);
+            }
+            // MINIITX_AUDIO
+            else if (borderBuffer.at(i).at(j) == 84)
+            {
+                image->setPixel(i, j, miniItx_AUDIO_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 85)
+            {
+                image->setPixel(i, j, miniItx_AUDIO_Color);
+            }
+            // MINIITX_DDR4_DIMM_A1
+            else if (borderBuffer.at(i).at(j) == 86)
+            {
+                image->setPixel(i, j, miniItx_DDR4_DIMM_A1_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 87)
+            {
+                image->setPixel(i, j, miniItx_DDR4_DIMM_A1_Color);
+            }
+            // MINIITX_DDR4_DIMM_B1
+            else if (borderBuffer.at(i).at(j) == 88)
+            {
+                image->setPixel(i, j, miniItx_DDR4_DIMM_B1_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 89)
+            {
+                image->setPixel(i, j, miniItx_DDR4_DIMM_B1_Color);
+            }
+            // MINIITX_PCIEX16_1
+            else if (borderBuffer.at(i).at(j) == 90)
+            {
+                image->setPixel(i, j, miniItx_PCIEX16_1_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 91)
+            {
+                image->setPixel(i, j, miniItx_PCIEX16_1_Color);
             }
         }
     }
