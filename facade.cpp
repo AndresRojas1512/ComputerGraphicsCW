@@ -48,7 +48,7 @@ void Facade::setSceneInfMotherboard(int index)
 
 void Facade::changeSceneInf(size_t newWidth, size_t newheight)
 {
-    std::cout << "changeSceneInf" << std::endl;
+    std::cout << "Facade::changeSceneInf" << std::endl;
     scene->changeSize(newWidth, newheight);
 }
 

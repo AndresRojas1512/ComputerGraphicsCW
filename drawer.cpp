@@ -192,8 +192,8 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
                           Eigen::Matrix4f &transMat, size_t color, SceneInf *scene, size_t bufWidth,
                           size_t bufHeight)
 {
-    std::cout << "Drawer::zBufForModel" << std::endl;
-    std::cout << "---> color: " << color << std::endl;
+    // std::cout << "Drawer::zBufForModel" << std::endl;
+    // std::cout << "---> color: " << color << std::endl;
 
     std::array<Dot3D, 3> dotsArr;
     Eigen::Matrix4f toCenter;
@@ -391,7 +391,7 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
 
 void Drawer::zBufferAlg(SceneInf *scene, size_t bufHeight, size_t bufWidth)
 {
-    std::cout << "Drawer::zBufferAlg" << std::endl;
+    // std::cout << "Drawer::zBufferAlg" << std::endl;
     depthBuffer.erase(depthBuffer.begin(), depthBuffer.end());
     borderBuffer.erase(borderBuffer.begin(), borderBuffer.end());
 
@@ -423,12 +423,12 @@ void Drawer::zBufferAlg(SceneInf *scene, size_t bufHeight, size_t bufWidth)
         shadowMapForModel(facets, vertices, scene->getTransMatrix(),
                           &scene->getLight(j), bufWidth, bufHeight);
 
-    std::cout << "zBufferAlg loop:" << std::endl;
+    // std::cout << "zBufferAlg loop:" << std::endl;
     for (size_t i = 0; i < scene->getModelsNum(); i++)
     {
-        std::cout << "---> iteration: " << i << std::endl;
+        // std::cout << "---> iteration: " << i << std::endl;
         model = scene->getModel(i);
-        std::cout << model;
+        // std::cout << model;
         facets = model.getFacets();
         vertices = model.getVertices();
         typeModel = model.getModelType();
