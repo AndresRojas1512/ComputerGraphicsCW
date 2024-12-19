@@ -58,41 +58,65 @@
 #define CYLINDER_COLOR          255, 255, 051
 #define CYLINDER_COLOR_SHADOW   255 - SHADOW_VAL, 255 - SHADOW_VAL, 051 - SHADOW_VAL
 
-// ATX components colors
+/*
+ * ======================= ATX COLORS =======================
+*/
+
+
+// Peripheria
 #define ATX_MOTHERBOARD_COLOR 0, 128, 0 // green
-#define ATX_MOTHERBOARD_COLOR_SHADOW 30, 128 - SHADOW_VAL, 30
+#define ATX_MOTHERBOARD_COLOR_SHADOW 0, 100, 0 // dark green
 
-#define ATX_HDMI_DP_COLOR 128, 128, 128 // gray
+#define ATX_HDMI_DP_COLOR 192, 192, 192 // silver
+#define ATX_HDMI_DP_COLOR_SHADOW 128, 128, 128 // gray
 
-#define ATX_BIOS_FLBK_COLOR 128, 128, 128 // gray
+#define ATX_BIOS_FLBK_COLOR 192, 192, 192 // silver
+#define ATX_BIOS_FLBK_COLOR_SHADOW 128, 128, 128 // gray
 
-#define ATX_U32G2_1_4_COLOR 128, 128, 128 // gray
+#define ATX_U32G2_1_4_COLOR 192, 192, 192 // silver
+#define ATX_U32G2_1_4_COLOR_SHADOW 128, 128, 128 // gray
 
-#define ATX_LAN2_U32G2_56_COLOR 128, 128, 128 // gray
+#define ATX_LAN2_U32G2_56_COLOR 192, 192, 192 // silver
+#define ATX_LAN2_U32G2_56_COLOR_SHADOW 128, 128, 128 // gray
 
-#define ATX_U3252_C8_LAN1_U32G2_7_COLOR 128, 128, 128 // gray
+#define ATX_U3252_C8_LAN1_U32G2_7_COLOR 192, 192, 192 // silver
+#define ATX_U3252_C8_LAN1_U32G2_7_COLOR_SHADOW 128, 128, 128 // gray
 
-#define ATX_M2_WIFI_COLOR 128, 128, 128 // gray
+#define ATX_M2_WIFI_COLOR 192, 192, 192 // silver
+#define ATX_M2_WIFI_COLOR_SHADOW 128, 128, 128 // gray
 
-#define ATX_AUDIO_COLOR 128, 128, 128 // gray
+#define ATX_AUDIO_COLOR 192, 192, 192 // silver
+#define ATX_AUDIO_COLOR_SHADOW 128, 128, 128 // gray
 
+// Processor socket
 #define ATX_SOCKET_M4_COLOR 0, 0, 0 // black
+#define ATX_SOCKET_M4_COLOR_SHADOW 0, 0, 0 // black
 
+// RAM
 #define ATX_DDR4_DIMM_B1_COLOR 0, 0, 255 // blue
+#define ATX_DDR4_DIMM_B1_COLOR_SHADOW 0, 0, 139 // dark blue
 
-#define ATX_DDR4_DIMM_B2_COLOR 255, 255, 50 // strong yellow
+#define ATX_DDR4_DIMM_B2_COLOR 255, 255, 0 // yellow
+#define ATX_DDR4_DIMM_B2_COLOR_SHADOW 128, 128, 0 // olive
 
 #define ATX_DDR4_DIMM_A1_COLOR 0, 0, 255 // blue
+#define ATX_DDR4_DIMM_A1_COLOR_SHADOW 0, 0, 139 // dark blue
 
-#define ATX_DDR4_DIMM_A2_COLOR 255, 255, 50 // strong yellow
+#define ATX_DDR4_DIMM_A2_COLOR 255, 255, 0 // yellow
+#define ATX_DDR4_DIMM_A2_COLOR_SHADOW 128, 128, 0 // olive
 
-#define ATX_PCIEX16_1_COLOR 255, 255, 224 // soft yellow
+#define ATX_PCIEX16_1_COLOR 240, 230, 140 // khaki
+#define ATX_PCIEX16_1_COLOR_SHADOW 189, 183, 107 // dark khaki
 
-#define ATX_PCIEX16_2_COLOR 255, 255, 224 // soft yellow
+#define ATX_PCIEX16_2_COLOR 240, 230, 140 // khaki
+#define ATX_PCIEX16_2_COLOR_SHADOW 189, 183, 107 // dark khaki
 
-#define ATX_PCIEX16_3_COLOR 255, 255, 224 // soft yellow
+#define ATX_PCIEX16_3_COLOR 240, 230, 140 // khaki
+#define ATX_PCIEX16_3_COLOR_SHADOW 189, 183, 107 // dark khaki
 
-// Micro-ATX colors
+/*
+ * ======================= MICRO-ATX COLORS =======================
+*/
 #define MICROATX_MOTHERBOARD_COLOR 0, 128, 0 // green
 #define MICROATX_HDMI1_DP_COLOR 128, 128, 128 // gray
 #define MICROATX_HDMI2_COLOR 128, 128, 128 // gray

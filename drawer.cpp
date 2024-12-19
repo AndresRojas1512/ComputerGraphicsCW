@@ -391,6 +391,7 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
 
 void Drawer::zBufferAlg(SceneInf *scene, size_t bufHeight, size_t bufWidth)
 {
+    std::cout << "Drawer::zBufferAlg" << std::endl;
     depthBuffer.erase(depthBuffer.begin(), depthBuffer.end());
     borderBuffer.erase(borderBuffer.begin(), borderBuffer.end());
 
@@ -422,20 +423,21 @@ void Drawer::zBufferAlg(SceneInf *scene, size_t bufHeight, size_t bufWidth)
         shadowMapForModel(facets, vertices, scene->getTransMatrix(),
                           &scene->getLight(j), bufWidth, bufHeight);
 
+    std::cout << "zBufferAlg loop:" << std::endl;
     for (size_t i = 0; i < scene->getModelsNum(); i++)
     {
+        std::cout << "---> iteration: " << i << std::endl;
         model = scene->getModel(i);
+        std::cout << model;
         facets = model.getFacets();
         vertices = model.getVertices();
         typeModel = model.getModelType();
-        zBufForModel(
-            facets, vertices, scene->getTransMatrix(), 4 + typeModel * 2, scene, bufWidth, bufHeight);
+        zBufForModel(facets, vertices, scene->getTransMatrix(), 4 + typeModel * 2, scene, bufWidth, bufHeight);
     }
     model = scene->getBaseModel();
     facets = model.getFacets();
     vertices = model.getVertices();
-    zBufForModel(
-        facets, vertices, scene->getTransMatrix(), 1, scene, bufWidth, bufHeight);
+    zBufForModel(facets, vertices, scene->getTransMatrix(), 1, scene, bufWidth, bufHeight);
 
     for (size_t i = 0; i < scene->getLightNum(); i++)
         scene->getLight(i).clearShadowMap();
@@ -465,7 +467,6 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
         new QImage(rect.size().width(), rect.size().height(), QImage::Format_RGB32);
     image->fill(Qt::white);
 
-    // uint baseColor              = qRgb(BASE_COLOR);
     uint baseColor              = qRgb(ATX_MOTHERBOARD_COLOR);
     uint baseColorShadow        = qRgb(ATX_MOTHERBOARD_COLOR_SHADOW);
 
@@ -486,6 +487,53 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
     uint cylinderColor          = qRgb(CYLINDER_COLOR);
     uint cylinderColorShadow    = qRgb(CYLINDER_COLOR_SHADOW);
 
+    // ATX_HDMI_DP
+    uint atx_HDMI_DP_Color = qRgb(ATX_HDMI_DP_COLOR);
+    uint atx_HDMI_DP_ColorShadow = qRgb(ATX_HDMI_DP_COLOR_SHADOW);
+    // ATX_BIOS_FLBK
+    uint atx_BIOS_FLBK_Color = qRgb(ATX_BIOS_FLBK_COLOR);
+    uint atx_BIOS_FLBK_ColorShadow = qRgb(ATX_BIOS_FLBK_COLOR_SHADOW);
+    // U32G2_1_4
+    uint atx_U32G2_1_4_Color = qRgb(ATX_U32G2_1_4_COLOR);
+    uint atx_U32G2_1_4_ColorShadow = qRgb(ATX_U32G2_1_4_COLOR_SHADOW);
+    // LAN2_U32G2_56
+    uint atx_LAN2_U32G2_56_Color = qRgb(ATX_LAN2_U32G2_56_COLOR);
+    uint atx_LAN2_U32G2_56_ColorShadow = qRgb(ATX_LAN2_U32G2_56_COLOR_SHADOW);
+    // U3252_C8_LAN1_U32G2_7
+    uint atx_U3252_C8_LAN1_U32G2_7_Color = qRgb(ATX_U3252_C8_LAN1_U32G2_7_COLOR);
+    uint atx_U3252_C8_LAN1_U32G2_7_ColorShadow = qRgb(ATX_U3252_C8_LAN1_U32G2_7_COLOR_SHADOW);
+    // M2_WIFI
+    uint atx_M2_WIFI_Color = qRgb(ATX_M2_WIFI_COLOR);
+    uint atx_M2_WIFI_ColorShadow = qRgb(ATX_M2_WIFI_COLOR_SHADOW);
+    // AUDIO
+    uint atx_AUDIO_Color = qRgb(ATX_AUDIO_COLOR);
+    uint atx_AUDIO_ColorShadow = qRgb(ATX_AUDIO_COLOR_SHADOW);
+    // socketM4
+    uint atx_socketM4_Color = qRgb(ATX_SOCKET_M4_COLOR);
+    uint atx_socketM4_ColorShadow = qRgb(ATX_SOCKET_M4_COLOR_SHADOW);
+    // DDR4_DIMM_B1
+    uint atx_DDR4_DIMM_B1_Color = qRgb(ATX_DDR4_DIMM_B1_COLOR);
+    uint atx_DDR4_DIMM_B1_ColorShadow = qRgb(ATX_DDR4_DIMM_B1_COLOR_SHADOW);
+    // DDR4_DIMM_B2
+    uint atx_DDR4_DIMM_B2_Color = qRgb(ATX_DDR4_DIMM_B2_COLOR);
+    uint atx_DDR4_DIMM_B2_ColorShadow = qRgb(ATX_DDR4_DIMM_B2_COLOR_SHADOW);
+    // DDR4_DIMM_A1
+    uint atx_DDR4_DIMM_A1_Color = qRgb(ATX_DDR4_DIMM_A1_COLOR);
+    uint atx_DDR4_DIMM_A1_ColorShadow = qRgb(ATX_DDR4_DIMM_A1_COLOR_SHADOW);
+    // DDR4_DIMM_A2
+    uint atx_DDR4_DIMM_A2_Color = qRgb(ATX_DDR4_DIMM_A2_COLOR);
+    uint atx_DDR4_DIMM_A2_ColorShadow = qRgb(ATX_DDR4_DIMM_A2_COLOR_SHADOW);
+    // PCIEX16_1
+    uint atx_PCIEX16_1_Color = qRgb(ATX_PCIEX16_1_COLOR);
+    uint atx_PCIEX16_1_ColorShadow = qRgb(ATX_PCIEX16_1_COLOR_SHADOW);
+    // PCIEX16_2
+    uint atx_PCIEX16_2_Color = qRgb(ATX_PCIEX16_2_COLOR);
+    uint atx_PCIEX16_2_ColorShadow = qRgb(ATX_PCIEX16_2_COLOR_SHADOW);
+    // PCIEX16_3
+    uint atx_PCIEX16_3_Color = qRgb(ATX_PCIEX16_3_COLOR);
+    uint atx_PCIEX16_3_ColorShadow = qRgb(ATX_PCIEX16_3_COLOR_SHADOW);
+
+
     nanoseconds start2 = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
 
     std::cout << "START DEBUG (borderBuffer)" << std::endl;
@@ -493,6 +541,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
     std::cout << "END DEBUG (borderBuffer)" << std::endl;
 
     for (size_t i = 0; i < rect.size().width() - 1; i++)
+    {
         for (size_t j = 0; j < rect.size().height() - 1; j++)
         {
             if (borderBuffer.at(i).at(j) == 1)
@@ -547,7 +596,143 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, cylinderColor);
             }
+            // ATX_HDMI_DP
+            else if (borderBuffer.at(i).at(j) == 18)
+            {
+                image->setPixel(i, j, atx_HDMI_DP_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 19)
+            {
+                image->setPixel(i, j, atx_HDMI_DP_Color);
+            }
+            // ATX_BIOS_FLBK
+            else if (borderBuffer.at(i).at(j) == 20)
+            {
+                image->setPixel(i, j, atx_BIOS_FLBK_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 21)
+            {
+                image->setPixel(i, j, atx_BIOS_FLBK_Color);
+            }
+            // ATX_U32G2_1_4
+            else if (borderBuffer.at(i).at(j) == 22)
+            {
+                image->setPixel(i, j, atx_U32G2_1_4_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 23)
+            {
+                image->setPixel(i, j, atx_U32G2_1_4_Color);
+            }
+            // ATX_LAN2_U32G2_56
+            else if (borderBuffer.at(i).at(j) == 24)
+            {
+                image->setPixel(i, j, atx_LAN2_U32G2_56_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 25)
+            {
+                image->setPixel(i, j, atx_LAN2_U32G2_56_Color);
+            }
+            // ATX_U3252_C8_LAN1_U32G2_7
+            else if (borderBuffer.at(i).at(j) == 26)
+            {
+                image->setPixel(i, j, atx_U3252_C8_LAN1_U32G2_7_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 27)
+            {
+                image->setPixel(i, j, atx_U3252_C8_LAN1_U32G2_7_Color);
+            }
+            // ATX_M2_WIFI
+            else if (borderBuffer.at(i).at(j) == 28)
+            {
+                image->setPixel(i, j, atx_M2_WIFI_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 29)
+            {
+                image->setPixel(i, j, atx_M2_WIFI_Color);
+            }
+            // AUDIO
+            else if (borderBuffer.at(i).at(j) == 30)
+            {
+                image->setPixel(i, j, atx_AUDIO_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 31)
+            {
+                image->setPixel(i, j, atx_AUDIO_Color);
+            }
+            // socketM4
+            else if (borderBuffer.at(i).at(j) == 32)
+            {
+                image->setPixel(i, j, atx_socketM4_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 33)
+            {
+                image->setPixel(i, j, atx_socketM4_Color);
+            }
+            // DDR4_DIMM_B1
+            else if (borderBuffer.at(i).at(j) == 34)
+            {
+                image->setPixel(i, j, atx_DDR4_DIMM_B1_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 35)
+            {
+                image->setPixel(i, j, atx_DDR4_DIMM_B1_Color);
+            }
+            // DDR4_DIMM_B2
+            else if (borderBuffer.at(i).at(j) == 36)
+            {
+                image->setPixel(i, j, atx_DDR4_DIMM_B2_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 37)
+            {
+                image->setPixel(i, j, atx_DDR4_DIMM_B2_Color);
+            }
+            // DDR4_DIMM_A1
+            else if (borderBuffer.at(i).at(j) == 38)
+            {
+                image->setPixel(i, j, atx_DDR4_DIMM_A1_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 39)
+            {
+                image->setPixel(i, j, atx_DDR4_DIMM_A1_Color);
+            }
+            // DDR4_DIMM_A2
+            else if (borderBuffer.at(i).at(j) == 40)
+            {
+                image->setPixel(i, j, atx_DDR4_DIMM_A2_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 41)
+            {
+                image->setPixel(i, j, atx_DDR4_DIMM_A2_Color);
+            }
+            // PCIEX16_1
+            else if (borderBuffer.at(i).at(j) == 42)
+            {
+                image->setPixel(i, j, atx_PCIEX16_1_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 43)
+            {
+                image->setPixel(i, j, atx_PCIEX16_1_Color);
+            }
+            // PCIEX16_2
+            else if (borderBuffer.at(i).at(j) == 44)
+            {
+                image->setPixel(i, j, atx_PCIEX16_2_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 45)
+            {
+                image->setPixel(i, j, atx_PCIEX16_2_Color);
+            }
+            // PCIEX16_3
+            else if (borderBuffer.at(i).at(j) == 46)
+            {
+                image->setPixel(i, j, atx_PCIEX16_3_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 47)
+            {
+                image->setPixel(i, j, atx_PCIEX16_3_Color);
+            }
         }
+    }
 
     nanoseconds end2 = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
     qDebug() << "Отрисовка" << size_t((end2 - start2).count() / 1000000);
