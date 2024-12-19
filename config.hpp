@@ -89,8 +89,8 @@
 #define ATX_AUDIO_COLOR_SHADOW 128, 128, 128 // gray
 
 // Processor socket
-#define ATX_SOCKET_M4_COLOR 0, 0, 0 // black
-#define ATX_SOCKET_M4_COLOR_SHADOW 0, 0, 0 // black
+#define ATX_SOCKET_M4_COLOR 128, 128, 128 // gray
+#define ATX_SOCKET_M4_COLOR_SHADOW 105, 105, 105 // dimgray
 
 // RAM
 #define ATX_DDR4_DIMM_B1_COLOR 0, 0, 255 // blue
@@ -117,32 +117,87 @@
 /*
  * ======================= MICRO-ATX COLORS =======================
 */
-#define MICROATX_MOTHERBOARD_COLOR 0, 128, 0 // green
-#define MICROATX_HDMI1_DP_COLOR 128, 128, 128 // gray
-#define MICROATX_HDMI2_COLOR 128, 128, 128 // gray
-#define MICROATX_KBMS_USB_E32_COLOR 128, 128, 128 // gray
-#define MICROATX_U32G2_C2_COLOR 128, 128, 128 // gray
-#define MICROATX_LAN_USB_E12_COLOR 128, 128, 128 // gray
-#define MICROATX_AUDIO_COLOR 128, 128, 128 // gray
-#define MICROATX_LGA1200_COLOR 0, 0, 0 // black
-#define MICROATX_DDR4_DIMM_A1_COLOR 0, 0, 255 // blue
-#define MICROATX_DDR4_DIMM_A2_COLOR 255, 255, 50 // strong yellow
-#define MICROATX_DDR4_DIMM_B1_COLOR 0, 0, 255 // blue
-#define MICROATX_DDR4_DIMM_B2_COLOR 255, 255, 50 // strong yellow
-#define MICROATX_PCIEX16_1_COLOR 255, 255, 224 // soft yellow
-#define MICROATX_PCIEX16_2_COLOR 255, 255, 224 // soft yellow
 
-// Mini-ITX colors
+// Peripheria
+#define MICROATX_MOTHERBOARD_COLOR 0, 128, 0 // green
+#define MICROATX_MOTHERBOARD_COLOR_SHADOW 0, 100, 0 // dark green
+
+#define MICROATX_HDMI1_DP_COLOR 192, 192, 192 // silver
+#define MICROATX_HDMI1_DP_COLOR_SHADOW 128, 128, 128 // gray
+
+#define MICROATX_HDMI2_COLOR 192, 192, 192 // silver
+#define MICROATX_HDMI2_COLOR_SHADOW 128, 128, 128 // gray
+
+#define MICROATX_KBMS_USB_E32_COLOR 192, 192, 192 // silver
+#define MICROATX_KBMS_USB_E32_COLOR_SHADOW 128, 128, 128 // gray
+
+#define MICROATX_U32G2_C2_COLOR 192, 192, 192 // silver
+#define MICROATX_U32G2_C2_COLOR_SHADOW 128, 128, 128 // gray
+
+#define MICROATX_LAN_USB_E12_COLOR 192, 192, 192 // silver
+#define MICROATX_LAN_USB_E12_COLOR_SHADOW 128, 128, 128 // gray
+
+#define MICROATX_AUDIO_COLOR 192, 192, 192 // silver
+#define MICROATX_AUDIO_COLOR_SHADOW 128, 128, 128 // gray
+
+// Processor
+#define MICROATX_LGA1200_COLOR 128, 128, 128 // gray
+#define MICROATX_LGA1200_COLOR_SHADOW 105, 105, 105 // dimgray
+
+// RAM
+#define MICROATX_DDR4_DIMM_A1_COLOR 0, 0, 255 // blue
+#define MICROATX_DDR4_DIMM_A1_COLOR_SHADOW 0, 0, 139 // dark blue
+
+#define MICROATX_DDR4_DIMM_A2_COLOR 255, 255, 0 // yellow
+#define MICROATX_DDR4_DIMM_A2_COLOR_SHADOW 128, 128, 0 // olive
+
+#define MICROATX_DDR4_DIMM_B1_COLOR 0, 0, 255 // blue
+#define MICROATX_DDR4_DIMM_B1_COLOR_SHADOW 0, 0, 139 // dark blue
+
+#define MICROATX_DDR4_DIMM_B2_COLOR 255, 255, 0 // yellow
+#define MICROATX_DDR4_DIMM_B2_COLOR_SHADOW 128, 128, 0 // olive
+
+// GPU
+#define MICROATX_PCIEX16_1_COLOR 240, 230, 140 // khaki
+#define MICROATX_PCIEX16_1_COLOR_SHADOW 189, 183, 107 // dark khaki
+
+#define MICROATX_PCIEX16_2_COLOR 240, 230, 140 // khaki
+#define MICROATX_PCIEX16_2_COLOR_SHADOW 189, 183, 107 // dark khaki
+
+/*
+ * ======================= MINI-ITX COLORS =======================
+*/
+
 #define MINIITX_MOTHERBOARD_COLOR 0, 128, 0 // green
-#define MINIITX_USB3_5_COLOR 128, 128, 128 // gray
+#define MINIITX_MOTHERBOARD_COLOR_SHADOW 0, 100, 0 // dark green
+
+#define MINIITX_USB3_5_COLOR 192, 192, 192 // silver
+
+
 #define MINIITX_USB7_10_COLOR 128, 128, 128 // gray
+
+
 #define MINIITX_HDMI_DP_COLOR 128, 128, 128 // gray
+
+
 #define MINIITX_LAN_USB_34_COLOR 128, 128, 128 // gray
+
+
 #define MINIITX_M2_WIFI_COLOR 128, 128, 128 // gray
+
+
 #define MINIITX_AUDIO_COLOR 128, 128, 128 // gray
+
+
 #define MINIITX_SOCKET_M4_COLOR 0, 0, 0 // black
+
+
 #define MINIITX_DDR4_DIMM_A1_COLOR 0, 0, 255 // blue
+
+
 #define MINIITX_DDR4_DIMM_B1_COLOR 255, 255, 50 // strong yellow
+
+
 #define MINIITX_PCIEX16_1_COLOR 255, 255, 224 // soft yellow
 
 #endif

@@ -493,46 +493,85 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
     // ATX_BIOS_FLBK
     uint atx_BIOS_FLBK_Color = qRgb(ATX_BIOS_FLBK_COLOR);
     uint atx_BIOS_FLBK_ColorShadow = qRgb(ATX_BIOS_FLBK_COLOR_SHADOW);
-    // U32G2_1_4
+    // ATX_U32G2_1_4
     uint atx_U32G2_1_4_Color = qRgb(ATX_U32G2_1_4_COLOR);
     uint atx_U32G2_1_4_ColorShadow = qRgb(ATX_U32G2_1_4_COLOR_SHADOW);
-    // LAN2_U32G2_56
+    // ATX_LAN2_U32G2_56
     uint atx_LAN2_U32G2_56_Color = qRgb(ATX_LAN2_U32G2_56_COLOR);
     uint atx_LAN2_U32G2_56_ColorShadow = qRgb(ATX_LAN2_U32G2_56_COLOR_SHADOW);
-    // U3252_C8_LAN1_U32G2_7
+    // ATX_U3252_C8_LAN1_U32G2_7
     uint atx_U3252_C8_LAN1_U32G2_7_Color = qRgb(ATX_U3252_C8_LAN1_U32G2_7_COLOR);
     uint atx_U3252_C8_LAN1_U32G2_7_ColorShadow = qRgb(ATX_U3252_C8_LAN1_U32G2_7_COLOR_SHADOW);
-    // M2_WIFI
+    // ATX_M2_WIFI
     uint atx_M2_WIFI_Color = qRgb(ATX_M2_WIFI_COLOR);
     uint atx_M2_WIFI_ColorShadow = qRgb(ATX_M2_WIFI_COLOR_SHADOW);
-    // AUDIO
+    // ATX_AUDIO
     uint atx_AUDIO_Color = qRgb(ATX_AUDIO_COLOR);
     uint atx_AUDIO_ColorShadow = qRgb(ATX_AUDIO_COLOR_SHADOW);
-    // socketM4
+    // ATX_socketM4
     uint atx_socketM4_Color = qRgb(ATX_SOCKET_M4_COLOR);
     uint atx_socketM4_ColorShadow = qRgb(ATX_SOCKET_M4_COLOR_SHADOW);
-    // DDR4_DIMM_B1
+    // ATX_DDR4_DIMM_B1
     uint atx_DDR4_DIMM_B1_Color = qRgb(ATX_DDR4_DIMM_B1_COLOR);
     uint atx_DDR4_DIMM_B1_ColorShadow = qRgb(ATX_DDR4_DIMM_B1_COLOR_SHADOW);
-    // DDR4_DIMM_B2
+    // ATX_DDR4_DIMM_B2
     uint atx_DDR4_DIMM_B2_Color = qRgb(ATX_DDR4_DIMM_B2_COLOR);
     uint atx_DDR4_DIMM_B2_ColorShadow = qRgb(ATX_DDR4_DIMM_B2_COLOR_SHADOW);
-    // DDR4_DIMM_A1
+    // ATX_DDR4_DIMM_A1
     uint atx_DDR4_DIMM_A1_Color = qRgb(ATX_DDR4_DIMM_A1_COLOR);
     uint atx_DDR4_DIMM_A1_ColorShadow = qRgb(ATX_DDR4_DIMM_A1_COLOR_SHADOW);
-    // DDR4_DIMM_A2
+    // ATX_DDR4_DIMM_A2
     uint atx_DDR4_DIMM_A2_Color = qRgb(ATX_DDR4_DIMM_A2_COLOR);
     uint atx_DDR4_DIMM_A2_ColorShadow = qRgb(ATX_DDR4_DIMM_A2_COLOR_SHADOW);
-    // PCIEX16_1
+    // ATX_PCIEX16_1
     uint atx_PCIEX16_1_Color = qRgb(ATX_PCIEX16_1_COLOR);
     uint atx_PCIEX16_1_ColorShadow = qRgb(ATX_PCIEX16_1_COLOR_SHADOW);
-    // PCIEX16_2
+    // ATX_PCIEX16_2
     uint atx_PCIEX16_2_Color = qRgb(ATX_PCIEX16_2_COLOR);
     uint atx_PCIEX16_2_ColorShadow = qRgb(ATX_PCIEX16_2_COLOR_SHADOW);
-    // PCIEX16_3
+    // ATX_PCIEX16_3
     uint atx_PCIEX16_3_Color = qRgb(ATX_PCIEX16_3_COLOR);
     uint atx_PCIEX16_3_ColorShadow = qRgb(ATX_PCIEX16_3_COLOR_SHADOW);
 
+    // MICROATX_HDMI1_DP
+    uint microAtx_HDMI1_DP_Color = qRgb(MICROATX_HDMI1_DP_COLOR);
+    uint microAtx_HDMI1_DP_ColorShadow = qRgb(MICROATX_HDMI1_DP_COLOR_SHADOW);
+    // MICROATX_HDMI2
+    uint microAtx_HDMI2_Color = qRgb(MICROATX_HDMI2_COLOR);
+    uint microAtx_HDMI2_ColorShadow = qRgb(MICROATX_HDMI2_COLOR_SHADOW);
+    // MICROATX_KBMS_USB_E32
+    uint microAtx_KBMS_USB_E32_Color = qRgb(MICROATX_KBMS_USB_E32_COLOR);
+    uint microAtx_KBMS_USB_E32_ColorShadow = qRgb(MICROATX_KBMS_USB_E32_COLOR_SHADOW);
+    // MICROATX_U32G2_C2
+    uint microAtx_U32G2_C2_Color = qRgb(MICROATX_U32G2_C2_COLOR);
+    uint microAtx_U32G2_C2_ColorShadow = qRgb(MICROATX_U32G2_C2_COLOR_SHADOW);
+    // MICROATX_LAN_USB_E12
+    uint microAtx_LAN_USB_E12_Color = qRgb(MICROATX_LAN_USB_E12_COLOR);
+    uint microAtx_LAN_USB_E12_ColorShadow = qRgb(MICROATX_LAN_USB_E12_COLOR_SHADOW);
+    // MICROATX_AUDIO
+    uint microAtx_AUDIO_Color = qRgb(MICROATX_AUDIO_COLOR);
+    uint microAtx_AUDIO_ColorShadow = qRgb(MICROATX_AUDIO_COLOR_SHADOW);
+    // MICROATX_LGA1200
+    uint microAtx_LGA1200_Color = qRgb(MICROATX_LGA1200_COLOR);
+    uint microAtx_LGA1200_ColorShadow = qRgb(MICROATX_LGA1200_COLOR_SHADOW);
+    // MICROATX_DDR4_DIMM_A1
+    uint microAtx_DDR4_DIMM_A1_Color = qRgb(MICROATX_DDR4_DIMM_A1_COLOR);
+    uint microAtx_DDR4_DIMM_A1_ColorShadow = qRgb(MICROATX_DDR4_DIMM_A1_COLOR_SHADOW);
+    // MICROATX_DDR4_DIMM_A2
+    uint microAtx_DDR4_DIMM_A2_Color = qRgb(MICROATX_DDR4_DIMM_A2_COLOR);
+    uint microAtx_DDR4_DIMM_A2_ColorShadow = qRgb(MICROATX_DDR4_DIMM_A2_COLOR_SHADOW);
+    // MICROATX_DDR4_DIMM_B1
+    uint microAtx_DDR4_DIMM_B1_Color = qRgb(MICROATX_DDR4_DIMM_B1_COLOR);
+    uint microAtx_DDR4_DIMM_B1_ColorShadow = qRgb(MICROATX_DDR4_DIMM_B1_COLOR_SHADOW);
+    // MICROATX_DDR4_DIMM_B2
+    uint microAtx_DDR4_DIMM_B2_Color = qRgb(MICROATX_DDR4_DIMM_B2_COLOR);
+    uint microAtx_DDR4_DIMM_B2_ColorShadow = qRgb(MICROATX_DDR4_DIMM_B2_COLOR_SHADOW);
+    // MICROATX_PCIEX16_1
+    uint microAtx_PCIEX16_1_Color = qRgb(MICROATX_PCIEX16_1_COLOR);
+    uint microAtx_PCIEX16_1_ColorShadow = qRgb(MICROATX_PCIEX16_1_COLOR_SHADOW);
+    // MICROATX_PCIEX16_2
+    uint microAtx_PCIEX16_2_Color = qRgb(MICROATX_PCIEX16_2_COLOR);
+    uint microAtx_PCIEX16_2_ColorShadow = qRgb(MICROATX_PCIEX16_2_COLOR_SHADOW);
 
     nanoseconds start2 = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
 
@@ -650,7 +689,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, atx_M2_WIFI_Color);
             }
-            // AUDIO
+            // ATX_AUDIO
             else if (borderBuffer.at(i).at(j) == 30)
             {
                 image->setPixel(i, j, atx_AUDIO_ColorShadow);
@@ -659,7 +698,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, atx_AUDIO_Color);
             }
-            // socketM4
+            // ATX_socketM4
             else if (borderBuffer.at(i).at(j) == 32)
             {
                 image->setPixel(i, j, atx_socketM4_ColorShadow);
@@ -668,7 +707,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, atx_socketM4_Color);
             }
-            // DDR4_DIMM_B1
+            // ATX_DDR4_DIMM_B1
             else if (borderBuffer.at(i).at(j) == 34)
             {
                 image->setPixel(i, j, atx_DDR4_DIMM_B1_ColorShadow);
@@ -677,7 +716,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, atx_DDR4_DIMM_B1_Color);
             }
-            // DDR4_DIMM_B2
+            // ATX_DDR4_DIMM_B2
             else if (borderBuffer.at(i).at(j) == 36)
             {
                 image->setPixel(i, j, atx_DDR4_DIMM_B2_ColorShadow);
@@ -686,7 +725,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, atx_DDR4_DIMM_B2_Color);
             }
-            // DDR4_DIMM_A1
+            // ATX_DDR4_DIMM_A1
             else if (borderBuffer.at(i).at(j) == 38)
             {
                 image->setPixel(i, j, atx_DDR4_DIMM_A1_ColorShadow);
@@ -695,7 +734,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, atx_DDR4_DIMM_A1_Color);
             }
-            // DDR4_DIMM_A2
+            // ATX_DDR4_DIMM_A2
             else if (borderBuffer.at(i).at(j) == 40)
             {
                 image->setPixel(i, j, atx_DDR4_DIMM_A2_ColorShadow);
@@ -704,7 +743,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, atx_DDR4_DIMM_A2_Color);
             }
-            // PCIEX16_1
+            // ATX_PCIEX16_1
             else if (borderBuffer.at(i).at(j) == 42)
             {
                 image->setPixel(i, j, atx_PCIEX16_1_ColorShadow);
@@ -713,7 +752,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, atx_PCIEX16_1_Color);
             }
-            // PCIEX16_2
+            // ATX_PCIEX16_2
             else if (borderBuffer.at(i).at(j) == 44)
             {
                 image->setPixel(i, j, atx_PCIEX16_2_ColorShadow);
@@ -722,7 +761,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, atx_PCIEX16_2_Color);
             }
-            // PCIEX16_3
+            // ATX_PCIEX16_3
             else if (borderBuffer.at(i).at(j) == 46)
             {
                 image->setPixel(i, j, atx_PCIEX16_3_ColorShadow);
@@ -730,6 +769,123 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             else if (borderBuffer.at(i).at(j) == 47)
             {
                 image->setPixel(i, j, atx_PCIEX16_3_Color);
+            }
+            // MICROATX_HDMI1_DP
+            else if (borderBuffer.at(i).at(j) == 48)
+            {
+                image->setPixel(i, j, microAtx_HDMI1_DP_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 49)
+            {
+                image->setPixel(i, j, microAtx_HDMI1_DP_Color);
+            }
+            // MICROATX_HDMI2
+            else if (borderBuffer.at(i).at(j) == 50)
+            {
+                image->setPixel(i, j, microAtx_HDMI2_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 51)
+            {
+                image->setPixel(i, j, microAtx_HDMI2_Color);
+            }
+            // MICROATX_KBMS_USB_E32
+            else if (borderBuffer.at(i).at(j) == 52)
+            {
+                image->setPixel(i, j, microAtx_KBMS_USB_E32_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 53)
+            {
+                image->setPixel(i, j, microAtx_KBMS_USB_E32_Color);
+            }
+            // MICROATX_U32G2_C2
+            else if (borderBuffer.at(i).at(j) == 54)
+            {
+                image->setPixel(i, j, microAtx_U32G2_C2_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 55)
+            {
+                image->setPixel(i, j, microAtx_U32G2_C2_Color);
+            }
+            // MICROATX_LAN_USB_E12
+            else if (borderBuffer.at(i).at(j) == 56)
+            {
+                image->setPixel(i, j, microAtx_LAN_USB_E12_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 57)
+            {
+                image->setPixel(i, j, microAtx_LAN_USB_E12_Color);
+            }
+            // MICROATX_AUDIO
+            else if (borderBuffer.at(i).at(j) == 58)
+            {
+                image->setPixel(i, j, microAtx_AUDIO_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 59)
+            {
+                image->setPixel(i, j, microAtx_AUDIO_Color);
+            }
+            // MICROATX_LGA1200
+            else if (borderBuffer.at(i).at(j) == 60)
+            {
+                image->setPixel(i, j, microAtx_LGA1200_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 61)
+            {
+                image->setPixel(i, j, microAtx_LGA1200_Color);
+            }
+            // MICROATX_DDR4_DIMM_A1
+            else if (borderBuffer.at(i).at(j) == 62)
+            {
+                image->setPixel(i, j, microAtx_DDR4_DIMM_A1_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 63)
+            {
+                image->setPixel(i, j, microAtx_DDR4_DIMM_A1_Color);
+            }
+            // MICROATX_DDR4_DIMM_A2
+            else if (borderBuffer.at(i).at(j) == 64)
+            {
+                image->setPixel(i, j, microAtx_DDR4_DIMM_A2_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 65)
+            {
+                image->setPixel(i, j, microAtx_DDR4_DIMM_A2_Color);
+            }
+            // MICROATX_DDR4_DIMM_B1
+            else if (borderBuffer.at(i).at(j) == 66)
+            {
+                image->setPixel(i, j, microAtx_DDR4_DIMM_B1_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 67)
+            {
+                image->setPixel(i, j, microAtx_DDR4_DIMM_B1_Color);
+            }
+            // MICROATX_DDR4_DIMM_B2
+            else if (borderBuffer.at(i).at(j) == 68)
+            {
+                image->setPixel(i, j, microAtx_DDR4_DIMM_B2_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 69)
+            {
+                image->setPixel(i, j, microAtx_DDR4_DIMM_B2_Color);
+            }
+            // MICROATX_PCIEX16_1
+            else if (borderBuffer.at(i).at(j) == 70)
+            {
+                image->setPixel(i, j, microAtx_PCIEX16_1_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 71)
+            {
+                image->setPixel(i, j, microAtx_PCIEX16_1_Color);
+            }
+            // MICROATX_PCIEX16_2
+            else if (borderBuffer.at(i).at(j) == 72)
+            {
+                image->setPixel(i, j, microAtx_PCIEX16_2_ColorShadow);
+            }
+            else if (borderBuffer.at(i).at(j) == 73)
+            {
+                image->setPixel(i, j, microAtx_PCIEX16_2_Color);
             }
         }
     }
