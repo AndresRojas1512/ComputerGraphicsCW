@@ -32,6 +32,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QListWidgetItem *flashlight = new QListWidgetItem(" Источник света");
     ui->listWidget->addItem(flashlight);
 
+    ui->listWidgetProcessor->addItems({"AMD Ryzen 5", "AMD Ryzen 7", "AMD Ryzen 9"});
+
 
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -284,6 +286,22 @@ void MainWindow::on_pushButtonCreateMotherboard_clicked()
 void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
 {
     std::cout << "Selected motherboard type: " << index << std::endl;
+    ui->listWidgetProcessor->clear();
+    ui->listWidgetGPU->clear();
+    ui->listWidgetGPU->clear();
+
+    switch(index)
+    {
+    case 0:
+        ui->listWidgetProcessor->addItems({"AMD Ryzen 5", "AMD Ryzen 7", "AMD Ryzen 9"});
+        break;
+    case 1:
+        ui->listWidgetProcessor->addItems({"Intel Core i9-10900K", "Intel Core i7-10700K", "Intel Core i5-10600K"});
+        break;
+    case 2:
+        ui->listWidgetProcessor->addItems({"Intel core i7-6700K", "Intel Core i5-6600K", "Intel Core i3-6300K"});
+        break;
+    }
 }
 
 void MainWindow::on_pushButton_addModel_clicked()

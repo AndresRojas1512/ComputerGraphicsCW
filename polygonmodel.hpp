@@ -15,18 +15,18 @@ class PolygonModel
 public:
     PolygonModel()
     {
-        std::cout << "PolygonModel::PolygonModel(default)" << std::endl;
+        // std::cout << "PolygonModel::PolygonModel(default)" << std::endl;
     }
     PolygonModel(std::vector<Vertex> vertices_, std::vector<Facet> facets_)
         : vertices(vertices_), facets(facets_)
     {
-        std::cout << "PolygonModel::PolygonModel(vertices, facets)" << std::endl;
+        // std::cout << "PolygonModel::PolygonModel(vertices, facets)" << std::endl;
     }
 
     PolygonModel(std::vector<Vertex> vertices_, std::vector<Facet> facets_, QString name_)
         : vertices(vertices_), facets(facets_), modelName(name_)
     {
-        std::cout << "PolygonModel::PolygonModel(vertices, facets, name)" << std::endl;
+        // std::cout << "PolygonModel::PolygonModel(vertices, facets, name)" << std::endl;
         // std::cout << "PolygonModel::PolygonModel -> received name: " << name_.toStdString() << std::endl;
     }
 
