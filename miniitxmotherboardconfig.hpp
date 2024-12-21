@@ -99,17 +99,17 @@ public:
     }
 
     // peripheria
-    BasePlateComponentConfig USB3_5;
-    BasePlateComponentConfig USB7_10;
-    BasePlateComponentConfig HDMI_DP;
-    BasePlateComponentConfig LAN_USB3_34;
-    BasePlateComponentConfig M2_WIFI;
-    BasePlateComponentConfig AUDIO;
+    componentConfig USB3_5;
+    componentConfig USB7_10;
+    componentConfig HDMI_DP;
+    componentConfig LAN_USB3_34;
+    componentConfig M2_WIFI;
+    componentConfig AUDIO;
     //RAM
-    BasePlateComponentConfig DDR4_DIMM_A1;
-    BasePlateComponentConfig DDR4_DIMM_B1;
+    componentConfig DDR4_DIMM_A1;
+    componentConfig DDR4_DIMM_B1;
     // GPU
-    BasePlateComponentConfig PCIEX16_1;
+    componentConfig PCIEX16_1;
 
 private:
     Dot3D startOfPlate;

@@ -12,6 +12,11 @@
 #include "math.h"
 #include "config.hpp"
 
+#include "atxmotherboardconfig.hpp"
+#include "microatxmotherboardconfig.hpp"
+#include "miniitxmotherboardconfig.hpp"
+#include "gpuconfig.hpp"
+
 class Facade
 {
 public:
@@ -34,7 +39,7 @@ public:
 
     int addProcessor();
     int addRAM();
-    int addGPU();
+    int addGPU(GPUConfig config);
 
     void addLight(int xAngle, int yAngle);
 

@@ -6,7 +6,7 @@ Facade::Facade()
     drawer = new Drawer;
 }
 
-void Facade::setSceneInf(size_t width_, size_t height_)
+void Facade::setSceneInf(size_t width_, size_t height_) // not in use (deprecated)
 {
     std::cout << "Facade::setSceneInf" << std::endl;
     if (scene)
@@ -237,8 +237,7 @@ int Facade::addBrick(int xCell, int yCell, int modelLength, int modelWidth)
     xCell -= 1;
     yCell -= 1;
 
-    if (xCell + modelLength - 1 >= (int) scene->getWidth() || \
-                                                                      yCell + modelWidth - 1 >= (int) scene->getHeight())
+    if (xCell + modelLength - 1 >= (int) scene->getWidth() || yCell + modelWidth - 1 >= (int) scene->getHeight())
         return 2;
 
     double zCell = 0;
@@ -400,8 +399,7 @@ int Facade::addPlate(int xCell, int yCell, int modelLength, int modelWidth)
     xCell -= 1;
     yCell -= 1;
 
-    if (xCell + modelLength - 1 >= (int) scene->getWidth() || \
-                                                                      yCell + modelWidth - 1 >= (int) scene->getHeight())
+    if (xCell + modelLength - 1 >= (int) scene->getWidth() || yCell + modelWidth - 1 >= (int) scene->getHeight())
         return 2;
 
     double zCell = 0;
@@ -1417,3 +1415,13 @@ int Facade::addCylinder2(int xCell, int yCell)
 
     return 0;
 }
+
+int Facade::addGPU(GPUConfig gpu)
+{
+    std::cout << "Facade::addGPU" << std::endl;
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+
+    return 0;
+}
+

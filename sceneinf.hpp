@@ -73,9 +73,13 @@ public:
 
     std::vector<PolygonModel> getModels() const;
 
+    void addMotherboardComponent(componentConfig &config, QString modelName, PolygonModel::model_t modelType);
+
 private:
     size_t width, height;
     int type;
+    Dot3D startOfScene;
+    Dot3D endOfScene;
 
     PolygonModel *plateModel = nullptr;
 
@@ -108,7 +112,6 @@ private:
 
     void buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_);
 
-    void addMotherboardLayoutComponent(BasePlateComponentConfig &config, QString modelName, PolygonModel::model_t modelType);
 };
 
 #endif

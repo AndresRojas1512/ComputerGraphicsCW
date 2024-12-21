@@ -27,12 +27,12 @@ struct FrameConfig
         leftFrameWidth(leftFrameWidth_), rightFrameWidth(rightFrameWidth_) {}
 };
 
-struct BasePlateComponentConfig
+struct componentConfig
 {
     std::vector<ParallelepipedConfig> parallelepipeds;
     std::vector<FrameConfig> frames;
 
-    BasePlateComponentConfig(std::initializer_list<ParallelepipedConfig> pConfigs, std::initializer_list<FrameConfig> fConfigs)
+    componentConfig(std::initializer_list<ParallelepipedConfig> pConfigs, std::initializer_list<FrameConfig> fConfigs)
         : parallelepipeds(pConfigs), frames(fConfigs) {}
 };
 

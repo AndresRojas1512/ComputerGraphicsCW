@@ -93,6 +93,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         miniitxmotherboardconfig.hpp
         processorconfig.hpp
         gpuconfig.hpp
+        configmanager.hpp
+        configmanager.cpp
 
     )
 else()

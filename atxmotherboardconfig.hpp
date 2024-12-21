@@ -114,33 +114,51 @@ public:
         PCIEX16_2({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_PCIEX16_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_2_OFFSET_Y, BASE_Z + 40, ATX_PCIEX16_WIDTH, ATX_PCIEX16_HEIGHT, 40, ATX_PCIEX16_TOPFRAMEWIDTH, ATX_PCIEX16_BOTTOMFRAMEWIDTH, ATX_PCIEX16_LEFTFRAMEWIDTH, ATX_PCIEX16_RIGHTFRAMEWIDTH)}),
         PCIEX16_3({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_PCIEX16_3_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_3_OFFSET_Y, BASE_Z + 40, ATX_PCIEX16_WIDTH, ATX_PCIEX16_HEIGHT, 40, ATX_PCIEX16_TOPFRAMEWIDTH, ATX_PCIEX16_BOTTOMFRAMEWIDTH, ATX_PCIEX16_LEFTFRAMEWIDTH, ATX_PCIEX16_RIGHTFRAMEWIDTH)})
     {
+        std::cout << "ATXMotherboardConfig::ATXMotherboardConfig" << std::endl;
     }
 
     // peripheria
-    BasePlateComponentConfig HDMI_DP;
-    BasePlateComponentConfig BIOS_FLBK;
-    BasePlateComponentConfig U32G2_1_4;
-    BasePlateComponentConfig LAN2_U32G2_56;
-    BasePlateComponentConfig U3252_C8_LAN1_U32G2_7;
-    BasePlateComponentConfig M2_WIFI;
-    BasePlateComponentConfig AUDIO;
+    componentConfig HDMI_DP;
+    componentConfig BIOS_FLBK;
+    componentConfig U32G2_1_4;
+    componentConfig LAN2_U32G2_56;
+    componentConfig U3252_C8_LAN1_U32G2_7;
+    componentConfig M2_WIFI;
+    componentConfig AUDIO;
 
     // processor
-    BasePlateComponentConfig socketM4;
+    componentConfig socketM4;
 
     // RAM
-    BasePlateComponentConfig DDR4_DIMM_B1;
-    BasePlateComponentConfig DDR4_DIMM_B2;
-    BasePlateComponentConfig DDR4_DIMM_A1;
-    BasePlateComponentConfig DDR4_DIMM_A2;
+    componentConfig DDR4_DIMM_B1;
+    componentConfig DDR4_DIMM_B2;
+    componentConfig DDR4_DIMM_A1;
+    componentConfig DDR4_DIMM_A2;
 
     // GPU
-    BasePlateComponentConfig PCIEX16_1;
-    BasePlateComponentConfig PCIEX16_2;
-    BasePlateComponentConfig PCIEX16_3;
+    componentConfig PCIEX16_1;
+    componentConfig PCIEX16_2;
+    componentConfig PCIEX16_3;
 
-    Dot3D getStartOfPlate() const;
-    Dot3D getEndOfPlate() const;
+    // offset for placing the RAM block in the DDR4 socket
+    Dot3D DDR4_DIMM_B1_offset;
+    Dot3D DDR4_DIMM_B2_offset;
+    Dot3D DDR4_DIMM_A1_offset;
+    Dot3D DDR4_DIMM_A2_offset;
+
+    // offset for placing the GPU block in the PCIEX16 socket
+    Dot3D PCIEX16_1_offset;
+    Dot3D PCIEX16_2_offset;
+    Dot3D PCIEX16_3_offset;
+
+    Dot3D getStartOfPlate() const
+    {
+        return startOfPlate;
+    }
+    Dot3D getEndOfPlate() const
+    {
+        return endOfPlate;
+    }
 
 private:
     Dot3D startOfPlate;

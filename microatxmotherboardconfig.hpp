@@ -124,24 +124,24 @@ public:
     }
 
     // peripheria
-    BasePlateComponentConfig HDMI1_DP;
-    BasePlateComponentConfig HDMI2;
-    BasePlateComponentConfig KBMS_USB_E32;
-    BasePlateComponentConfig U32G2_C2;
-    BasePlateComponentConfig LAN_USB_E12;
-    BasePlateComponentConfig AUDIO;
+    componentConfig HDMI1_DP;
+    componentConfig HDMI2;
+    componentConfig KBMS_USB_E32;
+    componentConfig U32G2_C2;
+    componentConfig LAN_USB_E12;
+    componentConfig AUDIO;
     // processor
-    BasePlateComponentConfig LGA1200;
+    componentConfig LGA1200;
 
     // RAM
-    BasePlateComponentConfig DDR4_DIMM_A1;
-    BasePlateComponentConfig DDR4_DIMM_A2;
-    BasePlateComponentConfig DDR4_DIMM_B1;
-    BasePlateComponentConfig DDR4_DIMM_B2;
+    componentConfig DDR4_DIMM_A1;
+    componentConfig DDR4_DIMM_A2;
+    componentConfig DDR4_DIMM_B1;
+    componentConfig DDR4_DIMM_B2;
 
     // GPU
-    BasePlateComponentConfig PCIEX16_1;
-    BasePlateComponentConfig PCIEX16_2;
+    componentConfig PCIEX16_1;
+    componentConfig PCIEX16_2;
 
 private:
     Dot3D startOfPlate;

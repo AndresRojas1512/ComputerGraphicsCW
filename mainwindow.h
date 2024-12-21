@@ -10,6 +10,9 @@
 #include "QDebug"
 #include <QErrorMessage>
 #include <QShortcut>
+#include <string>
+#include <cstring>
+#include <string.h>
 #include <QTimer>
 #include "config.hpp"
 #include "addlight.hpp"
@@ -18,6 +21,7 @@
 #include "placeobjects.hpp"
 #include "createscene.hpp"
 #include "specialgraphicsview.hpp"
+#include "configmanager.hpp"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -33,6 +37,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    ConfigManager configManager;
 
 private slots:
     void on_pushButton_createScene_clicked();
@@ -77,6 +83,7 @@ private slots:
     void on_pushButton_addCastle_clicked();
 
     // From here start the motherboard features
+
     void on_comboBoxMotherboardType_currentIndexChanged(int index);
 
     void on_pushButtonCreateMotherboard_clicked();

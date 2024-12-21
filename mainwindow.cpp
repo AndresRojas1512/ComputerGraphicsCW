@@ -32,10 +32,25 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QListWidgetItem *flashlight = new QListWidgetItem(" Источник света");
     ui->listWidget->addItem(flashlight);
 
-    ui->listWidgetProcessor->addItems({"AMD Ryzen 5", "AMD Ryzen 7", "AMD Ryzen 9"});
-    ui->listWidgetRAM->addItems({"8GB DDR4", "16GB DDR4", "32GB DDR4"});
-    ui->listWidgetGPU->addItems({"NVIDIA RTX 3080", "AMD Radeon RX 6800"});
 
+    auto gpus = configManager.getCompatibleGPUs(ConfigManager::MotherboardType::ATX);
+    auto cpus = configManager.getCompatibleCPUs(ConfigManager::MotherboardType::ATX);
+    auto rams = configManager.getCompatibleRAMs(ConfigManager::MotherboardType::ATX);
+    ui->listWidgetProcessor->clear();
+    ui->listWidgetGPU->clear();
+    ui->listWidgetGPU->clear();
+    for (auto gpu : gpus)
+    {
+        ui->listWidgetGPU->addItem(QString::fromStdString(gpuTypeToString(gpu)));
+    }
+    for (auto cpu : cpus)
+    {
+        ui->listWidgetProcessor->addItem(QString::fromStdString(cpuTypeToString(cpu)));
+    }
+    for (auto ram : rams)
+    {
+        ui->listWidgetRAM->addItem(QString::fromStdString(ramTypeToString(ram)));
+    }
 
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -244,7 +259,7 @@ void MainWindow::pictureToCenter()
     ui->graphicsView->setScene(setScene);
 }
 
-void MainWindow::on_pushButton_createScene_clicked()
+void MainWindow::on_pushButton_createScene_clicked() // not in use (deprecated)
 {
     std::cout << "MainWindow::on_pushButton_createScene_clicked" << std::endl;
     CreateScene Window(nullptr);
@@ -288,28 +303,47 @@ void MainWindow::on_pushButtonCreateMotherboard_clicked()
 void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
 {
     std::cout << "Selected motherboard type: " << index << std::endl;
+
+    ConfigManager::MotherboardType type = static_cast<ConfigManager::MotherboardType>(index);
+    auto gpus = configManager.getCompatibleGPUs(type);
+    auto cpus = configManager.getCompatibleCPUs(type);
+    auto rams = configManager.getCompatibleRAMs(type);
+
     ui->listWidgetProcessor->clear();
     ui->listWidgetGPU->clear();
     ui->listWidgetGPU->clear();
 
-    switch(index)
+    for (auto gpu : gpus)
     {
-    case 0:
-        ui->listWidgetProcessor->addItems({"AMD Ryzen 5", "AMD Ryzen 7", "AMD Ryzen 9"});
-        ui->listWidgetRAM->addItems({"8GB DDR4", "16GB DDR4", "32GB DDR4"});
-        ui->listWidgetGPU->addItems({"NVIDIA RTX 3080", "AMD Radeon RX 6800"});
-        break;
-    case 1:
-        ui->listWidgetProcessor->addItems({"Intel Core i9-10900K", "Intel Core i7-10700K", "Intel Core i5-10600K"});
-        ui->listWidgetRAM->addItems({"8GB DDR4", "16GB DDR4"});
-        ui->listWidgetGPU->addItems({"NVIDIA GTX 1660", "AMD Radeon RX 5500 XT"});
-        break;
-    case 2:
-        ui->listWidgetProcessor->addItems({"Intel core i7-6700K", "Intel Core i5-6600K", "Intel Core i3-6300K"});
-        ui->listWidgetRAM->addItems({"8GB DDR4", "16GB DDR4"});
-        ui->listWidgetGPU->addItems({"NVIDIA GTX 1650", "AMD Radeon RX 6400"});
-        break;
+        ui->listWidgetGPU->addItem(QString::fromStdString(gpuTypeToString(gpu)));
     }
+    for (auto cpu : cpus)
+    {
+        ui->listWidgetProcessor->addItem(QString::fromStdString(cpuTypeToString(cpu)));
+    }
+    for (auto ram : rams)
+    {
+        ui->listWidgetRAM->addItem(QString::fromStdString(ramTypeToString(ram)));
+    }
+}
+
+void MainWindow::on_pushButtonAddProcessor_clicked()
+{
+    std::cout << "MainWindow::on_PushButtonAddProcessor_clicked" << std::endl;
+    QString processor = ui->listWidgetProcessor->currentItem()->text();
+}
+
+
+void MainWindow::on_pushButtonAddRAM_clicked()
+{
+    std::cout << "MainWindow::on_PushButtonAddRAM_clicked" << std::endl;
+    QString RAM = ui->listWidgetRAM->currentItem()->text();
+}
+
+void MainWindow::on_pushButtonAddGPU_clicked()
+{
+    std::cout << "MainWindow::on_pushButtonAddGPU_clicked" << std::endl;
+    QString GPU = ui->listWidgetGPU->currentItem()->text();
 }
 
 void MainWindow::on_pushButton_addModel_clicked()
@@ -750,25 +784,5 @@ void MainWindow::on_pushButton_distance_clicked()
     }
 
     pictureScaleDown();
-}
-
-void MainWindow::on_pushButtonAddProcessor_clicked()
-{
-    std::cout << "MainWindow::on_PushButtonAddProcessor_clicked" << std::endl;
-    QString processor = ui->listWidgetProcessor->currentItem()->text();
-}
-
-
-void MainWindow::on_pushButtonAddRAM_clicked()
-{
-    std::cout << "MainWindow::on_PushButtonAddRAM_clicked" << std::endl;
-    QString RAM = ui->listWidgetRAM->currentItem()->text();
-}
-
-
-void MainWindow::on_pushButtonAddGPU_clicked()
-{
-    std::cout << "MainWindow::on_pushButtonAddGPU_clicked" << std::endl;
-    QString RAM = ui->listWidgetGPU->currentItem()->text();
 }
 
