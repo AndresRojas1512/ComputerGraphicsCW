@@ -139,6 +139,9 @@ public:
     BasePlateComponentConfig PCIEX16_2;
     BasePlateComponentConfig PCIEX16_3;
 
+    Dot3D getStartOfPlate() const;
+    Dot3D getEndOfPlate() const;
+
 private:
     Dot3D startOfPlate;
     Dot3D endOfPlate;

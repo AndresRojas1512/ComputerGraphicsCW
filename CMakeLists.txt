@@ -91,6 +91,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         motherboardprimitives.hpp
         atxmotherboardconfig.hpp
         miniitxmotherboardconfig.hpp
+        processorconfig.hpp
+        gpuconfig.hpp
 
     )
 else()

@@ -81,6 +81,12 @@ private slots:
 
     void on_pushButtonCreateMotherboard_clicked();
 
+    void on_pushButtonAddProcessor_clicked();
+
+    void on_pushButtonAddRAM_clicked();
+
+    void on_pushButtonAddGPU_clicked();
+
 private:
     Ui::MainWindow *ui;
     Facade *facade;

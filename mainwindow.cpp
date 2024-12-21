@@ -33,6 +33,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->listWidget->addItem(flashlight);
 
     ui->listWidgetProcessor->addItems({"AMD Ryzen 5", "AMD Ryzen 7", "AMD Ryzen 9"});
+    ui->listWidgetRAM->addItems({"8GB DDR4", "16GB DDR4", "32GB DDR4"});
+    ui->listWidgetGPU->addItems({"NVIDIA RTX 3080", "AMD Radeon RX 6800"});
 
 
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -294,12 +296,18 @@ void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
     {
     case 0:
         ui->listWidgetProcessor->addItems({"AMD Ryzen 5", "AMD Ryzen 7", "AMD Ryzen 9"});
+        ui->listWidgetRAM->addItems({"8GB DDR4", "16GB DDR4", "32GB DDR4"});
+        ui->listWidgetGPU->addItems({"NVIDIA RTX 3080", "AMD Radeon RX 6800"});
         break;
     case 1:
         ui->listWidgetProcessor->addItems({"Intel Core i9-10900K", "Intel Core i7-10700K", "Intel Core i5-10600K"});
+        ui->listWidgetRAM->addItems({"8GB DDR4", "16GB DDR4"});
+        ui->listWidgetGPU->addItems({"NVIDIA GTX 1660", "AMD Radeon RX 5500 XT"});
         break;
     case 2:
         ui->listWidgetProcessor->addItems({"Intel core i7-6700K", "Intel Core i5-6600K", "Intel Core i3-6300K"});
+        ui->listWidgetRAM->addItems({"8GB DDR4", "16GB DDR4"});
+        ui->listWidgetGPU->addItems({"NVIDIA GTX 1650", "AMD Radeon RX 6400"});
         break;
     }
 }
@@ -743,3 +751,24 @@ void MainWindow::on_pushButton_distance_clicked()
 
     pictureScaleDown();
 }
+
+void MainWindow::on_pushButtonAddProcessor_clicked()
+{
+    std::cout << "MainWindow::on_PushButtonAddProcessor_clicked" << std::endl;
+    QString processor = ui->listWidgetProcessor->currentItem()->text();
+}
+
+
+void MainWindow::on_pushButtonAddRAM_clicked()
+{
+    std::cout << "MainWindow::on_PushButtonAddRAM_clicked" << std::endl;
+    QString RAM = ui->listWidgetRAM->currentItem()->text();
+}
+
+
+void MainWindow::on_pushButtonAddGPU_clicked()
+{
+    std::cout << "MainWindow::on_pushButtonAddGPU_clicked" << std::endl;
+    QString RAM = ui->listWidgetGPU->currentItem()->text();
+}
+

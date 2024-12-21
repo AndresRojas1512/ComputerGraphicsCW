@@ -32,6 +32,10 @@ public:
     int addCylinder1(int xCell, int yCell);
     int addCylinder2(int xCell, int yCell);
 
+    int addProcessor();
+    int addRAM();
+    int addGPU();
+
     void addLight(int xAngle, int yAngle);
 
     QGraphicsScene *moveUpScene(double value, QRectF rect);

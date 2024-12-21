@@ -708,8 +708,8 @@ color: rgb(229, 229, 229);
     <property name="geometry">
      <rect>
       <x>1580</x>
-      <y>530</y>
-      <width>241</width>
+      <y>620</y>
+      <width>251</width>
       <height>21</height>
      </rect>
     </property>
@@ -731,8 +731,8 @@ color: rgb(229, 229, 229);
     <property name="geometry">
      <rect>
       <x>1580</x>
-      <y>610</y>
-      <width>241</width>
+      <y>710</y>
+      <width>251</width>
       <height>21</height>
      </rect>
     </property>
@@ -750,12 +750,55 @@ color: rgb(229, 229, 229);
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QListWidget" name="listWidgetRAM">
+    <property name="geometry">
+     <rect>
+      <x>1580</x>
+      <y>640</y>
+      <width>251</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidgetGPU">
+    <property name="geometry">
+     <rect>
+      <x>1580</x>
+      <y>730</y>
+      <width>251</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonAddRAM">
+    <property name="geometry">
+     <rect>
+      <x>1580</x>
+      <y>670</y>
+      <width>251</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add RAM block</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidgetProcessor">
+    <property name="geometry">
+     <rect>
+      <x>1580</x>
+      <y>550</y>
+      <width>251</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
    <widget class="QLabel" name="labelProcessor">
     <property name="geometry">
      <rect>
       <x>1580</x>
-      <y>700</y>
-      <width>241</width>
+      <y>530</y>
+      <width>251</width>
       <height>21</height>
      </rect>
     </property>
@@ -773,34 +816,30 @@ color: rgb(229, 229, 229);
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidgetRAM">
+   <widget class="QPushButton" name="pushButtonAddProcessor">
     <property name="geometry">
      <rect>
       <x>1580</x>
-      <y>550</y>
-      <width>256</width>
-      <height>51</height>
+      <y>580</y>
+      <width>251</width>
+      <height>25</height>
      </rect>
     </property>
-   </widget>
-   <widget class="QListWidget" name="listWidgetGPU">
-    <property name="geometry">
-     <rect>
-      <x>1580</x>
-      <y>640</y>
-      <width>256</width>
-      <height>51</height>
-     </rect>
+    <property name="text">
+     <string>Add Processor</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidgetProcessor">
+   <widget class="QPushButton" name="pushButtonAddGPU">
     <property name="geometry">
      <rect>
       <x>1580</x>
-      <y>730</y>
-      <width>256</width>
-      <height>61</height>
+      <y>760</y>
+      <width>251</width>
+      <height>25</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>Add GPU block</string>
     </property>
    </widget>
   </widget>
