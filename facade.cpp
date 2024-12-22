@@ -1,6 +1,6 @@
 #include "facade.hpp"
 
-Facade::Facade()
+Facade::Facade(ConfigManager &configManager_) : configManager(configManager_)
 {
     std::cout << "Facade::Facade" << std::endl;
     drawer = new Drawer;

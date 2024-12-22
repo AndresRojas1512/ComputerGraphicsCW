@@ -16,11 +16,12 @@
 #include "microatxmotherboardconfig.hpp"
 #include "miniitxmotherboardconfig.hpp"
 #include "gpuconfig.hpp"
+#include "configmanager.hpp"
 
 class Facade
 {
 public:
-    Facade();
+    Facade(ConfigManager &configManager_);
 
     void setSceneInf(size_t width_, size_t height_);
     void setSceneInfMotherboard(int index);
@@ -59,6 +60,7 @@ public:
     SceneInf *getScene();
 
 private:
+    ConfigManager &configManager;
     SceneInf *scene = nullptr;
     Drawer *drawer;
 

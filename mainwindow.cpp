@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     std::cout << "MainWindow::MainWindow" << std::endl;
     ui->setupUi(this);
 
-    facade = new Facade;
+    facade = new Facade(configManager);
 
     QListWidgetItem *brick     = new QListWidgetItem(" Кирпичик");
     ui->listWidget->addItem(brick);
@@ -54,7 +54,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     ui->graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
 
     QShortcut *shortcutDown = new QShortcut(QKeySequence("down"), this);
     QObject::connect(shortcutDown, SIGNAL(activated()), this, SLOT(pictureDown()));
