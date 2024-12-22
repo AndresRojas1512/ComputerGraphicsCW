@@ -5,6 +5,7 @@
 #include "mathelems.hpp"
 #include "config.hpp"
 #include "motherboardprimitives.hpp"
+#include "basemotherboardconfig.hpp"
 
 // PERIPHERIA
 #define MINIITX_USB3_5_OFFSET_X 0
@@ -78,7 +79,7 @@
 #define MINIITX_PCIEX16_1_OFFSET_X 126
 #define MINIITX_PCIEX16_1_OFFSET_Y 474
 
-class MiniITXMotherboardConfig
+class MiniITXMotherboardConfig : public BaseMotherboardConfig
 {
 public:
 
@@ -89,7 +90,7 @@ public:
     };
 
     MiniITXMotherboardConfig(const Dot3D &startOfPlate_, const Dot3D &endOfPlate_)
-        : startOfPlate(startOfPlate_), endOfPlate(endOfPlate_),
+        : BaseMotherboardConfig(startOfPlate_, endOfPlate_),
         // peripheria
         USB3_5({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_USB3_5_OFFSET_Y, BASE_Z + 20, MINIITX_USB3_5_WIDTH, MINIITX_USB3_5_HEIGHT, 20)}, {}),
         USB7_10({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_USB7_10_OFFSET_Y, BASE_Z + 20, MINIITX_USB7_10_WIDTH, MINIITX_USB7_10_HEIGHT, 20)}, {}),
@@ -104,7 +105,7 @@ public:
         PCIEX16_1({}, {FrameConfig(startOfPlate_.getXCoordinate() + MINIITX_PCIEX16_1_OFFSET_X, startOfPlate_.getYCoordinate() + MINIITX_PCIEX16_1_OFFSET_Y, BASE_Z + 40, MINIITX_PCIEX16_WIDTH, MINIITX_PCIEX16_HEIGHT, 40, MINIITX_PCIEX16_TOPFRAMEWIDTH, MINIITX_PCIEX16_BOTTOMFRAMEWIDTH, MINIITX_PCIEX16_LEFTFRAMEWIDTH, MINIITX_PCIEX16_RIGHTFRAMEWIDTH)})
     {
         std::cout << "MiniITXMotherboardConfig::MiniITXMotherboardConfig" << std::endl;
-        ramSlotsOccupied = {{RAMSlot::A1, false}, {RAMSlot::B1, false}};
+        ramSlotsOccupied = {{static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::B1), false}};
     }
 
     // peripheria
@@ -120,16 +121,12 @@ public:
     // GPU
     componentConfig PCIEX16_1;
 
-    Dot3D getStartOfPlate() const;
-    Dot3D getEndOfPlate() const;
+    Dot3D getStartOfPlate() const override;
+    Dot3D getEndOfPlate() const override;
 
-    bool isRamSlotAvailable(RAMSlot slot);
-    void occupyRamSlot(RAMSlot slot);
-
-private:
-    Dot3D startOfPlate;
-    Dot3D endOfPlate;
-    std::map<RAMSlot, bool> ramSlotsOccupied;
+    bool isRamSlotAvailable(int slot) override;
+    void occupyRamSlot(int slot) override;
+    QList<int> getAvailableRamSlots() override;
 };
 
 #endif // MINIITXMOTHERBOARDCONFIG_HPP

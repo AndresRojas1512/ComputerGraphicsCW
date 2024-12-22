@@ -23,7 +23,6 @@ void ATXMotherboardConfig::occupyRamSlot(int slot)
     }
 }
 
-
 QList<int> ATXMotherboardConfig::getAvailableRamSlots()
 {
     QList<int> availableSlots;
@@ -51,4 +50,3 @@ std::string atxRamSlotToString(ATXMotherboardConfig::RAMSlot slot)
         return "A2";
     }
 }
-
