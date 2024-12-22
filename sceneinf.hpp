@@ -14,13 +14,14 @@
 #include "microatxmotherboardconfig.hpp"
 #include "atxmotherboardconfig.hpp"
 #include "miniitxmotherboardconfig.hpp"
+#include "configmanager.hpp"
 
 class SceneInf
 {
 public:
     SceneInf();
     SceneInf(size_t width_, size_t height);
-    SceneInf(size_t width_, size_t height_, int type_);
+    SceneInf(size_t width_, size_t height_, int index);
 
     operator bool() const;
 

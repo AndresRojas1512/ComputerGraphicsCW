@@ -8,31 +8,36 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     facade = new Facade(configManager);
 
-    QListWidgetItem *brick     = new QListWidgetItem(" Кирпичик");
+    QListWidgetItem *brick     = new QListWidgetItem(" Кирпичик"); // not in use (deprecated)
     ui->listWidget->addItem(brick);
 
-    QListWidgetItem *plate       = new QListWidgetItem(" Пластинка");
+    QListWidgetItem *plate       = new QListWidgetItem(" Пластинка"); // not in use (deprecated)
     ui->listWidget->addItem(plate);
 
-    QListWidgetItem *tile       = new QListWidgetItem(" Плитка");
+    QListWidgetItem *tile       = new QListWidgetItem(" Плитка"); // not in use (deprecated)
     ui->listWidget->addItem(tile);
 
-    QListWidgetItem *arc41       = new QListWidgetItem(" Арка (4х1)");
+    QListWidgetItem *arc41       = new QListWidgetItem(" Арка (4х1)"); // not in use (deprecated)
     ui->listWidget->addItem(arc41);
 
-    QListWidgetItem *arc14       = new QListWidgetItem(" Арка (1x4)");
+    QListWidgetItem *arc14       = new QListWidgetItem(" Арка (1x4)"); // not is use (deprecated)
     ui->listWidget->addItem(arc14);
 
-    QListWidgetItem *cylinder1       = new QListWidgetItem(" Цилиндр (1x1)");
+    QListWidgetItem *cylinder1       = new QListWidgetItem(" Цилиндр (1x1)"); // not in use (deprecated)
     ui->listWidget->addItem(cylinder1);
 
-    QListWidgetItem *cylinder2       = new QListWidgetItem(" Цилиндр (2x2)");
+    QListWidgetItem *cylinder2       = new QListWidgetItem(" Цилиндр (2x2)"); // not in use (deprecated)
     ui->listWidget->addItem(cylinder2);
 
-    QListWidgetItem *flashlight = new QListWidgetItem(" Источник света");
+    QListWidgetItem *flashlight = new QListWidgetItem(" Источник света"); // not in use (deprecated)
     ui->listWidget->addItem(flashlight);
 
+    // motherboard types combobox
+    ui->comboBoxMotherboardType->addItem("ATX");
+    ui->comboBoxMotherboardType->addItem("Micro-ATX");
+    ui->comboBoxMotherboardType->addItem("Mini-ITX");
 
+    // gpu, cpu, ram list widgets
     auto gpus = configManager.getCompatibleGPUs(ConfigManager::MotherboardType::ATX);
     auto cpus = configManager.getCompatibleCPUs(ConfigManager::MotherboardType::ATX);
     auto rams = configManager.getCompatibleRAMs(ConfigManager::MotherboardType::ATX);
@@ -278,9 +283,8 @@ void MainWindow::on_pushButton_createScene_clicked() // not in use (deprecated)
 
 void MainWindow::on_pushButtonCreateMotherboard_clicked()
 {
-    int index = ui->comboBoxMotherboardType->currentIndex();
-    QStringList motherboardTypes = {"ATX", "Micro-ATX", "Mini-ITX"};
-    QString selectedType = motherboardTypes.at(index);
+    ConfigManager::MotherboardType type = static_cast<ConfigManager::MotherboardType>(ui->comboBoxMotherboardType->currentIndex());
+    QString selectedType = ui->comboBoxMotherboardType->currentText();
 
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Confirm Motherboard Type",
@@ -289,8 +293,8 @@ void MainWindow::on_pushButtonCreateMotherboard_clicked()
 
     if (reply == QMessageBox::Yes)
     {
-        std::cout << "Yes was clicked" << std::endl;
-        facade->setSceneInfMotherboard(index);
+        std::cout << "Building motherboard type: " << static_cast<int>(type) << std::endl;
+        facade->setSceneInfMotherboard(type);
         QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
 
         if (ui->graphicsView->scene())
@@ -329,23 +333,81 @@ void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
 void MainWindow::on_pushButtonAddProcessor_clicked()
 {
     std::cout << "MainWindow::on_PushButtonAddProcessor_clicked" << std::endl;
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage err(this);
+        err.showMessage("Choose motherboard layout first!");
+        err.exec();
+        return;
+    }
+    QListWidgetItem *currentItem = ui->listWidgetProcessor->currentItem();
+    if (!currentItem)
+    {
+        QErrorMessage err(this);
+        err.showMessage("Select a processor first!");
+        err.exec();
+        return;
+    }
+
     QString processor = ui->listWidgetProcessor->currentItem()->text();
+    std::cout << "Motherboard type: " << ui->comboBoxMotherboardType->currentText().toStdString()
+              << ", Processor: " << processor.toStdString() << std::endl;
+    facade->addProcessor();
 }
 
 
 void MainWindow::on_pushButtonAddRAM_clicked()
 {
     std::cout << "MainWindow::on_PushButtonAddRAM_clicked" << std::endl;
-    QString RAM = ui->listWidgetRAM->currentItem()->text();
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage err(this);
+        err.showMessage("Choose motherboard layout first!");
+        err.exec();
+        return;
+    }
+    QListWidgetItem *currentItem = ui->listWidgetRAM->currentItem();
+    if (!currentItem)
+    {
+        QErrorMessage err(this);
+        err.showMessage("Select a RAM block first!");
+        err.exec();
+        return;
+    }
+
+    bool ok;
+    QString ram = currentItem->text();
+    QList<ATXMotherboardConfig::RAMSlot> availableSLots;
+    // here I stopped
+    facade->addRAM();
 }
 
 void MainWindow::on_pushButtonAddGPU_clicked()
 {
-    std::cout << "MainWindow::on_pushButtonAddGPU_clicked" << std::endl;
-    QString GPU = ui->listWidgetGPU->currentItem()->text();
+    std::cout << "MainWindow::on_PushButtonAddGPU_clicked" << std::endl;
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage err(this);
+        err.showMessage("Choose motherboard layout first!");
+        err.exec();
+        return;
+    }
+    QListWidgetItem *currentItem = ui->listWidgetGPU->currentItem();
+    if (!currentItem)
+    {
+        QErrorMessage err(this);
+        err.showMessage("Select a GPU first!");
+        err.exec();
+        return;
+    }
+
+    QString gpu = ui->listWidgetGPU->currentItem()->text();
+    std::cout << "Motherboard type: " << ui->comboBoxMotherboardType->currentText().toStdString()
+              << ", GPU: " << gpu.toStdString() << std::endl;
+    facade->addGPU();
 }
 
-void MainWindow::on_pushButton_addModel_clicked()
+void MainWindow::on_pushButton_addModel_clicked() // not in use (deprecated)
 {
     if (!facade->isSceneSet())
     {
@@ -497,7 +559,7 @@ void MainWindow::on_pushButton_addModel_clicked()
 }
 
 
-void MainWindow::on_pushButton_addCastle_clicked()
+void MainWindow::on_pushButton_addCastle_clicked() // not in use (deprecated)
 {
     if (!facade->isSceneSet())
     {

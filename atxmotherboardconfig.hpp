@@ -2,9 +2,11 @@
 #define ATXMOTHERBOARDCONFIG_HPP
 
 #include <vector>
+#include <map>
 #include "mathelems.hpp"
 #include "config.hpp"
 #include "motherboardprimitives.hpp"
+#include "basemotherboardconfig.hpp"
 
 // PERIPHERIA
 #define ATX_HDMI_DP_OFFSET_X 0
@@ -83,12 +85,20 @@
 #define ATX_PCIEX16_3_OFFSET_X 126
 #define ATX_PCIEX16_3_OFFSET_Y 828
 
-class ATXMotherboardConfig
+class ATXMotherboardConfig : public BaseMotherboardConfig
 {
 public:
+
+    enum class RAMSlot
+    {
+        B1,
+        B2,
+        A1,
+        A2
+    };
+
     ATXMotherboardConfig(const Dot3D &startOfPlate_, const Dot3D &endOfPlate_)
-        : startOfPlate(startOfPlate_), endOfPlate(endOfPlate_),
-        // peripheria
+        : BaseMotherboardConfig(startOfPlate_, endOfPlate_),
         HDMI_DP({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y, BASE_Z + 20, ATX_HDMI_DP_WIDTH, ATX_HDMI_DP_HEIGHT, 20)},{}),
         // peripheria
         BIOS_FLBK({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y, BASE_Z + 20, ATX_BIOS_FLBK_WIDTH, ATX_BIOS_FLBK_HEIGHT, 20)}, {}),
@@ -115,6 +125,8 @@ public:
         PCIEX16_3({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_PCIEX16_3_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_3_OFFSET_Y, BASE_Z + 40, ATX_PCIEX16_WIDTH, ATX_PCIEX16_HEIGHT, 40, ATX_PCIEX16_TOPFRAMEWIDTH, ATX_PCIEX16_BOTTOMFRAMEWIDTH, ATX_PCIEX16_LEFTFRAMEWIDTH, ATX_PCIEX16_RIGHTFRAMEWIDTH)})
     {
         std::cout << "ATXMotherboardConfig::ATXMotherboardConfig" << std::endl;
+
+        ramSlotsOccupied = {{static_cast<int>(RAMSlot::B1), false}, {static_cast<int>(RAMSlot::B2), false}, {static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::A2), false}};
     }
 
     // peripheria
@@ -151,19 +163,14 @@ public:
     Dot3D PCIEX16_2_offset;
     Dot3D PCIEX16_3_offset;
 
-    Dot3D getStartOfPlate() const
-    {
-        return startOfPlate;
-    }
-    Dot3D getEndOfPlate() const
-    {
-        return endOfPlate;
-    }
+    Dot3D getStartOfPlate() const override;
+    Dot3D getEndOfPlate() const override;
 
-private:
-    Dot3D startOfPlate;
-    Dot3D endOfPlate;
+    bool isRamSlotAvailable(int slot) override;
+    void occupyRamSlot(int slot) override;
+    QList<int> getAvailableRamSlots() override;
 };
 
+std::string atxRamSlotToString(ATXMotherboardConfig::RAMSlot slot);
 
 #endif // ATXMOTHERBOARDCONFIG_HPP

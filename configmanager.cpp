@@ -15,6 +15,19 @@ const std::vector<ConfigManager::RAMType>& ConfigManager::getCompatibleRAMs(Conf
     return ramCompatibility.at(type);
 }
 
+std::string motherboardTypeToString(ConfigManager::MotherboardType type)
+{
+    switch (type)
+    {
+    case ConfigManager::MotherboardType::ATX:
+        return "ATX";
+    case ConfigManager::MotherboardType::MicroATX:
+        return "Micro-ATX";
+    case ConfigManager::MotherboardType::MiniITX:
+        return "Mini-ITX";
+    }
+}
+
 std::string gpuTypeToString(ConfigManager::GPUType type)
 {
     switch (type)

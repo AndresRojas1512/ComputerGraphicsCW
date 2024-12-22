@@ -15,38 +15,65 @@ void Facade::setSceneInf(size_t width_, size_t height_) // not in use (deprecate
     scene = new SceneInf(width_, height_);
 }
 
-void Facade::setSceneInfMotherboard(int index)
+void Facade::setSceneInfMotherboard(ConfigManager::MotherboardType type)
 {
     std::cout << "Facade::setSceneInfMotherboard" << std::endl;
+    std::cout << "Configuring scene for motherboard type: " << static_cast<int>(type) << std::endl;
     size_t width = 0;
     size_t height = 0;
 
-    switch (index)
+    switch (type)
     {
-        case 0:
+    case ConfigManager::MotherboardType::ATX:
             width = ATX_WIDTH;
             height = ATX_HEIGHT;
             break;
-        case 1:
+    case ConfigManager::MotherboardType::MicroATX:
             width = MICROATX_WIDTH;
             height = MICROATX_HEIGHT;
             break;
-        case 2:
+    case ConfigManager::MotherboardType::MiniITX:
             width = MINIITX_WIDTH;
             height = MINIITX_HEIGHT;
             break;
-        default:
-            std::cout << "Unknown motherboard type selected" << std::endl;
-            return;
+    default:
+        std::cout << "Unknown motherboard type selected" << std::endl;
+        return;
     }
     if (scene)
     {
         delete scene;
     }
+    int index = static_cast<int>(type);
     scene = new SceneInf(width, height, index);
 }
 
-void Facade::changeSceneInf(size_t newWidth, size_t newheight)
+int Facade::addProcessor()
+{
+    std::cout << "Facade::addProcessor" << std::endl;
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+    return 0;
+}
+
+int Facade::addRAM()
+{
+    std::cout << "Facade::addRAM" << std::endl;
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+    return 0;
+}
+
+int Facade::addGPU()
+{
+    std::cout << "Facade::addGPU" << std::endl;
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+
+    return 0;
+}
+
+void Facade::changeSceneInf(size_t newWidth, size_t newheight) // not in use (deprecated)
 {
     std::cout << "Facade::changeSceneInf" << std::endl;
     scene->changeSize(newWidth, newheight);
@@ -668,8 +695,6 @@ int Facade::addTile(int xCell, int yCell, int modelLength, int modelWidth)
     return 0;
 }
 
-
-
 int Facade::addArc41(int xCell, int yCell)
 {
     std::cout << "Facade::addArc41" << std::endl;
@@ -874,9 +899,6 @@ int Facade::addArc41(int xCell, int yCell)
 
     return 0;
 }
-
-
-
 
 int Facade::addArc14(int xCell, int yCell)
 {
@@ -1415,13 +1437,3 @@ int Facade::addCylinder2(int xCell, int yCell)
 
     return 0;
 }
-
-int Facade::addGPU(GPUConfig gpu)
-{
-    std::cout << "Facade::addGPU" << std::endl;
-    std::vector<Vertex> vertices;
-    std::vector<Facet> facets;
-
-    return 0;
-}
-

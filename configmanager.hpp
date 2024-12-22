@@ -122,7 +122,11 @@ private:
 };
 
 std::string gpuTypeToString(ConfigManager::GPUType type);
+
 std::string cpuTypeToString(ConfigManager::CPUType type);
+
 std::string ramTypeToString(ConfigManager::RAMType type);
+
+std::string motherboardTypeToString(ConfigManager::MotherboardType type);
 
 #endif // CONFIGMANAGER_H

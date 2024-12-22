@@ -81,6 +81,13 @@
 class MiniITXMotherboardConfig
 {
 public:
+
+    enum class RAMSlot
+    {
+        A1,
+        B1
+    };
+
     MiniITXMotherboardConfig(const Dot3D &startOfPlate_, const Dot3D &endOfPlate_)
         : startOfPlate(startOfPlate_), endOfPlate(endOfPlate_),
         // peripheria
@@ -96,6 +103,8 @@ public:
         // GPU
         PCIEX16_1({}, {FrameConfig(startOfPlate_.getXCoordinate() + MINIITX_PCIEX16_1_OFFSET_X, startOfPlate_.getYCoordinate() + MINIITX_PCIEX16_1_OFFSET_Y, BASE_Z + 40, MINIITX_PCIEX16_WIDTH, MINIITX_PCIEX16_HEIGHT, 40, MINIITX_PCIEX16_TOPFRAMEWIDTH, MINIITX_PCIEX16_BOTTOMFRAMEWIDTH, MINIITX_PCIEX16_LEFTFRAMEWIDTH, MINIITX_PCIEX16_RIGHTFRAMEWIDTH)})
     {
+        std::cout << "MiniITXMotherboardConfig::MiniITXMotherboardConfig" << std::endl;
+        ramSlotsOccupied = {{RAMSlot::A1, false}, {RAMSlot::B1, false}};
     }
 
     // peripheria
@@ -111,9 +120,16 @@ public:
     // GPU
     componentConfig PCIEX16_1;
 
+    Dot3D getStartOfPlate() const;
+    Dot3D getEndOfPlate() const;
+
+    bool isRamSlotAvailable(RAMSlot slot);
+    void occupyRamSlot(RAMSlot slot);
+
 private:
     Dot3D startOfPlate;
     Dot3D endOfPlate;
+    std::map<RAMSlot, bool> ramSlotsOccupied;
 };
 
 #endif // MINIITXMOTHERBOARDCONFIG_HPP

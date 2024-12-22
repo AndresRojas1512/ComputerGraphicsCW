@@ -95,6 +95,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         gpuconfig.hpp
         configmanager.hpp
         configmanager.cpp
+        atxmotherboardconfig.cpp
+        basemotherboardconfig.hpp
 
     )
 else()

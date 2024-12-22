@@ -24,7 +24,7 @@ public:
     Facade(ConfigManager &configManager_);
 
     void setSceneInf(size_t width_, size_t height_);
-    void setSceneInfMotherboard(int index);
+    void setSceneInfMotherboard(ConfigManager::MotherboardType type);
     void changeSceneInf(size_t newWidth, size_t newheight);
     bool isSceneSet();
 
@@ -40,7 +40,7 @@ public:
 
     int addProcessor();
     int addRAM();
-    int addGPU(GPUConfig config);
+    int addGPU();
 
     void addLight(int xAngle, int yAngle);
 

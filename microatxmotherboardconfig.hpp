@@ -2,6 +2,7 @@
 #define MICROATXMOTHERBOARDCONFIG_H
 
 #include <vector>
+#include <map>
 #include "mathelems.hpp"
 #include "config.hpp"
 #include "motherboardprimitives.hpp"
@@ -95,6 +96,15 @@
 class MicroATXMotherboardConfig
 {
 public:
+
+    enum class RAMSlot
+    {
+        A1,
+        A2,
+        B1,
+        B2
+    };
+
     MicroATXMotherboardConfig(const Dot3D &startOfPlate_, const Dot3D &endOfPlate_)
         : startOfPlate(startOfPlate_), endOfPlate(endOfPlate_),
         // peripheria
@@ -121,6 +131,8 @@ public:
         PCIEX16_1({}, {FrameConfig(startOfPlate_.getXCoordinate() + MICROATX_PCIEX16_1_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_PCIEX16_1_OFFSET_Y, BASE_Z + 40, MICROATX_PCIEX16_WIDTH, MICROATX_PCIEX16_HEIGHT, 40, MICROATX_PCIEX16_TOPFRAMEWIDTH, MICROATX_PCIEX16_BOTTOMFRAMEWIDTH, MICROATX_PCIEX16_LEFTFRAMEWIDTH, MICROATX_PCIEX16_RIGHTFRAMEWIDTH)}),
         PCIEX16_2({}, {FrameConfig(startOfPlate_.getXCoordinate() + MICROATX_PCIEX16_2_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_PCIEX16_2_OFFSET_Y, BASE_Z + 40, MICROATX_PCIEX16_WIDTH, MICROATX_PCIEX16_HEIGHT, 40, MICROATX_PCIEX16_TOPFRAMEWIDTH, MICROATX_PCIEX16_BOTTOMFRAMEWIDTH, MICROATX_PCIEX16_LEFTFRAMEWIDTH, MICROATX_PCIEX16_RIGHTFRAMEWIDTH)})
     {
+        std::cout << "MicroATXMotherboardConfig::MicroATXMotherboardConfig" << std::endl;
+        ramSlotsOccupied = {{RAMSlot::A1, false}, {RAMSlot::A2, false}, {RAMSlot::B1, false}, {RAMSlot::B2, false}};
     }
 
     // peripheria
@@ -143,9 +155,16 @@ public:
     componentConfig PCIEX16_1;
     componentConfig PCIEX16_2;
 
+    Dot3D getStartOfPlate() const;
+    Dot3D getEndOfPlate() const;
+
+    bool isRamSlotAvailable(RAMSlot slot);
+    void occupyRamSlot(RAMSlot slot);
+
 private:
     Dot3D startOfPlate;
     Dot3D endOfPlate;
+    std::map<RAMSlot, bool> ramSlotsOccupied;
 };
 
 #endif // MICROATXMOTHERBOARDCONFIG_H

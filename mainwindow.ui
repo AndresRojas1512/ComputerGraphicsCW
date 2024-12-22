@@ -675,21 +675,6 @@ color: rgb(229, 229, 229);
       <height>25</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>ATX</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Micro-ATX</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Mini-ITX</string>
-     </property>
-    </item>
    </widget>
    <widget class="QPushButton" name="pushButtonCreateMotherboard">
     <property name="geometry">
