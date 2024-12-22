@@ -97,6 +97,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         configmanager.cpp
         atxmotherboardconfig.cpp
         basemotherboardconfig.hpp
+        microatxmotherboardconfig.cpp
 
     )
 else()

@@ -6,6 +6,7 @@
 #include "mathelems.hpp"
 #include "config.hpp"
 #include "motherboardprimitives.hpp"
+#include "basemotherboardconfig.hpp"
 
 // PERIPHERIA
 #define MICROATX_HDMI1_DP_OFFSET_X 0
@@ -93,7 +94,7 @@
 #define MICROATX_PCIEX16_2_OFFSET_X 126
 #define MICROATX_PCIEX16_2_OFFSET_Y 660
 
-class MicroATXMotherboardConfig
+class MicroATXMotherboardConfig : public BaseMotherboardConfig
 {
 public:
 
@@ -106,7 +107,7 @@ public:
     };
 
     MicroATXMotherboardConfig(const Dot3D &startOfPlate_, const Dot3D &endOfPlate_)
-        : startOfPlate(startOfPlate_), endOfPlate(endOfPlate_),
+        : BaseMotherboardConfig(startOfPlate_, endOfPlate_),
         // peripheria
         HDMI1_DP({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MICROATX_HDMI1_DP_OFFSET_Y, BASE_Z + 60, MICROATX_HDMI1_DP_WIDTH, MICROATX_HDMI1_DP_HEIGHT, 60)}, {}),
         // peripheria
@@ -132,7 +133,7 @@ public:
         PCIEX16_2({}, {FrameConfig(startOfPlate_.getXCoordinate() + MICROATX_PCIEX16_2_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_PCIEX16_2_OFFSET_Y, BASE_Z + 40, MICROATX_PCIEX16_WIDTH, MICROATX_PCIEX16_HEIGHT, 40, MICROATX_PCIEX16_TOPFRAMEWIDTH, MICROATX_PCIEX16_BOTTOMFRAMEWIDTH, MICROATX_PCIEX16_LEFTFRAMEWIDTH, MICROATX_PCIEX16_RIGHTFRAMEWIDTH)})
     {
         std::cout << "MicroATXMotherboardConfig::MicroATXMotherboardConfig" << std::endl;
-        ramSlotsOccupied = {{RAMSlot::A1, false}, {RAMSlot::A2, false}, {RAMSlot::B1, false}, {RAMSlot::B2, false}};
+        ramSlotsOccupied = {{static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::A2), false}, {static_cast<int>(RAMSlot::B1), false}, {static_cast<int>(RAMSlot::B2), false}};
     }
 
     // peripheria
@@ -155,16 +156,12 @@ public:
     componentConfig PCIEX16_1;
     componentConfig PCIEX16_2;
 
-    Dot3D getStartOfPlate() const;
-    Dot3D getEndOfPlate() const;
+    Dot3D getStartOfPlate() const override;
+    Dot3D getEndOfPlate() const override;
 
-    bool isRamSlotAvailable(RAMSlot slot);
-    void occupyRamSlot(RAMSlot slot);
-
-private:
-    Dot3D startOfPlate;
-    Dot3D endOfPlate;
-    std::map<RAMSlot, bool> ramSlotsOccupied;
+    bool isRamSlotAvailable(int slot) override;
+    void occupyRamSlot(int slot) override;
+    QList<int> getAvailableRamSlots() override;
 };
 
 #endif // MICROATXMOTHERBOARDCONFIG_H
