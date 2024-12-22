@@ -21,21 +21,44 @@ void Facade::setSceneInfMotherboard(ConfigManager::MotherboardType type)
     std::cout << "Configuring scene for motherboard type: " << static_cast<int>(type) << std::endl;
     size_t width = 0;
     size_t height = 0;
+    size_t widthScaled = 0;
+    size_t heightScaled = 0;
 
     switch (type)
     {
     case ConfigManager::MotherboardType::ATX:
-            width = ATX_WIDTH;
-            height = ATX_HEIGHT;
-            break;
+        width = ATX_WIDTH;
+        height = ATX_HEIGHT;
+        widthScaled = width * SIZE_SC;
+        heightScaled = height * SIZE_SC;
+        if (motherboardConfig)
+        {
+            delete motherboardConfig;
+        }
+        motherboardConfig = new ATXMotherboardConfig(Dot3D(BASE_START), Dot3D(widthScaled, heightScaled, BASE_Z));
+        break;
     case ConfigManager::MotherboardType::MicroATX:
-            width = MICROATX_WIDTH;
-            height = MICROATX_HEIGHT;
-            break;
+        width = MICROATX_WIDTH;
+        height = MICROATX_HEIGHT;
+        widthScaled = width * SIZE_SC;
+        heightScaled = height * SIZE_SC;
+        if (motherboardConfig)
+        {
+            delete motherboardConfig;
+        }
+        motherboardConfig = new MicroATXMotherboardConfig(Dot3D(BASE_START), Dot3D(widthScaled, heightScaled, BASE_Z));
+        break;
     case ConfigManager::MotherboardType::MiniITX:
-            width = MINIITX_WIDTH;
-            height = MINIITX_HEIGHT;
-            break;
+        width = MINIITX_WIDTH;
+        height = MINIITX_HEIGHT;
+        widthScaled = width * SIZE_SC;
+        heightScaled = height * SIZE_SC;
+        if (motherboardConfig)
+        {
+            delete motherboardConfig;
+        }
+        motherboardConfig = new MiniITXMotherboardConfig(Dot3D(BASE_START), Dot3D(widthScaled, heightScaled, BASE_Z));
+        break;
     default:
         std::cout << "Unknown motherboard type selected" << std::endl;
         return;

@@ -12,6 +12,7 @@
 #include "math.h"
 #include "config.hpp"
 
+#include "basemotherboardconfig.hpp"
 #include "atxmotherboardconfig.hpp"
 #include "microatxmotherboardconfig.hpp"
 #include "miniitxmotherboardconfig.hpp"
@@ -63,6 +64,7 @@ private:
     ConfigManager &configManager;
     SceneInf *scene = nullptr;
     Drawer *drawer;
+    BaseMotherboardConfig *motherboardConfig = nullptr;
 
     void addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
                  int x1, int y1, int z1,
