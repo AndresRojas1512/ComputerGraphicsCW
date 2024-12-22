@@ -9,6 +9,7 @@
 #include <iostream>
 #include "QDebug"
 #include <QErrorMessage>
+#include <QInputDialog>
 #include <QShortcut>
 #include <string>
 #include <cstring>

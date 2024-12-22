@@ -129,6 +129,8 @@ public:
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::B1), false}, {static_cast<int>(RAMSlot::B2), false}, {static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::A2), false}};
     }
 
+    Dot3D getRamSlotPosition(RAMSlot slot) const;
+
     // peripheria
     componentConfig HDMI_DP;
     componentConfig BIOS_FLBK;

@@ -326,7 +326,9 @@ void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
     }
     for (auto ram : rams)
     {
-        ui->listWidgetRAM->addItem(QString::fromStdString(ramTypeToString(ram)));
+        QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(ramTypeToString(ram)));
+        item->setData(Qt::UserRole, QVariant::fromValue(static_cast<int>(ram)));
+        ui->listWidgetRAM->addItem(item);
     }
 }
 
@@ -355,7 +357,6 @@ void MainWindow::on_pushButtonAddProcessor_clicked()
     facade->addProcessor();
 }
 
-
 void MainWindow::on_pushButtonAddRAM_clicked()
 {
     std::cout << "MainWindow::on_PushButtonAddRAM_clicked" << std::endl;
@@ -374,12 +375,37 @@ void MainWindow::on_pushButtonAddRAM_clicked()
         err.exec();
         return;
     }
+    QList<int> availableSlots = facade->getMotherboardConfig()->getAvailableRamSlots();
+    if (availableSlots.empty())
+    {
+        QErrorMessage err(this);
+        err.showMessage("No available slots!");
+        err.exec();
+        return;
+    }
+
+    // prepare arguments
+    ConfigManager::MotherboardType motherboardType = static_cast<ConfigManager::MotherboardType>(ui->comboBoxMotherboardType->currentIndex());
+    ConfigManager::RAMType ramType = static_cast<ConfigManager::RAMType>(currentItem->data(Qt::UserRole).toInt());
+
+    std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
+    std::cout << "--> ram type: " << ramTypeToString(ramType) << std::endl;
 
     bool ok;
-    QString ram = currentItem->text();
-    QList<ATXMotherboardConfig::RAMSlot> availableSLots;
-    // here I stopped
-    facade->addRAM();
+    QStringList items;
+    for (int slot : availableSlots)
+    {
+        items << QString::number(slot);
+    }
+
+    QString item = QInputDialog::getItem(this, "Select RAM Slot", "Available Slots:", items, 0, false, &ok);
+    int slotIndex = item.toInt();
+
+    if (ok && !item.isEmpty())
+    {
+        std::cout << "amazing" << std::endl;
+        facade->addRAM(motherboardType, ramType, slotIndex);
+    }
 }
 
 void MainWindow::on_pushButtonAddGPU_clicked()

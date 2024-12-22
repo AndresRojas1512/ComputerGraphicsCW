@@ -10,6 +10,21 @@ Dot3D ATXMotherboardConfig::getEndOfPlate() const
     return endOfPlate;
 }
 
+Dot3D ATXMotherboardConfig::getRamSlotPosition(ATXMotherboardConfig::RAMSlot slot) const
+{
+    switch(slot)
+    {
+    case RAMSlot::B1:
+        return DDR4_DIMM_B1_offset;
+    case RAMSlot::B2:
+        return DDR4_DIMM_B2_offset;
+    case RAMSlot::A1:
+        return DDR4_DIMM_A1_offset;
+    case RAMSlot::A2:
+        return DDR4_DIMM_A2_offset;
+    }
+}
+
 bool ATXMotherboardConfig::isRamSlotAvailable(int slot)
 {
     return !ramSlotsOccupied[slot];

@@ -14,15 +14,15 @@ class GPUConfig
 public:
     GPUConfig(Dot3D startOfPlate, Dot3D endOfPlate, Dot3D offset);
 
-    componentConfig GTX_1050;
-    componentConfig GTX_1060;
-    componentConfig GTX_1070;
-    componentConfig RTX_2060;
-    componentConfig RTX_2070;
-    componentConfig RTX_2080;
-    componentConfig RTX_3060;
-    componentConfig RTX_3070;
-    componentConfig RTX_3080;
+    componentConfig NVIDIA_GeForce_RTX_3080;
+    componentConfig AMD_Radeon_RX_6800_XT;
+    componentConfig NVIDIA_GeForce_GTX_1660_Ti;
+    componentConfig NVIDIA_GeForce_RTX_3070;
+    componentConfig AMD_Radeon_RX_6700_XT;
+    componentConfig NVIDIA_GeForce_RTX_2060;
+    componentConfig NVIDIA_GeForce_RTX_3060_Ti;
+    componentConfig AMD_Radeon_RX_5600_XT;
+    componentConfig NVIDIA_GeForce_GTX_1650_Super;
 };
 
 #endif // GPUCONFIG_H

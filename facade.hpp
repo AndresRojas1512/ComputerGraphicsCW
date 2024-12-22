@@ -40,7 +40,7 @@ public:
     int addCylinder2(int xCell, int yCell);
 
     int addProcessor();
-    int addRAM();
+    int addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType ramType, int slotIndex);
     int addGPU();
 
     void addLight(int xAngle, int yAngle);
@@ -59,6 +59,8 @@ public:
     QGraphicsScene *toCenter(QRectF rect);
 
     SceneInf *getScene();
+
+    BaseMotherboardConfig *getMotherboardConfig();
 
 private:
     ConfigManager &configManager;

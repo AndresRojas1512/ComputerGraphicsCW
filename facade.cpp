@@ -79,21 +79,24 @@ int Facade::addProcessor()
     return 0;
 }
 
-int Facade::addRAM()
+int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType ramType, int slotIndex)
 {
     std::cout << "Facade::addRAM" << std::endl;
-    std::vector<Vertex> vertices;
-    std::vector<Facet> facets;
+    std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
+    std::cout << "--> ram type: " << ramTypeToString(ramType) << std::endl;
+    std::cout << "--> slot: " << slotIndex << std::endl;
     return 0;
 }
 
 int Facade::addGPU()
 {
     std::cout << "Facade::addGPU" << std::endl;
-    std::vector<Vertex> vertices;
-    std::vector<Facet> facets;
-
     return 0;
+}
+
+BaseMotherboardConfig *Facade::getMotherboardConfig()
+{
+    return motherboardConfig;
 }
 
 void Facade::changeSceneInf(size_t newWidth, size_t newheight) // not in use (deprecated)
