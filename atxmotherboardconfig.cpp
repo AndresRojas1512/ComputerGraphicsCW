@@ -41,6 +41,7 @@ void ATXMotherboardConfig::occupyRamSlot(int slot)
 
 QList<int> ATXMotherboardConfig::getAvailableRamSlots()
 {
+    std::cout << "ATXMotherboardConfig::getAvailableRamSlots" << std::endl;
     QList<int> availableSlots;
     for (auto& slot : ramSlotsOccupied)
     {

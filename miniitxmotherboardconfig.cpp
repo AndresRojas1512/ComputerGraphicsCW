@@ -37,6 +37,7 @@ void MiniITXMotherboardConfig::occupyRamSlot(int slot)
 
 QList<int> MiniITXMotherboardConfig::getAvailableRamSlots()
 {
+    std::cout << "MiniITXMotherboardConfig::getAvailableRamSlots" << std::endl;
     QList<int> availableSlots;
     for (auto& slot : ramSlotsOccupied)
     {

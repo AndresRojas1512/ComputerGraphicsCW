@@ -102,7 +102,14 @@ public:
         DDR4_DIMM_A1({}, {FrameConfig(startOfPlate_.getXCoordinate() + MINIITX_DDR4_DIMM_A1_OFFSET_X, startOfPlate_.getYCoordinate() + MINIITX_DDR4_DIMM_A1_OFFSET_Y, BASE_Z + 40, MINIITX_DDR4_DIMM_WIDTH, MINIITX_DDR4_DIMM_HEIGHT, 40, MINIITX_DDR4_DIMM_TOPFRAMEWIDTH, MINIITX_DDR4_DIMM_BOTTOMFRAMEWIDTH, MINIITX_DDR4_DIMM_LEFTFRAMEWIDTH, MINIITX_DDR4_DIMM_RIGHTFRAMEWIDTH)}),
         DDR4_DIMM_B1({}, {FrameConfig(startOfPlate_.getXCoordinate() + MINIITX_DDR4_DIMM_B1_OFFSET_X, startOfPlate_.getYCoordinate() + MINIITX_DDR4_DIMM_B1_OFFSET_Y, BASE_Z + 40, MINIITX_DDR4_DIMM_WIDTH, MINIITX_DDR4_DIMM_HEIGHT, 40, MINIITX_DDR4_DIMM_TOPFRAMEWIDTH, MINIITX_DDR4_DIMM_BOTTOMFRAMEWIDTH, MINIITX_DDR4_DIMM_LEFTFRAMEWIDTH, MINIITX_DDR4_DIMM_RIGHTFRAMEWIDTH)}),
         // GPU
-        PCIEX16_1({}, {FrameConfig(startOfPlate_.getXCoordinate() + MINIITX_PCIEX16_1_OFFSET_X, startOfPlate_.getYCoordinate() + MINIITX_PCIEX16_1_OFFSET_Y, BASE_Z + 40, MINIITX_PCIEX16_WIDTH, MINIITX_PCIEX16_HEIGHT, 40, MINIITX_PCIEX16_TOPFRAMEWIDTH, MINIITX_PCIEX16_BOTTOMFRAMEWIDTH, MINIITX_PCIEX16_LEFTFRAMEWIDTH, MINIITX_PCIEX16_RIGHTFRAMEWIDTH)})
+        PCIEX16_1({}, {FrameConfig(startOfPlate_.getXCoordinate() + MINIITX_PCIEX16_1_OFFSET_X, startOfPlate_.getYCoordinate() + MINIITX_PCIEX16_1_OFFSET_Y, BASE_Z + 40, MINIITX_PCIEX16_WIDTH, MINIITX_PCIEX16_HEIGHT, 40, MINIITX_PCIEX16_TOPFRAMEWIDTH, MINIITX_PCIEX16_BOTTOMFRAMEWIDTH, MINIITX_PCIEX16_LEFTFRAMEWIDTH, MINIITX_PCIEX16_RIGHTFRAMEWIDTH)}),
+        // RAM slots offset
+        DDR4_DIMM_A1_offset(1, 2, 3),
+        DDR4_DIMM_B1_offset(11, 22, 33),
+        // GPU slots offset
+        PCIEX16_1_offset(1, 2, 3),
+        // CPU slot offset
+        CPU_offset(1, 2, 3)
     {
         std::cout << "MiniITXMotherboardConfig::MiniITXMotherboardConfig" << std::endl;
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::B1), false}};
@@ -126,6 +133,10 @@ public:
     // offset for placing the RAM block in the DDR4 socket
     Dot3D DDR4_DIMM_A1_offset;
     Dot3D DDR4_DIMM_B1_offset;
+    // offset for placing the GPU block in the PCIEX16 socket
+    Dot3D PCIEX16_1_offset;
+    // offset for placing the CPU block int the CPU socket
+    Dot3D CPU_offset;
 
     Dot3D getStartOfPlate() const override;
     Dot3D getEndOfPlate() const override;

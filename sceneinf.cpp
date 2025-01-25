@@ -52,7 +52,7 @@ SceneInf::operator bool() const
     return this->plateModel;
 }
 
-void SceneInf::markUsedCellsZ(size_t num)
+void SceneInf::markUsedCellsZ(size_t num) // deprecated
 {
     int xCell = models[num].getUsedXCell();
     int yCell = models[num].getUsedYCell();
@@ -75,7 +75,7 @@ void SceneInf::markUsedCellsZ(size_t num)
 
 
 
-void SceneInf::clearUsedCellsZ(size_t num)
+void SceneInf::clearUsedCellsZ(size_t num) // deprecated
 {
     int xCell = models[num].getUsedXCell();
     int yCell = models[num].getUsedYCell();

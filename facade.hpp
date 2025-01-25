@@ -24,13 +24,14 @@ class Facade
 public:
     Facade(ConfigManager &configManager_);
 
-    void setSceneInf(size_t width_, size_t height_);
+    void setSceneInf(size_t width_, size_t height_); // not in use (deprecated)
     void setSceneInfMotherboard(ConfigManager::MotherboardType type);
     void changeSceneInf(size_t newWidth, size_t newheight);
     bool isSceneSet();
 
     QGraphicsScene *drawScene(QRectF rect);
 
+    // add components lego constructor
     int addBrick(int xCell, int yCell, int modelLength, int modelWidth);
     int addPlate(int xCell, int yCell, int modelLength, int modelWidth);
     int addTile(int xCell, int yCell, int modelLength, int modelWidth);
@@ -39,6 +40,7 @@ public:
     int addCylinder1(int xCell, int yCell);
     int addCylinder2(int xCell, int yCell);
 
+    // add components motherboard constructor
     int addProcessor();
     int addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType ramType, int slotIndex);
     int addGPU();

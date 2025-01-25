@@ -71,6 +71,7 @@ void Facade::setSceneInfMotherboard(ConfigManager::MotherboardType type)
     scene = new SceneInf(width, height, index);
 }
 
+// motherboard constructor
 int Facade::addProcessor()
 {
     std::cout << "Facade::addProcessor" << std::endl;
@@ -287,7 +288,7 @@ void Facade::addLight(int xAngle, int yAngle)
 }
 
 
-int Facade::addBrick(int xCell, int yCell, int modelLength, int modelWidth)
+int Facade::addBrick(int xCell, int yCell, int modelLength, int modelWidth) // deprecated
 {
     std::cout << "Facade::addBrick" << std::endl;
     xCell -= 1;
@@ -449,7 +450,7 @@ int Facade::addBrick(int xCell, int yCell, int modelLength, int modelWidth)
 }
 
 
-int Facade::addPlate(int xCell, int yCell, int modelLength, int modelWidth)
+int Facade::addPlate(int xCell, int yCell, int modelLength, int modelWidth) // deprecated
 {
     std::cout << "Facade::addPlate" << std::endl;
     xCell -= 1;
@@ -609,7 +610,7 @@ int Facade::addPlate(int xCell, int yCell, int modelLength, int modelWidth)
 }
 
 
-int Facade::addTile(int xCell, int yCell, int modelLength, int modelWidth)
+int Facade::addTile(int xCell, int yCell, int modelLength, int modelWidth) // deprecated
 {
     std::cout << "Facade::addTile" << std::endl;
     xCell -= 1;
@@ -724,7 +725,7 @@ int Facade::addTile(int xCell, int yCell, int modelLength, int modelWidth)
     return 0;
 }
 
-int Facade::addArc41(int xCell, int yCell)
+int Facade::addArc41(int xCell, int yCell) // deprecated
 {
     std::cout << "Facade::addArc41" << std::endl;
     xCell -= 1;
@@ -929,7 +930,7 @@ int Facade::addArc41(int xCell, int yCell)
     return 0;
 }
 
-int Facade::addArc14(int xCell, int yCell)
+int Facade::addArc14(int xCell, int yCell) // deprecated
 {
     std::cout << "Facade::addArc14" << std::endl;
     xCell -= 1;
@@ -1132,7 +1133,7 @@ int Facade::addArc14(int xCell, int yCell)
 
 
 
-int Facade::addCylinder1(int xCell, int yCell)
+int Facade::addCylinder1(int xCell, int yCell) // deprecated
 {
     std::cout << "Facade::addCylinder1" << std::endl;
     xCell -= 1;

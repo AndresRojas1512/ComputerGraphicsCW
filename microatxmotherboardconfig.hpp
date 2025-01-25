@@ -130,7 +130,17 @@ public:
         DDR4_DIMM_B2({}, {FrameConfig(startOfPlate_.getXCoordinate() + MICROATX_DDR4_DIMM_B2_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_DDR4_DIMM_B2_OFFSET_Y, BASE_Z + 40, MICROATX_DDR4_DIMM_WIDTH, MICROATX_DDR4_DIMM_HEIGHT, 40, MICROATX_DDR4_DIMM_TOPFRAMEWIDTH, MICROATX_DDR4_DIMM_BOTTOMFRAMEWIDTH, MICROATX_DDR4_DIMM_LEFTFRAMEWIDTH, MICROATX_DDR4_DIMM_RIGHTFRAMEWIDTH)}),
         // GPU
         PCIEX16_1({}, {FrameConfig(startOfPlate_.getXCoordinate() + MICROATX_PCIEX16_1_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_PCIEX16_1_OFFSET_Y, BASE_Z + 40, MICROATX_PCIEX16_WIDTH, MICROATX_PCIEX16_HEIGHT, 40, MICROATX_PCIEX16_TOPFRAMEWIDTH, MICROATX_PCIEX16_BOTTOMFRAMEWIDTH, MICROATX_PCIEX16_LEFTFRAMEWIDTH, MICROATX_PCIEX16_RIGHTFRAMEWIDTH)}),
-        PCIEX16_2({}, {FrameConfig(startOfPlate_.getXCoordinate() + MICROATX_PCIEX16_2_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_PCIEX16_2_OFFSET_Y, BASE_Z + 40, MICROATX_PCIEX16_WIDTH, MICROATX_PCIEX16_HEIGHT, 40, MICROATX_PCIEX16_TOPFRAMEWIDTH, MICROATX_PCIEX16_BOTTOMFRAMEWIDTH, MICROATX_PCIEX16_LEFTFRAMEWIDTH, MICROATX_PCIEX16_RIGHTFRAMEWIDTH)})
+        PCIEX16_2({}, {FrameConfig(startOfPlate_.getXCoordinate() + MICROATX_PCIEX16_2_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_PCIEX16_2_OFFSET_Y, BASE_Z + 40, MICROATX_PCIEX16_WIDTH, MICROATX_PCIEX16_HEIGHT, 40, MICROATX_PCIEX16_TOPFRAMEWIDTH, MICROATX_PCIEX16_BOTTOMFRAMEWIDTH, MICROATX_PCIEX16_LEFTFRAMEWIDTH, MICROATX_PCIEX16_RIGHTFRAMEWIDTH)}),
+        // RAM slots offset
+        DDR4_DIMM_A1_offset(1, 2, 3),
+        DDR4_DIMM_A2_offset(11, 22, 33),
+        DDR4_DIMM_B1_offset(111, 222, 333),
+        DDR4_DIMM_B2_offset(1111, 2222, 3333),
+        // GPU slots offset
+        PCIEX16_1_offset(1, 2, 3),
+        PCIEX16_2_offset(11, 22, 33),
+        // CPU slot offset
+        CPU_offset(1, 2, 3)
     {
         std::cout << "MicroATXMotherboardConfig::MicroATXMotherboardConfig" << std::endl;
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::A2), false}, {static_cast<int>(RAMSlot::B1), false}, {static_cast<int>(RAMSlot::B2), false}};
@@ -163,6 +173,13 @@ public:
     Dot3D DDR4_DIMM_A2_offset;
     Dot3D DDR4_DIMM_B1_offset;
     Dot3D DDR4_DIMM_B2_offset;
+
+    // offset for placing the GPU block in the PCIEX16 socket
+    Dot3D PCIEX16_1_offset;
+    Dot3D PCIEX16_2_offset;
+
+    // offset for placing the CPU in the CPU socket
+    Dot3D CPU_offset;
 
     Dot3D getStartOfPlate() const override;
     Dot3D getEndOfPlate() const override;

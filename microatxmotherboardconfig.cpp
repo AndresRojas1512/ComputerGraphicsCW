@@ -41,6 +41,7 @@ void MicroATXMotherboardConfig::occupyRamSlot(int slot)
 
 QList<int> MicroATXMotherboardConfig::getAvailableRamSlots()
 {
+    std::cout << "MicroATXMotherboardConfig::getAvailableRamSlots" << std::endl;
     QList<int> availableSlots;
     for (auto& slot : ramSlotsOccupied)
     {

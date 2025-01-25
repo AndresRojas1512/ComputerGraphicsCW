@@ -65,12 +65,12 @@ public:
     Eigen::Matrix4f &getTransMatrix();
     void multToTrans(Eigen::Matrix4f &newTrans);
 
-    std::vector<std::vector<std::vector<double>>> &getUsedCellsZ();
-    void initUsedCellsZ();
+    std::vector<std::vector<std::vector<double>>> &getUsedCellsZ(); // deprecated
+    void initUsedCellsZ(); // deprecated
 
-    void markUsedCellsZ(size_t num);
-    void clearUsedCellsZ(size_t num);
-    void printUsedCellsZ();
+    void markUsedCellsZ(size_t num); // deprecated
+    void clearUsedCellsZ(size_t num); // deprecated
+    void printUsedCellsZ(); // deprecated
 
     std::vector<PolygonModel> getModels() const;
 
