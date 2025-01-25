@@ -88,17 +88,21 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
 
         microatxmotherboardconfig.hpp
-        motherboardprimitives.hpp
+        componentprimitives.hpp
         atxmotherboardconfig.hpp
         miniitxmotherboardconfig.hpp
         processorconfig.hpp
-        gpuconfig.hpp
+
         configmanager.hpp
         configmanager.cpp
         atxmotherboardconfig.cpp
         basemotherboardconfig.hpp
         microatxmotherboardconfig.cpp
         miniitxmotherboardconfig.cpp
+        ramconfig.hpp
+        ramconfig.cpp
+        componentprimitives.cpp
+
 
     )
 else()
