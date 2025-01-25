@@ -102,6 +102,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ramconfig.hpp
         ramconfig.cpp
         componentprimitives.cpp
+        gpuconfig.hpp
 
 
     )

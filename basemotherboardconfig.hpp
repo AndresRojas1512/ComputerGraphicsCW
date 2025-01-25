@@ -6,7 +6,7 @@
 #include <map>
 #include "mathelems.hpp"
 #include "config.hpp"
-#include "motherboardprimitives.hpp"
+#include "componentprimitives.hpp"
 
 class BaseMotherboardConfig
 {
@@ -22,6 +22,8 @@ public:
 
     virtual Dot3D getStartOfPlate() const = 0;
     virtual Dot3D getEndOfPlate() const = 0;
+
+    virtual Dot3D getRamSlotPosition(int slot) const = 0;
 
 protected:
     Dot3D startOfPlate;

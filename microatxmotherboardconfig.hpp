@@ -5,7 +5,7 @@
 #include <map>
 #include "mathelems.hpp"
 #include "config.hpp"
-#include "motherboardprimitives.hpp"
+#include "componentprimitives.hpp"
 #include "basemotherboardconfig.hpp"
 
 // PERIPHERIA
@@ -136,25 +136,33 @@ public:
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::A2), false}, {static_cast<int>(RAMSlot::B1), false}, {static_cast<int>(RAMSlot::B2), false}};
     }
 
+    Dot3D getRamSlotPosition(int slot) const override;
+
     // peripheria
-    componentConfig HDMI1_DP;
-    componentConfig HDMI2;
-    componentConfig KBMS_USB_E32;
-    componentConfig U32G2_C2;
-    componentConfig LAN_USB_E12;
-    componentConfig AUDIO;
+    ComponentConfig HDMI1_DP;
+    ComponentConfig HDMI2;
+    ComponentConfig KBMS_USB_E32;
+    ComponentConfig U32G2_C2;
+    ComponentConfig LAN_USB_E12;
+    ComponentConfig AUDIO;
     // processor
-    componentConfig LGA1200;
+    ComponentConfig LGA1200;
 
     // RAM
-    componentConfig DDR4_DIMM_A1;
-    componentConfig DDR4_DIMM_A2;
-    componentConfig DDR4_DIMM_B1;
-    componentConfig DDR4_DIMM_B2;
+    ComponentConfig DDR4_DIMM_A1;
+    ComponentConfig DDR4_DIMM_A2;
+    ComponentConfig DDR4_DIMM_B1;
+    ComponentConfig DDR4_DIMM_B2;
 
     // GPU
-    componentConfig PCIEX16_1;
-    componentConfig PCIEX16_2;
+    ComponentConfig PCIEX16_1;
+    ComponentConfig PCIEX16_2;
+
+    // offset for placing the RAM block in the DDR4 socket
+    Dot3D DDR4_DIMM_A1_offset;
+    Dot3D DDR4_DIMM_A2_offset;
+    Dot3D DDR4_DIMM_B1_offset;
+    Dot3D DDR4_DIMM_B2_offset;
 
     Dot3D getStartOfPlate() const override;
     Dot3D getEndOfPlate() const override;

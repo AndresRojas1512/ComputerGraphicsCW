@@ -74,7 +74,7 @@ public:
 
     std::vector<PolygonModel> getModels() const;
 
-    void addMotherboardComponent(componentConfig &config, QString modelName, PolygonModel::model_t modelType);
+    void addMotherboardComponent(ComponentConfig &config, QString modelName, PolygonModel::model_t modelType);
 
 private:
     size_t width, height;

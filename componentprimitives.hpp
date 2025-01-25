@@ -1,6 +1,7 @@
-#ifndef MOTHERBOARDPRIMITIVES_HPP
-#define MOTHERBOARDPRIMITIVES_HPP
+#ifndef COMPONENTPRIMITIVES_H
+#define COMPONENTPRIMITIVES_H
 
+#include <iostream>
 #include <vector>
 
 struct ParallelepipedConfig
@@ -10,6 +11,8 @@ struct ParallelepipedConfig
 
     ParallelepipedConfig(double x_, double y_, double z_, double width_, double height_, double depth_)
         : x(x_), y(y_), z(z_), width(width_), height(height_), depth(depth_) {}
+
+    friend std::ostream& operator<<(std::ostream& os, const ParallelepipedConfig& p);
 };
 
 struct FrameConfig
@@ -25,15 +28,19 @@ struct FrameConfig
         : x(x_), y(y_), z(z_), width(width_), height(height_), depth(depth_),
         topFrameWidth(topFrameWidth_), bottomFrameWidth(bottomFrameWidth_),
         leftFrameWidth(leftFrameWidth_), rightFrameWidth(rightFrameWidth_) {}
+
+    friend std::ostream& operator<<(std::ostream& os, const FrameConfig& f);
 };
 
-struct componentConfig
+struct ComponentConfig
 {
     std::vector<ParallelepipedConfig> parallelepipeds;
     std::vector<FrameConfig> frames;
 
-    componentConfig(std::initializer_list<ParallelepipedConfig> pConfigs, std::initializer_list<FrameConfig> fConfigs)
+    ComponentConfig(std::initializer_list<ParallelepipedConfig> pConfigs, std::initializer_list<FrameConfig> fConfigs)
         : parallelepipeds(pConfigs), frames(fConfigs) {}
+
+    friend std::ostream& operator<<(std::ostream& os, const ComponentConfig& config);
 };
 
-#endif // MOTHERBOARDPRIMITIVES_HPP
+#endif // COMPONENTPRIMITIVES_H

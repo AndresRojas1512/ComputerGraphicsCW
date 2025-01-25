@@ -4,7 +4,7 @@
 #include <vector>
 #include "mathelems.hpp"
 #include "config.hpp"
-#include "motherboardprimitives.hpp"
+#include "componentprimitives.hpp"
 #include "basemotherboardconfig.hpp"
 
 // PERIPHERIA
@@ -108,18 +108,24 @@ public:
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::B1), false}};
     }
 
+    Dot3D getRamSlotPosition(int slot) const override;
+
     // peripheria
-    componentConfig USB3_5;
-    componentConfig USB7_10;
-    componentConfig HDMI_DP;
-    componentConfig LAN_USB3_34;
-    componentConfig M2_WIFI;
-    componentConfig AUDIO;
+    ComponentConfig USB3_5;
+    ComponentConfig USB7_10;
+    ComponentConfig HDMI_DP;
+    ComponentConfig LAN_USB3_34;
+    ComponentConfig M2_WIFI;
+    ComponentConfig AUDIO;
     //RAM
-    componentConfig DDR4_DIMM_A1;
-    componentConfig DDR4_DIMM_B1;
+    ComponentConfig DDR4_DIMM_A1;
+    ComponentConfig DDR4_DIMM_B1;
     // GPU
-    componentConfig PCIEX16_1;
+    ComponentConfig PCIEX16_1;
+
+    // offset for placing the RAM block in the DDR4 socket
+    Dot3D DDR4_DIMM_A1_offset;
+    Dot3D DDR4_DIMM_B1_offset;
 
     Dot3D getStartOfPlate() const override;
     Dot3D getEndOfPlate() const override;

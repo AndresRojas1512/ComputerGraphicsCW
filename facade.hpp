@@ -16,8 +16,8 @@
 #include "atxmotherboardconfig.hpp"
 #include "microatxmotherboardconfig.hpp"
 #include "miniitxmotherboardconfig.hpp"
-#include "gpuconfig.hpp"
 #include "configmanager.hpp"
+#include "ramconfig.hpp"
 
 class Facade
 {
@@ -67,6 +67,7 @@ private:
     SceneInf *scene = nullptr;
     Drawer *drawer;
     BaseMotherboardConfig *motherboardConfig = nullptr;
+    RAMConfig ramConfig;
 
     void addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
                  int x1, int y1, int z1,

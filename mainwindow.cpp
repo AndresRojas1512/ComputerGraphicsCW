@@ -38,12 +38,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->comboBoxMotherboardType->addItem("Mini-ITX");
 
     // gpu, cpu, ram list widgets
-    auto gpus = configManager.getCompatibleGPUs(ConfigManager::MotherboardType::ATX);
+    auto gpus = configManager.getCompatibleGPUs();
+    auto rams = configManager.getCompatibleRAMs();
     auto cpus = configManager.getCompatibleCPUs(ConfigManager::MotherboardType::ATX);
-    auto rams = configManager.getCompatibleRAMs(ConfigManager::MotherboardType::ATX);
     ui->listWidgetProcessor->clear();
     ui->listWidgetGPU->clear();
-    ui->listWidgetGPU->clear();
+    ui->listWidgetRAM->clear();
     for (auto gpu : gpus)
     {
         ui->listWidgetGPU->addItem(QString::fromStdString(gpuTypeToString(gpu)));
@@ -308,13 +308,13 @@ void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
     std::cout << "Selected motherboard type: " << index << std::endl;
 
     ConfigManager::MotherboardType type = static_cast<ConfigManager::MotherboardType>(index);
-    auto gpus = configManager.getCompatibleGPUs(type);
+    auto gpus = configManager.getCompatibleGPUs();
+    auto rams = configManager.getCompatibleRAMs();
     auto cpus = configManager.getCompatibleCPUs(type);
-    auto rams = configManager.getCompatibleRAMs(type);
 
     ui->listWidgetProcessor->clear();
     ui->listWidgetGPU->clear();
-    ui->listWidgetGPU->clear();
+    ui->listWidgetRAM->clear();
 
     for (auto gpu : gpus)
     {
@@ -360,6 +360,7 @@ void MainWindow::on_pushButtonAddProcessor_clicked()
 void MainWindow::on_pushButtonAddRAM_clicked()
 {
     std::cout << "MainWindow::on_PushButtonAddRAM_clicked" << std::endl;
+
     if (!facade->isSceneSet())
     {
         QErrorMessage err(this);
@@ -411,6 +412,7 @@ void MainWindow::on_pushButtonAddRAM_clicked()
 void MainWindow::on_pushButtonAddGPU_clicked()
 {
     std::cout << "MainWindow::on_PushButtonAddGPU_clicked" << std::endl;
+
     if (!facade->isSceneSet())
     {
         QErrorMessage err(this);

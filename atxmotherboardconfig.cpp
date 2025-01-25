@@ -10,9 +10,10 @@ Dot3D ATXMotherboardConfig::getEndOfPlate() const
     return endOfPlate;
 }
 
-Dot3D ATXMotherboardConfig::getRamSlotPosition(ATXMotherboardConfig::RAMSlot slot) const
+Dot3D ATXMotherboardConfig::getRamSlotPosition(int slot) const
 {
-    switch(slot)
+    RAMSlot slotType = static_cast<RAMSlot>(slot);
+    switch(slotType)
     {
     case RAMSlot::B1:
         return DDR4_DIMM_B1_offset;

@@ -5,7 +5,7 @@
 #include <map>
 #include "mathelems.hpp"
 #include "config.hpp"
-#include "motherboardprimitives.hpp"
+#include "componentprimitives.hpp"
 #include "basemotherboardconfig.hpp"
 
 // PERIPHERIA
@@ -129,30 +129,30 @@ public:
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::B1), false}, {static_cast<int>(RAMSlot::B2), false}, {static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::A2), false}};
     }
 
-    Dot3D getRamSlotPosition(RAMSlot slot) const;
+    Dot3D getRamSlotPosition(int slot) const override;
 
     // peripheria
-    componentConfig HDMI_DP;
-    componentConfig BIOS_FLBK;
-    componentConfig U32G2_1_4;
-    componentConfig LAN2_U32G2_56;
-    componentConfig U3252_C8_LAN1_U32G2_7;
-    componentConfig M2_WIFI;
-    componentConfig AUDIO;
+    ComponentConfig HDMI_DP;
+    ComponentConfig BIOS_FLBK;
+    ComponentConfig U32G2_1_4;
+    ComponentConfig LAN2_U32G2_56;
+    ComponentConfig U3252_C8_LAN1_U32G2_7;
+    ComponentConfig M2_WIFI;
+    ComponentConfig AUDIO;
 
     // processor
-    componentConfig socketM4;
+    ComponentConfig socketM4;
 
     // RAM
-    componentConfig DDR4_DIMM_B1;
-    componentConfig DDR4_DIMM_B2;
-    componentConfig DDR4_DIMM_A1;
-    componentConfig DDR4_DIMM_A2;
+    ComponentConfig DDR4_DIMM_B1;
+    ComponentConfig DDR4_DIMM_B2;
+    ComponentConfig DDR4_DIMM_A1;
+    ComponentConfig DDR4_DIMM_A2;
 
     // GPU
-    componentConfig PCIEX16_1;
-    componentConfig PCIEX16_2;
-    componentConfig PCIEX16_3;
+    ComponentConfig PCIEX16_1;
+    ComponentConfig PCIEX16_2;
+    ComponentConfig PCIEX16_3;
 
     // offset for placing the RAM block in the DDR4 socket
     Dot3D DDR4_DIMM_B1_offset;

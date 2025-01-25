@@ -557,7 +557,7 @@ void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(miniITXConfig.PCIEX16_1, "MINIITX_PCIEX16_1", PolygonModel::MINIITX_PCIEX16_1);
 }
 
-void SceneInf::addMotherboardComponent(componentConfig &config, QString modelName, PolygonModel::model_t modelType)
+void SceneInf::addMotherboardComponent(ComponentConfig &config, QString modelName, PolygonModel::model_t modelType)
 {
     std::vector<Vertex> vertices;
     std::vector<Facet> facets;
