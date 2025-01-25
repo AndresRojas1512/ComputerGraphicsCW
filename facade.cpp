@@ -88,6 +88,7 @@ int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager
     std::cout << "--> slot: " << slotIndex << std::endl;
     Dot3D motherboardOffset = motherboardConfig->getRamSlotPosition(slotIndex);
     ComponentConfig ramBlock = ramConfig.getRAMConfig(ramType, motherboardOffset);
+    // addMotherboardComponnent
     std::cout << "-->" << ramBlock;
     return 0;
 }

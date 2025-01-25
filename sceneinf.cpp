@@ -574,3 +574,31 @@ void SceneInf::addMotherboardComponent(ComponentConfig &config, QString modelNam
     layoutComponent.setModelNum(modelsNum);
     addModel(layoutComponent);
 }
+
+void SceneInf::addRAMBlock(ComponentConfig &config, QString modelName, ConfigManager::RAMType RAMType)
+{
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+    for (auto &p : config.parallelepipeds)
+    {
+        addParallelepiped(vertices, facets, p.x, p.y, p.z, p.width, p.height, p.depth);
+    }
+    for (auto &f : config.frames)
+    {
+        addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
+    }
+    PolygonModel layoutComponent(vertices, facets, modelName);
+    // layoutComponent.setModelType(modelType);
+    layoutComponent.setModelNum(modelsNum);
+    addModel(layoutComponent);
+}
+
+void SceneInf::addGPUBlock(ComponentConfig &config, QString modelName, ConfigManager::GPUType GPUType)
+{
+
+}
+
+void SceneInf::addCPUBlock(ComponentConfig &config, QString modelName, ConfigManager::CPUType CPUType)
+{
+
+}

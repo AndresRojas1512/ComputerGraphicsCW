@@ -15,6 +15,7 @@
 #include "atxmotherboardconfig.hpp"
 #include "miniitxmotherboardconfig.hpp"
 #include "configmanager.hpp"
+#include "configmanager.hpp"
 
 class SceneInf
 {
@@ -75,7 +76,9 @@ public:
     std::vector<PolygonModel> getModels() const;
 
     void addMotherboardComponent(ComponentConfig &config, QString modelName, PolygonModel::model_t modelType);
-
+    void addRAMBlock(ComponentConfig &config, QString modelName, ConfigManager::RAMType RAMType);
+    void addGPUBlock(ComponentConfig &config, QString modelName, ConfigManager::GPUType GPUType);
+    void addCPUBlock(ComponentConfig &config, QString modelName, ConfigManager::CPUType CPUType);
 private:
     size_t width, height;
     int type;
