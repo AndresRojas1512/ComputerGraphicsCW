@@ -72,6 +72,7 @@ public:
         std::cout << "ATXMotherboardConfig::ATXMotherboardConfig" << std::endl;
 
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::B1), false}, {static_cast<int>(RAMSlot::B2), false}, {static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::A2), false}};
+        gpuSlotsOccupied = {{static_cast<int>(GPUSlot::A1), false}, {static_cast<int>(GPUSlot::A2), false}, {static_cast<int>(GPUSlot::A3), false}};
     }
 
     Dot3D getRamSlotPosition(int slot) const override;
@@ -116,6 +117,10 @@ public:
     Dot3D PCIEX16_1_offset;
     Dot3D PCIEX16_2_offset;
     Dot3D PCIEX16_3_offset;
+    Dot3D PCIEX16_1_ACC_offset; // TODO
+    Dot3D PCIEX16_2_ACC_offset; // TODO
+    Dot3D PCIEX16_3_ACC_offset; // TODO
+
     // offset for placing the processor in the processor socket
     Dot3D CPU_offset;
 

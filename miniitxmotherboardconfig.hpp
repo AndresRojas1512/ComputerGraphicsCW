@@ -17,6 +17,11 @@ public:
         B1
     };
 
+    enum class GPUSlot
+    {
+        A1
+    };
+
     MiniITXMotherboardConfig(const Dot3D &startOfPlate_, const Dot3D &endOfPlate_)
         : BaseMotherboardConfig(startOfPlate_, endOfPlate_),
         // peripheria
@@ -43,6 +48,7 @@ public:
     {
         std::cout << "MiniITXMotherboardConfig::MiniITXMotherboardConfig" << std::endl;
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::B1), false}};
+        gpuSlotsOccupied = {{static_cast<int>(GPUSlot::A1), false}};
     }
 
     Dot3D getRamSlotPosition(int slot) const override;

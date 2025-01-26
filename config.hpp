@@ -352,6 +352,55 @@
 #define RAM_32GB_ACC_WIDTH 2
 #define RAM_32GB_ACC_HEIGHT 360
 
+
+
+/*
+ * ======================= GPU 4G DIMENSIONS =======================
+*/
+#define GPU_4GB_DEPTH 30 * SIZE_SC
+#define GPU_4GB_WIDTH 260
+#define GPU_4GB_HEIGHT 6
+
+#define GPU_4GB_ACC_DEPTH 35
+#define GPU_4GB_ACC_WIDTH 2
+#define GPU_4GB_ACC_HEIGHT 40
+
+/*
+ * ======================= GPU 6G DIMENSIONS =======================
+*/
+#define GPU_6GB_DEPTH 30 * SIZE_SC
+#define GPU_6GB_WIDTH 260
+#define GPU_6GB_HEIGHT 6
+
+#define GPU_6GB_ACC_DEPTH 35
+#define GPU_6GB_ACC_WIDTH 2
+#define GPU_6GB_ACC_HEIGHT 40
+
+
+/*
+ * ======================= GPU 8G DIMENSIONS =======================
+*/
+#define GPU_8GB_DEPTH 30 * SIZE_SC
+#define GPU_8GB_WIDTH 260
+#define GPU_8GB_HEIGHT 6
+
+#define GPU_8GB_ACC_DEPTH 35
+#define GPU_8GB_ACC_WIDTH 2
+#define GPU_8GB_ACC_HEIGHT 170
+
+/*
+ * ======================= GPU 16G DIMENSIONS =======================
+*/
+#define GPU_16GB_DEPTH 30 * SIZE_SC
+#define GPU_16GB_WIDTH 260
+#define GPU_16GB_HEIGHT 6
+
+#define GPU_32GB_ACC_DEPTH 35
+#define GPU_32GB_ACC_WIDTH 2
+#define GPU_32GB_ACC_HEIGHT 360
+
+
+
 /*
  * ======================= ATX COLORS =======================
 */

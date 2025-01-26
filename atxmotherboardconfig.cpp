@@ -26,7 +26,6 @@ Dot3D ATXMotherboardConfig::getRamSlotPosition(int slot) const
     }
 }
 
-
 Dot3D ATXMotherboardConfig::getRamAccSlotPosition(int slot) const
 {
     RAMSlot slotType = static_cast<RAMSlot>(slot);
@@ -103,6 +102,7 @@ void ATXMotherboardConfig::occupyGpuSlot(int slot)
 
 QList<int> ATXMotherboardConfig::getAvailableGpuSlots()
 {
+    std::cout << "ATXMotherboardConfig::getAvailableGpuSlots" << std::endl;
     QList<int> availableSlots;
     for (auto& slot : gpuSlotsOccupied)
     {

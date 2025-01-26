@@ -30,6 +30,14 @@ public:
         GPU_16GB
     };
 
+    enum class GPUAccessoriesType
+    {
+        GPU_4GB_ACC,
+        GPU_6GB_ACC,
+        GPU_8GB_ACC,
+        GPU_16GB_ACC
+    };
+
     enum class RAMType
     {
         RAM_4GB,

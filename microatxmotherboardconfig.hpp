@@ -68,6 +68,7 @@ public:
     {
         std::cout << "MicroATXMotherboardConfig::MicroATXMotherboardConfig" << std::endl;
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::A2), false}, {static_cast<int>(RAMSlot::B1), false}, {static_cast<int>(RAMSlot::B2), false}};
+        gpuSlotsOccupied = {{static_cast<int>(GPUSlot::A1), false}, {static_cast<int>(GPUSlot::A2), false}};
     }
 
     Dot3D getRamSlotPosition(int slot) const override;
