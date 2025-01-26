@@ -164,12 +164,21 @@
 #define RAM_4GB_WIDTH 6
 #define RAM_4GB_HEIGHT 410
 
+#define RAM_4G_ACC_DEPTH 35
+#define RAM_4G_ACC_WIDTH 2
+#define RAM_4G_ACC_HEIGHT 40
+
 /*
  * ======================= RAM 8G DIMENSIONS =======================
 */
 #define RAM_8GB_DEPTH 30 * SIZE_SC
 #define RAM_8GB_WIDTH 6
 #define RAM_8GB_HEIGHT 410
+
+#define RAM_8G_ACC_DEPTH 35
+#define RAM_8G_ACC_WIDTH 2
+#define RAM_8G_ACC_HEIGHT 40
+
 
 /*
  * ======================= RAM 16G DIMENSIONS =======================

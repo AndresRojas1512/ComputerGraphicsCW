@@ -142,6 +142,10 @@ public:
         DDR4_DIMM_A2_offset(11, 22, 33),
         DDR4_DIMM_B1_offset(111, 222, 333),
         DDR4_DIMM_B2_offset(1111, 2222, 3333),
+        DDR4_DIMM_A1_ACC_offset(10, 20, 30),
+        DDR4_DIMM_A2_ACC_offset(100, 200, 300),
+        DDR4_DIMM_B1_ACC_offset(1000, 2000, 3000),
+        DDR4_DIMM_B2_ACC_offset(10000, 20000, 30000),
         // GPU slots offset
         PCIEX16_1_offset(1, 2, 3),
         PCIEX16_2_offset(11, 22, 33),
@@ -153,7 +157,10 @@ public:
     }
 
     Dot3D getRamSlotPosition(int slot) const override;
+    Dot3D getRamAccSlotPosition(int slot) const override;
+
     Dot3D getGpuSlotPosition(int slot) const override;
+
     Dot3D getCpuSlotPosition(void) const override;
 
     // peripheria
@@ -181,6 +188,11 @@ public:
     Dot3D DDR4_DIMM_A2_offset;
     Dot3D DDR4_DIMM_B1_offset;
     Dot3D DDR4_DIMM_B2_offset;
+    Dot3D DDR4_DIMM_A1_ACC_offset;
+    Dot3D DDR4_DIMM_A2_ACC_offset;
+    Dot3D DDR4_DIMM_B1_ACC_offset;
+    Dot3D DDR4_DIMM_B2_ACC_offset;
+
 
     // offset for placing the GPU block in the PCIEX16 socket
     Dot3D PCIEX16_1_offset;

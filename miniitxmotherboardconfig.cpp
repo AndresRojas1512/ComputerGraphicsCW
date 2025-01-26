@@ -22,6 +22,18 @@ Dot3D MiniITXMotherboardConfig::getRamSlotPosition(int slot) const
     }
 }
 
+Dot3D MiniITXMotherboardConfig::getRamAccSlotPosition(int slot) const
+{
+    RAMSlot slotType = static_cast<RAMSlot>(slot);
+    switch(slotType)
+    {
+    case RAMSlot::A1:
+        return DDR4_DIMM_A1_ACC_offset;
+    case RAMSlot::B1:
+        return DDR4_DIMM_B1_ACC_offset;
+    }
+}
+
 Dot3D MiniITXMotherboardConfig::getGpuSlotPosition(int slot) const
 {
     return PCIEX16_1_offset;

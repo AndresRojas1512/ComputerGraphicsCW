@@ -90,10 +90,36 @@ int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager
     std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
     std::cout << "--> ram type: " << ramTypeToString(RAMType) << std::endl;
     std::cout << "--> slot: " << slotIndex << std::endl;
+
+    int splitIncrement = 0;
+    switch (RAMType)
+    {
+    case (ConfigManager::RAMType::RAM_4GB):
+        splitIncrement = 52;
+        break;
+    case (ConfigManager::RAMType::RAM_8GB):
+        splitIncrement = 6;
+        break;
+    case (ConfigManager::RAMType::RAM_16GB):
+        splitIncrement = 0;
+        break;
+    case (ConfigManager::RAMType::RAM_32GB):
+        splitIncrement = 0;
+        break;
+    };
+
+    ConfigManager::RAMAccessoriesType RAMAccType = configManager.mapAccessoryRAM(RAMType);
+
     Dot3D motherboardOffset = motherboardConfig->getRamSlotPosition(slotIndex);
+    Dot3D motherboardAccOffset = motherboardConfig->getRamAccSlotPosition(slotIndex);
+
     ComponentConfig ramBlock = ramConfig.getRAMConfig(RAMType, motherboardOffset);
+    ComponentConfig ramAccBlock = ramConfig.getRAMAccConfig(RAMAccType, motherboardAccOffset, splitIncrement);
+
     scene->addRAMBlock(ramBlock, "RAM_BLOCK", RAMType);
-    std::cout << "-->" << ramBlock;
+    scene->addRAMAccBlock(ramAccBlock, "RAM_ACC_BLOCK", RAMAccType);
+
+    // std::cout << "-->" << ramBlock;
     return 0;
 }
 

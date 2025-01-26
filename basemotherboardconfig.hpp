@@ -30,7 +30,10 @@ public:
     virtual Dot3D getEndOfPlate() const = 0;
 
     virtual Dot3D getRamSlotPosition(int slot) const = 0;
+    virtual Dot3D getRamAccSlotPosition(int slot) const = 0;
+
     virtual Dot3D getGpuSlotPosition(int slot) const = 0;
+
     virtual Dot3D getCpuSlotPosition(void) const = 0;
 
 protected:

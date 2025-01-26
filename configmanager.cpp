@@ -15,6 +15,21 @@ const std::vector<ConfigManager::CPUType>& ConfigManager::getCompatibleCPUs(Conf
     return cpuCompatibility.at(type);
 }
 
+ConfigManager::RAMAccessoriesType ConfigManager::mapAccessoryRAM(ConfigManager::RAMType type)
+{
+    switch (type)
+    {
+    case (ConfigManager::RAMType::RAM_4GB):
+        return ConfigManager::RAMAccessoriesType::RAM_4GB_ACC;
+    case (ConfigManager::RAMType::RAM_8GB):
+        return ConfigManager::RAMAccessoriesType::RAM_8GB_ACC;
+    case (ConfigManager::RAMType::RAM_16GB):
+        return ConfigManager::RAMAccessoriesType::RAM_16GB_ACC;
+    case (ConfigManager::RAMType::RAM_32GB):
+        return ConfigManager::RAMAccessoriesType::RAM_32GB_ACC;
+    }
+}
+
 std::string motherboardTypeToString(ConfigManager::MotherboardType type)
 {
     switch (type)

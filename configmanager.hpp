@@ -38,6 +38,14 @@ public:
         RAM_32GB
     };
 
+    enum class RAMAccessoriesType
+    {
+        RAM_4GB_ACC,
+        RAM_8GB_ACC,
+        RAM_16GB_ACC,
+        RAM_32GB_ACC
+    };
+
     ConfigManager()
     {
         // GPU compatibility
@@ -75,6 +83,8 @@ public:
     const std::vector<RAMType>& getCompatibleRAMs(void) const;
 
     const std::vector<CPUType>& getCompatibleCPUs(MotherboardType type) const;
+
+    RAMAccessoriesType mapAccessoryRAM(RAMType type);
 
 private:
     std::vector<GPUType> allGPUs;

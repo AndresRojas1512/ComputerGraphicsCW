@@ -77,6 +77,8 @@ public:
 
     void addMotherboardComponent(ComponentConfig &config, QString modelName, PolygonModel::model_t modelType);
     void addRAMBlock(ComponentConfig &config, QString modelName, ConfigManager::RAMType RAMType);
+    void addRAMAccBlock(ComponentConfig &config, QString accName, ConfigManager::RAMAccessoriesType RAMAccType);
+
     void addGPUBlock(ComponentConfig &config, QString modelName, ConfigManager::GPUType GPUType);
     void addCPUBlock(ComponentConfig &config, QString modelName, ConfigManager::CPUType CPUType);
 private:

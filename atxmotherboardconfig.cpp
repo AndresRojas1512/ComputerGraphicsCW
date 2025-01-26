@@ -26,6 +26,23 @@ Dot3D ATXMotherboardConfig::getRamSlotPosition(int slot) const
     }
 }
 
+
+Dot3D ATXMotherboardConfig::getRamAccSlotPosition(int slot) const
+{
+    RAMSlot slotType = static_cast<RAMSlot>(slot);
+    switch(slotType)
+    {
+    case RAMSlot::B1:
+        return DDR4_DIMM_B1_ACC_offset;
+    case RAMSlot::B2:
+        return DDR4_DIMM_B2_ACC_offset;
+    case RAMSlot::A1:
+        return DDR4_DIMM_A1_ACC_offset;
+    case RAMSlot::A2:
+        return DDR4_DIMM_A2_ACC_offset;
+    }
+}
+
 Dot3D ATXMotherboardConfig::getGpuSlotPosition(int slot) const
 {
     GPUSlot slotType = static_cast<GPUSlot>(slot);

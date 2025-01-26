@@ -114,6 +114,10 @@ public:
         RAM_8GB_BLOCK,
         RAM_16GB_BLOCK,
         RAM_32GB_BLOCK,
+        RAM_4GB_ACC_BLOCK,
+        RAM_8GB_ACC_BLOCK,
+        RAM_16GB_ACC_BLOCK,
+        RAM_32GB_ACC_BLOCK,
         // GPU type
         GPU_4GB_BLOCK,
         GPU_6GB_BLOCK,
@@ -144,5 +148,7 @@ PolygonModel::model_t parseRAMModel(ConfigManager::RAMType RAMType);
 PolygonModel::model_t parseGPUModel(ConfigManager::GPUType GPUType);
 
 PolygonModel::model_t parseCPUModel(ConfigManager::CPUType CPUType);
+
+PolygonModel::model_t parseRAMAccModel(ConfigManager::RAMAccessoriesType RAMAccType);
 
 #endif // POLYGONMODEL_H

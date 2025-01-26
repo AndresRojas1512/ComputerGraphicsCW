@@ -80,6 +80,21 @@ PolygonModel::model_t parseRAMModel(ConfigManager::RAMType RAMType)
     }
 }
 
+PolygonModel::model_t parseRAMAccModel(ConfigManager::RAMAccessoriesType RAMAccType)
+{
+    switch(RAMAccType)
+    {
+    case ConfigManager::RAMAccessoriesType::RAM_4GB_ACC:
+        return PolygonModel::model_t::RAM_4GB_ACC_BLOCK;
+    case ConfigManager::RAMAccessoriesType::RAM_8GB_ACC:
+        return PolygonModel::model_t::RAM_8GB_ACC_BLOCK;
+    case ConfigManager::RAMAccessoriesType::RAM_16GB_ACC:
+        return PolygonModel::model_t::RAM_16GB_ACC_BLOCK;
+    case ConfigManager::RAMAccessoriesType::RAM_32GB_ACC:
+        return PolygonModel::model_t::RAM_32GB_ACC_BLOCK;
+    }
+}
+
 PolygonModel::model_t parseGPUModel(ConfigManager::GPUType GPUType)
 {
     switch(GPUType)

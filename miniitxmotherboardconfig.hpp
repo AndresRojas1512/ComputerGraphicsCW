@@ -106,6 +106,8 @@ public:
         // RAM slots offset
         DDR4_DIMM_A1_offset(1, 2, 3),
         DDR4_DIMM_B1_offset(11, 22, 33),
+        DDR4_DIMM_A1_ACC_offset(10, 20, 30),
+        DDR4_DIMM_B1_ACC_offset(100, 200, 300),
         // GPU slots offset
         PCIEX16_1_offset(1, 2, 3),
         // CPU slot offset
@@ -116,6 +118,8 @@ public:
     }
 
     Dot3D getRamSlotPosition(int slot) const override;
+    Dot3D getRamAccSlotPosition(int slot) const override;
+
     Dot3D getGpuSlotPosition(int slot) const override;
     Dot3D getCpuSlotPosition(void) const override;
 
@@ -135,6 +139,8 @@ public:
     // offset for placing the RAM block in the DDR4 socket
     Dot3D DDR4_DIMM_A1_offset;
     Dot3D DDR4_DIMM_B1_offset;
+    Dot3D DDR4_DIMM_A1_ACC_offset;
+    Dot3D DDR4_DIMM_B1_ACC_offset;
     // offset for placing the GPU block in the PCIEX16 socket
     Dot3D PCIEX16_1_offset;
     // offset for placing the CPU block int the CPU socket
