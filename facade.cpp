@@ -72,30 +72,41 @@ void Facade::setSceneInfMotherboard(ConfigManager::MotherboardType type)
 }
 
 // motherboard constructor
-int Facade::addProcessor()
+int Facade::addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager::CPUType CPUType) // TODO
 {
-    std::cout << "Facade::addProcessor" << std::endl;
-    std::vector<Vertex> vertices;
-    std::vector<Facet> facets;
+    std::cout << "Facade::addCPU" << std::endl;
+    std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
+    std::cout << "--> cpu type: " << cpuTypeToString(CPUType) << std::endl;
+    Dot3D motherboardOffset = motherboardConfig->getCpuSlotPosition();
+    ComponentConfig cpuBlock = cpuConfig.getCPUConfig(CPUType, motherboardOffset);
+    scene->addCPUBlock(cpuBlock, "CPU_BLOCK", CPUType);
+    std::cout << "-->" << cpuBlock;
     return 0;
 }
 
-int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType ramType, int slotIndex)
+int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType RAMType, int slotIndex) // TODO
 {
     std::cout << "Facade::addRAM" << std::endl;
     std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
-    std::cout << "--> ram type: " << ramTypeToString(ramType) << std::endl;
+    std::cout << "--> ram type: " << ramTypeToString(RAMType) << std::endl;
     std::cout << "--> slot: " << slotIndex << std::endl;
     Dot3D motherboardOffset = motherboardConfig->getRamSlotPosition(slotIndex);
-    ComponentConfig ramBlock = ramConfig.getRAMConfig(ramType, motherboardOffset);
-    // addMotherboardComponnent
+    ComponentConfig ramBlock = ramConfig.getRAMConfig(RAMType, motherboardOffset);
+    scene->addRAMBlock(ramBlock, "RAM_BLOCK", RAMType);
     std::cout << "-->" << ramBlock;
     return 0;
 }
 
-int Facade::addGPU()
+int Facade::addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager::GPUType GPUType, int slotIndex) // TODO
 {
     std::cout << "Facade::addGPU" << std::endl;
+    std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
+    std::cout << "--> gpu type: " << gpuTypeToString(GPUType) << std::endl;
+    std::cout << "--> slot: " << slotIndex << std::endl;
+    Dot3D motherboardOffset = motherboardConfig->getGpuSlotPosition(slotIndex);
+    ComponentConfig gpuBlock = gpuConfig.getGPUConfig(GPUType, motherboardOffset);
+    scene->addGPUBlock(gpuBlock, "GPU_BLOCK", GPUType);
+    std::cout << "-->" << gpuBlock;
     return 0;
 }
 

@@ -603,9 +603,9 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
 
     nanoseconds start2 = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
 
-    std::cout << "START DEBUG (borderBuffer)" << std::endl;
-    std::cout << "size: " << borderBuffer.size() << " x " << borderBuffer[0].size() << std::endl;
-    std::cout << "END DEBUG (borderBuffer)" << std::endl;
+    // std::cout << "START DEBUG (borderBuffer)" << std::endl;
+    // std::cout << "size: " << borderBuffer.size() << " x " << borderBuffer[0].size() << std::endl;
+    // std::cout << "END DEBUG (borderBuffer)" << std::endl;
 
     for (size_t i = 0; i < rect.size().width() - 1; i++)
     {

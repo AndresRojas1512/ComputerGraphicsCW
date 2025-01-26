@@ -116,6 +116,8 @@ public:
     }
 
     Dot3D getRamSlotPosition(int slot) const override;
+    Dot3D getGpuSlotPosition(int slot) const override;
+    Dot3D getCpuSlotPosition(void) const override;
 
     // peripheria
     ComponentConfig USB3_5;
@@ -144,6 +146,12 @@ public:
     bool isRamSlotAvailable(int slot) override;
     void occupyRamSlot(int slot) override;
     QList<int> getAvailableRamSlots() override;
+
+    bool isGpuSlotAvailable(int slot) override;
+    void occupyGpuSlot(int slot) override;
+    QList<int> getAvailableGpuSlots() override;
+
+    bool isCpuSlotAvailable(void) override;
 };
 
 #endif // MINIITXMOTHERBOARDCONFIG_HPP

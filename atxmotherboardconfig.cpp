@@ -26,6 +26,25 @@ Dot3D ATXMotherboardConfig::getRamSlotPosition(int slot) const
     }
 }
 
+Dot3D ATXMotherboardConfig::getGpuSlotPosition(int slot) const
+{
+    GPUSlot slotType = static_cast<GPUSlot>(slot);
+    switch(slotType)
+    {
+    case GPUSlot::A1:
+        return PCIEX16_1_offset;
+    case GPUSlot::A2:
+        return PCIEX16_2_offset;
+    case GPUSlot::A3:
+        return PCIEX16_3_offset;
+    }
+}
+
+Dot3D ATXMotherboardConfig::getCpuSlotPosition(void) const
+{
+    return CPU_offset;
+}
+
 bool ATXMotherboardConfig::isRamSlotAvailable(int slot)
 {
     return !ramSlotsOccupied[slot];
@@ -41,7 +60,6 @@ void ATXMotherboardConfig::occupyRamSlot(int slot)
 
 QList<int> ATXMotherboardConfig::getAvailableRamSlots()
 {
-    std::cout << "ATXMotherboardConfig::getAvailableRamSlots" << std::endl;
     QList<int> availableSlots;
     for (auto& slot : ramSlotsOccupied)
     {
@@ -51,6 +69,37 @@ QList<int> ATXMotherboardConfig::getAvailableRamSlots()
         }
     }
     return availableSlots;
+}
+
+bool ATXMotherboardConfig::isGpuSlotAvailable(int slot)
+{
+    return !gpuSlotsOccupied[slot];
+}
+
+void ATXMotherboardConfig::occupyGpuSlot(int slot)
+{
+    if (isGpuSlotAvailable(slot))
+    {
+        gpuSlotsOccupied[slot] = true;
+    }
+}
+
+QList<int> ATXMotherboardConfig::getAvailableGpuSlots()
+{
+    QList<int> availableSlots;
+    for (auto& slot : gpuSlotsOccupied)
+    {
+        if (!slot.second)
+        {
+            availableSlots.append(slot.first);
+        }
+    }
+    return availableSlots;
+}
+
+bool ATXMotherboardConfig::isCpuSlotAvailable(void)
+{
+    return !cpuSlotOccupied;
 }
 
 std::string atxRamSlotToString(ATXMotherboardConfig::RAMSlot slot)

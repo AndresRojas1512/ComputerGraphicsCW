@@ -22,6 +22,16 @@ Dot3D MiniITXMotherboardConfig::getRamSlotPosition(int slot) const
     }
 }
 
+Dot3D MiniITXMotherboardConfig::getGpuSlotPosition(int slot) const
+{
+    return PCIEX16_1_offset;
+}
+
+Dot3D MiniITXMotherboardConfig::getCpuSlotPosition(void) const
+{
+    return CPU_offset;
+}
+
 bool MiniITXMotherboardConfig::isRamSlotAvailable(int slot)
 {
     return !ramSlotsOccupied[slot];
@@ -40,6 +50,37 @@ QList<int> MiniITXMotherboardConfig::getAvailableRamSlots()
     std::cout << "MiniITXMotherboardConfig::getAvailableRamSlots" << std::endl;
     QList<int> availableSlots;
     for (auto& slot : ramSlotsOccupied)
+    {
+        if (!slot.second)
+        {
+            availableSlots.append(slot.first);
+        }
+    }
+    return availableSlots;
+}
+
+bool MiniITXMotherboardConfig::isGpuSlotAvailable(int slot)
+{
+    return !gpuSlotsOccupied[slot];
+}
+
+void MiniITXMotherboardConfig::occupyGpuSlot(int slot)
+{
+    if (isGpuSlotAvailable(slot))
+    {
+        gpuSlotsOccupied[slot] = true;
+    }
+}
+
+bool MiniITXMotherboardConfig::isCpuSlotAvailable(void)
+{
+    return !cpuSlotOccupied;
+}
+
+QList<int> MiniITXMotherboardConfig::getAvailableGpuSlots()
+{
+    QList<int> availableSlots;
+    for (auto& slot : gpuSlotsOccupied)
     {
         if (!slot.second)
         {

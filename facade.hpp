@@ -18,6 +18,8 @@
 #include "miniitxmotherboardconfig.hpp"
 #include "configmanager.hpp"
 #include "ramconfig.hpp"
+#include "gpuconfig.hpp"
+#include "cpuconfig.hpp"
 
 class Facade
 {
@@ -41,9 +43,9 @@ public:
     int addCylinder2(int xCell, int yCell);
 
     // add components motherboard constructor
-    int addProcessor();
-    int addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType ramType, int slotIndex);
-    int addGPU();
+    int addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager::CPUType CPUType);
+    int addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType RAMType, int slotIndex);
+    int addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager::GPUType GPUType, int slotIndex);
 
     void addLight(int xAngle, int yAngle);
 
@@ -70,6 +72,9 @@ private:
     Drawer *drawer;
     BaseMotherboardConfig *motherboardConfig = nullptr;
     RAMConfig ramConfig;
+    GPUConfig gpuConfig;
+    CPUConfig cpuConfig;
+
 
     void addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
                  int x1, int y1, int z1,

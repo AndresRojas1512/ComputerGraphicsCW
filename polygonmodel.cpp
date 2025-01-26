@@ -64,3 +64,45 @@ std::ostream &operator<<(std::ostream &os, const PolygonModel &model)
        << "Number of facets: " << model.facets.size() << std::endl;
     return os;
 }
+
+PolygonModel::model_t parseRAMModel(ConfigManager::RAMType RAMType)
+{
+    switch(RAMType)
+    {
+    case ConfigManager::RAMType::RAM_4GB:
+        return PolygonModel::model_t::RAM_4GB_BLOCK;
+    case ConfigManager::RAMType::RAM_8GB:
+        return PolygonModel::model_t::RAM_8GB_BLOCK;
+    case ConfigManager::RAMType::RAM_16GB:
+        return PolygonModel::model_t::RAM_16GB_BLOCK;
+    case ConfigManager::RAMType::RAM_32GB:
+        return PolygonModel::model_t::RAM_32GB_BLOCK;
+    }
+}
+
+PolygonModel::model_t parseGPUModel(ConfigManager::GPUType GPUType)
+{
+    switch(GPUType)
+    {
+    case ConfigManager::GPUType::GPU_4GB:
+        return PolygonModel::model_t::GPU_4GB_BLOCK;
+    case ConfigManager::GPUType::GPU_6GB:
+        return PolygonModel::model_t::GPU_6GB_BLOCK;
+    case ConfigManager::GPUType::GPU_8GB:
+        return PolygonModel::model_t::GPU_8GB_BLOCK;
+    case ConfigManager::GPUType::GPU_16GB:
+        return PolygonModel::model_t::GPU_16GB_BLOCK;
+    }
+}
+
+PolygonModel::model_t parseCPUModel(ConfigManager::CPUType CPUType)
+{
+    switch(CPUType)
+    {
+    case ConfigManager::CPUType::Intel:
+        return PolygonModel::model_t::Intel_CPU;
+    case ConfigManager::CPUType::AMD:
+        return PolygonModel::model_t::AMD_CPU;
+    }
+}
+

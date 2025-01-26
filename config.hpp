@@ -58,10 +58,136 @@
 #define CYLINDER_COLOR          255, 255, 051
 #define CYLINDER_COLOR_SHADOW   255 - SHADOW_VAL, 255 - SHADOW_VAL, 051 - SHADOW_VAL
 
+
+/*
+ * ======================= ATX CONFIG =======================
+*/
+
+// PERIPHERIA SOCKETS
+#define ATX_HDMI_DP_OFFSET_X 0
+#define ATX_HDMI_DP_OFFSET_Y 18
+#define ATX_HDMI_DP_WIDTH 54
+#define ATX_HDMI_DP_HEIGHT 66
+
+#define ATX_BIOS_FLBK_OFFSET_X 0
+#define ATX_BIOS_FLBK_OFFSET_Y 95
+#define ATX_BIOS_FLBK_WIDTH 24
+#define ATX_BIOS_FLBK_HEIGHT 24
+
+#define ATX_U32G2_1_4_OFFSET_X 0
+#define ATX_U32G2_1_4_OFFSET_Y 144
+#define ATX_U32G2_1_4_WIDTH 72
+#define ATX_U32G2_1_4_HEIGHT 42
+
+#define ATX_LAN2_U32G2_56_OFFSET_X 0
+#define ATX_LAN2_U32G2_56_OFFSET_Y 198
+#define ATX_LAN2_U32G2_56_WIDTH 84
+#define ATX_LAN2_U32G2_56_HEIGHT 54
+
+#define ATX_U3252_C8_LAN1_U32G2_7_OFFSET_X 0
+#define ATX_U3252_C8_LAN1_U32G2_7_OFFSET_Y 264
+#define ATX_U3252_C8_LAN1_U32G2_7_WIDTH 84
+#define ATX_U3252_C8_LAN1_U32G2_7_HEIGHT 54
+
+#define ATX_M2_WIFI_OFFSET_X 0
+#define ATX_M2_WIFI_OFFSET_Y 324
+#define ATX_M2_WIFI_WIDTH 84
+#define ATX_M2_WIFI_HEIGHT 36
+
+#define ATX_AUDIO_OFFSET_X 0
+#define ATX_AUDIO_OFFSET_Y 372
+#define ATX_AUDIO_WIDTH 60
+#define ATX_AUDIO_HEIGHT 72
+
+// CPU SOCKET
+#define ATX_socketM4_OFFSET_X
+#define ATX_socketM4_OFFSET_Y
+
+// RAM SOCKETS
+#define ATX_DDR4_DIMM_WIDTH 24
+#define ATX_DDR4_DIMM_HEIGHT 420
+#define ATX_DDR4_DIMM_TOPFRAMEWIDTH 5
+#define ATX_DDR4_DIMM_BOTTOMFRAMEWIDTH 5
+#define ATX_DDR4_DIMM_LEFTFRAMEWIDTH 9
+#define ATX_DDR4_DIMM_RIGHTFRAMEWIDTH 9
+
+#define ATX_DDR4_DIMM_B1_OFFSET_X 546
+#define ATX_DDR4_DIMM_B1_OFFSET_Y 66
+
+#define ATX_DDR4_DIMM_B2_OFFSET_X 576
+#define ATX_DDR4_DIMM_B2_OFFSET_Y 66
+
+#define ATX_DDR4_DIMM_A1_OFFSET_X 606
+#define ATX_DDR4_DIMM_A1_OFFSET_Y 66
+
+#define ATX_DDR4_DIMM_A2_OFFSET_X 636
+#define ATX_DDR4_DIMM_A2_OFFSET_Y 66
+
+// GPU SOCKETS
+#define ATX_PCIEX16_WIDTH 270
+#define ATX_PCIEX16_HEIGHT 24
+#define ATX_PCIEX16_TOPFRAMEWIDTH 9
+#define ATX_PCIEX16_BOTTOMFRAMEWIDTH 9
+#define ATX_PCIEX16_LEFTFRAMEWIDTH 5
+#define ATX_PCIEX16_RIGHTFRAMEWIDTH 5
+
+#define ATX_PCIEX16_1_OFFSET_X 126
+#define ATX_PCIEX16_1_OFFSET_Y 528
+
+#define ATX_PCIEX16_2_OFFSET_X 126
+#define ATX_PCIEX16_2_OFFSET_Y 708
+
+#define ATX_PCIEX16_3_OFFSET_X 126
+#define ATX_PCIEX16_3_OFFSET_Y 828
+
+
+/*
+ * ======================= MICRO-ATX CONFIG =======================
+*/
+
+
+
+
+
+/*
+ * ======================= MINI-ITX CONFIG =======================
+*/
+
+
+
+
+
+/*
+ * ======================= RAM 4G DIMENSIONS =======================
+*/
+#define RAM_4GB_DEPTH 30 * SIZE_SC
+#define RAM_4GB_WIDTH 6
+#define RAM_4GB_HEIGHT 410
+
+/*
+ * ======================= RAM 8G DIMENSIONS =======================
+*/
+#define RAM_8GB_DEPTH 30 * SIZE_SC
+#define RAM_8GB_WIDTH 6
+#define RAM_8GB_HEIGHT 410
+
+/*
+ * ======================= RAM 16G DIMENSIONS =======================
+*/
+#define RAM_16GB_DEPTH 30 * SIZE_SC
+#define RAM_16GB_WIDTH 6
+#define RAM_16GB_HEIGHT 410
+
+/*
+ * ======================= RAM 32G DIMENSIONS =======================
+*/
+#define RAM_32GB_DEPTH 30 * SIZE_SC
+#define RAM_32GB_WIDTH 6
+#define RAM_32GB_HEIGHT 410
+
 /*
  * ======================= ATX COLORS =======================
 */
-
 
 // Peripheria
 #define ATX_MOTHERBOARD_COLOR 0, 128, 0 // green

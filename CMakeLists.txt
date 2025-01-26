@@ -91,7 +91,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         componentprimitives.hpp
         atxmotherboardconfig.hpp
         miniitxmotherboardconfig.hpp
-        processorconfig.hpp
+        cpuconfig.hpp
 
         configmanager.hpp
         configmanager.cpp
@@ -103,6 +103,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ramconfig.cpp
         componentprimitives.cpp
         gpuconfig.hpp
+        cpuconfig.cpp
+        gpuconfig.cpp
 
 
     )

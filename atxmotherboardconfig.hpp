@@ -8,83 +8,6 @@
 #include "componentprimitives.hpp"
 #include "basemotherboardconfig.hpp"
 
-// PERIPHERIA
-#define ATX_HDMI_DP_OFFSET_X 0
-#define ATX_HDMI_DP_OFFSET_Y 18
-#define ATX_HDMI_DP_WIDTH 54
-#define ATX_HDMI_DP_HEIGHT 66
-
-#define ATX_BIOS_FLBK_OFFSET_X 0
-#define ATX_BIOS_FLBK_OFFSET_Y 95
-#define ATX_BIOS_FLBK_WIDTH 24
-#define ATX_BIOS_FLBK_HEIGHT 24
-
-#define ATX_U32G2_1_4_OFFSET_X 0
-#define ATX_U32G2_1_4_OFFSET_Y 144
-#define ATX_U32G2_1_4_WIDTH 72
-#define ATX_U32G2_1_4_HEIGHT 42
-
-#define ATX_LAN2_U32G2_56_OFFSET_X 0
-#define ATX_LAN2_U32G2_56_OFFSET_Y 198
-#define ATX_LAN2_U32G2_56_WIDTH 84
-#define ATX_LAN2_U32G2_56_HEIGHT 54
-
-#define ATX_U3252_C8_LAN1_U32G2_7_OFFSET_X 0
-#define ATX_U3252_C8_LAN1_U32G2_7_OFFSET_Y 264
-#define ATX_U3252_C8_LAN1_U32G2_7_WIDTH 84
-#define ATX_U3252_C8_LAN1_U32G2_7_HEIGHT 54
-
-#define ATX_M2_WIFI_OFFSET_X 0
-#define ATX_M2_WIFI_OFFSET_Y 324
-#define ATX_M2_WIFI_WIDTH 84
-#define ATX_M2_WIFI_HEIGHT 36
-
-#define ATX_AUDIO_OFFSET_X 0
-#define ATX_AUDIO_OFFSET_Y 372
-#define ATX_AUDIO_WIDTH 60
-#define ATX_AUDIO_HEIGHT 72
-
-// processor
-#define ATX_socketM4_OFFSET_X
-#define ATX_socketM4_OFFSET_Y
-
-// RAM
-#define ATX_DDR4_DIMM_WIDTH 24
-#define ATX_DDR4_DIMM_HEIGHT 420
-#define ATX_DDR4_DIMM_TOPFRAMEWIDTH 5
-#define ATX_DDR4_DIMM_BOTTOMFRAMEWIDTH 5
-#define ATX_DDR4_DIMM_LEFTFRAMEWIDTH 9
-#define ATX_DDR4_DIMM_RIGHTFRAMEWIDTH 9
-
-#define ATX_DDR4_DIMM_B1_OFFSET_X 546
-#define ATX_DDR4_DIMM_B1_OFFSET_Y 66
-
-#define ATX_DDR4_DIMM_B2_OFFSET_X 576
-#define ATX_DDR4_DIMM_B2_OFFSET_Y 66
-
-#define ATX_DDR4_DIMM_A1_OFFSET_X 606
-#define ATX_DDR4_DIMM_A1_OFFSET_Y 66
-
-#define ATX_DDR4_DIMM_A2_OFFSET_X 636
-#define ATX_DDR4_DIMM_A2_OFFSET_Y 66
-
-// GPU
-#define ATX_PCIEX16_WIDTH 270
-#define ATX_PCIEX16_HEIGHT 24
-#define ATX_PCIEX16_TOPFRAMEWIDTH 9
-#define ATX_PCIEX16_BOTTOMFRAMEWIDTH 9
-#define ATX_PCIEX16_LEFTFRAMEWIDTH 5
-#define ATX_PCIEX16_RIGHTFRAMEWIDTH 5
-
-#define ATX_PCIEX16_1_OFFSET_X 126
-#define ATX_PCIEX16_1_OFFSET_Y 528
-
-#define ATX_PCIEX16_2_OFFSET_X 126
-#define ATX_PCIEX16_2_OFFSET_Y 708
-
-#define ATX_PCIEX16_3_OFFSET_X 126
-#define ATX_PCIEX16_3_OFFSET_Y 828
-
 class ATXMotherboardConfig : public BaseMotherboardConfig
 {
 public:
@@ -95,6 +18,13 @@ public:
         B2,
         A1,
         A2
+    };
+
+    enum class GPUSlot
+    {
+        A1,
+        A2,
+        A3
     };
 
     ATXMotherboardConfig(const Dot3D &startOfPlate_, const Dot3D &endOfPlate_)
@@ -124,16 +54,16 @@ public:
         PCIEX16_2({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_PCIEX16_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_2_OFFSET_Y, BASE_Z + 40, ATX_PCIEX16_WIDTH, ATX_PCIEX16_HEIGHT, 40, ATX_PCIEX16_TOPFRAMEWIDTH, ATX_PCIEX16_BOTTOMFRAMEWIDTH, ATX_PCIEX16_LEFTFRAMEWIDTH, ATX_PCIEX16_RIGHTFRAMEWIDTH)}),
         PCIEX16_3({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_PCIEX16_3_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_3_OFFSET_Y, BASE_Z + 40, ATX_PCIEX16_WIDTH, ATX_PCIEX16_HEIGHT, 40, ATX_PCIEX16_TOPFRAMEWIDTH, ATX_PCIEX16_BOTTOMFRAMEWIDTH, ATX_PCIEX16_LEFTFRAMEWIDTH, ATX_PCIEX16_RIGHTFRAMEWIDTH)}),
         // RAM slots offset
-        DDR4_DIMM_B1_offset(1, 2, 3),
-        DDR4_DIMM_B2_offset(11, 22, 33),
-        DDR4_DIMM_A1_offset(111, 222, 333),
-        DDR4_DIMM_A2_offset(1111, 2222, 3333),
+        DDR4_DIMM_B1_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
+        DDR4_DIMM_B2_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_Y, BASE_Z + RAM_4GB_DEPTH),
+        DDR4_DIMM_A1_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_A1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_A1_OFFSET_Y, BASE_Z + RAM_4GB_DEPTH),
+        DDR4_DIMM_A2_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_A2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_A2_OFFSET_Y, BASE_Z + RAM_4GB_DEPTH),
         // GPU slots offset
-        PCIEX16_1_offset(1, 2, 3),
-        PCIEX16_2_offset(11, 22, 33),
-        PCIEX16_3_offset(111, 222, 333),
+        PCIEX16_1_offset(startOfPlate_.getXCoordinate() + ATX_PCIEX16_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_1_OFFSET_Y, BASE_Z + 40),
+        PCIEX16_2_offset(startOfPlate_.getXCoordinate() + ATX_PCIEX16_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_2_OFFSET_Y, BASE_Z + 40),
+        PCIEX16_3_offset(startOfPlate_.getXCoordinate() + ATX_PCIEX16_3_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_3_OFFSET_Y, BASE_Z + 40),
         // CPU slot offset
-        CPU_offset(1, 2, 3)
+        CPU_offset(1, 2, 3) // TODO
     {
         std::cout << "ATXMotherboardConfig::ATXMotherboardConfig" << std::endl;
 
@@ -141,6 +71,8 @@ public:
     }
 
     Dot3D getRamSlotPosition(int slot) const override;
+    Dot3D getGpuSlotPosition(int slot) const override;
+    Dot3D getCpuSlotPosition(void) const override;
 
     // peripheria
     ComponentConfig HDMI_DP;
@@ -153,13 +85,11 @@ public:
 
     // processor
     ComponentConfig socketM4;
-
     // RAM
     ComponentConfig DDR4_DIMM_B1;
     ComponentConfig DDR4_DIMM_B2;
     ComponentConfig DDR4_DIMM_A1;
     ComponentConfig DDR4_DIMM_A2;
-
     // GPU
     ComponentConfig PCIEX16_1;
     ComponentConfig PCIEX16_2;
@@ -170,12 +100,10 @@ public:
     Dot3D DDR4_DIMM_B2_offset;
     Dot3D DDR4_DIMM_A1_offset;
     Dot3D DDR4_DIMM_A2_offset;
-
     // offset for placing the GPU block in the PCIEX16 socket
     Dot3D PCIEX16_1_offset;
     Dot3D PCIEX16_2_offset;
     Dot3D PCIEX16_3_offset;
-
     // offset for placing the processor in the processor socket
     Dot3D CPU_offset;
 
@@ -185,6 +113,12 @@ public:
     bool isRamSlotAvailable(int slot) override;
     void occupyRamSlot(int slot) override;
     QList<int> getAvailableRamSlots() override;
+
+    bool isGpuSlotAvailable(int slot) override;
+    void occupyGpuSlot(int slot) override;
+    QList<int> getAvailableGpuSlots() override;
+
+    bool isCpuSlotAvailable(void) override;
 };
 
 std::string atxRamSlotToString(ATXMotherboardConfig::RAMSlot slot);

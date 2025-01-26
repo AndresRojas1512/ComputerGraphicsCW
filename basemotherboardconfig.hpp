@@ -20,15 +20,25 @@ public:
     virtual void occupyRamSlot(int slot) = 0;
     virtual QList<int> getAvailableRamSlots() = 0;
 
+    virtual bool isGpuSlotAvailable(int slot) = 0;
+    virtual void occupyGpuSlot(int slot) = 0;
+    virtual QList<int> getAvailableGpuSlots() = 0;
+
+    virtual bool isCpuSlotAvailable(void) = 0;
+
     virtual Dot3D getStartOfPlate() const = 0;
     virtual Dot3D getEndOfPlate() const = 0;
 
     virtual Dot3D getRamSlotPosition(int slot) const = 0;
+    virtual Dot3D getGpuSlotPosition(int slot) const = 0;
+    virtual Dot3D getCpuSlotPosition(void) const = 0;
 
 protected:
     Dot3D startOfPlate;
     Dot3D endOfPlate;
     std::map<int, bool> ramSlotsOccupied;
+    std::map<int, bool> gpuSlotsOccupied;
+    bool cpuSlotOccupied = false;
 };
 
 #endif // BASEMOTHERBOARDCONFIG_HPP

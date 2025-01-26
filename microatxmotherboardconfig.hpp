@@ -106,6 +106,12 @@ public:
         B2
     };
 
+    enum class GPUSlot
+    {
+        A1,
+        A2,
+    };
+
     MicroATXMotherboardConfig(const Dot3D &startOfPlate_, const Dot3D &endOfPlate_)
         : BaseMotherboardConfig(startOfPlate_, endOfPlate_),
         // peripheria
@@ -147,6 +153,8 @@ public:
     }
 
     Dot3D getRamSlotPosition(int slot) const override;
+    Dot3D getGpuSlotPosition(int slot) const override;
+    Dot3D getCpuSlotPosition(void) const override;
 
     // peripheria
     ComponentConfig HDMI1_DP;
@@ -187,6 +195,12 @@ public:
     bool isRamSlotAvailable(int slot) override;
     void occupyRamSlot(int slot) override;
     QList<int> getAvailableRamSlots() override;
+
+    bool isGpuSlotAvailable(int slot) override;
+    void occupyGpuSlot(int slot) override;
+    QList<int> getAvailableGpuSlots() override;
+
+    bool isCpuSlotAvailable(void) override;
 };
 
 #endif // MICROATXMOTHERBOARDCONFIG_H

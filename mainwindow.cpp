@@ -44,17 +44,24 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->listWidgetProcessor->clear();
     ui->listWidgetGPU->clear();
     ui->listWidgetRAM->clear();
+
     for (auto gpu : gpus)
     {
-        ui->listWidgetGPU->addItem(QString::fromStdString(gpuTypeToString(gpu)));
+        QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(gpuTypeToString(gpu)));
+        item->setData(Qt::UserRole, QVariant::fromValue(static_cast<int>(gpu)));
+        ui->listWidgetGPU->addItem(item);
     }
     for (auto cpu : cpus)
     {
-        ui->listWidgetProcessor->addItem(QString::fromStdString(cpuTypeToString(cpu)));
+        QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(cpuTypeToString(cpu)));
+        item->setData(Qt::UserRole, QVariant::fromValue(static_cast<int>(cpu)));
+        ui->listWidgetProcessor->addItem(item);
     }
     for (auto ram : rams)
     {
-        ui->listWidgetRAM->addItem(QString::fromStdString(ramTypeToString(ram)));
+        QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(ramTypeToString(ram)));
+        item->setData(Qt::UserRole, QVariant::fromValue(static_cast<int>(ram)));
+        ui->listWidgetRAM->addItem(item);
     }
 
     ui->graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -318,11 +325,15 @@ void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
 
     for (auto gpu : gpus)
     {
-        ui->listWidgetGPU->addItem(QString::fromStdString(gpuTypeToString(gpu)));
+        QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(gpuTypeToString(gpu)));
+        item->setData(Qt::UserRole, QVariant::fromValue(static_cast<int>(gpu)));
+        ui->listWidgetGPU->addItem(item);
     }
     for (auto cpu : cpus)
     {
-        ui->listWidgetProcessor->addItem(QString::fromStdString(cpuTypeToString(cpu)));
+        QListWidgetItem *item = new QListWidgetItem(QString::fromStdString(cpuTypeToString(cpu)));
+        item->setData(Qt::UserRole, QVariant::fromValue(static_cast<int>(cpu)));
+        ui->listWidgetProcessor->addItem(item);
     }
     for (auto ram : rams)
     {
@@ -335,6 +346,7 @@ void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
 void MainWindow::on_pushButtonAddProcessor_clicked()
 {
     std::cout << "MainWindow::on_PushButtonAddProcessor_clicked" << std::endl;
+
     if (!facade->isSceneSet())
     {
         QErrorMessage err(this);
@@ -351,10 +363,20 @@ void MainWindow::on_pushButtonAddProcessor_clicked()
         return;
     }
 
-    QString processor = ui->listWidgetProcessor->currentItem()->text();
-    std::cout << "Motherboard type: " << ui->comboBoxMotherboardType->currentText().toStdString()
-              << ", Processor: " << processor.toStdString() << std::endl;
-    facade->addProcessor();
+    bool cpuSlotAvailable = facade->getMotherboardConfig()->isCpuSlotAvailable();
+    if (!cpuSlotAvailable)
+    {
+        QErrorMessage err(this);
+        err.showMessage("CPU slot already in use!");
+        err.exec();
+        return;
+    }
+
+    // prepare arguments
+    ConfigManager::MotherboardType motherboardType = static_cast<ConfigManager::MotherboardType>(ui->comboBoxMotherboardType->currentIndex());
+    int cpuTypeIndex = currentItem->data(Qt::UserRole).toInt();
+    ConfigManager::CPUType cpuType = static_cast<ConfigManager::CPUType>(cpuTypeIndex);
+    facade->addCPU(motherboardType, cpuType);
 }
 
 void MainWindow::on_pushButtonAddRAM_clicked()
@@ -389,8 +411,8 @@ void MainWindow::on_pushButtonAddRAM_clicked()
     ConfigManager::MotherboardType motherboardType = static_cast<ConfigManager::MotherboardType>(ui->comboBoxMotherboardType->currentIndex());
     ConfigManager::RAMType ramType = static_cast<ConfigManager::RAMType>(currentItem->data(Qt::UserRole).toInt());
 
-    std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
-    std::cout << "--> ram type: " << ramTypeToString(ramType) << std::endl;
+    // std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
+    // std::cout << "--> ram type: " << ramTypeToString(ramType) << std::endl;
 
     bool ok;
     QStringList items;
@@ -404,9 +426,14 @@ void MainWindow::on_pushButtonAddRAM_clicked()
 
     if (ok && !item.isEmpty())
     {
-        std::cout << "amazing" << std::endl;
         facade->addRAM(motherboardType, ramType, slotIndex);
     }
+
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
 }
 
 void MainWindow::on_pushButtonAddGPU_clicked()
@@ -428,11 +455,32 @@ void MainWindow::on_pushButtonAddGPU_clicked()
         err.exec();
         return;
     }
+    QList<int> availableSlots = facade->getMotherboardConfig()->getAvailableGpuSlots();
+    if (availableSlots.empty())
+    {
+        QErrorMessage err(this);
+        err.showMessage("Now available slots!");
+        err.exec();
+        return;
+    }
 
-    QString gpu = ui->listWidgetGPU->currentItem()->text();
-    std::cout << "Motherboard type: " << ui->comboBoxMotherboardType->currentText().toStdString()
-              << ", GPU: " << gpu.toStdString() << std::endl;
-    facade->addGPU();
+    // prepare arguments
+    ConfigManager::MotherboardType motherboardType = static_cast<ConfigManager::MotherboardType>(ui->comboBoxMotherboardType->currentIndex());
+    ConfigManager::GPUType gpuType = static_cast<ConfigManager::GPUType>(currentItem->data(Qt::UserRole).toInt());
+
+    bool ok;
+    QStringList items;
+    for (int slot : availableSlots)
+    {
+        items << QString::number(slot);
+    }
+    QString item = QInputDialog::getItem(this, "Select GPU Slot", "Available Slots:", items, 0, false, &ok);
+    int slotIndex = item.toInt();
+
+    if (ok && !item.isEmpty())
+    {
+        facade->addGPU(motherboardType, gpuType, slotIndex);
+    }
 }
 
 void MainWindow::on_pushButton_addModel_clicked() // not in use (deprecated)

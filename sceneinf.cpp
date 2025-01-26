@@ -219,9 +219,10 @@ void SceneInf::setModel(size_t num, PolygonModel &newModel)
 
 void SceneInf::addModel(PolygonModel &model)
 {
-    // std::cout << "SceneInf::addModel" << std::endl;
+    std::cout << "SceneInf::addModel" << std::endl;
     modelsNum++;
     models.push_back(model);
+    std::cout << "modelsNum: " << modelsNum << std::endl;
     // markUsedCellsZ(modelsNum - 1);
     //    printUsedCellsZ();
 }
@@ -577,6 +578,7 @@ void SceneInf::addMotherboardComponent(ComponentConfig &config, QString modelNam
 
 void SceneInf::addRAMBlock(ComponentConfig &config, QString modelName, ConfigManager::RAMType RAMType)
 {
+    PolygonModel::model_t RAMPolygonModelType = parseRAMModel(RAMType);
     std::vector<Vertex> vertices;
     std::vector<Facet> facets;
     for (auto &p : config.parallelepipeds)
@@ -588,17 +590,45 @@ void SceneInf::addRAMBlock(ComponentConfig &config, QString modelName, ConfigMan
         addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
     }
     PolygonModel layoutComponent(vertices, facets, modelName);
-    // layoutComponent.setModelType(modelType);
+    layoutComponent.setModelType(RAMPolygonModelType);
     layoutComponent.setModelNum(modelsNum);
     addModel(layoutComponent);
 }
 
 void SceneInf::addGPUBlock(ComponentConfig &config, QString modelName, ConfigManager::GPUType GPUType)
 {
-
+    PolygonModel::model_t GPUPolygonModelType = parseGPUModel(GPUType);
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+    for (auto &p : config.parallelepipeds)
+    {
+        addParallelepiped(vertices, facets, p.x, p.y, p.z, p.width, p.height, p.depth);
+    }
+    for (auto &f : config.frames)
+    {
+        addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
+    }
+    PolygonModel layoutComponent(vertices, facets, modelName);
+    layoutComponent.setModelType(GPUPolygonModelType);
+    layoutComponent.setModelNum(modelsNum);
+    addModel(layoutComponent);
 }
 
 void SceneInf::addCPUBlock(ComponentConfig &config, QString modelName, ConfigManager::CPUType CPUType)
 {
-
+    PolygonModel::model_t CPUPolygonModelType = parseCPUModel(CPUType);
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+    for (auto &p : config.parallelepipeds)
+    {
+        addParallelepiped(vertices, facets, p.x, p.y, p.z, p.width, p.height, p.depth);
+    }
+    for (auto &f : config.frames)
+    {
+        addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
+    }
+    PolygonModel layoutComponent(vertices, facets, modelName);
+    layoutComponent.setModelType(CPUPolygonModelType);
+    layoutComponent.setModelNum(modelsNum);
+    addModel(layoutComponent);
 }

@@ -9,6 +9,7 @@
 #include "facet.hpp"
 #include "mathelems.hpp"
 #include "placeobjects.hpp"
+#include "configmanager.hpp"
 
 class PolygonModel
 {
@@ -104,7 +105,20 @@ public:
         MINIITX_AUDIO,
         MINIITX_DDR4_DIMM_A1,
         MINIITX_DDR4_DIMM_B1,
-        MINIITX_PCIEX16_1
+        MINIITX_PCIEX16_1,
+        // CPU type
+        Intel_CPU,
+        AMD_CPU,
+        // RAM type
+        RAM_4GB_BLOCK,
+        RAM_8GB_BLOCK,
+        RAM_16GB_BLOCK,
+        RAM_32GB_BLOCK,
+        // GPU type
+        GPU_4GB_BLOCK,
+        GPU_6GB_BLOCK,
+        GPU_8GB_BLOCK,
+        GPU_16GB_BLOCK
     };
 
     void setModelType(model_t modelType_);
@@ -124,5 +138,11 @@ private:
     size_t modelNum;
     model_t modelType;
 };
+
+PolygonModel::model_t parseRAMModel(ConfigManager::RAMType RAMType);
+
+PolygonModel::model_t parseGPUModel(ConfigManager::GPUType GPUType);
+
+PolygonModel::model_t parseCPUModel(ConfigManager::CPUType CPUType);
 
 #endif // POLYGONMODEL_H
