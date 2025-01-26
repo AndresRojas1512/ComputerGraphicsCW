@@ -95,13 +95,13 @@ int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager
     switch (RAMType)
     {
     case (ConfigManager::RAMType::RAM_4GB):
-        splitIncrement = 52;
+        splitIncrement = 67;
         break;
     case (ConfigManager::RAMType::RAM_8GB):
         splitIncrement = 6;
         break;
     case (ConfigManager::RAMType::RAM_16GB):
-        splitIncrement = 0;
+        splitIncrement = 20;
         break;
     case (ConfigManager::RAMType::RAM_32GB):
         splitIncrement = 0;

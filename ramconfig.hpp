@@ -25,22 +25,24 @@ public:
         };
         // RAM ACCESSORIES MAPPINGS
         ramAccessoriesMappings = {
-            {ConfigManager::RAMAccessoriesType::RAM_4GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_4G_ACC_WIDTH, RAM_4G_ACC_HEIGHT, RAM_4G_ACC_DEPTH),
-                                                                              ParallelepipedConfig(0, 0, 0, RAM_4G_ACC_WIDTH, RAM_4G_ACC_HEIGHT, RAM_4G_ACC_DEPTH),
-                                                                              ParallelepipedConfig(0, 0, 0, RAM_4G_ACC_WIDTH, RAM_4G_ACC_HEIGHT, RAM_4G_ACC_DEPTH),
-                                                                              ParallelepipedConfig(0, 0, 0, RAM_4G_ACC_WIDTH, RAM_4G_ACC_HEIGHT, RAM_4G_ACC_DEPTH)},
+            {ConfigManager::RAMAccessoriesType::RAM_4GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_4GB_ACC_WIDTH, RAM_4GB_ACC_HEIGHT, RAM_4GB_ACC_DEPTH),
+                                                                              ParallelepipedConfig(0, 0, 0, RAM_4GB_ACC_WIDTH, RAM_4GB_ACC_HEIGHT, RAM_4GB_ACC_DEPTH),
+                                                                              ParallelepipedConfig(0, 0, 0, RAM_4GB_ACC_WIDTH, RAM_4GB_ACC_HEIGHT, RAM_4GB_ACC_DEPTH),
+                                                                              ParallelepipedConfig(0, 0, 0, RAM_4GB_ACC_WIDTH, RAM_4GB_ACC_HEIGHT, RAM_4GB_ACC_DEPTH)},
                                                                               {})},
-            {ConfigManager::RAMAccessoriesType::RAM_8GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_8G_ACC_WIDTH, RAM_8G_ACC_HEIGHT, RAM_8G_ACC_DEPTH),
-                                                                              ParallelepipedConfig(0, 0, 0, RAM_8G_ACC_WIDTH, RAM_8G_ACC_HEIGHT, RAM_8G_ACC_DEPTH),
-                                                                              ParallelepipedConfig(0, 0, 0, RAM_8G_ACC_WIDTH, RAM_8G_ACC_HEIGHT, RAM_8G_ACC_DEPTH),
-                                                                              ParallelepipedConfig(0, 0, 0, RAM_8G_ACC_WIDTH, RAM_8G_ACC_HEIGHT, RAM_8G_ACC_DEPTH),
-                                                                              ParallelepipedConfig(0, 0, 0, RAM_8G_ACC_WIDTH, RAM_8G_ACC_HEIGHT, RAM_8G_ACC_DEPTH),
-                                                                              ParallelepipedConfig(0, 0, 0, RAM_8G_ACC_WIDTH, RAM_8G_ACC_HEIGHT, RAM_8G_ACC_DEPTH),
-                                                                              ParallelepipedConfig(0, 0, 0, RAM_8G_ACC_WIDTH, RAM_8G_ACC_HEIGHT, RAM_8G_ACC_DEPTH),
-                                                                              ParallelepipedConfig(0, 0, 0, RAM_8G_ACC_WIDTH, RAM_8G_ACC_HEIGHT, RAM_8G_ACC_DEPTH)},
+            {ConfigManager::RAMAccessoriesType::RAM_8GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
+                                                                              ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
+                                                                              ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
+                                                                              ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
+                                                                              ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
+                                                                              ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
+                                                                              ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
+                                                                              ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH)},
                                                                               {})},
-            {ConfigManager::RAMAccessoriesType::RAM_16GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_16GB_WIDTH, RAM_16GB_HEIGHT, 180)}, {})},
-            {ConfigManager::RAMAccessoriesType::RAM_32GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_32GB_WIDTH, RAM_32GB_HEIGHT, 180)}, {})}
+            {ConfigManager::RAMAccessoriesType::RAM_16GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_16GB_ACC_WIDTH, RAM_16GB_ACC_HEIGHT, RAM_16GB_ACC_DEPTH),
+                                                                               ParallelepipedConfig(0, 0, 0, RAM_16GB_ACC_WIDTH, RAM_16GB_ACC_HEIGHT, RAM_16GB_ACC_DEPTH)},
+                                                                               {})},
+            {ConfigManager::RAMAccessoriesType::RAM_32GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_32GB_ACC_WIDTH, RAM_32GB_ACC_HEIGHT, RAM_32GB_ACC_DEPTH)}, {})}
         };
     }
 
