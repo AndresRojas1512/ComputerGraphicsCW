@@ -120,6 +120,8 @@ public:
         MINIITX_DDR4_DIMM_A1,
         MINIITX_DDR4_DIMM_B1,
         MINIITX_PCIEX16_1,
+        MINIITX_C2280,
+        MINIITX_C2260,
         // CPU type
         Intel_CPU,
         AMD_CPU,
