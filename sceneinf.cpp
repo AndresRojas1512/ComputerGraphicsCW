@@ -571,6 +571,7 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(ATXConfig.C2280_2, "ATX_C2280_2", PolygonModel::ATX_C2280_2);
     addMotherboardComponent(ATXConfig.C2260_2, "ATX_C2260_2", PolygonModel::ATX_C2260_2);
     addMotherboardComponent(ATXConfig.C2242_2, "ATX_C2260_2", PolygonModel::ATX_C2242_2);
+    addMotherboardComponent(ATXConfig.BATTERY, "ATX_BATTERY", PolygonModel::ATX_BATTERY);
 }
 
 /*

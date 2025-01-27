@@ -90,6 +90,7 @@ public:
         ATX_C2280_2,
         ATX_C2260_2,
         ATX_C2242_2,
+        ATX_BATTERY,
         // MICROATX
         MICROATX_HDMI1_DP,
         MICROATX_HDMI2,

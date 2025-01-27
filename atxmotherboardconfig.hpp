@@ -62,6 +62,8 @@ public:
         C2280_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2280_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2280_2_OFFSET_Y, BASE_Z + ATX_C2280_2_HEIGHT, ATX_C2280_2_RADIUS, ATX_C2280_2_HEIGHT, ATX_C2280_2_SEGMENTS)}),
         C2260_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2260_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2260_2_OFFSET_Y, BASE_Z + ATX_C2260_2_HEIGHT, ATX_C2260_2_RADIUS, ATX_C2260_2_HEIGHT, ATX_C2260_2_SEGMENTS)}),
         C2242_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2242_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2242_2_OFFSET_Y, BASE_Z + ATX_C2242_2_HEIGHT, ATX_C2242_2_RADIUS, ATX_C2242_2_HEIGHT, ATX_C2242_2_SEGMENTS)}),
+        // BATTERY
+        BATTERY({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_BATTERY_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_BATTERY_OFFSET_Y, BASE_Z + ATX_BATTERY_HEIGHT, ATX_BATTERY_RADIUS, ATX_BATTERY_HEIGHT, ATX_BATTERY_SEGMENTS)}),
         // RAM slots offset
         DDR4_DIMM_B1_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
         DDR4_DIMM_B2_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
@@ -117,15 +119,18 @@ public:
     ComponentConfig PCIEX16_3;
 
     // capacitors
-    ComponentConfig C22110_1; // new
-    ComponentConfig C2280_1; // new
-    ComponentConfig C2260_1; // new
-    ComponentConfig C2242_1; // new
+    ComponentConfig C22110_1;
+    ComponentConfig C2280_1;
+    ComponentConfig C2260_1;
+    ComponentConfig C2242_1;
 
-    ComponentConfig C22110_2; // new
-    ComponentConfig C2280_2; // new
-    ComponentConfig C2260_2; // new
-    ComponentConfig C2242_2; // new
+    ComponentConfig C22110_2;
+    ComponentConfig C2280_2;
+    ComponentConfig C2260_2;
+    ComponentConfig C2242_2;
+
+    // battery
+    ComponentConfig BATTERY;
 
     // microchip amd
     // ComponentConfig AMDX70; // new
