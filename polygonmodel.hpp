@@ -129,7 +129,9 @@ public:
         GPU_16GB_ACC_BLOCK,
         // CPU type
         INTEL,
-        AMD
+        AMD,
+        INTEL_ACC,
+        AMD_ACC
     };
 
     void setModelType(model_t modelType_);
@@ -161,5 +163,7 @@ PolygonModel::model_t parseRAMAccModel(ConfigManager::RAMAccessoriesType RAMAccT
 PolygonModel::model_t parseGPUAccModel(ConfigManager::GPUAccessoriesType GPUAccType);
 
 std::string mapModelName(PolygonModel::model_t type);
+
+PolygonModel::model_t mapModelAccessory(PolygonModel::model_t model);
 
 #endif // POLYGONMODEL_H

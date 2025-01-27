@@ -165,3 +165,28 @@ std::string mapModelName(PolygonModel::model_t type)
         return "AMD CPU";
     };
 }
+
+PolygonModel::model_t mapModelAccessory(PolygonModel::model_t model)
+{
+    switch (model)
+    {
+    // RAM MAPPINGS
+    case (PolygonModel::model_t::RAM_4GB_BLOCK):
+        return PolygonModel::model_t::RAM_4GB_ACC_BLOCK;
+    case (PolygonModel::model_t::RAM_8GB_BLOCK):
+        return PolygonModel::model_t::RAM_8GB_ACC_BLOCK;
+    case (PolygonModel::model_t::RAM_16GB_BLOCK):
+        return PolygonModel::model_t::RAM_16GB_ACC_BLOCK;
+    case (PolygonModel::model_t::RAM_32GB_BLOCK):
+        return PolygonModel::model_t::RAM_32GB_ACC_BLOCK;
+    // GPU MAPPINGS
+    case (PolygonModel::model_t::GPU_4GB_BLOCK):
+        return PolygonModel::model_t::GPU_4GB_ACC_BLOCK;
+    case (PolygonModel::model_t::GPU_6GB_BLOCK):
+        return PolygonModel::model_t::GPU_6GB_ACC_BLOCK;
+    case (PolygonModel::model_t::GPU_8GB_BLOCK):
+        return PolygonModel::model_t::GPU_8GB_ACC_BLOCK;
+    case (PolygonModel::model_t::GPU_16GB_BLOCK):
+        return PolygonModel::model_t::GPU_16GB_ACC_BLOCK;
+    };
+}
