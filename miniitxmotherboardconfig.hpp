@@ -42,8 +42,8 @@ public:
         DDR4_DIMM_A1_ACC_offset(startOfPlate_.getXCoordinate() + MINIITX_DDR4_DIMM_A1_OFFSET_X + MINIITX_DDR4_DIMM_LEFTFRAMEWIDTH - 2, startOfPlate_.getYCoordinate() + MINIITX_DDR4_DIMM_A1_OFFSET_Y + MINIITX_DDR4_DIMM_TOPFRAMEWIDTH + 25, BASE_Z + RAM_4GB_DEPTH - 5),
         DDR4_DIMM_B1_ACC_offset(startOfPlate_.getXCoordinate() + MINIITX_DDR4_DIMM_B1_OFFSET_X + MINIITX_DDR4_DIMM_LEFTFRAMEWIDTH - 2, startOfPlate_.getYCoordinate() + MINIITX_DDR4_DIMM_B1_OFFSET_Y + MINIITX_DDR4_DIMM_TOPFRAMEWIDTH + 25, BASE_Z + RAM_4GB_DEPTH - 5),
         // GPU slots offset
-        PCIEX16_1_offset(1, 2, 3),
-        PCIEX16_1_ACC_offset(1, 2, 3),
+        PCIEX16_1_offset(startOfPlate_.getXCoordinate() + MINIITX_PCIEX16_1_OFFSET_X + MINIITX_PCIEX16_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + MINIITX_PCIEX16_1_OFFSET_Y + MINIITX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH),
+        PCIEX16_1_ACC_offset(startOfPlate_.getXCoordinate() + 70, startOfPlate_.getYCoordinate() + MINIITX_PCIEX16_1_OFFSET_Y + MINIITX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH + 150),
         // CPU slot offset
         CPU_offset(1, 2, 3)
     {
