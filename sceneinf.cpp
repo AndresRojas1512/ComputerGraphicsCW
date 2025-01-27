@@ -563,7 +563,14 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(ATXConfig.PCIEX16_1, "ATX_PCIEX16_1", PolygonModel::ATX_PCIEX16_1);
     addMotherboardComponent(ATXConfig.PCIEX16_2, "ATX_PCIEX16_2", PolygonModel::ATX_PCIEX16_2);
     addMotherboardComponent(ATXConfig.PCIEX16_3, "ATX_PCIEX16_3", PolygonModel::ATX_PCIEX16_3);
-    addMotherboardComponent(ATXConfig.C22110_1, "ATX_C22110_1", PolygonModel::ATX_PCIEX16_3);
+    addMotherboardComponent(ATXConfig.C22110_1, "ATX_C22110_1", PolygonModel::ATX_C22110_1);
+    addMotherboardComponent(ATXConfig.C2280_1, "ATX_C2280_1", PolygonModel::ATX_C2280_1);
+    addMotherboardComponent(ATXConfig.C2260_1, "ATX_C2260_1", PolygonModel::ATX_C2260_1);
+    addMotherboardComponent(ATXConfig.C2242_1, "ATX_C2242_1", PolygonModel::ATX_C2242_1);
+    addMotherboardComponent(ATXConfig.C22110_2, "ATX_C22110_2", PolygonModel::ATX_C22110_2);
+    addMotherboardComponent(ATXConfig.C2280_2, "ATX_C2280_2", PolygonModel::ATX_C2280_2);
+    addMotherboardComponent(ATXConfig.C2260_2, "ATX_C2260_2", PolygonModel::ATX_C2260_2);
+    addMotherboardComponent(ATXConfig.C2242_2, "ATX_C2260_2", PolygonModel::ATX_C2242_2);
 }
 
 /*

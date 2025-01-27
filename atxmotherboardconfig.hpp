@@ -54,14 +54,14 @@ public:
         PCIEX16_2({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_PCIEX16_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_2_OFFSET_Y, BASE_Z + 40, ATX_PCIEX16_WIDTH, ATX_PCIEX16_HEIGHT, 40, ATX_PCIEX16_TOPFRAMEWIDTH, ATX_PCIEX16_BOTTOMFRAMEWIDTH, ATX_PCIEX16_LEFTFRAMEWIDTH, ATX_PCIEX16_RIGHTFRAMEWIDTH)}, {}),
         PCIEX16_3({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_PCIEX16_3_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_3_OFFSET_Y, BASE_Z + 40, ATX_PCIEX16_WIDTH, ATX_PCIEX16_HEIGHT, 40, ATX_PCIEX16_TOPFRAMEWIDTH, ATX_PCIEX16_BOTTOMFRAMEWIDTH, ATX_PCIEX16_LEFTFRAMEWIDTH, ATX_PCIEX16_RIGHTFRAMEWIDTH)}, {}),
         // CAPACITORS
-        C22110_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_A2_OFFSET_X + 40, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_A2_OFFSET_Y, BASE_Z + 10, 10, 40, 10)}), // new
-        C2280_1({}, {}, {}), // new
-        C2260_1({}, {}, {}), // new
-        C2242_1({}, {}, {}), // new
-        C22110_2({}, {}, {}), // new
-        C2280_2({}, {}, {}), // new
-        C2260_2({}, {}, {}), // new
-        C2242_2({}, {}, {}), // new
+        C22110_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C22110_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C22110_1_OFFSET_Y, BASE_Z + ATX_C22110_1_HEIGHT, ATX_C22110_1_RADIUS, ATX_C22110_1_HEIGHT, ATX_C22110_1_SEGMENTS)}),
+        C2280_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2280_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2280_1_OFFSET_Y, BASE_Z + ATX_C2280_1_HEIGHT, ATX_C2280_1_RADIUS, ATX_C2280_1_HEIGHT, ATX_C2280_1_SEGMENTS)}),
+        C2260_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2260_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2260_1_OFFSET_Y, BASE_Z + ATX_C2260_1_HEIGHT, ATX_C2260_1_RADIUS, ATX_C2260_1_HEIGHT, ATX_C2260_1_SEGMENTS)}),
+        C2242_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2242_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2242_1_OFFSET_Y, BASE_Z + ATX_C2242_1_HEIGHT, ATX_C2242_1_RADIUS, ATX_C2242_1_HEIGHT, ATX_C2242_1_SEGMENTS)}),
+        C22110_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C22110_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C22110_2_OFFSET_Y, BASE_Z + ATX_C22110_2_HEIGHT, ATX_C22110_2_RADIUS, ATX_C22110_2_HEIGHT, ATX_C22110_2_SEGMENTS)}),
+        C2280_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2280_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2280_2_OFFSET_Y, BASE_Z + ATX_C2280_2_HEIGHT, ATX_C2280_2_RADIUS, ATX_C2280_2_HEIGHT, ATX_C2280_2_SEGMENTS)}),
+        C2260_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2260_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2260_2_OFFSET_Y, BASE_Z + ATX_C2260_2_HEIGHT, ATX_C2260_2_RADIUS, ATX_C2260_2_HEIGHT, ATX_C2260_2_SEGMENTS)}),
+        C2242_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2242_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2242_2_OFFSET_Y, BASE_Z + ATX_C2242_2_HEIGHT, ATX_C2242_2_RADIUS, ATX_C2242_2_HEIGHT, ATX_C2242_2_SEGMENTS)}),
         // RAM slots offset
         DDR4_DIMM_B1_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
         DDR4_DIMM_B2_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
