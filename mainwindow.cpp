@@ -270,7 +270,7 @@ void MainWindow::pictureToCenter()
     ui->graphicsView->setScene(setScene);
 }
 
-void MainWindow::on_pushButton_createScene_clicked() // not in use (deprecated)
+void MainWindow::on_pushButton_createScene_clicked() // deprecated
 {
     std::cout << "MainWindow::on_pushButton_createScene_clicked" << std::endl;
     CreateScene Window(nullptr);
@@ -489,7 +489,7 @@ void MainWindow::on_pushButtonAddGPU_clicked()
     ui->graphicsView->setScene(setScene);
 }
 
-void MainWindow::on_pushButton_addModel_clicked() // not in use (deprecated)
+void MainWindow::on_pushButton_addModel_clicked() // deprecated
 {
     if (!facade->isSceneSet())
     {
@@ -641,7 +641,7 @@ void MainWindow::on_pushButton_addModel_clicked() // not in use (deprecated)
 }
 
 
-void MainWindow::on_pushButton_addCastle_clicked() // not in use (deprecated)
+void MainWindow::on_pushButton_addCastle_clicked() // deprecated
 {
     if (!facade->isSceneSet())
     {
@@ -724,7 +724,7 @@ void MainWindow::on_pushButton_addCastle_clicked() // not in use (deprecated)
 }
 
 
-void MainWindow::on_pushButton_deleteModel_clicked()
+void MainWindow::on_pushButton_deleteModel_clicked() // TODO
 {
     if (!facade->isSceneSet())
     {

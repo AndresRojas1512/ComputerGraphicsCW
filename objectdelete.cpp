@@ -46,39 +46,17 @@ void ObjectDelete::on_pushButton_clicked()
 
     if (curRow < modelsNum)
     {
-        int xCell, yCell, modelLength, modelWidth;
-        double zCell;
+        int modelLength;
+        int modelWidth;
 
         model = scene->getModel(curRow);
-        xCell = model.getUsedXCell();
-        yCell = model.getUsedYCell();
-        zCell = model.getUsedZCell();
         modelLength = model.getLengthModel();
         modelWidth = model.getWidthModel();
 
-        for (int i = xCell; i < xCell + modelLength; i++)
-        {
-            for (int j = yCell; j < yCell + modelWidth; j++)
-            {
-                if (zCell < scene->getUsedCellsZ()[j][i].back() || \
-                    (scene->getUsedCellsZ()[j][i].back() == -1.0 && zCell < scene->getUsedCellsZ()[j][i].at(scene->getUsedCellsZ()[j][i].size() - 2)))
-                {
-                    flag = false;
-                    break;
-                }
-            }
-        }
         if (flag)
         {
             scene->deleteModel(curRow);
             modelsNum --;
-        }
-        else
-        {
-            QErrorMessage *err = new QErrorMessage();
-            err->showMessage("Невозможно удалить!\n"
-                             "Над этим элементом находятся\n"
-                             "другие элементы LEGO!");
         }
 
         recalculationModelsNum();
@@ -87,10 +65,8 @@ void ObjectDelete::on_pushButton_clicked()
     {
         scene->deleteLight(curRow - modelsNum);
     }
-
     close();
 }
-
 
 void ObjectDelete::recalculationModelsNum()
 {
