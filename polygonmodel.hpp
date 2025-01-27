@@ -111,6 +111,7 @@ public:
         MICROATX_C2242_2,
         MICROATX_C2260_2,
         MICROATX_C2280_2,
+        MICROATX_BATTERY,
         // MINIITX
         MINIITX_USB3_5,
         MINIITX_USB7_10,

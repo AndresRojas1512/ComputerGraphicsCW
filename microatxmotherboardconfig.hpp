@@ -58,6 +58,8 @@ public:
         C2242_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + MICROATX_C2242_2_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_C2242_2_OFFSET_Y, BASE_Z + MICROATX_C2242_2_HEIGHT, MICROATX_C2242_2_RADIUS, MICROATX_C2242_2_HEIGHT, MICROATX_C2242_2_SEGMENTS)}),
         C2260_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + MICROATX_C2260_2_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_C2260_2_OFFSET_Y, BASE_Z + MICROATX_C2260_2_HEIGHT, MICROATX_C2260_2_RADIUS, MICROATX_C2260_2_HEIGHT, MICROATX_C2260_2_SEGMENTS)}),
         C2280_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + MICROATX_C2280_2_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_C2280_2_OFFSET_Y, BASE_Z + MICROATX_C2280_2_HEIGHT, MICROATX_C2280_2_RADIUS, MICROATX_C2280_2_HEIGHT, MICROATX_C2280_2_SEGMENTS)}),
+        // BATTERY
+        BATTERY({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + MICROATX_BATTERY_OFFSET_X, startOfPlate_.getYCoordinate() + MICROATX_BATTERY_OFFSET_Y, BASE_Z + MICROATX_BATTERY_HEIGHT, MICROATX_BATTERY_RADIUS, MICROATX_BATTERY_HEIGHT, MICROATX_BATTERY_SEGMENTS)}),
         // RAM slots offset
         DDR4_DIMM_A1_offset(startOfPlate_.getXCoordinate() + MICROATX_DDR4_DIMM_A1_OFFSET_X + MICROATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + MICROATX_DDR4_DIMM_A1_OFFSET_Y + MICROATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
         DDR4_DIMM_A2_offset(startOfPlate_.getXCoordinate() + MICROATX_DDR4_DIMM_A2_OFFSET_X + MICROATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + MICROATX_DDR4_DIMM_A2_OFFSET_Y + MICROATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
@@ -115,6 +117,9 @@ public:
     ComponentConfig C2242_2;
     ComponentConfig C2260_2;
     ComponentConfig C2280_2;
+
+    // BATTERY
+    ComponentConfig BATTERY;
 
     // offset for placing the RAM block in the DDR4 socket
     Dot3D DDR4_DIMM_A1_offset;
