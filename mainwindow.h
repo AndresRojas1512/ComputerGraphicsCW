@@ -42,12 +42,12 @@ public:
     ConfigManager configManager;
 
 private slots:
-    void on_pushButton_createScene_clicked();
+    // void on_pushButton_createScene_clicked();
     void on_pushButton_sceneToInitianPosition_clicked();
 
-    void on_pushButton_addModel_clicked();
+    // void on_pushButton_addModel_clicked();
     void on_pushButton_deleteModel_clicked();
-    void on_pushButton_moveModel_clicked();
+    // void on_pushButton_moveModel_clicked();
 
     void pictureDown();
     void pictureUp();
@@ -81,7 +81,7 @@ private slots:
     void on_pushButton_zoom_clicked();
     void on_pushButton_distance_clicked();
 
-    void on_pushButton_addCastle_clicked();
+    // void on_pushButton_addCastle_clicked();
 
     // From here start the motherboard features
 
