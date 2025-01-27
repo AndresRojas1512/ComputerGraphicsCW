@@ -84,6 +84,12 @@ public:
     void addGPUAccBlock(ComponentConfig &config, QString accName, ConfigManager::GPUAccessoriesType GPUAccType);
 
     void addCPUBlock(ComponentConfig &config, QString modelName, ConfigManager::CPUType CPUType);
+
+    void addTriangle(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
+                     int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3);
+
+    void addCylinder(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
+                     double x, double y, double z, double radius, double height, int segments);
 private:
     size_t width, height;
     int type;

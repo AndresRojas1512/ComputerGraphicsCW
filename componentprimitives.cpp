@@ -26,5 +26,9 @@ std::ostream& operator<<(std::ostream& os, const ComponentConfig& config)
     {
         os << f << std::endl;
     }
+    // for (const auto &c : config.cylinders)
+    // {
+    //     os << c << std::endl;
+    // }
     return os;
 }

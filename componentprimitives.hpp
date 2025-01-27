@@ -32,13 +32,30 @@ struct FrameConfig
     friend std::ostream& operator<<(std::ostream& os, const FrameConfig& f);
 };
 
+struct CylinderConfig
+{
+    double x, y, z;
+    double radius, height;
+    int segments;
+
+    CylinderConfig(double x_, double y_, double z_, double radius_, double height_, int segments_)
+        : x(x_), y(y_), z(z_), radius(radius_), height(height_), segments(segments_) {}
+
+    friend std::ostream& operator<<(std::ostream& os, const CylinderConfig& c);
+};
+
+
 struct ComponentConfig
 {
     std::vector<ParallelepipedConfig> parallelepipeds;
     std::vector<FrameConfig> frames;
+    std::vector<CylinderConfig> cylinders;
 
-    ComponentConfig(std::initializer_list<ParallelepipedConfig> pConfigs, std::initializer_list<FrameConfig> fConfigs)
-        : parallelepipeds(pConfigs), frames(fConfigs) {}
+    ComponentConfig(std::initializer_list<ParallelepipedConfig> pConfigs, std::initializer_list<FrameConfig> fConfigs, std::initializer_list<CylinderConfig> cConfigs)
+        : parallelepipeds(pConfigs), frames(fConfigs), cylinders(cConfigs) {}
+
+    // ComponentConfig(std::initializer_list<ParallelepipedConfig> pConfigs, std::initializer_list<FrameConfig> fConfigs)
+    //     : parallelepipeds(pConfigs), frames(fConfigs) {}
 
     friend std::ostream& operator<<(std::ostream& os, const ComponentConfig& config);
 };

@@ -370,6 +370,71 @@ void SceneInf::addFrame(std::vector<Vertex> &vertices, std::vector<Facet> &facet
     addParallelepiped(vertices, facets, x + width - rightFrameWidth, y + topFrameWidth, z, rightFrameWidth, height - topFrameWidth - bottomFrameWidth, depth);
 }
 
+void SceneInf::addTriangle(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
+                         int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3)
+{
+    std::cout << "Facade::addTriangle" << std::endl;
+    Dot3D dot;
+    std::vector<size_t> vec;
+
+    size_t size = facets.size();
+
+    dot = Dot3D(x1, y1, z1);
+    vec = {size};
+    vertices.push_back(Vertex(dot, vec));
+
+    dot = Dot3D(x2, y2, z2);
+    vec = {size};
+    vertices.push_back(Vertex(dot, vec));
+
+    dot = Dot3D(x3, y3, z3);
+    vec = {size};
+    vertices.push_back(Vertex(dot, vec));
+
+    size = vertices.size();
+    vec = {size - 3, size - 2, size - 1};
+    facets.push_back(vec);
+}
+
+void SceneInf::addCylinder(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
+                           double x, double y, double z, double radius, double height, int segments)
+{
+    double angleStep = 360.0 / segments;
+    double rad, nextRad;
+    int xr, yr, xrN, yrN;
+
+    // Calculate positions for cylinder caps and side walls
+    for (int i = 0; i < 360; i += angleStep) {
+        rad = i * PI / 180;
+        nextRad = (i + angleStep) * PI / 180;
+
+        xr = x + radius * cos(rad);
+        yr = y + radius * sin(rad);
+        xrN = x + radius * cos(nextRad);
+        yrN = y + radius * sin(nextRad);
+
+        // Side wall
+        addQuad(vertices, facets,
+                xr, yr, z,
+                xrN, yrN, z,
+                xrN, yrN, z + height,
+                xr, yr, z + height);
+
+        // Top cap
+        addTriangle(vertices, facets,
+                    x, y, z + height,
+                    xr, yr, z + height,
+                    xrN, yrN, z + height);
+
+        // Bottom cap
+        addTriangle(vertices, facets,
+                    x, y, z,
+                    xrN, yrN, z,
+                    xr, yr, z);
+    }
+}
+
+
 void SceneInf::buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_)
 {
     addQuad(vertices, facets,
@@ -498,6 +563,7 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(ATXConfig.PCIEX16_1, "ATX_PCIEX16_1", PolygonModel::ATX_PCIEX16_1);
     addMotherboardComponent(ATXConfig.PCIEX16_2, "ATX_PCIEX16_2", PolygonModel::ATX_PCIEX16_2);
     addMotherboardComponent(ATXConfig.PCIEX16_3, "ATX_PCIEX16_3", PolygonModel::ATX_PCIEX16_3);
+    addMotherboardComponent(ATXConfig.C22110_1, "ATX_C22110_1", PolygonModel::ATX_PCIEX16_3);
 }
 
 /*
@@ -570,6 +636,10 @@ void SceneInf::addMotherboardComponent(ComponentConfig &config, QString modelNam
     for (auto &f : config.frames)
     {
         addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
+    }
+    for (auto &c : config.cylinders)
+    {
+        addCylinder(vertices, facets, c.x, c.y, c.z, c.radius, c.height, c.segments);
     }
     PolygonModel layoutComponent(vertices, facets, modelName);
     layoutComponent.setModelType(modelType);

@@ -15,8 +15,8 @@ public:
     CPUConfig()
     {
         cpuMappings = {
-            {ConfigManager::CPUType::Intel, ComponentConfig({ParallelepipedConfig(0, 0, 0, 1, 1, 1)}, {})},
-            {ConfigManager::CPUType::AMD, ComponentConfig({ParallelepipedConfig(0, 0, 0, 2, 2, 2)}, {})}
+            {ConfigManager::CPUType::Intel, ComponentConfig({ParallelepipedConfig(0, 0, 0, 1, 1, 1)}, {}, {})},
+            {ConfigManager::CPUType::AMD, ComponentConfig({ParallelepipedConfig(0, 0, 0, 2, 2, 2)}, {}, {})}
         };
     }
 

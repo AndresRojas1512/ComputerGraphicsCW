@@ -18,10 +18,10 @@ public:
     {
         // RAM MAPPINGS
         ramMappings = {
-            {ConfigManager::RAMType::RAM_4GB, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_4GB_WIDTH, RAM_4GB_HEIGHT, RAM_4GB_DEPTH)}, {})},
-            {ConfigManager::RAMType::RAM_8GB, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_8GB_WIDTH, RAM_8GB_HEIGHT, RAM_8GB_DEPTH)}, {})},
-            {ConfigManager::RAMType::RAM_16GB, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_16GB_WIDTH, RAM_16GB_HEIGHT, RAM_16GB_DEPTH)}, {})},
-            {ConfigManager::RAMType::RAM_32GB, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_32GB_WIDTH, RAM_32GB_HEIGHT, RAM_32GB_DEPTH)}, {})}
+                       {ConfigManager::RAMType::RAM_4GB, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_4GB_WIDTH, RAM_4GB_HEIGHT, RAM_4GB_DEPTH)}, {}, {})},
+            {ConfigManager::RAMType::RAM_8GB, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_8GB_WIDTH, RAM_8GB_HEIGHT, RAM_8GB_DEPTH)}, {}, {})},
+            {ConfigManager::RAMType::RAM_16GB, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_16GB_WIDTH, RAM_16GB_HEIGHT, RAM_16GB_DEPTH)}, {}, {})},
+            {ConfigManager::RAMType::RAM_32GB, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_32GB_WIDTH, RAM_32GB_HEIGHT, RAM_32GB_DEPTH)}, {}, {})}
         };
         // RAM ACCESSORIES MAPPINGS
         ramAccessoriesMappings = {
@@ -29,7 +29,7 @@ public:
                                                                               ParallelepipedConfig(0, 0, 0, RAM_4GB_ACC_WIDTH, RAM_4GB_ACC_HEIGHT, RAM_4GB_ACC_DEPTH),
                                                                               ParallelepipedConfig(0, 0, 0, RAM_4GB_ACC_WIDTH, RAM_4GB_ACC_HEIGHT, RAM_4GB_ACC_DEPTH),
                                                                               ParallelepipedConfig(0, 0, 0, RAM_4GB_ACC_WIDTH, RAM_4GB_ACC_HEIGHT, RAM_4GB_ACC_DEPTH)},
-                                                                              {})},
+                                                                             {}, {})},
             {ConfigManager::RAMAccessoriesType::RAM_8GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
                                                                               ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
                                                                               ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
@@ -38,11 +38,11 @@ public:
                                                                               ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
                                                                               ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH),
                                                                               ParallelepipedConfig(0, 0, 0, RAM_8GB_ACC_WIDTH, RAM_8GB_ACC_HEIGHT, RAM_8GB_ACC_DEPTH)},
-                                                                              {})},
+                                                                             {}, {})},
             {ConfigManager::RAMAccessoriesType::RAM_16GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_16GB_ACC_WIDTH, RAM_16GB_ACC_HEIGHT, RAM_16GB_ACC_DEPTH),
                                                                                ParallelepipedConfig(0, 0, 0, RAM_16GB_ACC_WIDTH, RAM_16GB_ACC_HEIGHT, RAM_16GB_ACC_DEPTH)},
-                                                                               {})},
-            {ConfigManager::RAMAccessoriesType::RAM_32GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_32GB_ACC_WIDTH, RAM_32GB_ACC_HEIGHT, RAM_32GB_ACC_DEPTH)}, {})}
+                                                                              {}, {})},
+            {ConfigManager::RAMAccessoriesType::RAM_32GB_ACC, ComponentConfig({ParallelepipedConfig(0, 0, 0, RAM_32GB_ACC_WIDTH, RAM_32GB_ACC_HEIGHT, RAM_32GB_ACC_DEPTH)}, {}, {})}
         };
     }
 

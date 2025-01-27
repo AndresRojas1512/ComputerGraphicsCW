@@ -140,6 +140,54 @@
 #define ATX_PCIEX16_3_OFFSET_X 126
 #define ATX_PCIEX16_3_OFFSET_Y 828
 
+#define ATX_C22110_1_RADIUS // TODO
+#define ATX_C22110_1_HEIGHT // TODO
+#define ATX_C22110_1_SEGMENTS 10
+#define ATX_C22110_1_OFFSET_X // TODO
+#define ATX_C22110_1_OFFSET_Y // TODO
+
+#define ATX_C2280_1_RADIUS // TODO
+#define ATX_C2280_1_HEIGHT // TODO
+#define ATX_C2280_1_SEGMENTS 10
+
+#define ATX_C2260_1_WIDTH // TODO
+#define ATX_C2260_1_HEIGHT // TODO
+#define ATX_C2260_1_SEGMENTS 10
+
+#define ATX_C2242_1_RADIUS // TODO
+#define ATX_C2242_1_HEIGHT // TODO
+#define ATX_C2242_1_SEGMENTS 10
+
+#define ATX_AMDX70_WIDTH // TODO
+#define ATX_AMDX70_HEIGHT // TODO
+#define ATX_AMDX70_DEPTH // TODO
+
+#define ATX_SATA6G_1_2_WIDTH // TODO
+
+#define ATX_SATA6G_3_4_WIDTH // TODO
+
+#define ATX_SATA6G_5_6_WIDTH // TODO
+
+#define ATX_SATA6G_7_8_WIDTH // TODO
+
+#define ATX_SuperIO_WIDTH // TODO
+
+#define ATX_IntelI22AT_WIDTH // TODO
+
+#define ATX_RTL8125_CG_WIDTH // TODO
+
+#define ATX_EATX12V_1_WIDTH // TODO
+
+#define ATX_EATX12V_2_WIDTH // TODO
+
+#define ATX_EATXPWR_WIDTH // TODO
+
+#define ATX_CPU_FAN_WIDTH // TODO
+
+#define ATX_CPU_OPT_WIDHT // TODO
+
+#define RGB_HEADER1 // TODO
+
 
 /*
  * ======================= MICRO-ATX CONFIG =======================
