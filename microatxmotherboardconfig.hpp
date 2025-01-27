@@ -63,6 +63,8 @@ public:
         // GPU slots offset
         PCIEX16_1_offset(1, 2, 3), // TODO
         PCIEX16_2_offset(11, 22, 33), // TODO
+        PCIEX16_1_ACC_offset(0, 0, 0), // TODO
+        PCIEX16_2_ACC_offset(0, 0, 0), // TODO
         // CPU slot offset
         CPU_offset(1, 2, 3) // TODO
     {
@@ -75,6 +77,7 @@ public:
     Dot3D getRamAccSlotPosition(int slot) const override;
 
     Dot3D getGpuSlotPosition(int slot) const override;
+    Dot3D getGPuAccSlotPosition(int slot) const override;
 
     Dot3D getCpuSlotPosition(void) const override;
 
@@ -112,6 +115,8 @@ public:
     // offset for placing the GPU block in the PCIEX16 socket
     Dot3D PCIEX16_1_offset;
     Dot3D PCIEX16_2_offset;
+    Dot3D PCIEX16_1_ACC_offset;
+    Dot3D PCIEX16_2_ACC_offset;
 
     // offset for placing the CPU in the CPU socket
     Dot3D CPU_offset;

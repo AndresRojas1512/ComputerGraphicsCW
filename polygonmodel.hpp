@@ -122,7 +122,11 @@ public:
         GPU_4GB_BLOCK,
         GPU_6GB_BLOCK,
         GPU_8GB_BLOCK,
-        GPU_16GB_BLOCK
+        GPU_16GB_BLOCK,
+        GPU_4GB_ACC_BLOCK,
+        GPU_6GB_ACC_BLOCK,
+        GPU_8GB_ACC_BLOCK,
+        GPU_16GB_ACC_BLOCK
     };
 
     void setModelType(model_t modelType_);
@@ -150,5 +154,7 @@ PolygonModel::model_t parseGPUModel(ConfigManager::GPUType GPUType);
 PolygonModel::model_t parseCPUModel(ConfigManager::CPUType CPUType);
 
 PolygonModel::model_t parseRAMAccModel(ConfigManager::RAMAccessoriesType RAMAccType);
+
+PolygonModel::model_t parseGPUAccModel(ConfigManager::GPUAccessoriesType GPUAccType);
 
 #endif // POLYGONMODEL_H

@@ -94,6 +94,8 @@ public:
 
     RAMAccessoriesType mapAccessoryRAM(RAMType type);
 
+    GPUAccessoriesType mapAccessoryGPU(GPUType type);
+
 private:
     std::vector<GPUType> allGPUs;
     std::vector<RAMType> allRAMs;

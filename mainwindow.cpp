@@ -481,6 +481,12 @@ void MainWindow::on_pushButtonAddGPU_clicked()
     {
         facade->addGPU(motherboardType, gpuType, slotIndex);
     }
+
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
 }
 
 void MainWindow::on_pushButton_addModel_clicked() // not in use (deprecated)

@@ -110,6 +110,21 @@ PolygonModel::model_t parseGPUModel(ConfigManager::GPUType GPUType)
     }
 }
 
+PolygonModel::model_t parseGPUAccModel(ConfigManager::GPUAccessoriesType GPUAccType)
+{
+    switch(GPUAccType)
+    {
+    case ConfigManager::GPUAccessoriesType::GPU_4GB_ACC:
+        return PolygonModel::model_t::GPU_4GB_ACC_BLOCK;
+    case ConfigManager::GPUAccessoriesType::GPU_6GB_ACC:
+        return PolygonModel::model_t::GPU_6GB_ACC_BLOCK;
+    case ConfigManager::GPUAccessoriesType::GPU_8GB_ACC:
+        return PolygonModel::model_t::GPU_8GB_ACC_BLOCK;
+    case ConfigManager::GPUAccessoriesType::GPU_16GB_ACC:
+        return PolygonModel::model_t::GPU_16GB_ACC_BLOCK;
+    }
+}
+
 PolygonModel::model_t parseCPUModel(ConfigManager::CPUType CPUType)
 {
     switch(CPUType)

@@ -43,6 +43,7 @@ public:
         DDR4_DIMM_B1_ACC_offset(startOfPlate_.getXCoordinate() + MINIITX_DDR4_DIMM_B1_OFFSET_X + MINIITX_DDR4_DIMM_LEFTFRAMEWIDTH - 2, startOfPlate_.getYCoordinate() + MINIITX_DDR4_DIMM_B1_OFFSET_Y + MINIITX_DDR4_DIMM_TOPFRAMEWIDTH + 25, BASE_Z + RAM_4GB_DEPTH - 5),
         // GPU slots offset
         PCIEX16_1_offset(1, 2, 3),
+        PCIEX16_1_ACC_offset(1, 2, 3),
         // CPU slot offset
         CPU_offset(1, 2, 3)
     {
@@ -55,6 +56,9 @@ public:
     Dot3D getRamAccSlotPosition(int slot) const override;
 
     Dot3D getGpuSlotPosition(int slot) const override;
+    Dot3D getGPuAccSlotPosition(int slot) const override;
+
+
     Dot3D getCpuSlotPosition(void) const override;
 
     // peripheria
@@ -77,6 +81,7 @@ public:
     Dot3D DDR4_DIMM_B1_ACC_offset;
     // offset for placing the GPU block in the PCIEX16 socket
     Dot3D PCIEX16_1_offset;
+    Dot3D PCIEX16_1_ACC_offset;
     // offset for placing the CPU block int the CPU socket
     Dot3D CPU_offset;
 

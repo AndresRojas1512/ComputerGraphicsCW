@@ -80,6 +80,8 @@ public:
     void addRAMAccBlock(ComponentConfig &config, QString accName, ConfigManager::RAMAccessoriesType RAMAccType);
 
     void addGPUBlock(ComponentConfig &config, QString modelName, ConfigManager::GPUType GPUType);
+    void addGPUAccBlock(ComponentConfig &config, QString accName, ConfigManager::GPUAccessoriesType GPUAccType);
+
     void addCPUBlock(ComponentConfig &config, QString modelName, ConfigManager::CPUType CPUType);
 private:
     size_t width, height;

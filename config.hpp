@@ -308,7 +308,7 @@
 #define MINIITX_PCIEX16_1_OFFSET_Y 474
 
 /*
- * ======================= RAM 4G DIMENSIONS =======================
+ * ======================= RAM 4GB DIMENSIONS =======================
 */
 #define RAM_4GB_DEPTH 30 * SIZE_SC
 #define RAM_4GB_WIDTH 6
@@ -319,7 +319,7 @@
 #define RAM_4GB_ACC_HEIGHT 40
 
 /*
- * ======================= RAM 8G DIMENSIONS =======================
+ * ======================= RAM 8GB DIMENSIONS =======================
 */
 #define RAM_8GB_DEPTH 30 * SIZE_SC
 #define RAM_8GB_WIDTH 6
@@ -331,7 +331,7 @@
 
 
 /*
- * ======================= RAM 16G DIMENSIONS =======================
+ * ======================= RAM 16GB DIMENSIONS =======================
 */
 #define RAM_16GB_DEPTH 30 * SIZE_SC
 #define RAM_16GB_WIDTH 6
@@ -342,7 +342,7 @@
 #define RAM_16GB_ACC_HEIGHT 170
 
 /*
- * ======================= RAM 32G DIMENSIONS =======================
+ * ======================= RAM 32GB DIMENSIONS =======================
 */
 #define RAM_32GB_DEPTH 30 * SIZE_SC
 #define RAM_32GB_WIDTH 6
@@ -355,51 +355,80 @@
 
 
 /*
- * ======================= GPU 4G DIMENSIONS =======================
+ * ======================= GPU 4GB DIMENSIONS =======================
 */
-#define GPU_4GB_DEPTH 30 * SIZE_SC
+#define GPU_4GB_DEPTH 20 * SIZE_SC
 #define GPU_4GB_WIDTH 260
 #define GPU_4GB_HEIGHT 6
 
-#define GPU_4GB_ACC_DEPTH 35
-#define GPU_4GB_ACC_WIDTH 2
-#define GPU_4GB_ACC_HEIGHT 40
+#define GPU_4GB_BOARD_DEPTH 72 * SIZE_SC
+#define GPU_4GB_BOARD_HEIGHT 6
+#define GPU_4GB_BOARD_WIDTH 150 * SIZE_SC
+
+#define GPU_4GB_CHIPSET_ACC_DEPTH 28 * SIZE_SC
+#define GPU_4GB_CHIPSET_ACC_WIDTH 24 * SIZE_SC
+#define GPU_4GB_CHIPSET_ACC_HEIGHT 6
+
+#define GPU_4GB_MEMBLOCK_ACC_DEPTH 20 * SIZE_SC
+#define GPU_4GB_MEMBLOCK_ACC_WIDTH 10 * SIZE_SC
+#define GPU_4GB_MEMBLOCK_ACC_HEIGHT 4
 
 /*
- * ======================= GPU 6G DIMENSIONS =======================
+ * ======================= GPU 6GB DIMENSIONS =======================
 */
-#define GPU_6GB_DEPTH 30 * SIZE_SC
+#define GPU_6GB_DEPTH 20 * SIZE_SC
 #define GPU_6GB_WIDTH 260
 #define GPU_6GB_HEIGHT 6
 
-#define GPU_6GB_ACC_DEPTH 35
-#define GPU_6GB_ACC_WIDTH 2
-#define GPU_6GB_ACC_HEIGHT 40
+#define GPU_6GB_BOARD_DEPTH 72 * SIZE_SC
+#define GPU_6GB_BOARD_HEIGHT 6
+#define GPU_6GB_BOARD_WIDTH 150 * SIZE_SC
 
+#define GPU_6GB_CHIPSET_ACC_DEPTH 32 * SIZE_SC
+#define GPU_6GB_CHIPSET_ACC_WIDTH 28 * SIZE_SC
+#define GPU_6GB_CHIPSET_ACC_HEIGHT 6
+
+#define GPU_6GB_MEMBLOCK_ACC_DEPTH 20 * SIZE_SC
+#define GPU_6GB_MEMBLOCK_ACC_WIDTH 10 * SIZE_SC
+#define GPU_6GB_MEMBLOCK_ACC_HEIGHT 4
 
 /*
- * ======================= GPU 8G DIMENSIONS =======================
+ * ======================= GPU 8GB DIMENSIONS =======================
 */
-#define GPU_8GB_DEPTH 30 * SIZE_SC
+#define GPU_8GB_DEPTH 20 * SIZE_SC
 #define GPU_8GB_WIDTH 260
 #define GPU_8GB_HEIGHT 6
 
-#define GPU_8GB_ACC_DEPTH 35
-#define GPU_8GB_ACC_WIDTH 2
-#define GPU_8GB_ACC_HEIGHT 170
+#define GPU_8GB_BOARD_DEPTH 72 * SIZE_SC
+#define GPU_8GB_BOARD_HEIGHT 6
+#define GPU_8GB_BOARD_WIDTH 150 * SIZE_SC
+
+#define GPU_8GB_CHIPSET_ACC_DEPTH 36 * SIZE_SC
+#define GPU_8GB_CHIPSET_ACC_WIDTH 32 * SIZE_SC
+#define GPU_8GB_CHIPSET_ACC_HEIGHT 6
+
+#define GPU_8GB_MEMBLOCK_ACC_DEPTH 20 * SIZE_SC
+#define GPU_8GB_MEMBLOCK_ACC_WIDTH 10 * SIZE_SC
+#define GPU_8GB_MEMBLOCK_ACC_HEIGHT 4
 
 /*
- * ======================= GPU 16G DIMENSIONS =======================
+ * ======================= GPU 16GB DIMENSIONS =======================
 */
-#define GPU_16GB_DEPTH 30 * SIZE_SC
+#define GPU_16GB_DEPTH 20 * SIZE_SC
 #define GPU_16GB_WIDTH 260
 #define GPU_16GB_HEIGHT 6
 
-#define GPU_32GB_ACC_DEPTH 35
-#define GPU_32GB_ACC_WIDTH 2
-#define GPU_32GB_ACC_HEIGHT 360
+#define GPU_16GB_BOARD_DEPTH 72 * SIZE_SC
+#define GPU_16GB_BOARD_HEIGHT 6
+#define GPU_16GB_BOARD_WIDTH 150 * SIZE_SC
 
+#define GPU_16GB_CHIPSET_ACC_DEPTH 40 * SIZE_SC
+#define GPU_16GB_CHIPSET_ACC_WIDTH 36 * SIZE_SC
+#define GPU_16GB_CHIPSET_ACC_HEIGHT 6
 
+#define GPU_16GB_MEMBLOCK_ACC_DEPTH 20 * SIZE_SC
+#define GPU_16GB_MEMBLOCK_ACC_WIDTH 10 * SIZE_SC
+#define GPU_16GB_MEMBLOCK_ACC_HEIGHT 4
 
 /*
  * ======================= ATX COLORS =======================

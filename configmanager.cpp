@@ -30,6 +30,21 @@ ConfigManager::RAMAccessoriesType ConfigManager::mapAccessoryRAM(ConfigManager::
     }
 }
 
+ConfigManager::GPUAccessoriesType ConfigManager::mapAccessoryGPU(ConfigManager::GPUType type)
+{
+    switch (type)
+    {
+    case (ConfigManager::GPUType::GPU_4GB):
+        return ConfigManager::GPUAccessoriesType::GPU_4GB_ACC;
+    case (ConfigManager::GPUType::GPU_6GB):
+        return ConfigManager::GPUAccessoriesType::GPU_6GB_ACC;
+    case (ConfigManager::GPUType::GPU_8GB):
+        return ConfigManager::GPUAccessoriesType::GPU_8GB_ACC;
+    case (ConfigManager::GPUType::GPU_16GB):
+        return ConfigManager::GPUAccessoriesType::GPU_16GB_ACC;
+    }
+}
+
 std::string motherboardTypeToString(ConfigManager::MotherboardType type)
 {
     switch (type)

@@ -119,7 +119,6 @@ int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager
     scene->addRAMBlock(ramBlock, "RAM_BLOCK", RAMType);
     scene->addRAMAccBlock(ramAccBlock, "RAM_ACC_BLOCK", RAMAccType);
 
-    // std::cout << "-->" << ramBlock;
     return 0;
 }
 
@@ -129,10 +128,35 @@ int Facade::addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager
     std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
     std::cout << "--> gpu type: " << gpuTypeToString(GPUType) << std::endl;
     std::cout << "--> slot: " << slotIndex << std::endl;
+
+    int splitIncrement = 0;
+    switch (GPUType)
+    {
+    case (ConfigManager::GPUType::GPU_4GB):
+        splitIncrement = 50;
+        break;
+    case (ConfigManager::GPUType::GPU_6GB):
+        splitIncrement = 0;
+        break;
+    case (ConfigManager::GPUType::GPU_8GB):
+        splitIncrement = 0;
+        break;
+    case (ConfigManager::GPUType::GPU_16GB):
+        splitIncrement = 0;
+        break;
+    }
+
+    ConfigManager::GPUAccessoriesType GPUAccType = configManager.mapAccessoryGPU(GPUType);
+
     Dot3D motherboardOffset = motherboardConfig->getGpuSlotPosition(slotIndex);
+    Dot3D motherboardAccOffset = motherboardConfig->getGPuAccSlotPosition(slotIndex);
+
     ComponentConfig gpuBlock = gpuConfig.getGPUConfig(GPUType, motherboardOffset);
+    ComponentConfig gpuAccBlock = gpuConfig.getGPUAccConfig(GPUAccType, motherboardAccOffset, splitIncrement);
+
     scene->addGPUBlock(gpuBlock, "GPU_BLOCK", GPUType);
-    std::cout << "-->" << gpuBlock;
+    scene->addGPUAccBlock(gpuAccBlock, "GPU_ACC_BLOCK", GPUAccType);
+
     return 0;
 }
 

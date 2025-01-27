@@ -432,7 +432,7 @@ void Drawer::zBufferAlg(SceneInf *scene, size_t bufHeight, size_t bufWidth)
         facets = model.getFacets();
         vertices = model.getVertices();
         typeModel = model.getModelType();
-        zBufForModel(facets, vertices, scene->getTransMatrix(), 4 + typeModel * 2, scene, bufWidth, bufHeight);
+        zBufForModel(facets, vertices, scene->getTransMatrix(), 4 + typeModel * 2, scene, bufWidth, bufHeight); // ID
     }
     model = scene->getBaseModel();
     facets = model.getFacets();

@@ -36,7 +36,22 @@ Dot3D MiniITXMotherboardConfig::getRamAccSlotPosition(int slot) const
 
 Dot3D MiniITXMotherboardConfig::getGpuSlotPosition(int slot) const
 {
-    return PCIEX16_1_offset;
+    GPUSlot slotType = static_cast<GPUSlot>(slot);
+    switch(slotType)
+    {
+    case GPUSlot::A1:
+        return PCIEX16_1_offset;
+    };
+}
+
+Dot3D MiniITXMotherboardConfig::getGPuAccSlotPosition(int slot) const
+{
+    GPUSlot slotType = static_cast<GPUSlot>(slot);
+    switch(slotType)
+    {
+    case GPUSlot::A1:
+        return PCIEX16_1_ACC_offset;
+    };
 }
 
 Dot3D MiniITXMotherboardConfig::getCpuSlotPosition(void) const

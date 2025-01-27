@@ -63,9 +63,12 @@ public:
         DDR4_DIMM_A1_ACC_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_A1_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH - 2, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_A1_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH + 25, BASE_Z + RAM_4GB_DEPTH - 5),
         DDR4_DIMM_A2_ACC_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_A2_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH - 2, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_A2_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH + 25, BASE_Z + RAM_4GB_DEPTH - 5),
         // GPU slots offset
-        PCIEX16_1_offset(startOfPlate_.getXCoordinate() + ATX_PCIEX16_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_1_OFFSET_Y, BASE_Z + 40),
-        PCIEX16_2_offset(startOfPlate_.getXCoordinate() + ATX_PCIEX16_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_2_OFFSET_Y, BASE_Z + 40),
-        PCIEX16_3_offset(startOfPlate_.getXCoordinate() + ATX_PCIEX16_3_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_3_OFFSET_Y, BASE_Z + 40),
+        PCIEX16_1_offset(startOfPlate_.getXCoordinate() + ATX_PCIEX16_1_OFFSET_X + ATX_PCIEX16_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_PCIEX16_1_OFFSET_Y + ATX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH),
+        PCIEX16_2_offset(startOfPlate_.getXCoordinate() + ATX_PCIEX16_2_OFFSET_X + ATX_PCIEX16_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_PCIEX16_2_OFFSET_Y + ATX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH),
+        PCIEX16_3_offset(startOfPlate_.getXCoordinate() + ATX_PCIEX16_3_OFFSET_X + ATX_PCIEX16_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_PCIEX16_3_OFFSET_Y + ATX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH),
+        PCIEX16_1_ACC_offset(startOfPlate_.getXCoordinate() + 30, startOfPlate_.getYCoordinate() + ATX_PCIEX16_1_OFFSET_Y + ATX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH),
+        PCIEX16_2_ACC_offset(startOfPlate_.getXCoordinate() + 30, startOfPlate_.getYCoordinate() + ATX_PCIEX16_2_OFFSET_Y + ATX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH),
+        PCIEX16_3_ACC_offset(startOfPlate_.getXCoordinate() + 30, startOfPlate_.getYCoordinate() + ATX_PCIEX16_3_OFFSET_Y + ATX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH),
         // CPU slot offset
         CPU_offset(1, 2, 3) // TODO
     {
@@ -79,6 +82,7 @@ public:
     Dot3D getRamAccSlotPosition(int slot) const override;
 
     Dot3D getGpuSlotPosition(int slot) const override;
+    Dot3D getGPuAccSlotPosition(int slot) const override;
 
     Dot3D getCpuSlotPosition(void) const override;
 
@@ -117,9 +121,9 @@ public:
     Dot3D PCIEX16_1_offset;
     Dot3D PCIEX16_2_offset;
     Dot3D PCIEX16_3_offset;
-    Dot3D PCIEX16_1_ACC_offset; // TODO
-    Dot3D PCIEX16_2_ACC_offset; // TODO
-    Dot3D PCIEX16_3_ACC_offset; // TODO
+    Dot3D PCIEX16_1_ACC_offset;
+    Dot3D PCIEX16_2_ACC_offset;
+    Dot3D PCIEX16_3_ACC_offset;
 
     // offset for placing the processor in the processor socket
     Dot3D CPU_offset;

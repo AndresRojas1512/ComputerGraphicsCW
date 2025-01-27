@@ -56,6 +56,20 @@ Dot3D ATXMotherboardConfig::getGpuSlotPosition(int slot) const
     }
 }
 
+Dot3D ATXMotherboardConfig::getGPuAccSlotPosition(int slot) const
+{
+    GPUSlot slotType = static_cast<GPUSlot>(slot);
+    switch(slotType)
+    {
+    case GPUSlot::A1:
+        return PCIEX16_1_ACC_offset;
+    case GPUSlot::A2:
+        return PCIEX16_2_ACC_offset;
+    case GPUSlot::A3:
+        return PCIEX16_3_ACC_offset;
+    }
+}
+
 Dot3D ATXMotherboardConfig::getCpuSlotPosition(void) const
 {
     return CPU_offset;
