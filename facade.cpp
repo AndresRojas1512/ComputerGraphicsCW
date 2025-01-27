@@ -133,16 +133,16 @@ int Facade::addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager
     switch (GPUType)
     {
     case (ConfigManager::GPUType::GPU_4GB):
-        splitIncrement = 50;
+        splitIncrement = 70;
         break;
     case (ConfigManager::GPUType::GPU_6GB):
-        splitIncrement = 0;
+        splitIncrement = 50;
         break;
     case (ConfigManager::GPUType::GPU_8GB):
-        splitIncrement = 0;
+        splitIncrement = 50;
         break;
     case (ConfigManager::GPUType::GPU_16GB):
-        splitIncrement = 0;
+        splitIncrement = 50;
         break;
     }
 
