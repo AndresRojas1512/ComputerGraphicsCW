@@ -95,6 +95,8 @@ private slots:
 
     void on_pushButtonAddGPU_clicked();
 
+    void on_pushButtonAddLight_clicked();
+
 private:
     Ui::MainWindow *ui;
     Facade *facade;

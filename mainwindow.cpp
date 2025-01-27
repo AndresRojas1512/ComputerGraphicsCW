@@ -270,24 +270,6 @@ void MainWindow::pictureToCenter()
     ui->graphicsView->setScene(setScene);
 }
 
-void MainWindow::on_pushButton_createScene_clicked() // deprecated
-{
-    std::cout << "MainWindow::on_pushButton_createScene_clicked" << std::endl;
-    CreateScene Window(nullptr);
-    Window.setModal(true);
-    Window.exec();
-
-    if (Window.getWidth() == -1 || Window.getheight() == -1)
-        return;
-
-    facade->setSceneInf(Window.getWidth(), Window.getheight());
-    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
-
-    if (ui->graphicsView->scene())
-        delete ui->graphicsView->scene();
-    ui->graphicsView->setScene(setScene);
-}
-
 void MainWindow::on_pushButtonCreateMotherboard_clicked()
 {
     ConfigManager::MotherboardType type = static_cast<ConfigManager::MotherboardType>(ui->comboBoxMotherboardType->currentIndex());
@@ -489,6 +471,334 @@ void MainWindow::on_pushButtonAddGPU_clicked()
     ui->graphicsView->setScene(setScene);
 }
 
+void MainWindow::on_pushButtonAddLight_clicked()
+{
+    AddLight lightPlaceWindow(nullptr);
+    lightPlaceWindow.setModal(true);
+    lightPlaceWindow.exec();
+
+    if (lightPlaceWindow.status == AddLight::OK)
+        facade->addLight(
+            lightPlaceWindow.getXAngle(),
+            lightPlaceWindow.getYAngle());
+    else
+        return;
+
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
+}
+
+
+
+
+void MainWindow::on_pushButton_deleteModel_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    ObjectDelete objectDeleteWindow(facade->getScene(), nullptr);
+    objectDeleteWindow.setModal(true);
+    objectDeleteWindow.exec();
+
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
+}
+
+void MainWindow::on_pushButton_sceneToInitianPosition_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    QGraphicsScene *setScene = facade->toCenter(ui->graphicsView->rect());
+
+    ui->graphicsView->setScene(setScene);
+}
+
+void MainWindow::on_pushButton_up_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    pictureRotateXLeft();
+}
+
+void MainWindow::on_pushButton_down_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    pictureRotateXRight();
+}
+
+void MainWindow::on_pushButton_left_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    pictureRotateYRight();
+}
+
+void MainWindow::on_pushButton_right_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    pictureRotateYLeft();
+}
+
+void MainWindow::on_pushButton_leftCircle_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    pictureRotateZRight();
+}
+
+void MainWindow::on_pushButton_rightCircle_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    pictureRotateZLeft();
+}
+
+void MainWindow::on_pushButton_up_scene_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    pictureUp();
+}
+
+void MainWindow::on_pushButton_down_scene_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    pictureDown();
+}
+
+void MainWindow::on_pushButton_left_scene_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    pictureLeft();
+}
+
+void MainWindow::on_pushButton_right_scene_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    pictureRight();
+}
+
+void MainWindow::on_pushButton_zoom_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Сцена ещё не была задана.");
+        return;
+    }
+
+    pictureScaleUp();
+}
+
+void MainWindow::on_pushButton_distance_clicked()
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Сцена ещё не была задана.");
+        return;
+    }
+
+    pictureScaleDown();
+}
+
+/*
+ * =========================== DEPRECATED ==========================
+*/
+
+
+void MainWindow::on_pushButton_createScene_clicked() // deprecated
+{
+    std::cout << "MainWindow::on_pushButton_createScene_clicked" << std::endl;
+    CreateScene Window(nullptr);
+    Window.setModal(true);
+    Window.exec();
+
+    if (Window.getWidth() == -1 || Window.getheight() == -1)
+        return;
+
+    facade->setSceneInf(Window.getWidth(), Window.getheight());
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
+}
+
+void MainWindow::on_pushButton_addCastle_clicked() // deprecated
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    int ch = 0;
+
+    ch += facade->addPlate(3, 3, 10, 12);
+    if (ch != 0)
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("На некоторых ячейках стоит плитка\n"
+                         "или замок выходит за границы сцены!");
+        return;
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        facade->addBrick(4, 3, 8, 1);
+        facade->addBrick(3, 4, 1, 9);
+        facade->addBrick(12, 4, 1, 9);
+    }
+
+    for (int i = 0; i < 2; i++)
+    {
+        facade->addBrick(4, 13, 3, 1);
+        facade->addBrick(9, 13, 3, 1);
+    }
+
+    facade->addBrick(4, 13, 2, 1);
+    facade->addBrick(10, 13, 2, 1);
+
+    for (int i = 0; i < 5; i++)
+    {
+        facade->addCylinder1(3, 3);
+        facade->addCylinder1(3, 13);
+        facade->addCylinder1(12, 3);
+        facade->addCylinder1(12, 13);
+
+        facade->addCylinder1(6, 5);
+        facade->addCylinder1(6, 7);
+        facade->addCylinder1(6, 9);
+        facade->addCylinder1(9, 5);
+        facade->addCylinder1(9, 7);
+        facade->addCylinder1(9, 9);
+    }
+    facade->addTile(6, 5, 4, 5);
+
+
+    for (int i = 0; i < 8; i += 2)
+    {
+        facade->addBrick(i + 5, 3, 1, 1);
+        facade->addTile(i + 4, 3, 1, 1);
+    }
+    for (int i = 0; i < 8; i += 2)
+    {
+        facade->addBrick(3, i + 5, 1, 1);
+        facade->addBrick(12, i + 5, 1, 1);
+        facade->addTile(3, i + 4, 1, 1);
+        facade->addTile(12, i + 4, 1, 1);
+    }
+
+
+    facade->addArc41(6, 13);
+    facade->addTile(4, 13, 8, 1);
+
+    facade->addTile(3, 3, 1, 1);
+    facade->addTile(3, 13, 1, 1);
+    facade->addTile(12, 3, 1, 1);
+    facade->addTile(12, 13, 1, 1);
+
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
+}
+
+void MainWindow::on_pushButton_moveModel_clicked() // deprecated
+{
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage *err = new QErrorMessage();
+        err->showMessage("Необходимо создать сцену!");
+        return;
+    }
+
+    ObjectChange objectChangeWindow(facade, nullptr);
+    objectChangeWindow.setModal(true);
+    objectChangeWindow.exec();
+
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
+}
+
 void MainWindow::on_pushButton_addModel_clicked() // deprecated
 {
     if (!facade->isSceneSet())
@@ -639,293 +949,3 @@ void MainWindow::on_pushButton_addModel_clicked() // deprecated
         delete ui->graphicsView->scene();
     ui->graphicsView->setScene(setScene);
 }
-
-
-void MainWindow::on_pushButton_addCastle_clicked() // deprecated
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    int ch = 0;
-
-    ch += facade->addPlate(3, 3, 10, 12);
-    if (ch != 0)
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("На некоторых ячейках стоит плитка\n"
-                         "или замок выходит за границы сцены!");
-        return;
-    }
-
-    for (int i = 0; i < 3; i++)
-    {
-        facade->addBrick(4, 3, 8, 1);
-        facade->addBrick(3, 4, 1, 9);
-        facade->addBrick(12, 4, 1, 9);
-    }
-
-    for (int i = 0; i < 2; i++)
-    {
-        facade->addBrick(4, 13, 3, 1);
-        facade->addBrick(9, 13, 3, 1);
-    }
-
-    facade->addBrick(4, 13, 2, 1);
-    facade->addBrick(10, 13, 2, 1);
-
-    for (int i = 0; i < 5; i++)
-    {
-        facade->addCylinder1(3, 3);
-        facade->addCylinder1(3, 13);
-        facade->addCylinder1(12, 3);
-        facade->addCylinder1(12, 13);
-
-        facade->addCylinder1(6, 5);
-        facade->addCylinder1(6, 7);
-        facade->addCylinder1(6, 9);
-        facade->addCylinder1(9, 5);
-        facade->addCylinder1(9, 7);
-        facade->addCylinder1(9, 9);
-    }
-    facade->addTile(6, 5, 4, 5);
-
-
-    for (int i = 0; i < 8; i += 2)
-    {
-        facade->addBrick(i + 5, 3, 1, 1);
-        facade->addTile(i + 4, 3, 1, 1);
-    }
-    for (int i = 0; i < 8; i += 2)
-    {
-        facade->addBrick(3, i + 5, 1, 1);
-        facade->addBrick(12, i + 5, 1, 1);
-        facade->addTile(3, i + 4, 1, 1);
-        facade->addTile(12, i + 4, 1, 1);
-    }
-
-
-    facade->addArc41(6, 13);
-    facade->addTile(4, 13, 8, 1);
-
-    facade->addTile(3, 3, 1, 1);
-    facade->addTile(3, 13, 1, 1);
-    facade->addTile(12, 3, 1, 1);
-    facade->addTile(12, 13, 1, 1);
-
-    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
-
-    if (ui->graphicsView->scene())
-        delete ui->graphicsView->scene();
-    ui->graphicsView->setScene(setScene);
-}
-
-
-void MainWindow::on_pushButton_deleteModel_clicked() // TODO
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    ObjectDelete objectDeleteWindow(facade->getScene(), nullptr);
-    objectDeleteWindow.setModal(true);
-    objectDeleteWindow.exec();
-
-    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
-
-    if (ui->graphicsView->scene())
-        delete ui->graphicsView->scene();
-    ui->graphicsView->setScene(setScene);
-}
-
-
-void MainWindow::on_pushButton_moveModel_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    ObjectChange objectChangeWindow(facade, nullptr);
-    objectChangeWindow.setModal(true);
-    objectChangeWindow.exec();
-
-    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
-
-    if (ui->graphicsView->scene())
-        delete ui->graphicsView->scene();
-    ui->graphicsView->setScene(setScene);
-}
-
-void MainWindow::on_pushButton_sceneToInitianPosition_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    if (ui->graphicsView->scene())
-        delete ui->graphicsView->scene();
-    QGraphicsScene *setScene = facade->toCenter(ui->graphicsView->rect());
-
-    ui->graphicsView->setScene(setScene);
-}
-
-
-
-void MainWindow::on_pushButton_up_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    pictureRotateXLeft();
-}
-
-void MainWindow::on_pushButton_down_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    pictureRotateXRight();
-}
-
-void MainWindow::on_pushButton_left_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    pictureRotateYRight();
-}
-
-void MainWindow::on_pushButton_right_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    pictureRotateYLeft();
-}
-
-void MainWindow::on_pushButton_leftCircle_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    pictureRotateZRight();
-}
-
-void MainWindow::on_pushButton_rightCircle_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    pictureRotateZLeft();
-}
-
-
-
-void MainWindow::on_pushButton_up_scene_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    pictureUp();
-}
-
-void MainWindow::on_pushButton_down_scene_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    pictureDown();
-}
-
-void MainWindow::on_pushButton_left_scene_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    pictureLeft();
-}
-
-void MainWindow::on_pushButton_right_scene_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
-        return;
-    }
-
-    pictureRight();
-}
-
-void MainWindow::on_pushButton_zoom_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Сцена ещё не была задана.");
-        return;
-    }
-
-    pictureScaleUp();
-}
-
-void MainWindow::on_pushButton_distance_clicked()
-{
-    if (!facade->isSceneSet())
-    {
-        QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Сцена ещё не была задана.");
-        return;
-    }
-
-    pictureScaleDown();
-}
-
