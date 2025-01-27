@@ -214,14 +214,15 @@ PolygonModel &SceneInf::getModel(size_t num)
 
 void SceneInf::setModel(size_t num, PolygonModel &newModel)
 {
+    // std::cout << "================================================" << std::endl;
     models.at(num) = newModel;
 }
 
 void SceneInf::addModel(PolygonModel &model)
 {
     std::cout << "SceneInf::addModel" << std::endl;
-    modelsNum++;
     models.push_back(model);
+    modelsNum = models.size();
     std::cout << "modelsNum: " << modelsNum << std::endl;
     // markUsedCellsZ(modelsNum - 1);
     //    printUsedCellsZ();

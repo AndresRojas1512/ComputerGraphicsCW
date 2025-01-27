@@ -136,3 +136,32 @@ PolygonModel::model_t parseCPUModel(ConfigManager::CPUType CPUType)
     }
 }
 
+std::string mapModelName(PolygonModel::model_t type)
+{
+    switch (type)
+    {
+    // RAM MAPPINGS
+    case (PolygonModel::RAM_4GB_BLOCK):
+        return "RAM 4GB";
+    case (PolygonModel::RAM_8GB_BLOCK):
+        return "RAM 8GB";
+    case (PolygonModel::RAM_16GB_BLOCK):
+        return "RAM 16GB";
+    case (PolygonModel::RAM_32GB_BLOCK):
+        return "RAM 32GB";
+    // GPU MAPPINGS
+    case (PolygonModel::GPU_4GB_BLOCK):
+        return "GPU 4GB";
+    case (PolygonModel::GPU_6GB_BLOCK):
+        return "GPU 6GB";
+    case (PolygonModel::GPU_8GB_BLOCK):
+        return "GPU 8GB";
+    case (PolygonModel::GPU_16GB_BLOCK):
+        return "GPU 16GB";
+    // CPU MAPPINGS
+    case (PolygonModel::INTEL):
+        return "Intel CPU";
+    case (PolygonModel::AMD):
+        return "AMD CPU";
+    };
+}

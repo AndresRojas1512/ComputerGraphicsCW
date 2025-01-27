@@ -1,72 +1,56 @@
 ﻿#include "objectdelete.hpp"
 #include "ui_objectdelete.h"
 
+#include "objectdelete.hpp"
+#include "ui_objectdelete.h"
+
 ObjectDelete::ObjectDelete(SceneInf *scene_, QWidget *parent)
     : QDialog(parent), ui(new Ui::ObjectDelete)
 {
-    std::cout << "ObjectDelete::ObjectDelete" << std::endl;
     ui->setupUi(this);
     this->setWindowTitle("Удаление объектов сцены");
 
     scene = scene_;
+    std::vector<PolygonModel> models = scene->getModels();
+    std::vector<int> modelIndexMap;
 
-    PolygonModel model;
     int count = 0;
-
-    for (size_t i = 0; i < scene->getModelsNum(); i++)
+    for (size_t i = 0; i < models.size(); ++i)
     {
-        model = scene->getModel(i);
-        count++;
-        ui->listWidget->addItem(
-            QString::number(count) + ". " +
-            scene->getModel(i).getName()       + " - (" +
-            QString::number(scene->getModel(i).getUsedXCell() + 1) + "; " +
-            QString::number(scene->getModel(i).getUsedYCell() + 1) + "; " +
-            QString::number(scene->getModel(i).getUsedZCell()) + ")");
+        QString modelName = models[i].getName();
+        if (!modelName.startsWith("ATX") && !modelName.startsWith("MICROATX") && !modelName.startsWith("MINIITX"))
+        {
+            ui->listWidget->addItem(QString::number(count + 1) + ". " + modelName);
+            modelIndexMap.push_back(i);
+            count++;
+        }
     }
 
-    for (size_t i = 0; i < scene->getLightNum(); i++)
-        ui->listWidget->addItem(
-            QString::number(count + i + 1)                       + ". Источ. света (" +
-            QString::number(scene->getLight(i).getXAngle()) + "°; " +
-            QString::number(scene->getLight(i).getYAngle()) + "°)");
+    for (int i = 0; i < modelIndexMap.size(); ++i)
+    {
+        QListWidgetItem* item = ui->listWidget->item(i);
+        item->setData(Qt::UserRole, QVariant(modelIndexMap[i]));
+    }
 }
+
 
 ObjectDelete::~ObjectDelete() { delete ui; }
 
 void ObjectDelete::on_pushButton_clicked()
 {
-    size_t curRow = size_t(this->ui->listWidget->currentRow());
+    int curRow = this->ui->listWidget->currentRow();
     if (curRow < 0)
         return;
 
-    size_t modelsNum = scene->getModelsNum();
-    bool flag = true;
-    PolygonModel model;
+    int modelIndex = ui->listWidget->item(curRow)->data(Qt::UserRole).toInt();
+    std::cout << "model index: " << modelIndex << std::endl;
 
-    if (curRow < modelsNum)
-    {
-        int modelLength;
-        int modelWidth;
+    scene->deleteModel(modelIndex);
+    ui->listWidget->takeItem(curRow);
 
-        model = scene->getModel(curRow);
-        modelLength = model.getLengthModel();
-        modelWidth = model.getWidthModel();
-
-        if (flag)
-        {
-            scene->deleteModel(curRow);
-            modelsNum --;
-        }
-
-        recalculationModelsNum();
-    }
-    else
-    {
-        scene->deleteLight(curRow - modelsNum);
-    }
     close();
 }
+
 
 void ObjectDelete::recalculationModelsNum()
 {
