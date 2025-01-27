@@ -603,6 +603,12 @@ void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(microATXConfig.DDR4_DIMM_B2, "MICROATX_DDR4_DIMM_B2", PolygonModel::MICROATX_DDR4_DIMM_B2);
     addMotherboardComponent(microATXConfig.PCIEX16_1, "MICROATX_PCIEX16_1", PolygonModel::MICROATX_PCIEX16_1);
     addMotherboardComponent(microATXConfig.PCIEX16_2, "MICROATX_PCIEX16_2", PolygonModel::MICROATX_PCIEX16_2);
+    addMotherboardComponent(microATXConfig.C2242_1, "MICROATX_C2242_1", PolygonModel::MICROATX_C2242_1);
+    addMotherboardComponent(microATXConfig.C2260_1, "MICROATX_C2260_1", PolygonModel::MICROATX_C2260_1);
+    addMotherboardComponent(microATXConfig.C2280_1, "MICROATX_C2280_1", PolygonModel::MICROATX_C2280_1);
+    addMotherboardComponent(microATXConfig.C2242_2, "MICROATX_C2242_2", PolygonModel::MICROATX_C2242_2);
+    addMotherboardComponent(microATXConfig.C2260_2, "MICROATX_C2260_2", PolygonModel::MICROATX_C2260_2);
+    addMotherboardComponent(microATXConfig.C2280_2, "MICROATX_C2280_2", PolygonModel::MICROATX_C2280_2);
 }
 
 /*

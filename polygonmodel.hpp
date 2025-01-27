@@ -104,6 +104,12 @@ public:
         MICROATX_DDR4_DIMM_B2,
         MICROATX_PCIEX16_1,
         MICROATX_PCIEX16_2,
+        MICROATX_C2242_1,
+        MICROATX_C2260_1,
+        MICROATX_C2280_1,
+        MICROATX_C2242_2,
+        MICROATX_C2260_2,
+        MICROATX_C2280_2,
         // MINIITX
         MINIITX_USB3_5,
         MINIITX_USB7_10,
