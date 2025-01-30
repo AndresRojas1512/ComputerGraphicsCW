@@ -93,6 +93,13 @@ public:
         ATX_BATTERY,
         ATX_AMDX570,
         ATX_SATA6G_1,
+        ATX_SATA6G_2,
+        ATX_SATA6G_3,
+        ATX_SATA6G_4,
+        ATX_SATA6G_5,
+        ATX_SATA6G_6,
+        ATX_SATA6G_7,
+        ATX_SATA6G_8,
         // MICROATX
         MICROATX_HDMI1_DP,
         MICROATX_HDMI2,

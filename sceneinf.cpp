@@ -573,7 +573,14 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(ATXConfig.C2242_2, "ATX_C2260_2", PolygonModel::ATX_C2242_2);
     addMotherboardComponent(ATXConfig.BATTERY, "ATX_BATTERY", PolygonModel::ATX_BATTERY);
     addMotherboardComponent(ATXConfig.AMDX570, "ATX_AMDX570", PolygonModel::ATX_AMDX570);
-    addMotherboardComponent(ATXConfig.SATA6G_1, "ATX_SATA6G_1_2", PolygonModel::ATX_SATA6G_1);
+    addMotherboardComponent(ATXConfig.SATA6G_1, "ATX_SATA6G_1", PolygonModel::ATX_SATA6G_1);
+    addMotherboardComponent(ATXConfig.SATA6G_2, "ATX_SATA6G_2", PolygonModel::ATX_SATA6G_2);
+    addMotherboardComponent(ATXConfig.SATA6G_3, "ATX_SATA6G_3", PolygonModel::ATX_SATA6G_3);
+    addMotherboardComponent(ATXConfig.SATA6G_4, "ATX_SATA6G_4", PolygonModel::ATX_SATA6G_4);
+    addMotherboardComponent(ATXConfig.SATA6G_5, "ATX_SATA6G_5", PolygonModel::ATX_SATA6G_5);
+    addMotherboardComponent(ATXConfig.SATA6G_6, "ATX_SATA6G_6", PolygonModel::ATX_SATA6G_6);
+    addMotherboardComponent(ATXConfig.SATA6G_7, "ATX_SATA6G_7", PolygonModel::ATX_SATA6G_7);
+    addMotherboardComponent(ATXConfig.SATA6G_8, "ATX_SATA6G_8", PolygonModel::ATX_SATA6G_8);
 }
 
 /*
