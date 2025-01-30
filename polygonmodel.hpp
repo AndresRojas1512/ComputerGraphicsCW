@@ -137,6 +137,10 @@ public:
         MINIITX_PCIEX16_1,
         MINIITX_C2280,
         MINIITX_C2260,
+        MINIITX_SATA6G_1,
+        MINIITX_SATA6G_2,
+        MINIITX_SATA6G_3,
+        MINIITX_SATA6G_4,
         // CPU type
         Intel_CPU,
         AMD_CPU,

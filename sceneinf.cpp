@@ -653,6 +653,10 @@ void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(miniITXConfig.PCIEX16_1, "MINIITX_PCIEX16_1", PolygonModel::MINIITX_PCIEX16_1);
     addMotherboardComponent(miniITXConfig.C2280, "MINIITX_C2280", PolygonModel::MINIITX_C2280);
     addMotherboardComponent(miniITXConfig.C2260, "MINIITX_C2260", PolygonModel::MINIITX_C2260);
+    addMotherboardComponent(miniITXConfig.SATA6G_1, "MINIITX_SATA6G_1", PolygonModel::MINIITX_SATA6G_1);
+    addMotherboardComponent(miniITXConfig.SATA6G_2, "MINIITX_SATA6G_2", PolygonModel::MINIITX_SATA6G_2);
+    addMotherboardComponent(miniITXConfig.SATA6G_3, "MINIITX_SATA6G_3", PolygonModel::MINIITX_SATA6G_3);
+    addMotherboardComponent(miniITXConfig.SATA6G_4, "MINIITX_SATA6G_4", PolygonModel::MINIITX_SATA6G_4);
 }
 
 void SceneInf::addMotherboardComponent(ComponentConfig &config, QString modelName, PolygonModel::model_t modelType)
