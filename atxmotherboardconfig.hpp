@@ -43,7 +43,7 @@ public:
         // peripheria
         AUDIO({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_AUDIO_OFFSET_Y, BASE_Z + 20, ATX_AUDIO_WIDTH, ATX_AUDIO_HEIGHT, 20)}, {}, {}),
         // processor
-        socketM4({}, {}, {}), // TODO
+        socketAM4({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_socketAM4_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_socketAM4_OFFSET_Y, BASE_Z + ATX_socketAM4_BASE_DEPTH, ATX_socketAM4_BASE_WIDTH, ATX_socketAM4_BASE_HEIGHT, ATX_socketAM4_BASE_DEPTH)}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_socketAM4_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_socketAM4_OFFSET_Y, BASE_Z + ATX_socketAM4_FRAME_DEPTH + ATX_socketAM4_BASE_DEPTH, ATX_socketAM4_FRAME_WIDTH, ATX_socketAM4_FRAME_HEIGHT, ATX_socketAM4_FRAME_DEPTH, ATX_socketAM4_TOPFRAME_WIDTH, ATX_socketAM4_BOTTOMFRAME_WIDTH, ATX_socketAM4_LEFTFRAME_WIDTH, ATX_socketAM4_RIGHTFRAME_WIDTH)}, {}), // TODO
         // RAM
         DDR4_DIMM_B1({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_Y, BASE_Z + 40, ATX_DDR4_DIMM_WIDTH, ATX_DDR4_DIMM_HEIGHT, 40, ATX_DDR4_DIMM_TOPFRAMEWIDTH, ATX_DDR4_DIMM_BOTTOMFRAMEWIDTH, ATX_DDR4_DIMM_LEFTFRAMEWIDTH, ATX_DDR4_DIMM_RIGHTFRAMEWIDTH)}, {}),
         DDR4_DIMM_B2({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_Y, BASE_Z + 40, ATX_DDR4_DIMM_WIDTH, ATX_DDR4_DIMM_HEIGHT, 40, ATX_DDR4_DIMM_TOPFRAMEWIDTH, ATX_DDR4_DIMM_BOTTOMFRAMEWIDTH, ATX_DDR4_DIMM_LEFTFRAMEWIDTH, ATX_DDR4_DIMM_RIGHTFRAMEWIDTH)}, {}),
@@ -54,16 +54,25 @@ public:
         PCIEX16_2({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_PCIEX16_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_2_OFFSET_Y, BASE_Z + 40, ATX_PCIEX16_WIDTH, ATX_PCIEX16_HEIGHT, 40, ATX_PCIEX16_TOPFRAMEWIDTH, ATX_PCIEX16_BOTTOMFRAMEWIDTH, ATX_PCIEX16_LEFTFRAMEWIDTH, ATX_PCIEX16_RIGHTFRAMEWIDTH)}, {}),
         PCIEX16_3({}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_PCIEX16_3_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_PCIEX16_3_OFFSET_Y, BASE_Z + 40, ATX_PCIEX16_WIDTH, ATX_PCIEX16_HEIGHT, 40, ATX_PCIEX16_TOPFRAMEWIDTH, ATX_PCIEX16_BOTTOMFRAMEWIDTH, ATX_PCIEX16_LEFTFRAMEWIDTH, ATX_PCIEX16_RIGHTFRAMEWIDTH)}, {}),
         // CAPACITORS
-        C22110_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C22110_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C22110_1_OFFSET_Y, BASE_Z + ATX_C22110_1_HEIGHT, ATX_C22110_1_RADIUS, ATX_C22110_1_HEIGHT, ATX_C22110_1_SEGMENTS)}),
-        C2280_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2280_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2280_1_OFFSET_Y, BASE_Z + ATX_C2280_1_HEIGHT, ATX_C2280_1_RADIUS, ATX_C2280_1_HEIGHT, ATX_C2280_1_SEGMENTS)}),
-        C2260_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2260_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2260_1_OFFSET_Y, BASE_Z + ATX_C2260_1_HEIGHT, ATX_C2260_1_RADIUS, ATX_C2260_1_HEIGHT, ATX_C2260_1_SEGMENTS)}),
-        C2242_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2242_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2242_1_OFFSET_Y, BASE_Z + ATX_C2242_1_HEIGHT, ATX_C2242_1_RADIUS, ATX_C2242_1_HEIGHT, ATX_C2242_1_SEGMENTS)}),
-        C22110_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C22110_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C22110_2_OFFSET_Y, BASE_Z + ATX_C22110_2_HEIGHT, ATX_C22110_2_RADIUS, ATX_C22110_2_HEIGHT, ATX_C22110_2_SEGMENTS)}),
-        C2280_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2280_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2280_2_OFFSET_Y, BASE_Z + ATX_C2280_2_HEIGHT, ATX_C2280_2_RADIUS, ATX_C2280_2_HEIGHT, ATX_C2280_2_SEGMENTS)}),
-        C2260_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2260_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2260_2_OFFSET_Y, BASE_Z + ATX_C2260_2_HEIGHT, ATX_C2260_2_RADIUS, ATX_C2260_2_HEIGHT, ATX_C2260_2_SEGMENTS)}),
-        C2242_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2242_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2242_2_OFFSET_Y, BASE_Z + ATX_C2242_2_HEIGHT, ATX_C2242_2_RADIUS, ATX_C2242_2_HEIGHT, ATX_C2242_2_SEGMENTS)}),
+        C22110_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C22110_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C22110_1_OFFSET_Y, BASE_Z, ATX_C22110_1_RADIUS, ATX_C22110_1_HEIGHT, ATX_C22110_1_SEGMENTS)}),
+        C2280_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2280_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2280_1_OFFSET_Y, BASE_Z, ATX_C2280_1_RADIUS, ATX_C2280_1_HEIGHT, ATX_C2280_1_SEGMENTS)}),
+        C2260_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2260_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2260_1_OFFSET_Y, BASE_Z, ATX_C2260_1_RADIUS, ATX_C2260_1_HEIGHT, ATX_C2260_1_SEGMENTS)}),
+        C2242_1({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2242_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2242_1_OFFSET_Y, BASE_Z, ATX_C2242_1_RADIUS, ATX_C2242_1_HEIGHT, ATX_C2242_1_SEGMENTS)}),
+        C22110_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C22110_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C22110_2_OFFSET_Y, BASE_Z, ATX_C22110_2_RADIUS, ATX_C22110_2_HEIGHT, ATX_C22110_2_SEGMENTS)}),
+        C2280_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2280_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2280_2_OFFSET_Y, BASE_Z, ATX_C2280_2_RADIUS, ATX_C2280_2_HEIGHT, ATX_C2280_2_SEGMENTS)}),
+        C2260_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2260_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2260_2_OFFSET_Y, BASE_Z, ATX_C2260_2_RADIUS, ATX_C2260_2_HEIGHT, ATX_C2260_2_SEGMENTS)}),
+        C2242_2({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_C2242_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_C2242_2_OFFSET_Y, BASE_Z, ATX_C2242_2_RADIUS, ATX_C2242_2_HEIGHT, ATX_C2242_2_SEGMENTS)}),
         // BATTERY
-        BATTERY({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_BATTERY_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_BATTERY_OFFSET_Y, BASE_Z + ATX_BATTERY_HEIGHT, ATX_BATTERY_RADIUS, ATX_BATTERY_HEIGHT, ATX_BATTERY_SEGMENTS)}),
+        BATTERY({}, {}, {CylinderConfig(startOfPlate_.getXCoordinate() + ATX_BATTERY_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_BATTERY_OFFSET_Y, BASE_Z, ATX_BATTERY_RADIUS, ATX_BATTERY_HEIGHT, ATX_BATTERY_SEGMENTS)}),
+        // AMD X570
+        AMDX570({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_AMDX570_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_AMDX570_OFFSET_Y, BASE_Z + ATX_AMDX570_DEPTH, ATX_AMDX570_WIDTH, ATX_AMDX570_HEIGHT, ATX_AMDX570_DEPTH)}, {}, {}),
+
+        SATA6G_1({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_X + ATX_SATA6G_BACKWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_Y + ATX_SATA6G_RIGHTWALL_HEIGHT, BASE_Z + ATX_SATA6G_BOTTOM_DEPTH, ATX_SATA6G_BOTTOM_WIDTH, ATX_SATA6G_BOTTOM_HEIGHT - ATX_SATA6G_RIGHTWALL_HEIGHT - ATX_SATA6G_LEFTWALL_HEIGHT, ATX_SATA6G_BOTTOM_DEPTH),
+                    ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_Y, BASE_Z + ATX_SATA6G_BACKWALL_DEPTH, ATX_SATA6G_BACKWALL_WIDTH, ATX_SATA6G_BACKWALL_HEIGHT, ATX_SATA6G_BACKWALL_DEPTH),
+                    ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_X + ATX_SATA6G_BACKWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_Y, BASE_Z + ATX_SATA6G_RIGHTWALL_DEPTH, ATX_SATA6G_RIGHTWALL_WIDTH, ATX_SATA6G_RIGHTWALL_HEIGHT, ATX_SATA6G_RIGHTWALL_DEPTH),
+                    ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_X + ATX_SATA6G_BACKWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_Y - ATX_SATA6G_RIGHTWALL_HEIGHT + ATX_SATA6G_BOTTOM_HEIGHT, BASE_Z + ATX_SATA6G_LEFTWALL_DEPTH, ATX_SATA6G_LEFTWALL_WIDTH, ATX_SATA6G_LEFTWALL_HEIGHT, ATX_SATA6G_LEFTWALL_DEPTH),
+                    ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_Y, BASE_Z + ATX_SATA6G_TOP_DEPTH + ATX_SATA6G_BACKWALL_DEPTH, ATX_SATA6G_TOP_WIDTH, ATX_SATA6G_TOP_HEIGHT, ATX_SATA6G_TOP_DEPTH)},
+                   {}, {}),
         // RAM slots offset
         DDR4_DIMM_B1_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
         DDR4_DIMM_B2_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
@@ -107,7 +116,7 @@ public:
     ComponentConfig AUDIO;
 
     // processor
-    ComponentConfig socketM4;
+    ComponentConfig socketAM4;
     // RAM
     ComponentConfig DDR4_DIMM_B1;
     ComponentConfig DDR4_DIMM_B2;
@@ -132,11 +141,11 @@ public:
     // battery
     ComponentConfig BATTERY;
 
-    // microchip amd
-    // ComponentConfig AMDX70; // new
+    // microchip AMD
+    ComponentConfig AMDX570;
 
     // // sata
-    // ComponentConfig SATA6G_1_2; // new
+    ComponentConfig SATA6G_1;
     // ComponentConfig SATA6G_3_4; // new
     // ComponentConfig SATA6G_5_6; // new
     // ComponentConfig SATA6G_7_8; // new

@@ -555,7 +555,7 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(ATXConfig.U3252_C8_LAN1_U32G2_7, "ATX_U3252_C8_LAN1_U32G2_7", PolygonModel::ATX_U3252_C8_LAN1_U32G2_7);
     addMotherboardComponent(ATXConfig.M2_WIFI, "ATX_M2_WIFI", PolygonModel::ATX_M2_WIFI);
     addMotherboardComponent(ATXConfig.AUDIO, "ATX_AUDIO", PolygonModel::ATX_AUDIO);
-    addMotherboardComponent(ATXConfig.socketM4, "ATX_socketM4", PolygonModel::ATX_socketM4);
+    addMotherboardComponent(ATXConfig.socketAM4, "ATX_socketM4", PolygonModel::ATX_socketAM4);
     addMotherboardComponent(ATXConfig.DDR4_DIMM_B1, "ATX_DDR4_DIMM_B1", PolygonModel::ATX_DDR4_DIMM_B1);
     addMotherboardComponent(ATXConfig.DDR4_DIMM_B2, "ATX_DDR4_DIMM_B2", PolygonModel::ATX_DDR4_DIMM_B2);
     addMotherboardComponent(ATXConfig.DDR4_DIMM_A1, "ATX_DDR4_DIMM_A1", PolygonModel::ATX_DDR4_DIMM_A1);
@@ -572,6 +572,8 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(ATXConfig.C2260_2, "ATX_C2260_2", PolygonModel::ATX_C2260_2);
     addMotherboardComponent(ATXConfig.C2242_2, "ATX_C2260_2", PolygonModel::ATX_C2242_2);
     addMotherboardComponent(ATXConfig.BATTERY, "ATX_BATTERY", PolygonModel::ATX_BATTERY);
+    addMotherboardComponent(ATXConfig.AMDX570, "ATX_AMDX570", PolygonModel::ATX_AMDX570);
+    addMotherboardComponent(ATXConfig.SATA6G_1, "ATX_SATA6G_1_2", PolygonModel::ATX_SATA6G_1);
 }
 
 /*

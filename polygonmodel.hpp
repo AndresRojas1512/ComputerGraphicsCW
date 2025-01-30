@@ -74,7 +74,7 @@ public:
         ATX_U3252_C8_LAN1_U32G2_7,
         ATX_M2_WIFI,
         ATX_AUDIO,
-        ATX_socketM4,
+        ATX_socketAM4,
         ATX_DDR4_DIMM_B1,
         ATX_DDR4_DIMM_B2,
         ATX_DDR4_DIMM_A1,
@@ -91,6 +91,8 @@ public:
         ATX_C2260_2,
         ATX_C2242_2,
         ATX_BATTERY,
+        ATX_AMDX570,
+        ATX_SATA6G_1,
         // MICROATX
         MICROATX_HDMI1_DP,
         MICROATX_HDMI2,
