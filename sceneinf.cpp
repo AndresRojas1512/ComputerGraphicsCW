@@ -620,6 +620,10 @@ void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(microATXConfig.C2260_2, "MICROATX_C2260_2", PolygonModel::MICROATX_C2260_2);
     addMotherboardComponent(microATXConfig.C2280_2, "MICROATX_C2280_2", PolygonModel::MICROATX_C2280_2);
     addMotherboardComponent(microATXConfig.BATTERY, "MICROATX_BATTERY", PolygonModel::MICROATX_BATTERY);
+    addMotherboardComponent(microATXConfig.SATA6G_1, "MICROATX_SATA6G_1", PolygonModel::MICROATX_SATA6G_1);
+    addMotherboardComponent(microATXConfig.SATA6G_2, "MICROATX_SATA6G_2", PolygonModel::MICROATX_SATA6G_2);
+    addMotherboardComponent(microATXConfig.SATA6G_3, "MICROATX_SATA6G_3", PolygonModel::MICROATX_SATA6G_3);
+    addMotherboardComponent(microATXConfig.SATA6G_4, "MICROATX_SATA6G_4", PolygonModel::MICROATX_SATA6G_4);
 }
 
 /*

@@ -121,6 +121,10 @@ public:
         MICROATX_C2260_2,
         MICROATX_C2280_2,
         MICROATX_BATTERY,
+        MICROATX_SATA6G_1,
+        MICROATX_SATA6G_2,
+        MICROATX_SATA6G_3,
+        MICROATX_SATA6G_4,
         // MINIITX
         MINIITX_USB3_5,
         MINIITX_USB7_10,
