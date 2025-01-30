@@ -30,7 +30,6 @@ public:
     ATXMotherboardConfig(const Dot3D &startOfPlate_, const Dot3D &endOfPlate_)
         : BaseMotherboardConfig(startOfPlate_, endOfPlate_),
         HDMI_DP({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y, BASE_Z + 20, ATX_HDMI_DP_WIDTH, ATX_HDMI_DP_HEIGHT, 20)},{}, {}),
-        // peripheria
         BIOS_FLBK({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y, BASE_Z + 20, ATX_BIOS_FLBK_WIDTH, ATX_BIOS_FLBK_HEIGHT, 20)}, {}, {}),
         // peripheria
         U32G2_1_4({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_U32G2_1_4_OFFSET_Y, BASE_Z + 20, ATX_U32G2_1_4_WIDTH, ATX_U32G2_1_4_HEIGHT, 20)}, {}, {}),

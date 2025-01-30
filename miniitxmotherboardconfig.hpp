@@ -66,7 +66,6 @@ public:
     Dot3D getGpuSlotPosition(int slot) const override;
     Dot3D getGPuAccSlotPosition(int slot) const override;
 
-
     Dot3D getCpuSlotPosition(void) const override;
 
     // peripheria
