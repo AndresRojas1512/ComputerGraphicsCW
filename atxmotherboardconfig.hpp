@@ -242,6 +242,18 @@ public:
                   ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_X + ATX_SATA6G_BACKWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_SATA6G_7_8_BASE_OFFSET_Y - ATX_SATA6G_RIGHTWALL_HEIGHT + ATX_SATA6G_BOTTOM_HEIGHT, BASE_Z + ATX_SATA6G_LEFTWALL_DEPTH + ATX_SATA6G_BACKWALL_DEPTH + ATX_SATA6G_BOTTOM_DEPTH, ATX_SATA6G_LEFTWALL_WIDTH, ATX_SATA6G_LEFTWALL_HEIGHT, ATX_SATA6G_LEFTWALL_DEPTH),
                   ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_SATA6G_1_2_BASE_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_SATA6G_7_8_BASE_OFFSET_Y, BASE_Z + ATX_SATA6G_TOP_DEPTH + ATX_SATA6G_BACKWALL_DEPTH + ATX_SATA6G_BACKWALL_DEPTH + ATX_SATA6G_BOTTOM_DEPTH, ATX_SATA6G_TOP_WIDTH, ATX_SATA6G_TOP_HEIGHT, ATX_SATA6G_TOP_DEPTH)},
                  {}, {}),
+        SuperIO({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_SuperIO_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_SuperIO_OFFSET_Y, BASE_Z + ATX_SuperIO_DEPTH, ATX_SuperIO_WIDTH, ATX_SuperIO_HEIGHT, ATX_SuperIO_DEPTH)}, {}, {}),
+        IntelI22AT({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_IntelI22AT_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_IntelI22AT_OFFSET_Y, BASE_Z + ATX_IntelI22AT_DEPTH, ATX_IntelI22AT_WIDTH, ATX_IntelI22AT_HEIGHT, ATX_IntelI22AT_DEPTH)}, {}, {}),
+        EATX12V_1({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_EATX12V_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_EATX12V_1_OFFSET_Y, BASE_Z + ATX_EATX12V_1_DEPTH, ATX_EATX12V_1_WIDTH, ATX_EATX12V_1_HEIGHT, ATX_EATX12V_1_DEPTH)}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_EATX12V_1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_EATX12V_1_OFFSET_Y, BASE_Z + ATX_EATX12V_1_FRAME_DEPTH, ATX_EATX12V_1_WIDTH, ATX_EATX12V_1_HEIGHT, ATX_EATX12V_1_FRAME_DEPTH, ATX_EATX12V_1_FRAME_WIDTH, ATX_EATX12V_1_FRAME_WIDTH, ATX_EATX12V_1_FRAME_WIDTH, ATX_EATX12V_1_FRAME_WIDTH)}, {}),
+        EATX12V_2({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_EATX12V_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_EATX12V_2_OFFSET_Y, BASE_Z + ATX_EATX12V_2_DEPTH, ATX_EATX12V_2_WIDTH, ATX_EATX12V_2_HEIGHT, ATX_EATX12V_2_DEPTH)}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_EATX12V_2_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_EATX12V_2_OFFSET_Y, BASE_Z + ATX_EATX12V_2_FRAME_DEPTH, ATX_EATX12V_2_WIDTH, ATX_EATX12V_2_HEIGHT, ATX_EATX12V_2_FRAME_DEPTH, ATX_EATX12V_2_FRAME_WIDTH, ATX_EATX12V_2_FRAME_WIDTH, ATX_EATX12V_2_FRAME_WIDTH, ATX_EATX12V_2_FRAME_WIDTH)}, {}),
+        RTL8125_CG({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_RTL8125_CG_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_RTL8125_CG_OFFSET_Y, BASE_Z + ATX_RTL8125_CG_DEPTH, ATX_RTL8125_CG_WIDTH, ATX_RTL8125_CG_HEIGHT, ATX_RTL8125_CG_DEPTH)}, {}, {}),
+        EATXPWR({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_EATXPWR_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_EATXPWR_OFFSET_Y, BASE_Z + ATX_EATXPWR_DEPTH, ATX_EATXPWR_WIDTH, ATX_EATXPWR_HEIGHT, ATX_EATXPWR_DEPTH)}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_EATXPWR_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_EATXPWR_OFFSET_Y, BASE_Z + ATX_EATXPWR_FRAME_DEPTH, ATX_EATXPWR_WIDTH, ATX_EATXPWR_HEIGHT, ATX_EATXPWR_FRAME_DEPTH, ATX_EATXPWR_FRAME_WIDTH, ATX_EATXPWR_FRAME_WIDTH, ATX_EATXPWR_FRAME_WIDTH, ATX_EATXPWR_FRAME_WIDTH)}, {}),
+        NODE({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_NODE_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_NODE_OFFSET_Y, BASE_Z + ATX_NODE_DEPTH, ATX_NODE_WIDTH, ATX_NODE_HEIGHT, ATX_NODE_DEPTH)}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_NODE_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_NODE_OFFSET_Y, BASE_Z + ATX_NODE_FRAME_DEPTH, ATX_NODE_WIDTH, ATX_NODE_HEIGHT, ATX_NODE_FRAME_DEPTH, ATX_NODE_FRAME_WIDTH, ATX_NODE_FRAME_WIDTH, ATX_NODE_FRAME_WIDTH, ATX_NODE_FRAME_WIDTH)}, {}),
+        USB34({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_USB34_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_USB34_OFFSET_Y, BASE_Z + ATX_USB34_DEPTH, ATX_USB34_WIDTH, ATX_USB34_HEIGHT, ATX_USB34_DEPTH)}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_USB34_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_USB34_OFFSET_Y, BASE_Z + ATX_USB34_FRAME_DEPTH, ATX_USB34_WIDTH, ATX_USB34_HEIGHT, ATX_USB34_FRAME_DEPTH, ATX_USB34_FRAME_WIDTH, ATX_USB34_FRAME_WIDTH, ATX_USB34_FRAME_WIDTH, ATX_USB34_FRAME_WIDTH)}, {}),
+        USB12({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_USB12_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_USB12_OFFSET_Y, BASE_Z + ATX_USB12_DEPTH, ATX_USB12_WIDTH, ATX_USB12_HEIGHT, ATX_USB12_DEPTH)}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_USB12_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_USB12_OFFSET_Y, BASE_Z + ATX_USB12_FRAME_DEPTH, ATX_USB12_WIDTH, ATX_USB12_HEIGHT, ATX_USB12_FRAME_DEPTH, ATX_USB12_FRAME_WIDTH, ATX_USB12_FRAME_WIDTH, ATX_USB12_FRAME_WIDTH, ATX_USB12_FRAME_WIDTH)}, {}),
+        U32G1_1011({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_U32G1_1011_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_U32G1_1011_OFFSET_Y, BASE_Z + ATX_U32G1_1011_DEPTH, ATX_U32G1_1011_WIDTH, ATX_U32G1_1011_HEIGHT, ATX_U32G1_1011_DEPTH)}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_U32G1_1011_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_U32G1_1011_OFFSET_Y, BASE_Z + ATX_U32G1_1011_FRAME_DEPTH, ATX_U32G1_1011_WIDTH, ATX_U32G1_1011_HEIGHT, ATX_U32G1_1011_FRAME_DEPTH, ATX_U32G1_1011_FRAME_WIDTH, ATX_U32G1_1011_FRAME_WIDTH, ATX_U32G1_1011_FRAME_WIDTH, ATX_U32G1_1011_FRAME_WIDTH)}, {}),
+        CHA_FAN1({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_CHA_FAN1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_CHA_FAN1_OFFSET_Y, BASE_Z + ATX_CHA_FAN1_DEPTH, ATX_CHA_FAN1_WIDTH, ATX_CHA_FAN1_HEIGHT, ATX_CHA_FAN1_DEPTH)}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_CHA_FAN1_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_CHA_FAN1_OFFSET_Y, BASE_Z + ATX_CHA_FAN1_FRAME_DEPTH, ATX_CHA_FAN1_WIDTH, ATX_CHA_FAN1_HEIGHT, ATX_CHA_FAN1_FRAME_DEPTH, ATX_CHA_FAN1_FRAME_WIDTH, ATX_CHA_FAN1_FRAME_WIDTH, ATX_CHA_FAN1_FRAME_WIDTH, ATX_CHA_FAN1_FRAME_WIDTH)}, {}),
+        SPI_TPM({ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_SPI_TPM_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_SPI_TPM_OFFSET_Y, BASE_Z + ATX_SPI_TPM_DEPTH, ATX_SPI_TPM_WIDTH, ATX_SPI_TPM_HEIGHT, ATX_SPI_TPM_DEPTH)}, {FrameConfig(startOfPlate_.getXCoordinate() + ATX_SPI_TPM_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_SPI_TPM_OFFSET_Y, BASE_Z + ATX_SPI_TPM_FRAME_DEPTH, ATX_SPI_TPM_WIDTH, ATX_SPI_TPM_HEIGHT, ATX_SPI_TPM_FRAME_DEPTH, ATX_SPI_TPM_FRAME_WIDTH, ATX_SPI_TPM_FRAME_WIDTH, ATX_SPI_TPM_FRAME_WIDTH, ATX_SPI_TPM_FRAME_WIDTH)}, {}),
         // RAM slots offset
         DDR4_DIMM_B1_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B1_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
         DDR4_DIMM_B2_offset(startOfPlate_.getXCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_X + ATX_DDR4_DIMM_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + ATX_DDR4_DIMM_B2_OFFSET_Y + ATX_DDR4_DIMM_TOPFRAMEWIDTH, BASE_Z + RAM_4GB_DEPTH),
@@ -323,19 +335,22 @@ public:
     ComponentConfig SATA6G_7;
     ComponentConfig SATA6G_8;
     // // superio
-    // ComponentConfig SuperIO; // new
+    ComponentConfig SuperIO;
     // // intel I2211AT
-    // ComponentConfig IntelI22AT; // new
+    ComponentConfig IntelI22AT;
+    // EATX ports
+    ComponentConfig EATX12V_1;
+    ComponentConfig EATX12V_2;
     // // microchip RTLRTL8125_CG
-    // ComponentConfig RTL8125_CG; // new
-    // // EATX ports
-    // ComponentConfig EATX12V_1; // new
-    // ComponentConfig EATX12V_2; // new
-    // ComponentConfig EATXPWR; // new
-    // // CPU_FAN / CPU_OPT / RGB_HEADER
-    // ComponentConfig CPU_FAN; // new
-    // ComponentConfig CPU_OPT; // new
-    // ComponentConfig RGB_HEADER1; // new
+    ComponentConfig RTL8125_CG;
+    ComponentConfig EATXPWR;
+
+    ComponentConfig NODE;
+    ComponentConfig USB34;
+    ComponentConfig USB12;
+    ComponentConfig U32G1_1011;
+    ComponentConfig CHA_FAN1;
+    ComponentConfig SPI_TPM;
 
     // offset for placing the RAM block in the DDR4 socket
     Dot3D DDR4_DIMM_B1_offset;

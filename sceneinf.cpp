@@ -581,6 +581,18 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(ATXConfig.SATA6G_6, "ATX_SATA6G_6", PolygonModel::ATX_SATA6G_6);
     addMotherboardComponent(ATXConfig.SATA6G_7, "ATX_SATA6G_7", PolygonModel::ATX_SATA6G_7);
     addMotherboardComponent(ATXConfig.SATA6G_8, "ATX_SATA6G_8", PolygonModel::ATX_SATA6G_8);
+    addMotherboardComponent(ATXConfig.SuperIO, "ATX_SuperIO", PolygonModel::ATX_SuperIO);
+    addMotherboardComponent(ATXConfig.IntelI22AT, "ATX_IntelI22AT", PolygonModel::ATX_IntelI22AT);
+    addMotherboardComponent(ATXConfig.EATX12V_1, "ATX_EATX12V_1", PolygonModel::ATX_EATX12V_1);
+    addMotherboardComponent(ATXConfig.EATX12V_2, "ATX_EATX12V_2", PolygonModel::ATX_EATX12V_2);
+    addMotherboardComponent(ATXConfig.RTL8125_CG, "ATX_RTL8125_CG", PolygonModel::ATX_RTL8125_CG);
+    addMotherboardComponent(ATXConfig.EATXPWR, "ATX_EATXPWR", PolygonModel::ATX_EATXPWR);
+    addMotherboardComponent(ATXConfig.NODE, "ATX_NODE", PolygonModel::ATX_NODE);
+    addMotherboardComponent(ATXConfig.USB34, "ATX_USB34", PolygonModel::ATX_USB34);
+    addMotherboardComponent(ATXConfig.USB12, "ATX_USB12", PolygonModel::ATX_USB12);
+    addMotherboardComponent(ATXConfig.U32G1_1011, "ATX_U32G1_1011", PolygonModel::ATX_U32G1_1011);
+    addMotherboardComponent(ATXConfig.CHA_FAN1, "ATX_CHA_FAN1", PolygonModel::ATX_CHA_FAN1);
+    addMotherboardComponent(ATXConfig.SPI_TPM, "ATX_SPI_TPM", PolygonModel::ATX_SPI_TPM);
 }
 
 /*

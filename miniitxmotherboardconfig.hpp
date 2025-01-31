@@ -80,7 +80,6 @@ public:
                   ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y, BASE_Z + (2 * (ATX_HDMI_DP_BACKWALL_DEPTH + ATX_HDMI_DP_TOP_DEPTH)), ATX_HDMI_DP_TOP_WIDTH, ATX_HDMI_DP_TOP_HEIGHT, ATX_HDMI_DP_TOP_DEPTH)},
                  {}, {}),
         LAN_USB3_34({
-                     // ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_LAN_USB3_34_OFFSET_Y, BASE_Z + 20, MINIITX_LAN_USB3_34_WIDTH, MINIITX_LAN_USB3_34_HEIGHT, 20),
                      ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_LAN_USB3_34_OFFSET_Y, BASE_Z + ATX_U32G2_LEFTWALL_DEPTH, ATX_U32G2_LEFTWALL_WIDTH, ATX_U32G2_LEFTWALL_HEIGHT, ATX_U32G2_LEFTWALL_DEPTH),
                      ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_LAN_USB3_34_OFFSET_Y + ATX_U32G2_LEFTWALL_HEIGHT, BASE_Z + ATX_U32G2_BOTTOM_DEPTH, ATX_U32G2_BOTTOM_WIDTH, ATX_U32G2_BOTTOM_HEIGHT, ATX_U32G2_BOTTOM_DEPTH),
                      ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_LAN_USB3_34_OFFSET_Y + ATX_U32G2_LEFTWALL_HEIGHT + ATX_U32G2_BOTTOM_HEIGHT, BASE_Z + ATX_U32G2_RIGHTWALL_DEPTH, ATX_U32G2_RIGHTWALL_WIDTH, ATX_U32G2_RIGHTWALL_HEIGHT, ATX_U32G2_RIGHTWALL_DEPTH),
@@ -101,7 +100,6 @@ public:
                       {}, {}),
 
         M2_WIFI({
-                 // ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_M2_WIFI_OFFSET_Y, BASE_Z + 20, MINIITX_M2_WIFI_WIDTH, MINIITX_M2_WIFI_HEIGHT, 20),
                  // port 1
                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_M2_WIFI_OFFSET_Y, BASE_Z + ATX_M2_WIFI_LEFTWALL_DEPTH, ATX_M2_WIFI_LEFTWALL_WIDTH, ATX_M2_WIFI_LEFTWALL_HEIGHT, ATX_M2_WIFI_LEFTWALL_DEPTH),
                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_M2_WIFI_OFFSET_Y + WALL_DEPTH, BASE_Z + ATX_M2_WIFI_BOTTOM_DEPTH, ATX_M2_WIFI_BOTTOM_WIDTH, ATX_M2_WIFI_BOTTOM_HEIGHT, ATX_M2_WIFI_BOTTOM_DEPTH),
