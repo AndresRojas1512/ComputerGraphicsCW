@@ -44,13 +44,13 @@ public:
                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y, BASE_Z + (2 * (ATX_HDMI_DP_BACKWALL_DEPTH + ATX_HDMI_DP_TOP_DEPTH)), ATX_HDMI_DP_TOP_WIDTH, ATX_HDMI_DP_TOP_HEIGHT, ATX_HDMI_DP_TOP_DEPTH)},
                 {}, {}),
         BIOS_FLBK({
-                     // FLBK
-                     ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y, BASE_Z + ATX_BIOS_FLBK_LEFTWALL_DEPTH, ATX_BIOS_FLBK_LEFTWALL_WIDTH, ATX_BIOS_FLBK_LEFTWALL_HEIGHT, ATX_BIOS_FLBK_LEFTWALL_DEPTH),
-                     ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y + WALL_DEPTH, BASE_Z + ATX_BIOS_FLBK_BOTTOM_DEPTH, ATX_BIOS_FLBK_BOTTOM_WIDTH, ATX_BIOS_FLBK_BOTTOM_HEIGHT, ATX_BIOS_FLBK_BOTTOM_DEPTH),
-                     ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y + WALL_DEPTH + ATX_BIOS_FLBK_BOTTOM_HEIGHT, BASE_Z + ATX_BIOS_FLBK_RIGHTWALL_DEPTH, ATX_BIOS_FLBK_RIGHTWALL_WIDTH, ATX_BIOS_FLBK_RIGHTWALL_HEIGHT, ATX_BIOS_FLBK_RIGHTWALL_DEPTH),
-                     ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_BIOS_FLBK_LEFTWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y, BASE_Z + ATX_BIOS_FLBK_BACKWALL_DEPTH, ATX_BIOS_FLBK_BACKWALL_WIDTH, ATX_BIOS_FLBK_BACKWALL_HEIGHT, ATX_BIOS_FLBK_BACKWALL_DEPTH),
-                     ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y, BASE_Z + ATX_BIOS_FLBK_BACKWALL_DEPTH + ATX_BIOS_FLBK_TOP_DEPTH, ATX_BIOS_FLBK_TOP_WIDTH, ATX_BIOS_FLBK_TOP_HEIGHT, ATX_BIOS_FLBK_TOP_DEPTH)},
-                    {}, {}),
+                   // FLBK
+                   ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y, BASE_Z + ATX_BIOS_FLBK_LEFTWALL_DEPTH, ATX_BIOS_FLBK_LEFTWALL_WIDTH, ATX_BIOS_FLBK_LEFTWALL_HEIGHT, ATX_BIOS_FLBK_LEFTWALL_DEPTH),
+                   ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y + WALL_DEPTH, BASE_Z + ATX_BIOS_FLBK_BOTTOM_DEPTH, ATX_BIOS_FLBK_BOTTOM_WIDTH, ATX_BIOS_FLBK_BOTTOM_HEIGHT, ATX_BIOS_FLBK_BOTTOM_DEPTH),
+                   ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y + WALL_DEPTH + ATX_BIOS_FLBK_BOTTOM_HEIGHT, BASE_Z + ATX_BIOS_FLBK_RIGHTWALL_DEPTH, ATX_BIOS_FLBK_RIGHTWALL_WIDTH, ATX_BIOS_FLBK_RIGHTWALL_HEIGHT, ATX_BIOS_FLBK_RIGHTWALL_DEPTH),
+                   ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_BIOS_FLBK_LEFTWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y, BASE_Z + ATX_BIOS_FLBK_BACKWALL_DEPTH, ATX_BIOS_FLBK_BACKWALL_WIDTH, ATX_BIOS_FLBK_BACKWALL_HEIGHT, ATX_BIOS_FLBK_BACKWALL_DEPTH),
+                   ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y, BASE_Z + ATX_BIOS_FLBK_BACKWALL_DEPTH + ATX_BIOS_FLBK_TOP_DEPTH, ATX_BIOS_FLBK_TOP_WIDTH, ATX_BIOS_FLBK_TOP_HEIGHT, ATX_BIOS_FLBK_TOP_DEPTH)},
+                  {}, {}),
         U32G2_1_4({
                    // U32G2_1
                    ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_U32G2_1_4_OFFSET_Y, BASE_Z + ATX_U32G2_LEFTWALL_DEPTH, ATX_U32G2_LEFTWALL_WIDTH, ATX_U32G2_LEFTWALL_HEIGHT, ATX_U32G2_LEFTWALL_DEPTH),
@@ -97,7 +97,6 @@ public:
                        ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_U32G2_LEFTWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_LAN2_U32G2_56_OFFSET_Y, BASE_Z + (2 * ATX_U32G2_BACKWALL_DEPTH) + ATX_LAN_BACKWALL_DEPTH, ATX_U32G2_BACKWALL_WIDTH, ATX_U32G2_BACKWALL_HEIGHT, ATX_LAN_BACKWALL_DEPTH),
                        ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_LAN2_U32G2_56_OFFSET_Y, BASE_Z + (2 * ATX_U32G2_BACKWALL_DEPTH) + ATX_LAN_BACKWALL_DEPTH + ATX_U32G2_TOP_DEPTH, ATX_U32G2_TOP_WIDTH, ATX_U32G2_TOP_HEIGHT, ATX_U32G2_TOP_DEPTH)},
                               {}, {}),
-        // peripheria
         U3252_C8_LAN1_U32G2_7({
                                ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_U3252_C8_LAN1_U32G2_7_OFFSET_Y, BASE_Z + ATX_U32G2_LEFTWALL_DEPTH, ATX_U32G2_LEFTWALL_WIDTH, ATX_U32G2_LEFTWALL_HEIGHT, ATX_U32G2_LEFTWALL_DEPTH),
                                ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_U3252_C8_LAN1_U32G2_7_OFFSET_Y + ATX_U32G2_LEFTWALL_HEIGHT, BASE_Z + ATX_U32G2_BOTTOM_DEPTH, ATX_U32G2_BOTTOM_WIDTH, ATX_U32G2_BOTTOM_HEIGHT, ATX_U32G2_BOTTOM_DEPTH),
@@ -117,9 +116,21 @@ public:
                                ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_U32G2_LEFTWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_U3252_C8_LAN1_U32G2_7_OFFSET_Y, BASE_Z + (2 * ATX_U32G2_BACKWALL_DEPTH) + ATX_LAN_BACKWALL_DEPTH, ATX_U32G2_BACKWALL_WIDTH, ATX_U32G2_BACKWALL_HEIGHT, ATX_LAN_BACKWALL_DEPTH),
                                ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_U3252_C8_LAN1_U32G2_7_OFFSET_Y, BASE_Z + (2 * ATX_U32G2_BACKWALL_DEPTH) + ATX_LAN_BACKWALL_DEPTH + ATX_U32G2_TOP_DEPTH, ATX_U32G2_TOP_WIDTH, ATX_U32G2_TOP_HEIGHT, ATX_U32G2_TOP_DEPTH)},
                               {}, {}),
-        // peripheria
-        M2_WIFI({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y, BASE_Z + 20, ATX_M2_WIFI_WIDTH, ATX_M2_WIFI_HEIGHT, 20)}, {}, {}),
-        // peripheria
+        M2_WIFI({
+                 // port 1
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y, BASE_Z + ATX_M2_WIFI_LEFTWALL_DEPTH, ATX_M2_WIFI_LEFTWALL_WIDTH, ATX_M2_WIFI_LEFTWALL_HEIGHT, ATX_M2_WIFI_LEFTWALL_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y + WALL_DEPTH, BASE_Z + ATX_M2_WIFI_BOTTOM_DEPTH, ATX_M2_WIFI_BOTTOM_WIDTH, ATX_M2_WIFI_BOTTOM_HEIGHT, ATX_M2_WIFI_BOTTOM_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y + WALL_DEPTH + ATX_M2_WIFI_BOTTOM_HEIGHT, BASE_Z + ATX_M2_WIFI_RIGHTWALL_DEPTH, ATX_M2_WIFI_RIGHTWALL_WIDTH, ATX_M2_WIFI_RIGHTWALL_HEIGHT, ATX_M2_WIFI_RIGHTWALL_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_M2_WIFI_LEFTWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y, BASE_Z + ATX_M2_WIFI_BACKWALL_DEPTH, ATX_M2_WIFI_BACKWALL_WIDTH, ATX_M2_WIFI_BACKWALL_HEIGHT, ATX_M2_WIFI_BACKWALL_DEPTH),
+                 // separator
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y, BASE_Z + ATX_M2_WIFI_BACKWALL_DEPTH + ATX_M2_WIFI_SEP_DEPTH, ATX_M2_WIFI_SEP_WIDTH, ATX_M2_WIFI_SEP_HEIGHT, ATX_M2_WIFI_SEP_DEPTH),
+                 // port 2
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y, BASE_Z + (2 * ATX_M2_WIFI_LEFTWALL_DEPTH) + ATX_M2_WIFI_SEP_DEPTH - WALL_DEPTH, ATX_M2_WIFI_LEFTWALL_WIDTH, ATX_M2_WIFI_LEFTWALL_HEIGHT, ATX_M2_WIFI_LEFTWALL_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y + WALL_DEPTH, BASE_Z + ATX_M2_WIFI_LEFTWALL_DEPTH + ATX_M2_WIFI_SEP_DEPTH + ATX_M2_WIFI_BOTTOM_DEPTH, ATX_M2_WIFI_BOTTOM_WIDTH, ATX_M2_WIFI_BOTTOM_HEIGHT, ATX_M2_WIFI_BOTTOM_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y + WALL_DEPTH + ATX_M2_WIFI_BOTTOM_HEIGHT, BASE_Z + (2 * ATX_M2_WIFI_RIGHTWALL_DEPTH) + ATX_M2_WIFI_SEP_DEPTH - WALL_DEPTH, ATX_M2_WIFI_RIGHTWALL_WIDTH, ATX_M2_WIFI_RIGHTWALL_HEIGHT, ATX_M2_WIFI_RIGHTWALL_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_M2_WIFI_LEFTWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y, BASE_Z + (2 * ATX_M2_WIFI_BACKWALL_DEPTH) + ATX_M2_WIFI_SEP_DEPTH - WALL_DEPTH, ATX_M2_WIFI_BACKWALL_WIDTH, ATX_M2_WIFI_BACKWALL_HEIGHT, ATX_M2_WIFI_BACKWALL_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_M2_WIFI_OFFSET_Y, BASE_Z + (2 * ATX_M2_WIFI_BACKWALL_DEPTH) + ATX_M2_WIFI_SEP_DEPTH, ATX_M2_WIFI_TOP_WIDTH, ATX_M2_WIFI_TOP_HEIGHT, ATX_M2_WIFI_TOP_DEPTH)},
+                {}, {}),
         AUDIO({
                // AUDIO_1
                ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_AUDIO_1_OFFSET_Y, BASE_Z + ATX_AUDIO_LEFTWALL_DEPTH, ATX_AUDIO_LEFTWALL_WIDTH, ATX_AUDIO_LEFTWALL_HEIGHT, ATX_AUDIO_LEFTWALL_DEPTH),
