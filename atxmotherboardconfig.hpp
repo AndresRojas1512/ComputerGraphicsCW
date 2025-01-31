@@ -29,7 +29,20 @@ public:
 
     ATXMotherboardConfig(const Dot3D &startOfPlate_, const Dot3D &endOfPlate_)
         : BaseMotherboardConfig(startOfPlate_, endOfPlate_),
-        HDMI_DP({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y, BASE_Z + 20, ATX_HDMI_DP_WIDTH, ATX_HDMI_DP_HEIGHT, 20)},{}, {}),
+        HDMI_DP({
+                 // HDMI
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y, BASE_Z + ATX_HDMI_DP_LEFTWALL_DEPTH, ATX_HDMI_DP_LEFTWALL_WIDTH, ATX_HDMI_DP_LEFTWALL_HEIGHT, ATX_HDMI_DP_LEFTWALL_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y + WALL_DEPTH, BASE_Z + ATX_HDMI_DP_BOTTOM_DEPTH, ATX_HDMI_DP_BOTTOM_WIDTH, ATX_HDMI_DP_BOTTOM_HEIGHT, ATX_HDMI_DP_BOTTOM_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y + WALL_DEPTH + ATX_HDMI_DP_BOTTOM_HEIGHT, BASE_Z + ATX_HDMI_DP_RIGHTWALL_DEPTH, ATX_HDMI_DP_RIGHTWALL_WIDTH, ATX_HDMI_DP_RIGHTWALL_HEIGHT, ATX_HDMI_DP_RIGHTWALL_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_HDMI_DP_LEFTWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y, BASE_Z + ATX_HDMI_DP_BACKWALL_DEPTH, ATX_HDMI_DP_BACKWALL_WIDTH, ATX_HDMI_DP_BACKWALL_HEIGHT, ATX_HDMI_DP_BACKWALL_DEPTH),
+                 ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y, BASE_Z + ATX_HDMI_DP_BACKWALL_DEPTH + ATX_HDMI_DP_TOP_DEPTH, ATX_HDMI_DP_TOP_WIDTH, ATX_HDMI_DP_TOP_HEIGHT, ATX_HDMI_DP_TOP_DEPTH),
+                 // DP
+                   ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y, BASE_Z + (2 * ATX_HDMI_DP_LEFTWALL_DEPTH), ATX_HDMI_DP_LEFTWALL_WIDTH, ATX_HDMI_DP_LEFTWALL_HEIGHT, ATX_HDMI_DP_LEFTWALL_DEPTH),
+                   ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y + WALL_DEPTH, BASE_Z + (2 * ATX_HDMI_DP_BOTTOM_DEPTH) + ATX_HDMI_DP_LEFTWALL_DEPTH, ATX_HDMI_DP_BOTTOM_WIDTH, ATX_HDMI_DP_BOTTOM_HEIGHT, ATX_HDMI_DP_BOTTOM_DEPTH),
+                   ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y + WALL_DEPTH + ATX_HDMI_DP_BOTTOM_HEIGHT, BASE_Z + (2 * ATX_HDMI_DP_RIGHTWALL_DEPTH), ATX_HDMI_DP_RIGHTWALL_WIDTH, ATX_HDMI_DP_RIGHTWALL_HEIGHT, ATX_HDMI_DP_RIGHTWALL_DEPTH),
+                   ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_HDMI_DP_LEFTWALL_WIDTH, startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y, BASE_Z + (2 * ATX_HDMI_DP_BACKWALL_DEPTH), ATX_HDMI_DP_BACKWALL_WIDTH, ATX_HDMI_DP_BACKWALL_HEIGHT, ATX_HDMI_DP_BACKWALL_DEPTH),
+                   ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_HDMI_DP_OFFSET_Y, BASE_Z + (2 * (ATX_HDMI_DP_BACKWALL_DEPTH + ATX_HDMI_DP_TOP_DEPTH)), ATX_HDMI_DP_TOP_WIDTH, ATX_HDMI_DP_TOP_HEIGHT, ATX_HDMI_DP_TOP_DEPTH)},
+                 {}, {}),
         BIOS_FLBK({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_BIOS_FLBK_OFFSET_Y, BASE_Z + 20, ATX_BIOS_FLBK_WIDTH, ATX_BIOS_FLBK_HEIGHT, 20)}, {}, {}),
         // peripheria
         U32G2_1_4({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + ATX_U32G2_1_4_OFFSET_Y, BASE_Z + 20, ATX_U32G2_1_4_WIDTH, ATX_U32G2_1_4_HEIGHT, 20)}, {}, {}),

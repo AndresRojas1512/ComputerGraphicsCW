@@ -27,7 +27,21 @@ public:
         // peripheria
         USB3_5({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_USB3_5_OFFSET_Y, BASE_Z + 20, MINIITX_USB3_5_WIDTH, MINIITX_USB3_5_HEIGHT, 20)}, {}, {}),
         USB7_10({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_USB7_10_OFFSET_Y, BASE_Z + 20, MINIITX_USB7_10_WIDTH, MINIITX_USB7_10_HEIGHT, 20)}, {}, {}),
-        HDMI_DP({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y, BASE_Z + 20, MINIITX_HDMI_DP_WIDTH, MINIITX_HDMI_DP_HEIGHT, 20)}, {}, {}),
+        // HDMI_DP({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y, BASE_Z + 20, MINIITX_HDMI_DP_WIDTH, MINIITX_HDMI_DP_HEIGHT, 20)}, {}, {}),
+        HDMI_DP({
+                  // HDMI
+                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y, BASE_Z + ATX_HDMI_DP_LEFTWALL_DEPTH, ATX_HDMI_DP_LEFTWALL_WIDTH, ATX_HDMI_DP_LEFTWALL_HEIGHT, ATX_HDMI_DP_LEFTWALL_DEPTH),
+                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y + WALL_DEPTH, BASE_Z + ATX_HDMI_DP_BOTTOM_DEPTH, ATX_HDMI_DP_BOTTOM_WIDTH, ATX_HDMI_DP_BOTTOM_HEIGHT, ATX_HDMI_DP_BOTTOM_DEPTH),
+                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y + WALL_DEPTH + ATX_HDMI_DP_BOTTOM_HEIGHT, BASE_Z + ATX_HDMI_DP_RIGHTWALL_DEPTH, ATX_HDMI_DP_RIGHTWALL_WIDTH, ATX_HDMI_DP_RIGHTWALL_HEIGHT, ATX_HDMI_DP_RIGHTWALL_DEPTH),
+                  ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_HDMI_DP_LEFTWALL_WIDTH, startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y, BASE_Z + ATX_HDMI_DP_BACKWALL_DEPTH, ATX_HDMI_DP_BACKWALL_WIDTH, ATX_HDMI_DP_BACKWALL_HEIGHT, ATX_HDMI_DP_BACKWALL_DEPTH),
+                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y, BASE_Z + ATX_HDMI_DP_BACKWALL_DEPTH + ATX_HDMI_DP_TOP_DEPTH, ATX_HDMI_DP_TOP_WIDTH, ATX_HDMI_DP_TOP_HEIGHT, ATX_HDMI_DP_TOP_DEPTH),
+                  // DP
+                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y, BASE_Z + (2 * ATX_HDMI_DP_LEFTWALL_DEPTH), ATX_HDMI_DP_LEFTWALL_WIDTH, ATX_HDMI_DP_LEFTWALL_HEIGHT, ATX_HDMI_DP_LEFTWALL_DEPTH),
+                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y + WALL_DEPTH, BASE_Z + (2 * ATX_HDMI_DP_BOTTOM_DEPTH) + ATX_HDMI_DP_LEFTWALL_DEPTH, ATX_HDMI_DP_BOTTOM_WIDTH, ATX_HDMI_DP_BOTTOM_HEIGHT, ATX_HDMI_DP_BOTTOM_DEPTH),
+                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y + WALL_DEPTH + ATX_HDMI_DP_BOTTOM_HEIGHT, BASE_Z + (2 * ATX_HDMI_DP_RIGHTWALL_DEPTH), ATX_HDMI_DP_RIGHTWALL_WIDTH, ATX_HDMI_DP_RIGHTWALL_HEIGHT, ATX_HDMI_DP_RIGHTWALL_DEPTH),
+                  ParallelepipedConfig(startOfPlate_.getXCoordinate() + ATX_HDMI_DP_LEFTWALL_WIDTH, startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y, BASE_Z + (2 * ATX_HDMI_DP_BACKWALL_DEPTH), ATX_HDMI_DP_BACKWALL_WIDTH, ATX_HDMI_DP_BACKWALL_HEIGHT, ATX_HDMI_DP_BACKWALL_DEPTH),
+                  ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_HDMI_DP_OFFSET_Y, BASE_Z + (2 * (ATX_HDMI_DP_BACKWALL_DEPTH + ATX_HDMI_DP_TOP_DEPTH)), ATX_HDMI_DP_TOP_WIDTH, ATX_HDMI_DP_TOP_HEIGHT, ATX_HDMI_DP_TOP_DEPTH)},
+                 {}, {}),
         LAN_USB3_34({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_LAN_USB3_34_OFFSET_Y, BASE_Z + 20, MINIITX_LAN_USB3_34_WIDTH, MINIITX_LAN_USB3_34_HEIGHT, 20)}, {}, {}),
         M2_WIFI({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_M2_WIFI_OFFSET_Y, BASE_Z + 20, MINIITX_M2_WIFI_WIDTH, MINIITX_M2_WIFI_HEIGHT, 20)}, {}, {}),
         AUDIO({ParallelepipedConfig(startOfPlate_.getXCoordinate(), startOfPlate_.getYCoordinate() + MINIITX_AUDIO_OFFSET_Y, BASE_Z + 20, MINIITX_AUDIO_WIDTH, MINIITX_AUDIO_HEIGHT, 20)}, {}, {}),
