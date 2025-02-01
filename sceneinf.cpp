@@ -591,7 +591,7 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(ATXConfig.USB34, "ATX_USB34", PolygonModel::ATX_USB34);
     addMotherboardComponent(ATXConfig.USB12, "ATX_USB12", PolygonModel::ATX_USB12);
     addMotherboardComponent(ATXConfig.U32G1_1011, "ATX_U32G1_1011", PolygonModel::ATX_U32G1_1011);
-    addMotherboardComponent(ATXConfig.CHA_FAN1, "ATX_CHA_FAN1", PolygonModel::ATX_CHA_FAN1);
+    addMotherboardComponent(ATXConfig.BIOS, "ATX_CHA_FAN1", PolygonModel::ATX_BIOS);
     addMotherboardComponent(ATXConfig.SPI_TPM, "ATX_SPI_TPM", PolygonModel::ATX_SPI_TPM);
 }
 
@@ -636,6 +636,16 @@ void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(microATXConfig.SATA6G_2, "MICROATX_SATA6G_2", PolygonModel::MICROATX_SATA6G_2);
     addMotherboardComponent(microATXConfig.SATA6G_3, "MICROATX_SATA6G_3", PolygonModel::MICROATX_SATA6G_3);
     addMotherboardComponent(microATXConfig.SATA6G_4, "MICROATX_SATA6G_4", PolygonModel::MICROATX_SATA6G_4);
+    addMotherboardComponent(microATXConfig.ATXPWR, "MICROATX_ATXPWR", PolygonModel::MICROATX_ATXPWR);
+    addMotherboardComponent(microATXConfig.IntelB560, "MICROATX_IntelB560", PolygonModel::MICROATX_IntelB560);
+    addMotherboardComponent(microATXConfig.SuperIO, "MICROATX_SuperIO", PolygonModel::MICROATX_SuperIO);
+    addMotherboardComponent(microATXConfig.U32G1_34, "MICROATX_U32G1_34", PolygonModel::MICROATX_U32G1_34);
+    addMotherboardComponent(microATXConfig.U32G1_56, "MICROATX_U32G1_56", PolygonModel::MICROATX_U32G1_56);
+    addMotherboardComponent(microATXConfig.ATX_12V, "MICROATX_ATX_12V", PolygonModel::MICROATX_ATX_12V);
+    addMotherboardComponent(microATXConfig.M2_1, "MICROATX_M2_1", PolygonModel::MICROATX_M2_1);
+    addMotherboardComponent(microATXConfig.LPT, "MICROATX_LPT", PolygonModel::MICROATX_LPT);
+    addMotherboardComponent(microATXConfig.CHAFAN2, "MICROATX_CHAFAN2", PolygonModel::MICROATX_CHAFAN2);
+    addMotherboardComponent(microATXConfig.BIOS, "MICROATX_BIOS", PolygonModel::MICROATX_BIOS);
 }
 
 /*
