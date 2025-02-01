@@ -593,6 +593,7 @@ void SceneInf::buildATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(ATXConfig.U32G1_1011, "ATX_U32G1_1011", PolygonModel::ATX_U32G1_1011);
     addMotherboardComponent(ATXConfig.BIOS, "ATX_CHA_FAN1", PolygonModel::ATX_BIOS);
     addMotherboardComponent(ATXConfig.SPI_TPM, "ATX_SPI_TPM", PolygonModel::ATX_SPI_TPM);
+    addMotherboardComponent(ATXConfig.CPUFAN, "ATX_CPUFAN", PolygonModel::ATX_CPUFAN);
 }
 
 /*
@@ -646,6 +647,7 @@ void SceneInf::buildMicroATXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(microATXConfig.LPT, "MICROATX_LPT", PolygonModel::MICROATX_LPT);
     addMotherboardComponent(microATXConfig.CHAFAN2, "MICROATX_CHAFAN2", PolygonModel::MICROATX_CHAFAN2);
     addMotherboardComponent(microATXConfig.BIOS, "MICROATX_BIOS", PolygonModel::MICROATX_BIOS);
+    addMotherboardComponent(microATXConfig.CPUFAN, "MICROATX_CPUFAN", PolygonModel::MICROATX_CPUFAN);
 }
 
 /*
@@ -670,6 +672,7 @@ void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(miniITXConfig.LAN_USB3_34, "MINIITX_LAN_USB3_34", PolygonModel::MINIITX_LAN_USB3_34);
     addMotherboardComponent(miniITXConfig.M2_WIFI, "MINIITX_M2_WIFI", PolygonModel::MINIITX_M2_WIFI);
     addMotherboardComponent(miniITXConfig.AUDIO, "MINIITX_AUDIO", PolygonModel::MINIITX_AUDIO);
+    addMotherboardComponent(miniITXConfig.LGA1151, "MINIITX_LGA1151", PolygonModel::MINIITX_LGA1151);
     addMotherboardComponent(miniITXConfig.DDR4_DIMM_A1, "MINIITX_DDR4_DIMM_A1", PolygonModel::MINIITX_DDR4_DIMM_A1);
     addMotherboardComponent(miniITXConfig.DDR4_DIMM_B1, "MINIITX_DDR4_DIMM_B1", PolygonModel::MINIITX_DDR4_DIMM_B1);
     addMotherboardComponent(miniITXConfig.PCIEX16_1, "MINIITX_PCIEX16_1", PolygonModel::MINIITX_PCIEX16_1);
@@ -679,6 +682,14 @@ void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(miniITXConfig.SATA6G_2, "MINIITX_SATA6G_2", PolygonModel::MINIITX_SATA6G_2);
     addMotherboardComponent(miniITXConfig.SATA6G_3, "MINIITX_SATA6G_3", PolygonModel::MINIITX_SATA6G_3);
     addMotherboardComponent(miniITXConfig.SATA6G_4, "MINIITX_SATA6G_4", PolygonModel::MINIITX_SATA6G_4);
+    addMotherboardComponent(miniITXConfig.IntelZ270, "MINIITX_IntelZ270", PolygonModel::MINIITX_IntelZ270);
+    addMotherboardComponent(miniITXConfig.SuperIO, "MINIITX_SuperIO", PolygonModel::MINIITX_SuperIO);
+    addMotherboardComponent(miniITXConfig.EATXPWR, "MINIITX_EATXPWR", PolygonModel::MINIITX_EATXPWR);
+    addMotherboardComponent(miniITXConfig.EATX12V, "MINIITX_EATX12V", PolygonModel::MINIITX_EATX12V);
+    addMotherboardComponent(miniITXConfig.BIOS, "MINIITX_BIOS", PolygonModel::MINIITX_BIOS);
+    addMotherboardComponent(miniITXConfig.CHAFAN, "MINIITX_CHAFAN", PolygonModel::MINIITX_CHAFAN);
+    addMotherboardComponent(miniITXConfig.M2_2, "MINIITX_M2_2", PolygonModel::MINIITX_M2_2);
+    addMotherboardComponent(miniITXConfig.CPUFAN, "MINIITX_CPUFAN", PolygonModel::MINIITX_CPUFAN);
 }
 
 void SceneInf::addMotherboardComponent(ComponentConfig &config, QString modelName, PolygonModel::model_t modelType)

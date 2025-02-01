@@ -112,6 +112,7 @@ public:
         ATX_U32G1_1011,
         ATX_BIOS,
         ATX_SPI_TPM,
+        ATX_CPUFAN,
         // MICROATX
         MICROATX_HDMI1_DP,
         MICROATX_HDMI2,
@@ -147,6 +148,7 @@ public:
         MICROATX_LPT,
         MICROATX_CHAFAN2,
         MICROATX_BIOS,
+        MICROATX_CPUFAN,
         // MINIITX
         MINIITX_USB3_5,
         MINIITX_USB7_10,
@@ -154,6 +156,7 @@ public:
         MINIITX_LAN_USB3_34,
         MINIITX_M2_WIFI,
         MINIITX_AUDIO,
+        MINIITX_LGA1151,
         MINIITX_DDR4_DIMM_A1,
         MINIITX_DDR4_DIMM_B1,
         MINIITX_PCIEX16_1,
@@ -163,6 +166,14 @@ public:
         MINIITX_SATA6G_2,
         MINIITX_SATA6G_3,
         MINIITX_SATA6G_4,
+        MINIITX_IntelZ270,
+        MINIITX_SuperIO,
+        MINIITX_EATXPWR,
+        MINIITX_EATX12V,
+        MINIITX_BIOS,
+        MINIITX_CHAFAN,
+        MINIITX_M2_2,
+        MINIITX_CPUFAN,
         // CPU type
         Intel_CPU,
         AMD_CPU,
