@@ -105,6 +105,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         gpuconfig.hpp
         cpuconfig.cpp
         gpuconfig.cpp
+        colorconfig.hpp
+        colorconfig.cpp
 
 
     )
