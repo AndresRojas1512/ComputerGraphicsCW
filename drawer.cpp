@@ -513,6 +513,11 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
     color(image, rect, miniItxMicrochips, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
     color(image, rect, miniItxBattery, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
 
+    // CPU color
+    color(image, rect, cpuIntelBlock, Color::GREEN_BLUE, Color::DARK_GREEN_BLUE);
+    color(image, rect, cpuAMDBlock, Color::ORANGE, Color::DARK_ORANGE);
+    color(image, rect, cpuAccBlocks, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+
     // GPU color
     color(image, rect, gpuBlocks, Color::GRAY_BLUE, Color::DARK_GRAY_BLUE);
     color(image, rect, gpuAccBlocks, Color::GRAY, Color::DIM_GRAY);

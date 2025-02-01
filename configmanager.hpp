@@ -22,6 +22,12 @@ public:
         AMD
     };
 
+    enum class CPUAccessoriesType
+    {
+        Intel_ACC,
+        AMD_ACC
+    };
+
     enum class GPUType
     {
         GPU_4GB,
@@ -91,6 +97,8 @@ public:
     const std::vector<RAMType>& getCompatibleRAMs(void) const;
 
     const std::vector<CPUType>& getCompatibleCPUs(MotherboardType type) const;
+
+    CPUAccessoriesType mapAccessoryCPU(CPUType type);
 
     RAMAccessoriesType mapAccessoryRAM(RAMType type);
 

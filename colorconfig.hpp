@@ -36,6 +36,12 @@ struct Color
 
     static const Color GRAY_BLUE;
     static const Color DARK_GRAY_BLUE;
+
+    static const Color GREEN_BLUE;
+    static const Color DARK_GREEN_BLUE;
+
+    static const Color ORANGE;
+    static const Color DARK_ORANGE;
 };
 
 #endif // COLORCONFIG_HPP

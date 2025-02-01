@@ -228,6 +228,8 @@ PolygonModel::model_t parseRAMAccModel(ConfigManager::RAMAccessoriesType RAMAccT
 
 PolygonModel::model_t parseGPUAccModel(ConfigManager::GPUAccessoriesType GPUAccType);
 
+PolygonModel::model_t parseCPUAccModel(ConfigManager::CPUAccessoriesType CPUAccType);
+
 std::string mapModelName(PolygonModel::model_t type);
 
 PolygonModel::model_t mapModelAccessory(PolygonModel::model_t model);

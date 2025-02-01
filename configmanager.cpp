@@ -15,6 +15,17 @@ const std::vector<ConfigManager::CPUType>& ConfigManager::getCompatibleCPUs(Conf
     return cpuCompatibility.at(type);
 }
 
+ConfigManager::CPUAccessoriesType ConfigManager::mapAccessoryCPU(ConfigManager::CPUType type)
+{
+    switch(type)
+    {
+    case (ConfigManager::CPUType::Intel):
+        return ConfigManager::CPUAccessoriesType::Intel_ACC;
+    case (ConfigManager::CPUType::AMD):
+        return ConfigManager::CPUAccessoriesType::AMD_ACC;
+    }
+}
+
 ConfigManager::RAMAccessoriesType ConfigManager::mapAccessoryRAM(ConfigManager::RAMType type)
 {
     switch (type)

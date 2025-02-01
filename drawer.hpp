@@ -217,6 +217,19 @@ private:
         PolygonModel::MINIITX_BATTERY
     };
 
+    // CPU blocks
+    std::vector<PolygonModel::model_t> cpuIntelBlock = {
+        PolygonModel::Intel_CPU
+    };
+
+    std::vector<PolygonModel::model_t> cpuAMDBlock = {
+        PolygonModel::AMD_CPU
+    };
+
+    std::vector<PolygonModel::model_t> cpuAccBlocks = {
+        PolygonModel::Intel_ACC_CPU,
+        PolygonModel::AMD_ACC_CPU
+    };
 
     // GPU blocks
     std::vector<PolygonModel::model_t> gpuBlocks = {

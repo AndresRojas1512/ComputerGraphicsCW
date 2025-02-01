@@ -36,6 +36,7 @@ public:
     virtual Dot3D getGPuAccSlotPosition(int slot) const = 0;
 
     virtual Dot3D getCpuSlotPosition(void) const = 0;
+    virtual Dot3D getCpuAccSlotPosition(void) const = 0;
 
 protected:
     Dot3D startOfPlate;

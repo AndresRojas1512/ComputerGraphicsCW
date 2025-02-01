@@ -815,3 +815,25 @@ void SceneInf::addCPUBlock(ComponentConfig &config, QString modelName, ConfigMan
     layoutComponent.setModelNum(modelsNum);
     addModel(layoutComponent);
 }
+
+void SceneInf::addCPUAccBlock(ComponentConfig &config, QString accName, ConfigManager::CPUAccessoriesType CPUAccType)
+{
+    PolygonModel::model_t CPUAccPolygonModelType = parseCPUAccModel(CPUAccType);
+
+    std::vector<Vertex> vertices;
+    std::vector<Facet> facets;
+
+    for (auto &p : config.parallelepipeds)
+    {
+        addParallelepiped(vertices, facets, p.x, p.y, p.z, p.width, p.height, p.depth);
+    }
+    for (auto &f : config.frames)
+    {
+        addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
+    }
+
+    PolygonModel layoutComponent(vertices, facets, accName);
+    layoutComponent.setModelType(CPUAccPolygonModelType);
+    layoutComponent.setModelNum(modelsNum);
+    addModel(layoutComponent);
+}

@@ -59,6 +59,11 @@ Dot3D MiniITXMotherboardConfig::getCpuSlotPosition(void) const
     return CPU_offset;
 }
 
+Dot3D MiniITXMotherboardConfig::getCpuAccSlotPosition(void) const
+{
+    return CPU_ACC_offset;
+}
+
 bool MiniITXMotherboardConfig::isRamSlotAvailable(int slot)
 {
     return !ramSlotsOccupied[slot];

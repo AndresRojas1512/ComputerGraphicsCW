@@ -77,6 +77,7 @@ public:
     std::vector<PolygonModel> getModels() const;
 
     void addMotherboardComponent(ComponentConfig &config, QString modelName, PolygonModel::model_t modelType);
+
     void addRAMBlock(ComponentConfig &config, QString modelName, ConfigManager::RAMType RAMType);
     void addRAMAccBlock(ComponentConfig &config, QString accName, ConfigManager::RAMAccessoriesType RAMAccType);
 
@@ -84,6 +85,7 @@ public:
     void addGPUAccBlock(ComponentConfig &config, QString accName, ConfigManager::GPUAccessoriesType GPUAccType);
 
     void addCPUBlock(ComponentConfig &config, QString modelName, ConfigManager::CPUType CPUType);
+    void addCPUAccBlock(ComponentConfig &config, QString modelName, ConfigManager::CPUAccessoriesType CPUAccType);
 
     void addTriangle(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
                      int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3);

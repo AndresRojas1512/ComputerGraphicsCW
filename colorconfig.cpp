@@ -31,3 +31,9 @@ const Color Color::DARK_DARK_GRAY(73, 73, 73);
 
 const Color Color::GRAY_BLUE(40, 81, 123);
 const Color Color::DARK_GRAY_BLUE(31, 50, 69);
+
+const Color Color::GREEN_BLUE(19, 196, 169);
+const Color Color::DARK_GREEN_BLUE(20, 127, 111);
+
+const Color Color::ORANGE(255, 127, 80);
+const Color Color::DARK_ORANGE(181, 100, 19);

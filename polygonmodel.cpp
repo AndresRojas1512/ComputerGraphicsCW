@@ -136,6 +136,17 @@ PolygonModel::model_t parseCPUModel(ConfigManager::CPUType CPUType)
     }
 }
 
+PolygonModel::model_t parseCPUAccModel(ConfigManager::CPUAccessoriesType CPUAccType)
+{
+    switch(CPUAccType)
+    {
+    case ConfigManager::CPUAccessoriesType::Intel_ACC:
+        return PolygonModel::model_t::Intel_ACC_CPU;
+    case ConfigManager::CPUAccessoriesType::AMD_ACC:
+        return PolygonModel::model_t::AMD_ACC_CPU;
+    }
+}
+
 std::string mapModelName(PolygonModel::model_t type)
 {
     switch (type)

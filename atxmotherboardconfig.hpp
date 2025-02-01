@@ -272,12 +272,14 @@ public:
         PCIEX16_2_ACC_offset(startOfPlate_.getXCoordinate() + 70, startOfPlate_.getYCoordinate() + ATX_PCIEX16_2_OFFSET_Y + ATX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH + 150),
         PCIEX16_3_ACC_offset(startOfPlate_.getXCoordinate() + 70, startOfPlate_.getYCoordinate() + ATX_PCIEX16_3_OFFSET_Y + ATX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH + 150),
         // CPU slot offset
-        CPU_offset(1, 2, 3) // TODO
+        CPU_offset(startOfPlate_.getXCoordinate() + ATX_socketAM4_OFFSET_X + ATX_socketAM4_LEFTFRAME_WIDTH, startOfPlate_.getYCoordinate() + ATX_socketAM4_OFFSET_Y + ATX_socketAM4_TOPFRAME_WIDTH, BASE_Z + ATX_socketAM4_BASE_DEPTH + CPU_AMD_DEPTH),
+        CPU_ACC_offset(startOfPlate_.getXCoordinate() + ATX_socketAM4_OFFSET_X + ATX_socketAM4_LEFTFRAME_WIDTH + CPU_ACC_OFFSET_X, startOfPlate_.getYCoordinate() + ATX_socketAM4_OFFSET_Y + ATX_socketAM4_TOPFRAME_WIDTH + CPU_ACC_OFFSET_Y, BASE_Z + ATX_socketAM4_BASE_DEPTH + (2 * CPU_AMD_ACC_DEPTH))
     {
         std::cout << "ATXMotherboardConfig::ATXMotherboardConfig" << std::endl;
 
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::B1), false}, {static_cast<int>(RAMSlot::B2), false}, {static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::A2), false}};
         gpuSlotsOccupied = {{static_cast<int>(GPUSlot::A1), false}, {static_cast<int>(GPUSlot::A2), false}, {static_cast<int>(GPUSlot::A3), false}};
+        cpuSlotOccupied = false;
     }
 
     Dot3D getRamSlotPosition(int slot) const override;
@@ -287,6 +289,7 @@ public:
     Dot3D getGPuAccSlotPosition(int slot) const override;
 
     Dot3D getCpuSlotPosition(void) const override;
+    Dot3D getCpuAccSlotPosition(void) const override;
 
     // peripheria
     ComponentConfig HDMI_DP;
@@ -374,6 +377,7 @@ public:
 
     // offset for placing the processor in the processor socket
     Dot3D CPU_offset;
+    Dot3D CPU_ACC_offset;
 
     Dot3D getStartOfPlate() const override;
     Dot3D getEndOfPlate() const override;

@@ -16,9 +16,37 @@ void CPUConfig::applyMotherboardOffset(ComponentConfig &cpuBlock, Dot3D &motherb
     }
 }
 
+void CPUConfig::applyMotherboardOffsetAcc(ComponentConfig &ramAccBlock, Dot3D &motherboardAccOffset, int splitIncrement)
+{
+    int coeff = 0;
+    for (auto &p : ramAccBlock.parallelepipeds)
+    {
+        int currentShift = (coeff * p.height) + (coeff * splitIncrement);
+        p.x += motherboardAccOffset.getXCoordinate();
+        p.y += motherboardAccOffset.getYCoordinate() + currentShift;
+        p.z += motherboardAccOffset.getZCoordinate();
+        coeff++;
+    }
+    int yIncrementFr = 0;
+    for (auto &f : ramAccBlock.frames)
+    {
+        f.x += motherboardAccOffset.getXCoordinate();
+        f.y += motherboardAccOffset.getYCoordinate() + yIncrementFr;
+        f.z += motherboardAccOffset.getZCoordinate();
+        yIncrementFr += splitIncrement;
+    }
+}
+
 ComponentConfig CPUConfig::getCPUConfig(ConfigManager::CPUType cpuType, Dot3D &motherboardOffset)
 {
     ComponentConfig cpuBlock = cpuMappings.at(cpuType);
     applyMotherboardOffset(cpuBlock, motherboardOffset);
+    return cpuBlock;
+}
+
+ComponentConfig CPUConfig::getCPUAccConfig(ConfigManager::CPUAccessoriesType cpuAccType, Dot3D &motherboardOffset, int splitIncrement)
+{
+    ComponentConfig cpuBlock = cpuAccessoriesMappings.at(cpuAccType);
+    applyMotherboardOffsetAcc(cpuBlock, motherboardOffset, splitIncrement);
     return cpuBlock;
 }

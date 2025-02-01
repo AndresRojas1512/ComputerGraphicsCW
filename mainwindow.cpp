@@ -356,9 +356,15 @@ void MainWindow::on_pushButtonAddProcessor_clicked()
 
     // prepare arguments
     ConfigManager::MotherboardType motherboardType = static_cast<ConfigManager::MotherboardType>(ui->comboBoxMotherboardType->currentIndex());
-    int cpuTypeIndex = currentItem->data(Qt::UserRole).toInt();
-    ConfigManager::CPUType cpuType = static_cast<ConfigManager::CPUType>(cpuTypeIndex);
+    ConfigManager::CPUType cpuType = static_cast<ConfigManager::CPUType>(currentItem->data(Qt::UserRole).toInt());
+
     facade->addCPU(motherboardType, cpuType);
+
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
 }
 
 void MainWindow::on_pushButtonAddRAM_clicked()
@@ -392,9 +398,6 @@ void MainWindow::on_pushButtonAddRAM_clicked()
     // prepare arguments
     ConfigManager::MotherboardType motherboardType = static_cast<ConfigManager::MotherboardType>(ui->comboBoxMotherboardType->currentIndex());
     ConfigManager::RAMType ramType = static_cast<ConfigManager::RAMType>(currentItem->data(Qt::UserRole).toInt());
-
-    // std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
-    // std::cout << "--> ram type: " << ramTypeToString(ramType) << std::endl;
 
     bool ok;
     QStringList items;

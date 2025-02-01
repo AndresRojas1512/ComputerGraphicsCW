@@ -71,16 +71,24 @@ void Facade::setSceneInfMotherboard(ConfigManager::MotherboardType type)
     scene = new SceneInf(width, height, index);
 }
 
-// motherboard constructor
-int Facade::addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager::CPUType CPUType) // TODO
+int Facade::addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager::CPUType CPUType)
 {
     std::cout << "Facade::addCPU" << std::endl;
     std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
     std::cout << "--> cpu type: " << cpuTypeToString(CPUType) << std::endl;
+
+    int splitIncrement = 0;
+    ConfigManager::CPUAccessoriesType CPUAccType = configManager.mapAccessoryCPU(CPUType);
+
     Dot3D motherboardOffset = motherboardConfig->getCpuSlotPosition();
+    Dot3D motherboardAccOffset = motherboardConfig->getCpuAccSlotPosition();
+
     ComponentConfig cpuBlock = cpuConfig.getCPUConfig(CPUType, motherboardOffset);
+    ComponentConfig cpuAccBlock = cpuConfig.getCPUAccConfig(CPUAccType, motherboardAccOffset, splitIncrement);
+
     scene->addCPUBlock(cpuBlock, "CPU_BLOCK", CPUType);
-    std::cout << "-->" << cpuBlock;
+    scene->addCPUAccBlock(cpuAccBlock, "CPU_ACC_BLOCK", CPUAccType);
+
     return 0;
 }
 

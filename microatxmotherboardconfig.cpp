@@ -71,6 +71,11 @@ Dot3D MicroATXMotherboardConfig::getCpuSlotPosition(void) const
     return CPU_offset;
 }
 
+Dot3D MicroATXMotherboardConfig::getCpuAccSlotPosition(void) const
+{
+    return CPU_ACC_offset;
+}
+
 bool MicroATXMotherboardConfig::isRamSlotAvailable(int slot)
 {
     return !ramSlotsOccupied[slot];

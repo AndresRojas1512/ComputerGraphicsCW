@@ -186,11 +186,13 @@ public:
         PCIEX16_1_offset(startOfPlate_.getXCoordinate() + MINIITX_PCIEX16_1_OFFSET_X + MINIITX_PCIEX16_LEFTFRAMEWIDTH, startOfPlate_.getYCoordinate() + MINIITX_PCIEX16_1_OFFSET_Y + MINIITX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH),
         PCIEX16_1_ACC_offset(startOfPlate_.getXCoordinate() + 70, startOfPlate_.getYCoordinate() + MINIITX_PCIEX16_1_OFFSET_Y + MINIITX_PCIEX16_TOPFRAMEWIDTH, BASE_Z + GPU_4GB_DEPTH + 150),
         // CPU slot offset
-        CPU_offset(1, 2, 3)
+        CPU_offset(startOfPlate_.getXCoordinate() + MINIITX_LGA1151_OFFSET_X + MINIITX_LGA1151_LEFTFRAME_WIDTH, startOfPlate_.getYCoordinate() + MINIITX_LGA1151_OFFSET_Y + MINIITX_LGA1151_TOPFRAME_WIDTH, BASE_Z + MINIITX_LGA1151_BASE_DEPTH + CPU_INTEL_DEPTH),
+        CPU_ACC_offset(startOfPlate_.getXCoordinate() + MINIITX_LGA1151_OFFSET_X + MINIITX_LGA1151_LEFTFRAME_WIDTH + CPU_ACC_OFFSET_X, startOfPlate_.getYCoordinate() + MINIITX_LGA1151_OFFSET_Y + MINIITX_LGA1151_TOPFRAME_WIDTH + CPU_ACC_OFFSET_Y, BASE_Z + MINIITX_LGA1151_BASE_DEPTH + (2 * CPU_INTEL_ACC_DEPTH))
     {
         std::cout << "MiniITXMotherboardConfig::MiniITXMotherboardConfig" << std::endl;
         ramSlotsOccupied = {{static_cast<int>(RAMSlot::A1), false}, {static_cast<int>(RAMSlot::B1), false}};
         gpuSlotsOccupied = {{static_cast<int>(GPUSlot::A1), false}};
+        cpuSlotOccupied = false;
     }
 
     Dot3D getRamSlotPosition(int slot) const override;
@@ -200,6 +202,7 @@ public:
     Dot3D getGPuAccSlotPosition(int slot) const override;
 
     Dot3D getCpuSlotPosition(void) const override;
+    Dot3D getCpuAccSlotPosition(void) const override;
 
     // peripheria
     ComponentConfig USB3_5;
@@ -243,6 +246,7 @@ public:
     Dot3D PCIEX16_1_ACC_offset;
     // offset for placing the CPU block int the CPU socket
     Dot3D CPU_offset;
+    Dot3D CPU_ACC_offset;
 
     Dot3D getStartOfPlate() const override;
     Dot3D getEndOfPlate() const override;
