@@ -178,6 +178,8 @@ public:
         // CPU type
         Intel_CPU,
         AMD_CPU,
+        Intel_ACC_CPU,
+        AMD_ACC_CPU,
         // RAM type
         RAM_4GB_BLOCK,
         RAM_8GB_BLOCK,
@@ -196,11 +198,6 @@ public:
         GPU_6GB_ACC_BLOCK,
         GPU_8GB_ACC_BLOCK,
         GPU_16GB_ACC_BLOCK,
-        // CPU type
-        INTEL,
-        AMD,
-        INTEL_ACC,
-        AMD_ACC
     };
 
     void setModelType(model_t modelType_);
