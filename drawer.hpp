@@ -216,6 +216,37 @@ private:
     std::vector<PolygonModel::model_t> miniItxBattery = {
         PolygonModel::MINIITX_BATTERY
     };
+
+
+    // GPU blocks
+    std::vector<PolygonModel::model_t> gpuBlocks = {
+        PolygonModel::GPU_4GB_BLOCK,
+        PolygonModel::GPU_6GB_BLOCK,
+        PolygonModel::GPU_8GB_BLOCK,
+        PolygonModel::GPU_16GB_BLOCK,
+    };
+
+    std::vector<PolygonModel::model_t> gpuAccBlocks = {
+        PolygonModel::GPU_4GB_ACC_BLOCK,
+        PolygonModel::GPU_6GB_ACC_BLOCK,
+        PolygonModel::GPU_8GB_ACC_BLOCK,
+        PolygonModel::GPU_16GB_ACC_BLOCK,
+    };
+
+    // RAM block
+    std::vector<PolygonModel::model_t> ramBlocks = {
+        PolygonModel::RAM_4GB_BLOCK,
+        PolygonModel::RAM_8GB_BLOCK,
+        PolygonModel::RAM_16GB_BLOCK,
+        PolygonModel::RAM_32GB_BLOCK,
+    };
+
+    std::vector<PolygonModel::model_t> ramAccBlocks = {
+        PolygonModel::RAM_4GB_ACC_BLOCK,
+        PolygonModel::RAM_8GB_ACC_BLOCK,
+        PolygonModel::RAM_16GB_ACC_BLOCK,
+        PolygonModel::RAM_32GB_ACC_BLOCK,
+    };
 };
 
 #endif // DRAWER_H
