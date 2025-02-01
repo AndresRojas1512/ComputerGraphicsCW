@@ -31,4 +31,3 @@ const Color Color::DARK_DARK_GRAY(73, 73, 73);
 
 const Color Color::GRAY_BLUE(40, 81, 123);
 const Color Color::DARK_GRAY_BLUE(31, 50, 69);
-

@@ -159,9 +159,9 @@ std::string mapModelName(PolygonModel::model_t type)
     case (PolygonModel::GPU_16GB_BLOCK):
         return "GPU 16GB";
     // CPU MAPPINGS
-    case (PolygonModel::INTEL):
+    case (PolygonModel::Intel_CPU):
         return "Intel CPU";
-    case (PolygonModel::AMD):
+    case (PolygonModel::AMD_CPU):
         return "AMD CPU";
     };
 }
