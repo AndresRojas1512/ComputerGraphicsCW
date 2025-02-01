@@ -923,6 +923,13 @@
 #define MINIITX_CPUFAN_FRAME_DEPTH 2 * SIZE_SC
 #define MINIITX_CPUFAN_FRAME_WIDTH 3
 
+// BATTERY
+#define MINIITX_BATTERY_RADIUS 10 * SIZE_SC
+#define MINIITX_BATTERY_HEIGHT 5
+#define MINIITX_BATTERY_SEGMENTS 10
+#define MINIITX_BATTERY_OFFSET_X 40 * SIZE_SC
+#define MINIITX_BATTERY_OFFSET_Y 145 * SIZE_SC
+
 /*
  * ======================= RAM 4GB DIMENSIONS =======================
 */
@@ -1049,12 +1056,19 @@
 #define GPU_16GB_MEMBLOCK_ACC_HEIGHT 4
 
 /*
+ * COLORS
+*/
+
+// #define GREEN 0, 128, 0
+// #define DARK_GREEN 0, 100, 0
+
+/*
  * ======================= ATX COLORS =======================
 */
 
 // Peripheria
-#define ATX_MOTHERBOARD_COLOR 0, 128, 0 // green
-#define ATX_MOTHERBOARD_COLOR_SHADOW 0, 100, 0 // dark green
+#define ATX_MOTHERBOARD_COLOR 0, 128, 0
+#define ATX_MOTHERBOARD_COLOR_SHADOW 0, 100, 0
 
 #define ATX_HDMI_DP_COLOR 192, 192, 192 // silver
 #define ATX_HDMI_DP_COLOR_SHADOW 128, 128, 128 // gray

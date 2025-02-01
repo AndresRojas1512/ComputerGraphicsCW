@@ -690,6 +690,7 @@ void SceneInf::buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_)
     addMotherboardComponent(miniITXConfig.CHAFAN, "MINIITX_CHAFAN", PolygonModel::MINIITX_CHAFAN);
     addMotherboardComponent(miniITXConfig.M2_2, "MINIITX_M2_2", PolygonModel::MINIITX_M2_2);
     addMotherboardComponent(miniITXConfig.CPUFAN, "MINIITX_CPUFAN", PolygonModel::MINIITX_CPUFAN);
+    addMotherboardComponent(miniITXConfig.BATTERY, "MINIITX_BATTERY", PolygonModel::MINIITX_BATTERY);
 }
 
 void SceneInf::addMotherboardComponent(ComponentConfig &config, QString modelName, PolygonModel::model_t modelType)

@@ -472,140 +472,46 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
 
     uint borderColor            = qRgb(BLACK_COLOR);
 
-    uint brickColor             = qRgb(BRICK_COLOR);
-    uint brickColorShadow       = qRgb(BRICK_COLOR_SHADOW);
-
-    uint plateColor             = qRgb(PLATE_COLOR);
-    uint plateColorShadow       = qRgb(PLATE_COLOR_SHADOW);
-
-    uint tileColor              = qRgb(TILE_COLOR);
-    uint tileColorShadow        = qRgb(TILE_COLOR_SHADOW);
-
-    uint arcColor               = qRgb(ARC_COLOR);
-    uint arcColorShadow         = qRgb(ARC_COLOR_SHADOW);
-
-    uint cylinderColor          = qRgb(CYLINDER_COLOR);
-    uint cylinderColorShadow    = qRgb(CYLINDER_COLOR_SHADOW);
-
-    // ATX_HDMI_DP
-    uint atx_HDMI_DP_Color = qRgb(ATX_HDMI_DP_COLOR);
-    uint atx_HDMI_DP_ColorShadow = qRgb(ATX_HDMI_DP_COLOR_SHADOW);
-    // ATX_BIOS_FLBK
-    uint atx_BIOS_FLBK_Color = qRgb(ATX_BIOS_FLBK_COLOR);
-    uint atx_BIOS_FLBK_ColorShadow = qRgb(ATX_BIOS_FLBK_COLOR_SHADOW);
-    // ATX_U32G2_1_4
-    uint atx_U32G2_1_4_Color = qRgb(ATX_U32G2_1_4_COLOR);
-    uint atx_U32G2_1_4_ColorShadow = qRgb(ATX_U32G2_1_4_COLOR_SHADOW);
-    // ATX_LAN2_U32G2_56
-    uint atx_LAN2_U32G2_56_Color = qRgb(ATX_LAN2_U32G2_56_COLOR);
-    uint atx_LAN2_U32G2_56_ColorShadow = qRgb(ATX_LAN2_U32G2_56_COLOR_SHADOW);
-    // ATX_U3252_C8_LAN1_U32G2_7
-    uint atx_U3252_C8_LAN1_U32G2_7_Color = qRgb(ATX_U3252_C8_LAN1_U32G2_7_COLOR);
-    uint atx_U3252_C8_LAN1_U32G2_7_ColorShadow = qRgb(ATX_U3252_C8_LAN1_U32G2_7_COLOR_SHADOW);
-    // ATX_M2_WIFI
-    uint atx_M2_WIFI_Color = qRgb(ATX_M2_WIFI_COLOR);
-    uint atx_M2_WIFI_ColorShadow = qRgb(ATX_M2_WIFI_COLOR_SHADOW);
-    // ATX_AUDIO
-    uint atx_AUDIO_Color = qRgb(ATX_AUDIO_COLOR);
-    uint atx_AUDIO_ColorShadow = qRgb(ATX_AUDIO_COLOR_SHADOW);
-    // ATX_socketM4
-    uint atx_socketM4_Color = qRgb(ATX_SOCKET_M4_COLOR);
-    uint atx_socketM4_ColorShadow = qRgb(ATX_SOCKET_M4_COLOR_SHADOW);
-    // ATX_DDR4_DIMM_B1
-    uint atx_DDR4_DIMM_B1_Color = qRgb(ATX_DDR4_DIMM_B1_COLOR);
-    uint atx_DDR4_DIMM_B1_ColorShadow = qRgb(ATX_DDR4_DIMM_B1_COLOR_SHADOW);
-    // ATX_DDR4_DIMM_B2
-    uint atx_DDR4_DIMM_B2_Color = qRgb(ATX_DDR4_DIMM_B2_COLOR);
-    uint atx_DDR4_DIMM_B2_ColorShadow = qRgb(ATX_DDR4_DIMM_B2_COLOR_SHADOW);
-    // ATX_DDR4_DIMM_A1
-    uint atx_DDR4_DIMM_A1_Color = qRgb(ATX_DDR4_DIMM_A1_COLOR);
-    uint atx_DDR4_DIMM_A1_ColorShadow = qRgb(ATX_DDR4_DIMM_A1_COLOR_SHADOW);
-    // ATX_DDR4_DIMM_A2
-    uint atx_DDR4_DIMM_A2_Color = qRgb(ATX_DDR4_DIMM_A2_COLOR);
-    uint atx_DDR4_DIMM_A2_ColorShadow = qRgb(ATX_DDR4_DIMM_A2_COLOR_SHADOW);
-    // ATX_PCIEX16_1
-    uint atx_PCIEX16_1_Color = qRgb(ATX_PCIEX16_1_COLOR);
-    uint atx_PCIEX16_1_ColorShadow = qRgb(ATX_PCIEX16_1_COLOR_SHADOW);
-    // ATX_PCIEX16_2
-    uint atx_PCIEX16_2_Color = qRgb(ATX_PCIEX16_2_COLOR);
-    uint atx_PCIEX16_2_ColorShadow = qRgb(ATX_PCIEX16_2_COLOR_SHADOW);
-    // ATX_PCIEX16_3
-    uint atx_PCIEX16_3_Color = qRgb(ATX_PCIEX16_3_COLOR);
-    uint atx_PCIEX16_3_ColorShadow = qRgb(ATX_PCIEX16_3_COLOR_SHADOW);
-
-    // MICROATX_HDMI1_DP
-    uint microAtx_HDMI1_DP_Color = qRgb(MICROATX_HDMI1_DP_COLOR);
-    uint microAtx_HDMI1_DP_ColorShadow = qRgb(MICROATX_HDMI1_DP_COLOR_SHADOW);
-    // MICROATX_HDMI2
-    uint microAtx_HDMI2_Color = qRgb(MICROATX_HDMI2_COLOR);
-    uint microAtx_HDMI2_ColorShadow = qRgb(MICROATX_HDMI2_COLOR_SHADOW);
-    // MICROATX_KBMS_USB_E32
-    uint microAtx_KBMS_USB_E32_Color = qRgb(MICROATX_KBMS_USB_E32_COLOR);
-    uint microAtx_KBMS_USB_E32_ColorShadow = qRgb(MICROATX_KBMS_USB_E32_COLOR_SHADOW);
-    // MICROATX_U32G2_C2
-    uint microAtx_U32G2_C2_Color = qRgb(MICROATX_U32G2_C2_COLOR);
-    uint microAtx_U32G2_C2_ColorShadow = qRgb(MICROATX_U32G2_C2_COLOR_SHADOW);
-    // MICROATX_LAN_USB_E12
-    uint microAtx_LAN_USB_E12_Color = qRgb(MICROATX_LAN_USB_E12_COLOR);
-    uint microAtx_LAN_USB_E12_ColorShadow = qRgb(MICROATX_LAN_USB_E12_COLOR_SHADOW);
-    // MICROATX_AUDIO
-    uint microAtx_AUDIO_Color = qRgb(MICROATX_AUDIO_COLOR);
-    uint microAtx_AUDIO_ColorShadow = qRgb(MICROATX_AUDIO_COLOR_SHADOW);
-    // MICROATX_LGA1200
-    uint microAtx_LGA1200_Color = qRgb(MICROATX_LGA1200_COLOR);
-    uint microAtx_LGA1200_ColorShadow = qRgb(MICROATX_LGA1200_COLOR_SHADOW);
-    // MICROATX_DDR4_DIMM_A1
-    uint microAtx_DDR4_DIMM_A1_Color = qRgb(MICROATX_DDR4_DIMM_A1_COLOR);
-    uint microAtx_DDR4_DIMM_A1_ColorShadow = qRgb(MICROATX_DDR4_DIMM_A1_COLOR_SHADOW);
-    // MICROATX_DDR4_DIMM_A2
-    uint microAtx_DDR4_DIMM_A2_Color = qRgb(MICROATX_DDR4_DIMM_A2_COLOR);
-    uint microAtx_DDR4_DIMM_A2_ColorShadow = qRgb(MICROATX_DDR4_DIMM_A2_COLOR_SHADOW);
-    // MICROATX_DDR4_DIMM_B1
-    uint microAtx_DDR4_DIMM_B1_Color = qRgb(MICROATX_DDR4_DIMM_B1_COLOR);
-    uint microAtx_DDR4_DIMM_B1_ColorShadow = qRgb(MICROATX_DDR4_DIMM_B1_COLOR_SHADOW);
-    // MICROATX_DDR4_DIMM_B2
-    uint microAtx_DDR4_DIMM_B2_Color = qRgb(MICROATX_DDR4_DIMM_B2_COLOR);
-    uint microAtx_DDR4_DIMM_B2_ColorShadow = qRgb(MICROATX_DDR4_DIMM_B2_COLOR_SHADOW);
-    // MICROATX_PCIEX16_1
-    uint microAtx_PCIEX16_1_Color = qRgb(MICROATX_PCIEX16_1_COLOR);
-    uint microAtx_PCIEX16_1_ColorShadow = qRgb(MICROATX_PCIEX16_1_COLOR_SHADOW);
-    // MICROATX_PCIEX16_2
-    uint microAtx_PCIEX16_2_Color = qRgb(MICROATX_PCIEX16_2_COLOR);
-    uint microAtx_PCIEX16_2_ColorShadow = qRgb(MICROATX_PCIEX16_2_COLOR_SHADOW);
-
-    // MINIITX_USB3_5
-    uint miniItx_USB3_5_Color = qRgb(MINIITX_USB3_5_COLOR);
-    uint miniItx_USB3_5_ColorShadow = qRgb(MINIITX_USB3_5_COLOR_SHADOW);
-    // MINIITX_USB7_10
-    uint miniItx_USB7_10_Color = qRgb(MINIITX_USB7_10_COLOR);
-    uint miniItx_USB7_10_ColorShadow = qRgb(MINIITX_USB7_10_COLOR_SHADOW);
-    // MINIITX_HDMI_DP
-    uint miniItx_HDMI_DP_Color = qRgb(MINIITX_HDMI_DP_COLOR);
-    uint miniItx_HDMI_DP_ColorShadow = qRgb(MINIITX_HDMI_DP_COLOR_SHADOW);
-    // MINIITX_LAN_USB3_34
-    uint miniItx_LAN_USB3_34_Color = qRgb(MINIITX_LAN_USB3_34_COLOR);
-    uint miniItx_LAN_USB3_34_ColorShadow = qRgb(MINIITX_LAN_USB3_34_COLOR_SHADOW);
-    // MINIITX_M2_WIFI
-    uint miniItx_M2_WIFI_Color = qRgb(MINIITX_M2_WIFI_COLOR);
-    uint miniItx_M2_WIFI_ColorShadow = qRgb(MINIITX_M2_WIFI_COLOR_SHADOW);
-    // MINIITX_AUDIO
-    uint miniItx_AUDIO_Color = qRgb(MINIITX_AUDIO_COLOR);
-    uint miniItx_AUDIO_ColorShadow = qRgb(MINIITX_AUDIO_COLOR_SHADOW);
-    // MINIITX_DDR4_DIMM_A1
-    uint miniItx_DDR4_DIMM_A1_Color = qRgb(MINIITX_DDR4_DIMM_A1_COLOR);
-    uint miniItx_DDR4_DIMM_A1_ColorShadow = qRgb(MINIITX_DDR4_DIMM_A1_COLOR_SHADOW);
-    // MINIITX_DDR4_DIMM_B1
-    uint miniItx_DDR4_DIMM_B1_Color = qRgb(MINIITX_DDR4_DIMM_B1_COLOR);
-    uint miniItx_DDR4_DIMM_B1_ColorShadow = qRgb(MINIITX_DDR4_DIMM_B1_COLOR_SHADOW);
-    // MINIITX_PCIEX16_1
-    uint miniItx_PCIEX16_1_Color = qRgb(MINIITX_PCIEX16_1_COLOR);
-    uint miniItx_PCIEX16_1_ColorShadow = qRgb(MINIITX_PCIEX16_1_COLOR_SHADOW);
-
     nanoseconds start2 = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
 
-    // std::cout << "START DEBUG (borderBuffer)" << std::endl;
-    // std::cout << "size: " << borderBuffer.size() << " x " << borderBuffer[0].size() << std::endl;
-    // std::cout << "END DEBUG (borderBuffer)" << std::endl;
+    // ATX color
+    color(image, rect, atxPeripheriaSockets, Color::SILVER, Color::GRAY);
+    color(image, rect, atxCpuSocket, Color::GRAY, Color::DIM_GRAY);
+    color(image, rect, atxRamSockets_01, Color::BLUE, Color::DARK_BLUE);
+    color(image, rect, atxRamSockets_02, Color::YELLOW, Color::OLIVE);
+    color(image, rect, atxGpuSockets, Color::KHAKI, Color::DARK_KHAKI);
+    color(image, rect, atxCapacitors, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+    color(image, rect, atxSataSockets, Color::RED, Color::DARK_RED);
+    color(image, rect, atxEatxSockets, Color::LIGHT_BLUE, Color::DARK_LIGHT_BLUE);
+    color(image, rect, atxConnectors, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    color(image, rect, atxMicrochips, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    color(image, rect, atxBattery, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+
+    // Micro-ATX color
+    color(image, rect, microAtxPeripheriaSockets, Color::SILVER, Color::GRAY);
+    color(image, rect, microAtxCpuSocket, Color::GRAY, Color::DIM_GRAY);
+    color(image, rect, microAtxRamSockets_01, Color::BLUE, Color::DARK_BLUE);
+    color(image, rect, microAtxRamSockets_02, Color::YELLOW, Color::OLIVE);
+    color(image, rect, microAtxGpuSockets, Color::KHAKI, Color::DARK_KHAKI);
+    color(image, rect, microAtxCapacitors, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+    color(image, rect, microAtxSataSockets, Color::RED, Color::DARK_RED);
+    color(image, rect, microAtxAtxSockets, Color::LIGHT_BLUE, Color::DARK_LIGHT_BLUE);
+    color(image, rect, microAtxConnectors, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    color(image, rect, microAtxMicrochips, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    color(image, rect, microAtxBattery, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+
+    // Mini-ITX color
+    color(image, rect, miniItxPeripheriaSockets, Color::SILVER, Color::GRAY);
+    color(image, rect, miniItxCpuSocket, Color::GRAY, Color::DIM_GRAY);
+    color(image, rect, miniItxRamSockets_01, Color::BLUE, Color::DARK_BLUE);
+    color(image, rect, miniItxRamSockets_02, Color::YELLOW, Color::OLIVE);
+    color(image, rect, miniItxGpuSockets, Color::KHAKI, Color::DARK_KHAKI);
+    color(image, rect, miniItxCapacitors, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+    color(image, rect, miniItxSataSockets, Color::RED, Color::DARK_RED);
+    color(image, rect, miniItxAtxSockets, Color::LIGHT_BLUE, Color::DARK_LIGHT_BLUE);
+    color(image, rect, miniItxConnectors, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    color(image, rect, miniItxMicrochips, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    color(image, rect, miniItxBattery, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
 
     for (size_t i = 0; i < rect.size().width() - 1; i++)
     {
@@ -623,379 +529,6 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
             {
                 image->setPixel(i, j, borderColor);
             }
-            else if (borderBuffer.at(i).at(j) == 4)
-            {
-                image->setPixel(i, j, brickColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 5)
-            {
-                image->setPixel(i, j, brickColor);
-            }
-            else if (borderBuffer.at(i).at(j) == 6)
-            {
-                image->setPixel(i, j, plateColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 7)
-            {
-                image->setPixel(i, j, plateColor);
-            }
-            else if (borderBuffer.at(i).at(j) == 8)
-            {
-                image->setPixel(i, j, tileColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 9)
-            {
-                image->setPixel(i, j, tileColor);
-            }
-            else if (borderBuffer.at(i).at(j) == 10 || borderBuffer.at(i).at(j) == 12)
-            {
-                image->setPixel(i, j, arcColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 11 || borderBuffer.at(i).at(j) == 13)
-            {
-                image->setPixel(i, j, arcColor);
-            }
-            else if (borderBuffer.at(i).at(j) == 14 || borderBuffer.at(i).at(j) == 16)
-            {
-                image->setPixel(i, j, cylinderColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 15 || borderBuffer.at(i).at(j) == 17)
-            {
-                image->setPixel(i, j, cylinderColor);
-            }
-            // ATX_HDMI_DP
-            else if (borderBuffer.at(i).at(j) == 18)
-            {
-                image->setPixel(i, j, atx_HDMI_DP_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 19)
-            {
-                image->setPixel(i, j, atx_HDMI_DP_Color);
-            }
-            // ATX_BIOS_FLBK
-            else if (borderBuffer.at(i).at(j) == 20)
-            {
-                image->setPixel(i, j, atx_BIOS_FLBK_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 21)
-            {
-                image->setPixel(i, j, atx_BIOS_FLBK_Color);
-            }
-            // ATX_U32G2_1_4
-            else if (borderBuffer.at(i).at(j) == 22)
-            {
-                image->setPixel(i, j, atx_U32G2_1_4_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 23)
-            {
-                image->setPixel(i, j, atx_U32G2_1_4_Color);
-            }
-            // ATX_LAN2_U32G2_56
-            else if (borderBuffer.at(i).at(j) == 24)
-            {
-                image->setPixel(i, j, atx_LAN2_U32G2_56_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 25)
-            {
-                image->setPixel(i, j, atx_LAN2_U32G2_56_Color);
-            }
-            // ATX_U3252_C8_LAN1_U32G2_7
-            else if (borderBuffer.at(i).at(j) == 26)
-            {
-                image->setPixel(i, j, atx_U3252_C8_LAN1_U32G2_7_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 27)
-            {
-                image->setPixel(i, j, atx_U3252_C8_LAN1_U32G2_7_Color);
-            }
-            // ATX_M2_WIFI
-            else if (borderBuffer.at(i).at(j) == 28)
-            {
-                image->setPixel(i, j, atx_M2_WIFI_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 29)
-            {
-                image->setPixel(i, j, atx_M2_WIFI_Color);
-            }
-            // ATX_AUDIO
-            else if (borderBuffer.at(i).at(j) == 30)
-            {
-                image->setPixel(i, j, atx_AUDIO_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 31)
-            {
-                image->setPixel(i, j, atx_AUDIO_Color);
-            }
-            // ATX_socketM4
-            else if (borderBuffer.at(i).at(j) == 32)
-            {
-                image->setPixel(i, j, atx_socketM4_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 33)
-            {
-                image->setPixel(i, j, atx_socketM4_Color);
-            }
-            // ATX_DDR4_DIMM_B1
-            else if (borderBuffer.at(i).at(j) == 34)
-            {
-                image->setPixel(i, j, atx_DDR4_DIMM_B1_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 35)
-            {
-                image->setPixel(i, j, atx_DDR4_DIMM_B1_Color);
-            }
-            // ATX_DDR4_DIMM_B2
-            else if (borderBuffer.at(i).at(j) == 36)
-            {
-                image->setPixel(i, j, atx_DDR4_DIMM_B2_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 37)
-            {
-                image->setPixel(i, j, atx_DDR4_DIMM_B2_Color);
-            }
-            // ATX_DDR4_DIMM_A1
-            else if (borderBuffer.at(i).at(j) == 38)
-            {
-                image->setPixel(i, j, atx_DDR4_DIMM_A1_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 39)
-            {
-                image->setPixel(i, j, atx_DDR4_DIMM_A1_Color);
-            }
-            // ATX_DDR4_DIMM_A2
-            else if (borderBuffer.at(i).at(j) == 40)
-            {
-                image->setPixel(i, j, atx_DDR4_DIMM_A2_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 41)
-            {
-                image->setPixel(i, j, atx_DDR4_DIMM_A2_Color);
-            }
-            // ATX_PCIEX16_1
-            else if (borderBuffer.at(i).at(j) == 42)
-            {
-                image->setPixel(i, j, atx_PCIEX16_1_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 43)
-            {
-                image->setPixel(i, j, atx_PCIEX16_1_Color);
-            }
-            // ATX_PCIEX16_2
-            else if (borderBuffer.at(i).at(j) == 44)
-            {
-                image->setPixel(i, j, atx_PCIEX16_2_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 45)
-            {
-                image->setPixel(i, j, atx_PCIEX16_2_Color);
-            }
-            // ATX_PCIEX16_3
-            else if (borderBuffer.at(i).at(j) == 46)
-            {
-                image->setPixel(i, j, atx_PCIEX16_3_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 47)
-            {
-                image->setPixel(i, j, atx_PCIEX16_3_Color);
-            }
-            // MICROATX_HDMI1_DP
-            else if (borderBuffer.at(i).at(j) == 48)
-            {
-                image->setPixel(i, j, microAtx_HDMI1_DP_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 49)
-            {
-                image->setPixel(i, j, microAtx_HDMI1_DP_Color);
-            }
-            // MICROATX_HDMI2
-            else if (borderBuffer.at(i).at(j) == 50)
-            {
-                image->setPixel(i, j, microAtx_HDMI2_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 51)
-            {
-                image->setPixel(i, j, microAtx_HDMI2_Color);
-            }
-            // MICROATX_KBMS_USB_E32
-            else if (borderBuffer.at(i).at(j) == 52)
-            {
-                image->setPixel(i, j, microAtx_KBMS_USB_E32_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 53)
-            {
-                image->setPixel(i, j, microAtx_KBMS_USB_E32_Color);
-            }
-            // MICROATX_U32G2_C2
-            else if (borderBuffer.at(i).at(j) == 54)
-            {
-                image->setPixel(i, j, microAtx_U32G2_C2_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 55)
-            {
-                image->setPixel(i, j, microAtx_U32G2_C2_Color);
-            }
-            // MICROATX_LAN_USB_E12
-            else if (borderBuffer.at(i).at(j) == 56)
-            {
-                image->setPixel(i, j, microAtx_LAN_USB_E12_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 57)
-            {
-                image->setPixel(i, j, microAtx_LAN_USB_E12_Color);
-            }
-            // MICROATX_AUDIO
-            else if (borderBuffer.at(i).at(j) == 58)
-            {
-                image->setPixel(i, j, microAtx_AUDIO_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 59)
-            {
-                image->setPixel(i, j, microAtx_AUDIO_Color);
-            }
-            // MICROATX_LGA1200
-            else if (borderBuffer.at(i).at(j) == 60)
-            {
-                image->setPixel(i, j, microAtx_LGA1200_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 61)
-            {
-                image->setPixel(i, j, microAtx_LGA1200_Color);
-            }
-            // MICROATX_DDR4_DIMM_A1
-            else if (borderBuffer.at(i).at(j) == 62)
-            {
-                image->setPixel(i, j, microAtx_DDR4_DIMM_A1_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 63)
-            {
-                image->setPixel(i, j, microAtx_DDR4_DIMM_A1_Color);
-            }
-            // MICROATX_DDR4_DIMM_A2
-            else if (borderBuffer.at(i).at(j) == 64)
-            {
-                image->setPixel(i, j, microAtx_DDR4_DIMM_A2_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 65)
-            {
-                image->setPixel(i, j, microAtx_DDR4_DIMM_A2_Color);
-            }
-            // MICROATX_DDR4_DIMM_B1
-            else if (borderBuffer.at(i).at(j) == 66)
-            {
-                image->setPixel(i, j, microAtx_DDR4_DIMM_B1_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 67)
-            {
-                image->setPixel(i, j, microAtx_DDR4_DIMM_B1_Color);
-            }
-            // MICROATX_DDR4_DIMM_B2
-            else if (borderBuffer.at(i).at(j) == 68)
-            {
-                image->setPixel(i, j, microAtx_DDR4_DIMM_B2_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 69)
-            {
-                image->setPixel(i, j, microAtx_DDR4_DIMM_B2_Color);
-            }
-            // MICROATX_PCIEX16_1
-            else if (borderBuffer.at(i).at(j) == 70)
-            {
-                image->setPixel(i, j, microAtx_PCIEX16_1_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 71)
-            {
-                image->setPixel(i, j, microAtx_PCIEX16_1_Color);
-            }
-            // MICROATX_PCIEX16_2
-            else if (borderBuffer.at(i).at(j) == 72)
-            {
-                image->setPixel(i, j, microAtx_PCIEX16_2_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 73)
-            {
-                image->setPixel(i, j, microAtx_PCIEX16_2_Color);
-            }
-            // MINIITX_USB3_5
-            else if (borderBuffer.at(i).at(j) == 74)
-            {
-                image->setPixel(i, j, miniItx_USB3_5_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 75)
-            {
-                image->setPixel(i, j, miniItx_USB3_5_Color);
-            }
-            // MINIITX_USB7_10
-            else if (borderBuffer.at(i).at(j) == 76)
-            {
-                image->setPixel(i, j, miniItx_USB7_10_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 77)
-            {
-                image->setPixel(i, j, miniItx_USB7_10_Color);
-            }
-            // MINIITX_HDMI_DP
-            else if (borderBuffer.at(i).at(j) == 78)
-            {
-                image->setPixel(i, j, miniItx_HDMI_DP_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 79)
-            {
-                image->setPixel(i, j, miniItx_HDMI_DP_Color);
-            }
-            // MINIITX_LAN_USB3_34
-            else if (borderBuffer.at(i).at(j) == 80)
-            {
-                image->setPixel(i, j, miniItx_LAN_USB3_34_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 81)
-            {
-                image->setPixel(i, j, miniItx_LAN_USB3_34_Color);
-            }
-            // MINIITX_M2_WIFI
-            else if (borderBuffer.at(i).at(j) == 82)
-            {
-                image->setPixel(i, j, miniItx_M2_WIFI_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 83)
-            {
-                image->setPixel(i, j, miniItx_M2_WIFI_Color);
-            }
-            // MINIITX_AUDIO
-            else if (borderBuffer.at(i).at(j) == 84)
-            {
-                image->setPixel(i, j, miniItx_AUDIO_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 85)
-            {
-                image->setPixel(i, j, miniItx_AUDIO_Color);
-            }
-            // MINIITX_DDR4_DIMM_A1
-            else if (borderBuffer.at(i).at(j) == 86)
-            {
-                image->setPixel(i, j, miniItx_DDR4_DIMM_A1_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 87)
-            {
-                image->setPixel(i, j, miniItx_DDR4_DIMM_A1_Color);
-            }
-            // MINIITX_DDR4_DIMM_B1
-            else if (borderBuffer.at(i).at(j) == 88)
-            {
-                image->setPixel(i, j, miniItx_DDR4_DIMM_B1_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 89)
-            {
-                image->setPixel(i, j, miniItx_DDR4_DIMM_B1_Color);
-            }
-            // MINIITX_PCIEX16_1
-            else if (borderBuffer.at(i).at(j) == 90)
-            {
-                image->setPixel(i, j, miniItx_PCIEX16_1_ColorShadow);
-            }
-            else if (borderBuffer.at(i).at(j) == 91)
-            {
-                image->setPixel(i, j, miniItx_PCIEX16_1_Color);
-            }
         }
     }
 
@@ -1011,4 +544,35 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect)
         scene->getLight(i).clearShadowMap();
 
     return outScene;
+}
+
+void Drawer::color(QImage *image, QRectF rect, std::vector<PolygonModel::model_t> models, Color color, Color shadow)
+{
+    uint colorUint = qRgb(color.r, color.g, color.b);
+    uint shadowUint = qRgb(shadow.r, shadow.g, shadow.b);
+    std::vector<int> colorIDs;
+    std::vector<int> shadowIDs;
+    for (auto &model : models)
+    {
+        int colorID = ((model + 2) * 2) + 1;
+        int shadowID = ((model + 2) * 2);
+        colorIDs.push_back(colorID);
+        shadowIDs.push_back(shadowID);
+    }
+
+    for (size_t i = 0; i < rect.size().width() - 1; i++)
+    {
+        for (size_t j = 0; j < rect.size().height() - 1; j++)
+        {
+            int bufferValue = borderBuffer.at(i).at(j);
+            if (std::find(shadowIDs.begin(), shadowIDs.end(), bufferValue) != shadowIDs.end())
+            {
+                image->setPixel(i, j, shadowUint);
+            }
+            else if (std::find(colorIDs.begin(), colorIDs.end(), bufferValue) != colorIDs.end())
+            {
+                image->setPixel(i, j, colorUint);
+            }
+        }
+    }
 }

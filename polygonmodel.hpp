@@ -174,6 +174,7 @@ public:
         MINIITX_CHAFAN,
         MINIITX_M2_2,
         MINIITX_CPUFAN,
+        MINIITX_BATTERY,
         // CPU type
         Intel_CPU,
         AMD_CPU,
