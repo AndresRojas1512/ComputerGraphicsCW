@@ -134,3 +134,29 @@ QList<int> MicroATXMotherboardConfig::getAvailableGpuSlots()
     }
     return availableSlots;
 }
+
+std::string microAtxRamSlotToString(MicroATXMotherboardConfig::RAMSlot slot)
+{
+    switch (slot)
+    {
+    case MicroATXMotherboardConfig::RAMSlot::A1:
+        return "A1";
+    case MicroATXMotherboardConfig::RAMSlot::A2:
+        return "A2";
+    case MicroATXMotherboardConfig::RAMSlot::B1:
+        return "A3";
+    case MicroATXMotherboardConfig::RAMSlot::B2:
+        return "A4";
+    }
+}
+
+std::string microAtxGpuSlotToString(MicroATXMotherboardConfig::GPUSlot slot)
+{
+    switch (slot)
+    {
+    case MicroATXMotherboardConfig::GPUSlot::A1:
+        return "A1";
+    case MicroATXMotherboardConfig::GPUSlot::A2:
+        return "A2";
+    }
+}

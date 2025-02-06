@@ -300,4 +300,8 @@ public:
     bool isCpuSlotAvailable(void) override;
 };
 
+std::string microAtxRamSlotToString(MicroATXMotherboardConfig::RAMSlot slot);
+
+std::string microAtxGpuSlotToString(MicroATXMotherboardConfig::GPUSlot slot);
+
 #endif // MICROATXMOTHERBOARDCONFIG_H

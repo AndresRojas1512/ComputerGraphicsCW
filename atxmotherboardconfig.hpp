@@ -391,8 +391,13 @@ public:
     QList<int> getAvailableGpuSlots() override;
 
     bool isCpuSlotAvailable(void) override;
+
+    void dummy(void);
 };
 
 std::string atxRamSlotToString(ATXMotherboardConfig::RAMSlot slot);
+
+std::string atxGpuSlotToString(ATXMotherboardConfig::GPUSlot slot);
+
 
 #endif // ATXMOTHERBOARDCONFIG_HPP

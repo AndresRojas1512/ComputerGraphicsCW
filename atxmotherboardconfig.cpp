@@ -152,3 +152,16 @@ std::string atxRamSlotToString(ATXMotherboardConfig::RAMSlot slot)
         return "A2";
     }
 }
+
+std::string atxGpuSlotToString(ATXMotherboardConfig::GPUSlot slot)
+{
+    switch (slot)
+    {
+    case ATXMotherboardConfig::GPUSlot::A1:
+        return "A1";
+    case ATXMotherboardConfig::GPUSlot::A2:
+        return "A2";
+    case ATXMotherboardConfig::GPUSlot::A3:
+        return "A3";
+    }
+}

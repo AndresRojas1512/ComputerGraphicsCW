@@ -121,3 +121,23 @@ QList<int> MiniITXMotherboardConfig::getAvailableGpuSlots()
     }
     return availableSlots;
 }
+
+std::string miniItxRamSlotToString(MiniITXMotherboardConfig::RAMSlot slot)
+{
+    switch (slot)
+    {
+    case MiniITXMotherboardConfig::RAMSlot::A1:
+        return "A1";
+    case MiniITXMotherboardConfig::RAMSlot::B1:
+        return "B1";
+    }
+}
+
+std::string miniItxGpuSlotToString(MiniITXMotherboardConfig::GPUSlot slot)
+{
+    switch (slot)
+    {
+    case MiniITXMotherboardConfig::GPUSlot::A1:
+        return "A1";
+    }
+}

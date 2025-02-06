@@ -8,30 +8,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     facade = new Facade(configManager);
 
-    // QListWidgetItem *brick     = new QListWidgetItem(" Кирпичик"); // not in use (deprecated)
-    // ui->listWidget->addItem(brick);
-
-    // QListWidgetItem *plate       = new QListWidgetItem(" Пластинка"); // not in use (deprecated)
-    // ui->listWidget->addItem(plate);
-
-    // QListWidgetItem *tile       = new QListWidgetItem(" Плитка"); // not in use (deprecated)
-    // ui->listWidget->addItem(tile);
-
-    // QListWidgetItem *arc41       = new QListWidgetItem(" Арка (4х1)"); // not in use (deprecated)
-    // ui->listWidget->addItem(arc41);
-
-    // QListWidgetItem *arc14       = new QListWidgetItem(" Арка (1x4)"); // not is use (deprecated)
-    // ui->listWidget->addItem(arc14);
-
-    // QListWidgetItem *cylinder1       = new QListWidgetItem(" Цилиндр (1x1)"); // not in use (deprecated)
-    // ui->listWidget->addItem(cylinder1);
-
-    // QListWidgetItem *cylinder2       = new QListWidgetItem(" Цилиндр (2x2)"); // not in use (deprecated)
-    // ui->listWidget->addItem(cylinder2);
-
-    // QListWidgetItem *flashlight = new QListWidgetItem(" Источник света"); // not in use (deprecated)
-    // ui->listWidget->addItem(flashlight);
-
     // motherboard types combobox
     ui->comboBoxMotherboardType->addItem("ATX");
     ui->comboBoxMotherboardType->addItem("Micro-ATX");
@@ -403,11 +379,22 @@ void MainWindow::on_pushButtonAddRAM_clicked()
     QStringList items;
     for (int slot : availableSlots)
     {
-        items << QString::number(slot);
+        switch(motherboardType)
+        {
+        case ConfigManager::MotherboardType::ATX:
+            items << QString::fromStdString(microAtxRamSlotToString(static_cast<MicroATXMotherboardConfig::RAMSlot>(slot)));
+            break;
+        case ConfigManager::MotherboardType::MicroATX:
+            items << QString::fromStdString(microAtxRamSlotToString(static_cast<MicroATXMotherboardConfig::RAMSlot>(slot)));
+            break;
+        case ConfigManager::MotherboardType::MiniITX:
+            items << QString::fromStdString(miniItxRamSlotToString(static_cast<MiniITXMotherboardConfig::RAMSlot>(slot)));
+            break;
+        }
     }
 
     QString item = QInputDialog::getItem(this, "Select RAM Slot", "Available Slots:", items, 0, false, &ok);
-    int slotIndex = item.toInt();
+    int slotIndex = items.indexOf(item);
 
     if (ok && !item.isEmpty())
     {
@@ -457,10 +444,22 @@ void MainWindow::on_pushButtonAddGPU_clicked()
     QStringList items;
     for (int slot : availableSlots)
     {
-        items << QString::number(slot);
+        switch(motherboardType)
+        {
+        case ConfigManager::MotherboardType::ATX:
+            items << QString::fromStdString(atxGpuSlotToString(static_cast<ATXMotherboardConfig::GPUSlot>(slot)));
+            break;
+        case ConfigManager::MotherboardType::MicroATX:
+            items << QString::fromStdString(microAtxGpuSlotToString(static_cast<MicroATXMotherboardConfig::GPUSlot>(slot)));
+            break;
+        case ConfigManager::MotherboardType::MiniITX:
+            items << QString::fromStdString(miniItxGpuSlotToString(static_cast<MiniITXMotherboardConfig::GPUSlot>(slot)));
+            break;
+        }
     }
+
     QString item = QInputDialog::getItem(this, "Select GPU Slot", "Available Slots:", items, 0, false, &ok);
-    int slotIndex = item.toInt();
+    int slotIndex = items.indexOf(item);
 
     if (ok && !item.isEmpty())
     {

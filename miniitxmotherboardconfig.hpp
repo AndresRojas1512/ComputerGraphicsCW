@@ -262,4 +262,8 @@ public:
     bool isCpuSlotAvailable(void) override;
 };
 
+std::string miniItxRamSlotToString(MiniITXMotherboardConfig::RAMSlot slot);
+
+std::string miniItxGpuSlotToString(MiniITXMotherboardConfig::GPUSlot slot);
+
 #endif // MINIITXMOTHERBOARDCONFIG_HPP
