@@ -73,9 +73,9 @@ void Facade::setSceneInfMotherboard(ConfigManager::MotherboardType type)
 
 int Facade::addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager::CPUType CPUType)
 {
-    std::cout << "Facade::addCPU" << std::endl;
-    std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
-    std::cout << "--> cpu type: " << cpuTypeToString(CPUType) << std::endl;
+    // std::cout << "Facade::addCPU" << std::endl;
+    // std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
+    // std::cout << "--> cpu type: " << cpuTypeToString(CPUType) << std::endl;
 
     int splitIncrement = 0;
     ConfigManager::CPUAccessoriesType CPUAccType = configManager.mapAccessoryCPU(CPUType);
@@ -86,18 +86,24 @@ int Facade::addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager
     ComponentConfig cpuBlock = cpuConfig.getCPUConfig(CPUType, motherboardOffset);
     ComponentConfig cpuAccBlock = cpuConfig.getCPUAccConfig(CPUAccType, motherboardAccOffset, splitIncrement);
 
-    scene->addCPUBlock(cpuBlock, "CPU_BLOCK", CPUType);
-    scene->addCPUAccBlock(cpuAccBlock, "CPU_ACC_BLOCK", CPUAccType);
+    PolygonModel::model_t cpuPolygonModelType = parseCPUModel(CPUType);
+    PolygonModel::model_t cpuAccPolygonModelType = parseCPUAccModel(CPUAccType);
+
+    QString cpuName = QString::fromStdString(mapModelName(cpuPolygonModelType));
+    QString cpuAccName = QString::fromStdString(mapAccessoryName(cpuAccPolygonModelType));
+
+    scene->addCPUBlock(cpuBlock, cpuName, CPUType);
+    scene->addCPUAccBlock(cpuAccBlock, cpuAccName, CPUAccType);
 
     return 0;
 }
 
 int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType RAMType, int slotIndex) // TODO
 {
-    std::cout << "Facade::addRAM" << std::endl;
-    std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
-    std::cout << "--> ram type: " << ramTypeToString(RAMType) << std::endl;
-    std::cout << "--> slot: " << slotIndex << std::endl;
+    // std::cout << "Facade::addRAM" << std::endl;
+    // std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
+    // std::cout << "--> ram type: " << ramTypeToString(RAMType) << std::endl;
+    // std::cout << "--> slot: " << slotIndex << std::endl;
 
     int splitIncrement = 0;
     switch (RAMType)
@@ -124,18 +130,24 @@ int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager
     ComponentConfig ramBlock = ramConfig.getRAMConfig(RAMType, motherboardOffset);
     ComponentConfig ramAccBlock = ramConfig.getRAMAccConfig(RAMAccType, motherboardAccOffset, splitIncrement);
 
-    scene->addRAMBlock(ramBlock, "RAM_BLOCK", RAMType);
-    scene->addRAMAccBlock(ramAccBlock, "RAM_ACC_BLOCK", RAMAccType);
+    PolygonModel::model_t ramPolygonModelType = parseRAMModel(RAMType);
+    PolygonModel::model_t ramAccPolygonModelType = parseRAMAccModel(RAMAccType);
+
+    QString ramName = QString::fromStdString(mapModelName(ramPolygonModelType));
+    QString ramAccName = QString::fromStdString(mapModelName(ramAccPolygonModelType));
+
+    scene->addRAMBlock(ramBlock, ramName, RAMType);
+    scene->addRAMAccBlock(ramAccBlock, ramAccName, RAMAccType);
 
     return 0;
 }
 
-int Facade::addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager::GPUType GPUType, int slotIndex) // TODO
+int Facade::addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager::GPUType GPUType, int slotIndex)
 {
-    std::cout << "Facade::addGPU" << std::endl;
-    std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
-    std::cout << "--> gpu type: " << gpuTypeToString(GPUType) << std::endl;
-    std::cout << "--> slot: " << slotIndex << std::endl;
+    // std::cout << "Facade::addGPU" << std::endl;
+    // std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
+    // std::cout << "--> gpu type: " << gpuTypeToString(GPUType) << std::endl;
+    // std::cout << "--> slot: " << slotIndex << std::endl;
 
     int splitIncrement = 0;
     switch (GPUType)
@@ -162,8 +174,14 @@ int Facade::addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager
     ComponentConfig gpuBlock = gpuConfig.getGPUConfig(GPUType, motherboardOffset);
     ComponentConfig gpuAccBlock = gpuConfig.getGPUAccConfig(GPUAccType, motherboardAccOffset, splitIncrement);
 
-    scene->addGPUBlock(gpuBlock, "GPU_BLOCK", GPUType);
-    scene->addGPUAccBlock(gpuAccBlock, "GPU_ACC_BLOCK", GPUAccType);
+    PolygonModel::model_t gpuPolygonModelType = parseGPUModel(GPUType);
+    PolygonModel::model_t gpuAccPolygonModelType = parseGPUAccModel(GPUAccType);
+
+    QString gpuName = QString::fromStdString(mapModelName(gpuPolygonModelType));
+    QString gpuAccName = QString::fromStdString(mapAccessoryName(gpuAccPolygonModelType));
+
+    scene->addGPUBlock(gpuBlock, gpuName, GPUType);
+    scene->addGPUAccBlock(gpuAccBlock, gpuAccName, GPUAccType);
 
     return 0;
 }
@@ -171,12 +189,6 @@ int Facade::addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager
 BaseMotherboardConfig *Facade::getMotherboardConfig()
 {
     return motherboardConfig;
-}
-
-void Facade::changeSceneInf(size_t newWidth, size_t newheight) // not in use (deprecated)
-{
-    std::cout << "Facade::changeSceneInf" << std::endl;
-    scene->changeSize(newWidth, newheight);
 }
 
 bool Facade::isSceneSet()

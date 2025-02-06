@@ -232,6 +232,8 @@ PolygonModel::model_t parseCPUAccModel(ConfigManager::CPUAccessoriesType CPUAccT
 
 std::string mapModelName(PolygonModel::model_t type);
 
+std::string mapAccessoryName(PolygonModel::model_t type);
+
 PolygonModel::model_t mapModelAccessory(PolygonModel::model_t model);
 
 #endif // POLYGONMODEL_H

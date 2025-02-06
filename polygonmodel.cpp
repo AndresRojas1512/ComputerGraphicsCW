@@ -177,6 +177,36 @@ std::string mapModelName(PolygonModel::model_t type)
     };
 }
 
+std::string mapAccessoryName(PolygonModel::model_t type)
+{
+    switch (type)
+    {
+    // RAM MAPPINGS
+    case (PolygonModel::RAM_4GB_ACC_BLOCK):
+        return "RAM ACCESSORY 4GB";
+    case (PolygonModel::RAM_8GB_ACC_BLOCK):
+        return "RAM ACCESSORY 8GB";
+    case (PolygonModel::RAM_16GB_ACC_BLOCK):
+        return "RAM ACCESSORY 16GB";
+    case (PolygonModel::RAM_32GB_ACC_BLOCK):
+        return "RAM ACCESSORY 32GB";
+    // GPU MAPPINGS
+    case (PolygonModel::GPU_4GB_ACC_BLOCK):
+        return "GPU ACCESSORY 4GB";
+    case (PolygonModel::GPU_6GB_ACC_BLOCK):
+        return "GPU ACCESSORY 6GB";
+    case (PolygonModel::GPU_8GB_ACC_BLOCK):
+        return "GPU ACCESSORY 8GB";
+    case (PolygonModel::GPU_16GB_ACC_BLOCK):
+        return "GPU ACCESSORY 16GB";
+    // CPU MAPPINGS
+    case (PolygonModel::Intel_ACC_CPU):
+        return "Intel ACCESSORY CPU";
+    case (PolygonModel::AMD_ACC_CPU):
+        return "AMD ACCESSORY CPU";
+    };
+}
+
 PolygonModel::model_t mapModelAccessory(PolygonModel::model_t model)
 {
     switch (model)
