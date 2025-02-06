@@ -11,6 +11,7 @@
 #include <QErrorMessage>
 #include <QInputDialog>
 #include <QShortcut>
+#include <QMap>
 #include <string>
 #include <cstring>
 #include <string.h>

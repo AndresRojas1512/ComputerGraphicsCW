@@ -377,28 +377,37 @@ void MainWindow::on_pushButtonAddRAM_clicked()
 
     bool ok;
     QStringList items;
+    QMap<QString, int> slotMap;
+    QString slotName;
     for (int slot : availableSlots)
     {
         switch(motherboardType)
         {
         case ConfigManager::MotherboardType::ATX:
-            items << QString::fromStdString(microAtxRamSlotToString(static_cast<MicroATXMotherboardConfig::RAMSlot>(slot)));
+            slotName = QString::fromStdString(microAtxRamSlotToString(static_cast<MicroATXMotherboardConfig::RAMSlot>(slot)));
+            items << slotName;
+            slotMap[slotName] = slot;
             break;
         case ConfigManager::MotherboardType::MicroATX:
-            items << QString::fromStdString(microAtxRamSlotToString(static_cast<MicroATXMotherboardConfig::RAMSlot>(slot)));
+            slotName = QString::fromStdString(microAtxRamSlotToString(static_cast<MicroATXMotherboardConfig::RAMSlot>(slot)));
+            items << slotName;
+            slotMap[slotName] = slot;
             break;
         case ConfigManager::MotherboardType::MiniITX:
-            items << QString::fromStdString(miniItxRamSlotToString(static_cast<MiniITXMotherboardConfig::RAMSlot>(slot)));
+            slotName = QString::fromStdString(miniItxRamSlotToString(static_cast<MiniITXMotherboardConfig::RAMSlot>(slot)));
+            items << slotName;
+            slotMap[slotName] = slot;
             break;
         }
     }
 
     QString item = QInputDialog::getItem(this, "Select RAM Slot", "Available Slots:", items, 0, false, &ok);
-    int slotIndex = items.indexOf(item);
 
     if (ok && !item.isEmpty())
     {
+        int slotIndex = slotMap[item];
         facade->addRAM(motherboardType, ramType, slotIndex);
+        facade->getMotherboardConfig()->occupyRamSlot(slotIndex);
     }
 
     QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
@@ -442,28 +451,37 @@ void MainWindow::on_pushButtonAddGPU_clicked()
 
     bool ok;
     QStringList items;
+    QMap<QString, int> slotMap;
+    QString slotName;
     for (int slot : availableSlots)
     {
         switch(motherboardType)
         {
         case ConfigManager::MotherboardType::ATX:
-            items << QString::fromStdString(atxGpuSlotToString(static_cast<ATXMotherboardConfig::GPUSlot>(slot)));
+            slotName = QString::fromStdString(atxGpuSlotToString(static_cast<ATXMotherboardConfig::GPUSlot>(slot)));
+            items << slotName;
+            slotMap[slotName] = slot;
             break;
         case ConfigManager::MotherboardType::MicroATX:
-            items << QString::fromStdString(microAtxGpuSlotToString(static_cast<MicroATXMotherboardConfig::GPUSlot>(slot)));
+            slotName = QString::fromStdString(microAtxGpuSlotToString(static_cast<MicroATXMotherboardConfig::GPUSlot>(slot)));
+            items << slotName;
+            slotMap[slotName] = slot;
             break;
         case ConfigManager::MotherboardType::MiniITX:
-            items << QString::fromStdString(miniItxGpuSlotToString(static_cast<MiniITXMotherboardConfig::GPUSlot>(slot)));
+            slotName = QString::fromStdString(miniItxGpuSlotToString(static_cast<MiniITXMotherboardConfig::GPUSlot>(slot)));
+            items << slotName;
+            slotMap[slotName] = slot;
             break;
         }
     }
 
     QString item = QInputDialog::getItem(this, "Select GPU Slot", "Available Slots:", items, 0, false, &ok);
-    int slotIndex = items.indexOf(item);
 
     if (ok && !item.isEmpty())
     {
+        int slotIndex = slotMap[item];
         facade->addGPU(motherboardType, gpuType, slotIndex);
+        facade->getMotherboardConfig()->occupyGpuSlot(slotIndex);
     }
 
     QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
