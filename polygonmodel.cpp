@@ -181,6 +181,11 @@ PolygonModel::model_t mapModelAccessory(PolygonModel::model_t model)
 {
     switch (model)
     {
+    // CPU MAPPINGS
+    case (PolygonModel::model_t::Intel_CPU):
+        return PolygonModel::model_t::Intel_ACC_CPU;
+    case (PolygonModel::model_t::AMD_CPU):
+        return PolygonModel::model_t::AMD_ACC_CPU;
     // RAM MAPPINGS
     case (PolygonModel::model_t::RAM_4GB_BLOCK):
         return PolygonModel::model_t::RAM_4GB_ACC_BLOCK;
