@@ -73,10 +73,6 @@ void Facade::setSceneInfMotherboard(ConfigManager::MotherboardType type)
 
 int Facade::addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager::CPUType CPUType)
 {
-    // std::cout << "Facade::addCPU" << std::endl;
-    // std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
-    // std::cout << "--> cpu type: " << cpuTypeToString(CPUType) << std::endl;
-
     int splitIncrement = 0;
     ConfigManager::CPUAccessoriesType CPUAccType = configManager.mapAccessoryCPU(CPUType);
 
@@ -100,11 +96,6 @@ int Facade::addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager
 
 int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType RAMType, int slotIndex) // TODO
 {
-    // std::cout << "Facade::addRAM" << std::endl;
-    // std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
-    // std::cout << "--> ram type: " << ramTypeToString(RAMType) << std::endl;
-    // std::cout << "--> slot: " << slotIndex << std::endl;
-
     int splitIncrement = 0;
     switch (RAMType)
     {
@@ -144,11 +135,6 @@ int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager
 
 int Facade::addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager::GPUType GPUType, int slotIndex)
 {
-    // std::cout << "Facade::addGPU" << std::endl;
-    // std::cout << "--> motherboard type: " << motherboardTypeToString(motherboardType) << std::endl;
-    // std::cout << "--> gpu type: " << gpuTypeToString(GPUType) << std::endl;
-    // std::cout << "--> slot: " << slotIndex << std::endl;
-
     int splitIncrement = 0;
     switch (GPUType)
     {
