@@ -4,7 +4,6 @@
 #include "mathelems.hpp"
 #include <iostream>
 #include <vector>
-#include "placeobjects.hpp"
 #include <QDebug>
 #include "config.hpp"
 

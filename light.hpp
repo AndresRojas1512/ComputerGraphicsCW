@@ -6,7 +6,6 @@
 #include <vector>
 #include <QDebug>
 #include "config.hpp"
-#include "placeobjects.hpp"
 
 class Light
 {

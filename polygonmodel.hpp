@@ -8,7 +8,6 @@
 #include "vertex.hpp"
 #include "facet.hpp"
 #include "mathelems.hpp"
-#include "placeobjects.hpp"
 #include "configmanager.hpp"
 
 class PolygonModel
@@ -38,10 +37,10 @@ public:
     const std::vector<Facet> getFacets();
 
 
-    void setUsedCell(int xCell_, int yCell_, double zCell_);
-    int getUsedXCell();
-    int getUsedYCell();
-    int getUsedZCell();
+    // void setUsedCell(int xCell_, int yCell_, double zCell_);
+    // int getUsedXCell();
+    // int getUsedYCell();
+    // int getUsedZCell();
 
     void setLengthModel(int widthModel_);
     int  getLengthModel();
@@ -56,13 +55,6 @@ public:
 
     enum model_t
     {
-        Brick,
-        Plate,
-        Tile,
-        Arc41,
-        Arc14,
-        Cylinder1,
-        Cylinder2,
         // ATX
         ATX_HDMI_DP,
         ATX_BIOS_FLBK,

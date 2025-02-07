@@ -5,7 +5,6 @@
 #include "sceneinf.hpp"
 #include "drawer.hpp"
 #include <QGraphicsScene>
-// #include "placeobjects.hpp"
 #include "QDebug"
 #include "QPen"
 #include <limits>
@@ -25,23 +24,12 @@ class Facade
 public:
     Facade(ConfigManager &configManager_);
 
-    // void setSceneInf(size_t width_, size_t height_); // not in use (deprecated)
     void setSceneInfMotherboard(ConfigManager::MotherboardType type);
     void changeSceneInf(size_t newWidth, size_t newheight);
     bool isSceneSet();
 
     QGraphicsScene *drawScene(QRectF rect);
 
-    // add components lego constructor
-    // int addBrick(int xCell, int yCell, int modelLength, int modelWidth);
-    // int addPlate(int xCell, int yCell, int modelLength, int modelWidth);
-    // int addTile(int xCell, int yCell, int modelLength, int modelWidth);
-    // int addArc41(int xCell, int yCell);
-    // int addArc14(int xCell, int yCell);
-    // int addCylinder1(int xCell, int yCell);
-    // int addCylinder2(int xCell, int yCell);
-
-    // add components motherboard constructor
     int addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager::CPUType CPUType);
     int addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType RAMType, int slotIndex);
     int addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager::GPUType GPUType, int slotIndex);

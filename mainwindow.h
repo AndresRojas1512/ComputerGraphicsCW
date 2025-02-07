@@ -21,9 +21,7 @@
 #include "config.hpp"
 #include "addlight.hpp"
 #include "objectdelete.hpp"
-#include "objectchange.hpp"
-// #include "placeobjects.hpp"
-#include "createscene.hpp"
+// #include "createscene.hpp"
 #include "specialgraphicsview.hpp"
 #include "configmanager.hpp"
 
@@ -45,12 +43,9 @@ public:
     ConfigManager configManager;
 
 private slots:
-    // void on_pushButton_createScene_clicked();
     void on_pushButton_sceneToInitianPosition_clicked();
 
-    // void on_pushButton_addModel_clicked();
     void on_pushButton_deleteModel_clicked();
-    // void on_pushButton_moveModel_clicked();
 
     void pictureDown();
     void pictureUp();
@@ -83,8 +78,6 @@ private slots:
 
     void on_pushButton_zoom_clicked();
     void on_pushButton_distance_clicked();
-
-    // From here start the motherboard features
 
     void on_comboBoxMotherboardType_currentIndexChanged(int index);
 

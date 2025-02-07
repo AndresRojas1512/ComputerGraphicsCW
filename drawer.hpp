@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <QGraphicsScene>
-#include "placeobjects.hpp"
 #include "config.hpp"
 #include "sceneinf.hpp"
 #include "colorconfig.hpp"

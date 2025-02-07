@@ -20,16 +20,16 @@ set(CMAKE_AUTORCC ON)
 # Add source files
 set(PROJECT_SOURCES
     addlight.cpp
-    createscene.cpp
+
     facade.cpp
     main.cpp
     mainwindow.cpp
     mathelems.cpp
-    objectchange.cpp
+
     objectdelete.cpp
-    objectmove.cpp
+
     sceneinf.cpp
-    placeobjects.cpp
+
     specialgraphicsview.cpp
 )
 
@@ -37,31 +37,31 @@ set(PROJECT_SOURCES
 set(PROJECT_HEADERS
     addlight.hpp
     config.hpp
-    createscene.hpp
+
     facade.hpp
     mainwindow.h
     mathelems.hpp
-    objectchange.hpp
+
     objectdelete.hpp
-    objectmove.hpp
+
     sceneinf.hpp
-    placeobjects.hpp
+
     specialgraphicsview.hpp
 )
 
 # Add UI files
 set(PROJECT_UIS
-    addarc.ui
-    addbrick.ui
-    addcylinder.ui
+
+
+
     addlight.ui
-    addplate.ui
-    addtile.ui
-    createscene.ui
+
+
+
     mainwindow.ui
-    objectchange.ui
+
     objectdelete.ui
-    objectmove.ui
+
 )
 
 # Define target executable

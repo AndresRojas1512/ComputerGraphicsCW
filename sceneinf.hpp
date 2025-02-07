@@ -11,11 +11,9 @@
 #include "facet.hpp"
 #include "polygonmodel.hpp"
 #include "light.hpp"
-#include "placeobjects.hpp"
 #include "microatxmotherboardconfig.hpp"
 #include "atxmotherboardconfig.hpp"
 #include "miniitxmotherboardconfig.hpp"
-#include "configmanager.hpp"
 #include "configmanager.hpp"
 
 class SceneInf
@@ -36,8 +34,6 @@ public:
     void buildMiniITXMotherboard(Dot3D startOfPlate_, Dot3D endOfPlate_);
 
     PolygonModel &getBaseModel();
-
-    void changeSize(size_t newWidth, size_t newHeight);
 
     void moveUp(double value);
     void moveDown(double value);
@@ -66,13 +62,6 @@ public:
 
     Eigen::Matrix4f &getTransMatrix();
     void multToTrans(Eigen::Matrix4f &newTrans);
-
-    std::vector<std::vector<std::vector<double>>> &getUsedCellsZ(); // deprecated
-    void initUsedCellsZ(); // deprecated
-
-    void markUsedCellsZ(size_t num); // deprecated
-    void clearUsedCellsZ(size_t num); // deprecated
-    void printUsedCellsZ(); // deprecated
 
     std::vector<PolygonModel> getModels() const;
 
@@ -109,8 +98,6 @@ private:
     std::vector<Light> Lights;
 
     Dot3D centerDot;
-
-    std::vector<std::vector<std::vector<double>>> usedCellsZ;
 
     void addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
                  int x1, int y1, int z1,

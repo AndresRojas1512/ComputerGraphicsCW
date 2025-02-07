@@ -7,20 +7,17 @@ SceneInf::SceneInf()
 
 SceneInf::SceneInf(size_t width_, size_t height_)
 {
-    std::cout << "SceneInf::SceneInf(width = " << width_ << ", height = " << height_ << ")" << std::endl;
     width = width_;
     height = height_;
 
     modelsNum = 0;
     lightNum = 0;
 
-    // initUsedCellsZ();
     toCenter();
 }
 
 SceneInf::SceneInf(size_t width_, size_t height_, int type_)
 {
-    std::cout << "SceneInf::SceneInf(width = " << width_ << ", height = " << height_ << ", type = " << type_ << ")" << std::endl;
     type = type_;
     width = width_;
     height = height_;
@@ -28,13 +25,10 @@ SceneInf::SceneInf(size_t width_, size_t height_, int type_)
     modelsNum = 0;
     lightNum = 0;
 
-    // initUsedCellsZ();
     toCenter();
 
     startOfScene = Dot3D(BASE_START);
     endOfScene = Dot3D(width, height, BASE_Z);
-    std::cout << "SceneInf::SceneInf -> start of scene: " << startOfScene;
-    std::cout << "SceneInf::SceneInf -> end of scene: " << endOfScene;
 }
 
 size_t SceneInf::getWidth()
@@ -50,49 +44,6 @@ size_t SceneInf::getHeight()
 SceneInf::operator bool() const
 {
     return this->plateModel;
-}
-
-void SceneInf::markUsedCellsZ(size_t num) // deprecated
-{
-    int xCell = models[num].getUsedXCell();
-    int yCell = models[num].getUsedYCell();
-    double zCell = models[num].getUsedZCell();
-    int widthModel = models[num].getLengthModel();
-    int heightModel = models[num].getWidthModel();
-    PolygonModel::model_t modelType_ = models[num].getModelType();
-
-    for (int i = yCell; i < yCell + heightModel; i++)
-    {
-        for (int j = xCell; j < xCell + widthModel; j++)
-        {
-            getUsedCellsZ()[i][j].push_back(zCell);
-
-            if (modelType_ == PolygonModel::model_t::Tile)
-                getUsedCellsZ()[i][j].push_back(-1);
-        }
-    }
-}
-
-
-
-void SceneInf::clearUsedCellsZ(size_t num) // deprecated
-{
-    int xCell = models[num].getUsedXCell();
-    int yCell = models[num].getUsedYCell();
-    int widthModel = models[num].getLengthModel();
-    int heightModel = models[num].getWidthModel();
-    PolygonModel::model_t modelType_ = models[num].getModelType();
-
-    for (int i = yCell; i < yCell + heightModel; i++)
-    {
-        for (int j = xCell; j < xCell + widthModel; j++)
-        {
-            if (modelType_ == PolygonModel::model_t::Tile)
-                getUsedCellsZ()[i][j].erase(getUsedCellsZ()[i][j].end() - 1);
-            getUsedCellsZ()[i][j].erase(getUsedCellsZ()[i][j].end() - 1);
-            qDebug() << "i = " << i << "j = " << j << "освобождена";
-        }
-    }
 }
 
 void SceneInf::moveUp(double value)
@@ -214,7 +165,6 @@ PolygonModel &SceneInf::getModel(size_t num)
 
 void SceneInf::setModel(size_t num, PolygonModel &newModel)
 {
-    // std::cout << "================================================" << std::endl;
     models.at(num) = newModel;
 }
 
@@ -258,19 +208,8 @@ void SceneInf::deleteModel(size_t num)
 {
     if (num < models.size())
     {
-        // clearUsedCellsZ(num);
         modelsNum--;
         models.erase(models.begin() + num);
-    }
-}
-
-void SceneInf::printUsedCellsZ()
-{
-    for (size_t i = 0; i < height; i++)
-    {
-        for (size_t j = 0; j < width; j++)
-
-            qDebug() << "(" << i + 1<< "; " << j + 1<< ") " << getUsedCellsZ()[i][j];
     }
 }
 
@@ -287,7 +226,6 @@ PolygonModel &SceneInf::getBaseModel()
 
 void SceneInf::buildBaseModel(Dot3D startOfPlate_, Dot3D endOfPlate_)
 {
-    std::cout << "--> SceneInf::buildBaseModel" << std::endl;
     switch (type)
     {
     case 0:
@@ -338,17 +276,17 @@ void SceneInf::addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets
 void SceneInf::addParallelepiped(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
                        double x, double y, double z, double width, double height, double depth)
 {
-    // Front face
+    // front face
     addQuad(vertices, facets, x, y, z, x + width, y, z, x + width, y + height, z, x, y + height, z);
-    // Back face
+    // back face
     addQuad(vertices, facets, x, y, z - depth, x + width, y, z - depth, x + width, y + height, z - depth, x, y + height, z - depth);
-    // Left face
+    // left face
     addQuad(vertices, facets, x, y, z, x, y + height, z, x, y + height, z - depth, x, y, z - depth);
-    // Right face
+    // right face
     addQuad(vertices, facets, x + width, y, z, x + width, y + height, z, x + width, y + height, z - depth, x + width, y, z - depth);
-    // Top face
+    // top face
     addQuad(vertices, facets, x, y + height, z, x + width, y + height, z, x + width, y + height, z - depth, x, y + height, z - depth);
-    // Bottom face
+    // bottom face
     addQuad(vertices, facets, x, y, z, x + width, y, z, x + width, y, z - depth, x, y, z - depth);
 }
 
@@ -398,7 +336,7 @@ void SceneInf::addCylinder(std::vector<Vertex> &vertices, std::vector<Facet> &fa
     double rad, nextRad;
     int xr, yr, xrN, yrN;
 
-    // Calculate positions for cylinder caps and side walls
+    // positions for cylinder caps and side walls
     for (int i = 0; i < 360; i += angleStep) {
         rad = i * PI / 180;
         nextRad = (i + angleStep) * PI / 180;
@@ -408,20 +346,20 @@ void SceneInf::addCylinder(std::vector<Vertex> &vertices, std::vector<Facet> &fa
         xrN = x + radius * cos(nextRad);
         yrN = y + radius * sin(nextRad);
 
-        // Side wall
+        // side
         addQuad(vertices, facets,
                 xr, yr, z,
                 xrN, yrN, z,
                 xrN, yrN, z + height,
                 xr, yr, z + height);
 
-        // Top cap
+        // top
         addTriangle(vertices, facets,
                     x, y, z + height,
                     xr, yr, z + height,
                     xrN, yrN, z + height);
 
-        // Bottom cap
+        // bottom
         addTriangle(vertices, facets,
                     x, y, z,
                     xrN, yrN, z,
@@ -467,63 +405,7 @@ void SceneInf::buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> 
             startOfPlate_.getYCoordinate(), BASE_Z);
 }
 
-void SceneInf::changeSize(size_t newWidth, size_t newHeight)
-{
-    if (newWidth)
-    {
-        if (newWidth < width)
-        {
-            for (size_t i = 0; i < modelsNum; i++)
-            {
-                if (getModel(i).getUsedXCell() >= (int)newWidth)
-                {
-                    deleteModel(i);
-                    i--;
-                }
-            }
-        }
-
-        width = newWidth;
-    }
-
-
-    if (newHeight)
-    {
-        if (newHeight < height)
-        {
-            for (size_t i = 0; i < modelsNum; i++)
-            {
-                if (getModel(i).getUsedYCell() >= (int)newHeight)
-                {
-                    deleteModel(i);
-                    i--;
-                }
-            }
-        }
-
-        height = newHeight;
-    }
-}
-
 Eigen::Matrix4f &SceneInf::getTransMatrix() { return transMatrix; }
-
-void SceneInf::initUsedCellsZ()
-{
-    usedCellsZ.resize(getHeight());
-
-    for (size_t i = 0; i < getHeight(); i++)
-    {
-        usedCellsZ[i].resize(getWidth());
-        for (size_t j = 0; j < getWidth(); j++)
-            usedCellsZ[i][j].resize(1, 0);
-    }
-
-}
-
-std::vector<std::vector<std::vector<double>>> &SceneInf::getUsedCellsZ()
-{
-    return usedCellsZ;
-}
 
 /*
  * ======================= ATX build logic =======================

@@ -35,17 +35,17 @@ void PolygonModel::setModelNum(size_t modelNum_) { modelNum = modelNum_; }
 
 size_t PolygonModel::getModelNum() { return modelNum; }
 
-void PolygonModel::setUsedCell(int xCell_, int yCell_, double zCell_)
-{
-    xCell = xCell_;
-    yCell = yCell_;
-    zCell = zCell_;
-}
-int PolygonModel::getUsedXCell() { return xCell; }
+// void PolygonModel::setUsedCell(int xCell_, int yCell_, double zCell_)
+// {
+//     xCell = xCell_;
+//     yCell = yCell_;
+//     zCell = zCell_;
+// }
+// int PolygonModel::getUsedXCell() { return xCell; }
 
-int PolygonModel::getUsedYCell() { return yCell; }
+// int PolygonModel::getUsedYCell() { return yCell; }
 
-int PolygonModel::getUsedZCell() { return zCell; }
+// int PolygonModel::getUsedZCell() { return zCell; }
 
 void PolygonModel::setModelType(model_t modelType_) { modelType = modelType_; }
 
