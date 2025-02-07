@@ -78,11 +78,11 @@ public:
 
     void addMotherboardComponent(ComponentConfig &config, QString modelName, PolygonModel::model_t modelType);
 
-    void addRAMBlock(ComponentConfig &config, QString modelName, ConfigManager::RAMType RAMType);
-    void addRAMAccBlock(ComponentConfig &config, QString accName, ConfigManager::RAMAccessoriesType RAMAccType);
+    void addRAMBlock(ComponentConfig &config, QString modelName, ConfigManager::RAMType RAMType, int slot);
+    void addRAMAccBlock(ComponentConfig &config, QString accName, ConfigManager::RAMAccessoriesType RAMAccType, int slot);
 
-    void addGPUBlock(ComponentConfig &config, QString modelName, ConfigManager::GPUType GPUType);
-    void addGPUAccBlock(ComponentConfig &config, QString accName, ConfigManager::GPUAccessoriesType GPUAccType);
+    void addGPUBlock(ComponentConfig &config, QString modelName, ConfigManager::GPUType GPUType, int slot);
+    void addGPUAccBlock(ComponentConfig &config, QString accName, ConfigManager::GPUAccessoriesType GPUAccType, int slot);
 
     void addCPUBlock(ComponentConfig &config, QString modelName, ConfigManager::CPUType CPUType);
     void addCPUAccBlock(ComponentConfig &config, QString modelName, ConfigManager::CPUAccessoriesType CPUAccType);

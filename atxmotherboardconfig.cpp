@@ -129,8 +129,10 @@ void ATXMotherboardConfig::occupyGpuSlot(int slot)
 
 void ATXMotherboardConfig::freeGpuSlot(int slot)
 {
+    std::cout << "freeGpuSlot:" << slot << std::endl;
     if (slot >= 0 && gpuSlotsOccupied.count(slot))
     {
+        std::cout << "freed" << std::endl;
         gpuSlotsOccupied[slot] = false;
     }
 }

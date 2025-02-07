@@ -83,7 +83,7 @@ int Facade::addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager
     return 0;
 }
 
-int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType RAMType, int slotIndex) // TODO
+int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager::RAMType RAMType, int slotIndex)
 {
     int splitIncrement = 0;
     switch (RAMType)
@@ -116,8 +116,8 @@ int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager
     QString ramName = QString::fromStdString(mapModelName(ramPolygonModelType));
     QString ramAccName = QString::fromStdString(mapAccessoryName(ramAccPolygonModelType));
 
-    scene->addRAMBlock(ramBlock, ramName, RAMType);
-    scene->addRAMAccBlock(ramAccBlock, ramAccName, RAMAccType);
+    scene->addRAMBlock(ramBlock, ramName, RAMType, slotIndex);
+    scene->addRAMAccBlock(ramAccBlock, ramAccName, RAMAccType, slotIndex);
 
     return 0;
 }
@@ -155,8 +155,8 @@ int Facade::addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager
     QString gpuName = QString::fromStdString(mapModelName(gpuPolygonModelType));
     QString gpuAccName = QString::fromStdString(mapAccessoryName(gpuAccPolygonModelType));
 
-    scene->addGPUBlock(gpuBlock, gpuName, GPUType);
-    scene->addGPUAccBlock(gpuAccBlock, gpuAccName, GPUAccType);
+    scene->addGPUBlock(gpuBlock, gpuName, GPUType, slotIndex);
+    scene->addGPUAccBlock(gpuAccBlock, gpuAccName, GPUAccType, slotIndex);
 
     return 0;
 }

@@ -200,6 +200,9 @@ public:
     void setModelType(model_t modelType_);
     model_t getModelType();
 
+    void setSlot(int slotIndex);
+    int getSlot() const;
+
     friend std::ostream &operator<<(std::ostream &os, const PolygonModel &model);
 
 private:
@@ -233,5 +236,7 @@ std::string mapModelName(PolygonModel::model_t type);
 std::string mapAccessoryName(PolygonModel::model_t type);
 
 PolygonModel::model_t mapModelAccessory(PolygonModel::model_t model);
+
+bool isRamModel(PolygonModel::model_t modelType);
 
 #endif // POLYGONMODEL_H

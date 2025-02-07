@@ -54,6 +54,16 @@ PolygonModel::model_t PolygonModel::getModelType()
     return modelType;
 }
 
+void PolygonModel::setSlot(int slotIndex)
+{
+    slot = slotIndex;
+}
+
+int PolygonModel::getSlot() const
+{
+    return slot;
+}
+
 std::ostream &operator<<(std::ostream &os, const PolygonModel &model)
 {
     os << "Model name: " << model.modelName.toStdString() << std::endl
@@ -234,4 +244,20 @@ PolygonModel::model_t mapModelAccessory(PolygonModel::model_t model)
     case (PolygonModel::model_t::GPU_16GB_BLOCK):
         return PolygonModel::model_t::GPU_16GB_ACC_BLOCK;
     };
+}
+
+bool isRamModel(PolygonModel::model_t modelType)
+{
+    switch (modelType)
+    {
+    case PolygonModel::RAM_4GB_BLOCK:
+        return true;
+    case PolygonModel::RAM_8GB_BLOCK:
+        return true;
+    case PolygonModel::RAM_16GB_BLOCK:
+        return true;
+    case PolygonModel::RAM_32GB_BLOCK:
+        return true;
+    }
+    return false;
 }

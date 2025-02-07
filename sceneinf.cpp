@@ -429,7 +429,6 @@ void SceneInf::addCylinder(std::vector<Vertex> &vertices, std::vector<Facet> &fa
     }
 }
 
-
 void SceneInf::buildBasePlate(std::vector<Vertex> &vertices, std::vector<Facet> &facets, Dot3D startOfPlate_, Dot3D endOfPlate_)
 {
     addQuad(vertices, facets,
@@ -710,7 +709,7 @@ void SceneInf::addMotherboardComponent(ComponentConfig &config, QString modelNam
     addModel(layoutComponent);
 }
 
-void SceneInf::addRAMBlock(ComponentConfig &config, QString modelName, ConfigManager::RAMType RAMType)
+void SceneInf::addRAMBlock(ComponentConfig &config, QString modelName, ConfigManager::RAMType RAMType, int slot)
 {
     PolygonModel::model_t RAMPolygonModelType = parseRAMModel(RAMType);
     std::vector<Vertex> vertices;
@@ -723,13 +722,13 @@ void SceneInf::addRAMBlock(ComponentConfig &config, QString modelName, ConfigMan
     {
         addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
     }
-    PolygonModel layoutComponent(vertices, facets, modelName);
+    PolygonModel layoutComponent(vertices, facets, modelName, slot);
     layoutComponent.setModelType(RAMPolygonModelType);
     layoutComponent.setModelNum(modelsNum);
     addModel(layoutComponent);
 }
 
-void SceneInf::addRAMAccBlock(ComponentConfig &config, QString accName, ConfigManager::RAMAccessoriesType RAMAccType)
+void SceneInf::addRAMAccBlock(ComponentConfig &config, QString accName, ConfigManager::RAMAccessoriesType RAMAccType, int slot)
 {
     PolygonModel::model_t RAMAccPolygonModelType = parseRAMAccModel(RAMAccType);
 
@@ -745,13 +744,13 @@ void SceneInf::addRAMAccBlock(ComponentConfig &config, QString accName, ConfigMa
         addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
     }
 
-    PolygonModel layoutComponent(vertices, facets, accName);
+    PolygonModel layoutComponent(vertices, facets, accName, slot);
     layoutComponent.setModelType(RAMAccPolygonModelType);
     layoutComponent.setModelNum(modelsNum);
     addModel(layoutComponent);
 }
 
-void SceneInf::addGPUBlock(ComponentConfig &config, QString modelName, ConfigManager::GPUType GPUType)
+void SceneInf::addGPUBlock(ComponentConfig &config, QString modelName, ConfigManager::GPUType GPUType, int slot)
 {
     PolygonModel::model_t GPUPolygonModelType = parseGPUModel(GPUType);
     std::vector<Vertex> vertices;
@@ -764,13 +763,13 @@ void SceneInf::addGPUBlock(ComponentConfig &config, QString modelName, ConfigMan
     {
         addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
     }
-    PolygonModel layoutComponent(vertices, facets, modelName);
+    PolygonModel layoutComponent(vertices, facets, modelName, slot);
     layoutComponent.setModelType(GPUPolygonModelType);
     layoutComponent.setModelNum(modelsNum);
     addModel(layoutComponent);
 }
 
-void SceneInf::addGPUAccBlock(ComponentConfig &config, QString accName, ConfigManager::GPUAccessoriesType GPUAccType)
+void SceneInf::addGPUAccBlock(ComponentConfig &config, QString accName, ConfigManager::GPUAccessoriesType GPUAccType, int slot)
 {
     PolygonModel::model_t GPUAccPolygonModelType = parseGPUAccModel(GPUAccType);
 
@@ -786,7 +785,7 @@ void SceneInf::addGPUAccBlock(ComponentConfig &config, QString accName, ConfigMa
         addFrame(vertices, facets, f.x, f.y, f.z, f.width, f.height, f.depth, f.topFrameWidth, f.bottomFrameWidth, f.leftFrameWidth, f.rightFrameWidth);
     }
 
-    PolygonModel layoutComponent(vertices, facets, accName);
+    PolygonModel layoutComponent(vertices, facets, accName, slot);
     layoutComponent.setModelType(GPUAccPolygonModelType);
     layoutComponent.setModelNum(modelsNum);
     addModel(layoutComponent);

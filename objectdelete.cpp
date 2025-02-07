@@ -33,10 +33,10 @@ ObjectDelete::ObjectDelete(SceneInf *scene_, BaseMotherboardConfig *mbConfig, QW
     }
 }
 
-
 ObjectDelete::~ObjectDelete() { delete ui; }
 
-void ObjectDelete::on_pushButton_clicked() {
+void ObjectDelete::on_pushButton_clicked()
+{
     int curRow = this->ui->listWidget->currentRow();
     if (curRow < 0) return;
 
@@ -46,27 +46,42 @@ void ObjectDelete::on_pushButton_clicked() {
     PolygonModel::model_t accessoryModelType = mapModelAccessory(mainModelType);
 
     int accessoryModelIndex = -1;
-    for (size_t i = 0; i < scene->getModelsNum(); i++) {
-        if (scene->getModel(i).getModelType() == accessoryModelType) {
+    for (size_t i = 0; i < scene->getModelsNum(); i++)
+    {
+        if (scene->getModel(i).getModelType() == accessoryModelType)
+        {
             accessoryModelIndex = i;
             break;
         }
     }
 
-    if (accessoryModelIndex != -1) {
+    if (accessoryModelIndex != -1)
+    {
         scene->deleteModel(accessoryModelIndex);
     }
 
     scene->deleteModel(mainModelIndex);
+    std::cout << "TYPE!: " << mainModel.getModelType() << std::endl;
+    if (isRamModel(mainModel.getModelType()))
+    {
+        motherboardConfig->freeRamSlot(mainModel.getSlot());
+    }
+    else
+    {
+        std::cout << "HERE!" << std::endl;
+        motherboardConfig->freeGpuSlot(mainModel.getSlot());
+    }
 
     ui->listWidget->takeItem(curRow);
 
     close();
 }
 
-void ObjectDelete::recalculationModelsNum() {
+void ObjectDelete::recalculationModelsNum()
+{
     size_t modelsNum = scene->getModelsNum();
-    for (size_t i = 0; i < modelsNum; i++) {
+    for (size_t i = 0; i < modelsNum; i++)
+    {
         scene->getModel(i).setModelNum(i);
     }
 }
