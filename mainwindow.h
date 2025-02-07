@@ -10,6 +10,8 @@
 #include "QDebug"
 #include <QErrorMessage>
 #include <QInputDialog>
+#include <QColorDialog>
+#include <QColor>
 #include <QShortcut>
 #include <QMap>
 #include <string>
@@ -20,7 +22,7 @@
 #include "addlight.hpp"
 #include "objectdelete.hpp"
 #include "objectchange.hpp"
-#include "placeobjects.hpp"
+// #include "placeobjects.hpp"
 #include "createscene.hpp"
 #include "specialgraphicsview.hpp"
 #include "configmanager.hpp"
@@ -82,8 +84,6 @@ private slots:
     void on_pushButton_zoom_clicked();
     void on_pushButton_distance_clicked();
 
-    // void on_pushButton_addCastle_clicked();
-
     // From here start the motherboard features
 
     void on_comboBoxMotherboardType_currentIndexChanged(int index);
@@ -97,6 +97,14 @@ private slots:
     void on_pushButtonAddGPU_clicked();
 
     void on_pushButtonAddLight_clicked();
+
+    void on_pushButtonChangeCPUColor_clicked();
+
+    void on_pushButtonChangeRAMColor_clicked();
+
+    void on_pushButtonGPUColor_clicked();
+
+    void updateLightButton();
 
 private:
     Ui::MainWindow *ui;
