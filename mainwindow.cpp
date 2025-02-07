@@ -252,7 +252,7 @@ void MainWindow::on_pushButtonCreateMotherboard_clicked()
 
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Подверждение типа платы",
-                                  "Выбранный тип модель: " + selectedType + "Уверены, что хотите построить плату?",
+                                  "Выбранный тип модель: " + selectedType + " Уверены, что хотите построить плату?",
                                   QMessageBox::Yes | QMessageBox::No);
 
     if (reply == QMessageBox::Yes)

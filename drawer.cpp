@@ -1,6 +1,6 @@
 #include "drawer.hpp"
 
-void Drawer::borderPut(int x, int y, double z)
+void SceneDrawer::borderPut(int x, int y, double z)
 {
     if (x < 0 || x >= (int) depthBuffer.size() || y < 0 || y >= (int) depthBuffer.at(0).size())
         return;
@@ -8,7 +8,7 @@ void Drawer::borderPut(int x, int y, double z)
         borderBuffer.at(x).at(y) = 3;
 }
 
-void Drawer::bordersForPolygon(int xStart, int yStart, double zStart, int xEnd, int yEnd, double zEnd)
+void SceneDrawer::bordersForPolygon(int xStart, int yStart, double zStart, int xEnd, int yEnd, double zEnd)
 {
     if (xStart == xEnd && yStart == yEnd)
     {
@@ -46,7 +46,7 @@ void Drawer::bordersForPolygon(int xStart, int yStart, double zStart, int xEnd, 
     }
 }
 
-void Drawer::interRowIntoShadowMap(std::vector<std::vector<double>> *map, int xA, int xB, double zA, double zB, int curY)
+void SceneDrawer::interRowIntoShadowMap(std::vector<std::vector<double>> *map, int xA, int xB, double zA, double zB, int curY)
 {
     for (int curX = xA; curX <= xB; curX++)
     {
@@ -60,7 +60,7 @@ void Drawer::interRowIntoShadowMap(std::vector<std::vector<double>> *map, int xA
     }
 }
 
-void Drawer::shadowMapForModel(std::vector<Facet> &facets, std::vector<Vertex> &vertices,
+void SceneDrawer::computeShadowMapZBuffer(std::vector<Facet> &facets, std::vector<Vertex> &vertices,
                                Eigen::Matrix4f &transMat, Light *illum, size_t bufWidth, size_t bufHeight)
 {
     std::array<Dot3D, 3> dotsArr;
@@ -188,23 +188,18 @@ void Drawer::shadowMapForModel(std::vector<Facet> &facets, std::vector<Vertex> &
     }
 }
 
-void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &vertices,
+void SceneDrawer::zBufferAlgorithm(std::vector<Facet> &facets, std::vector<Vertex> &vertices,
                           Eigen::Matrix4f &transMat, size_t color, SceneInf *scene, size_t bufWidth,
                           size_t bufHeight)
 {
-    // std::cout << "Drawer::zBufForModel" << std::endl;
-    // std::cout << "---> color: " << color << std::endl;
-
     std::array<Dot3D, 3> dotsArr;
     Eigen::Matrix4f toCenter;
-
     toCenter << 1, 0, 0, 0,
         0, 1, 0, 0,
         0, 0, 1, 0,
         -X_CENTER, -Y_CENTER, -BASE_Z - 5, 1;
 
     Eigen::Matrix4f backToStart;
-
     backToStart << 1, 0, 0, 0,
         0, 1, 0, 0,
         0, 0, 1, 0,
@@ -215,8 +210,9 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
     std::vector<Eigen::Matrix4f> illumDotMatrices;
 
     for (size_t i = 0; i < scene->getLightNum(); i++)
-        illumDotMatrices.push_back(
-            toCenter * scene->getLight(i).getTransMat() * backToStart);
+    {
+        illumDotMatrices.push_back(toCenter * scene->getLight(i).getTransMat() * backToStart);
+    }
 
     for (size_t curFaceNum = 0; curFaceNum < facets.size(); curFaceNum++)
     {
@@ -242,11 +238,17 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
             Dot3D(coordinatesVec(2, 0), coordinatesVec(2, 1), coordinatesVec(2, 2));
 
         if (dotsArr[0].getYCoordinate() > dotsArr[1].getYCoordinate())
+        {
             std::swap(dotsArr[0], dotsArr[1]);
+        }
         if (dotsArr[0].getYCoordinate() > dotsArr[2].getYCoordinate())
+        {
             std::swap(dotsArr[0], dotsArr[2]);
+        }
         if (dotsArr[1].getYCoordinate() > dotsArr[2].getYCoordinate())
+        {
             std::swap(dotsArr[1], dotsArr[2]);
+        }
 
         int x1 = round(dotsArr[0].getXCoordinate());
         int x2 = round(dotsArr[1].getXCoordinate());
@@ -260,16 +262,19 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
         int y2 = round(dotsArr[1].getYCoordinate());
         int y3 = round(dotsArr[2].getYCoordinate());
 
-        for (int curY = (y1 < 0) ? 0 : y1;
-             curY < ((y2 >= (int) bufHeight) ? (int) bufHeight - 1 : y2); curY++)
+        for (int curY = (y1 < 0) ? 0 : y1; curY < ((y2 >= (int) bufHeight) ? (int) bufHeight - 1 : y2); curY++)
         {
             double aInc = 0;
             if (y1 != y2)
+            {
                 aInc = (double) (curY - y1) / (y2 - y1);
+            }
 
             double bInc = 0;
             if (y1 != y3)
+            {
                 bInc = (double) (curY - y1) / (y3 - y1);
+            }
 
             int xA = round(x1 + (x2 - x1) * aInc);
             int xB = round(x1 + (x3 - x1) * bInc);
@@ -283,9 +288,13 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
             }
 
             if (xA < 0)
+            {
                 xA = 0;
+            }
             if (xB >= (int) bufWidth)
+            {
                 xB = (int) bufWidth - 1;
+            }
 
             for (int curX = xA; curX <= xB; curX++)
             {
@@ -318,20 +327,25 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
                         borderBuffer.at(curX).at(curY) = color + visible;
                     }
                     else
+                    {
                         borderBuffer.at(curX).at(curY) = color + 1;
+                    }
                 }
             }
         }
-        for (int curY = (y2 < 0) ? 0 : y2;
-             curY <= ((y3 >= (int) bufHeight) ? (int) bufHeight - 1 : y3); curY++)
+        for (int curY = (y2 < 0) ? 0 : y2; curY <= ((y3 >= (int) bufHeight) ? (int) bufHeight - 1 : y3); curY++)
         {
             double aInc = 0;
             if (y2 != y3)
+            {
                 aInc = (double) (curY - y2) / (y3 - y2);
+            }
 
             double bInc = 0;
             if (y1 != y3)
+            {
                 bInc = (double) (curY - y1) / (y3 - y1);
+            }
 
             int xA = round(x2 + (x3 - x2) * aInc);
             int xB = round(x1 + (x3 - x1) * bInc);
@@ -345,9 +359,13 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
             }
 
             if (xA < 0)
+            {
                 xA = 0;
+            }
             if (xB >= (int) bufWidth)
+            {
                 xB = (int) bufWidth - 1;
+            }
 
             for (int curX = xA; curX <= xB; curX++)
             {
@@ -385,13 +403,11 @@ void Drawer::zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &verti
         bordersForPolygon(x1, y1, z1, x2, y2, z2);
         bordersForPolygon(x1, y1, z1, x3, y3, z3);
         bordersForPolygon(x2, y2, z2, x3, y3, z3);
-
     }
 }
 
-void Drawer::zBufferAlg(SceneInf *scene, size_t bufHeight, size_t bufWidth)
+void SceneDrawer::zBufferGeneral(SceneInf *scene, size_t bufHeight, size_t bufWidth)
 {
-    // std::cout << "Drawer::zBufferAlg" << std::endl;
     depthBuffer.erase(depthBuffer.begin(), depthBuffer.end());
     borderBuffer.erase(borderBuffer.begin(), borderBuffer.end());
 
@@ -412,7 +428,7 @@ void Drawer::zBufferAlg(SceneInf *scene, size_t bufHeight, size_t bufWidth)
         facets = model.getFacets();
         vertices = model.getVertices();
         for (size_t j = 0; j < scene->getLightNum(); j++)
-            shadowMapForModel(facets, vertices, scene->getTransMatrix(),
+            computeShadowMapZBuffer(facets, vertices, scene->getTransMatrix(),
                               &scene->getLight(j), bufWidth, bufHeight);
     }
 
@@ -420,30 +436,27 @@ void Drawer::zBufferAlg(SceneInf *scene, size_t bufHeight, size_t bufWidth)
     facets = model.getFacets();
     vertices = model.getVertices();
     for (size_t j = 0; j < scene->getLightNum(); j++)
-        shadowMapForModel(facets, vertices, scene->getTransMatrix(),
+        computeShadowMapZBuffer(facets, vertices, scene->getTransMatrix(),
                           &scene->getLight(j), bufWidth, bufHeight);
 
-    // std::cout << "zBufferAlg loop:" << std::endl;
     for (size_t i = 0; i < scene->getModelsNum(); i++)
     {
-        // std::cout << "---> iteration: " << i << std::endl;
         model = scene->getModel(i);
-        // std::cout << model;
         facets = model.getFacets();
         vertices = model.getVertices();
         typeModel = model.getModelType();
-        zBufForModel(facets, vertices, scene->getTransMatrix(), 4 + typeModel * 2, scene, bufWidth, bufHeight); // ID
+        zBufferAlgorithm(facets, vertices, scene->getTransMatrix(), 4 + typeModel * 2, scene, bufWidth, bufHeight); // ID
     }
     model = scene->getBaseModel();
     facets = model.getFacets();
     vertices = model.getVertices();
-    zBufForModel(facets, vertices, scene->getTransMatrix(), 1, scene, bufWidth, bufHeight);
+    zBufferAlgorithm(facets, vertices, scene->getTransMatrix(), 1, scene, bufWidth, bufHeight);
 
     for (size_t i = 0; i < scene->getLightNum(); i++)
         scene->getLight(i).clearShadowMap();
 }
 
-QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect, Color cpuColor, Color cpuShadow, Color ramColor, Color ramShadow, Color gpuColor, Color gpuShadow)
+QGraphicsScene *SceneDrawer::drawScene(SceneInf *scene, QRectF rect, Color cpuColor, Color cpuShadow, Color ramColor, Color ramShadow, Color gpuColor, Color gpuShadow)
 {
     size_t width = scene->getWidth() * SIZE_SC;
     size_t height = scene->getHeight() * SIZE_SC;
@@ -452,7 +465,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect, Color cpuColor, 
 
     using namespace std::chrono;
     nanoseconds start = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
-    zBufferAlg(scene, rect.size().height(), rect.size().width());
+    zBufferGeneral(scene, rect.size().height(), rect.size().width());
     nanoseconds end = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
 
     qDebug() << "Время выполнения алгоритма" << size_t((end - start).count() / 1000000);
@@ -556,7 +569,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect, Color cpuColor, 
     return outScene;
 }
 
-void Drawer::applyDefaultColor(QImage *image, QRectF rect, std::vector<PolygonModel::model_t> models, Color color, Color shadow)
+void SceneDrawer::applyDefaultColor(QImage *image, QRectF rect, std::vector<PolygonModel::model_t> models, Color color, Color shadow)
 {
     uint colorUint = qRgb(color.r, color.g, color.b);
     uint shadowUint = qRgb(shadow.r, shadow.g, shadow.b);

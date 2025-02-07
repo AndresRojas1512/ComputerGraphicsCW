@@ -62,7 +62,7 @@ public:
 private:
     ConfigManager &configManager;
     SceneInf *scene = nullptr;
-    Drawer *drawer;
+    SceneDrawer *drawer;
     BaseMotherboardConfig *motherboardConfig = nullptr;
     CPUConfig cpuConfig;
     RAMConfig ramConfig;

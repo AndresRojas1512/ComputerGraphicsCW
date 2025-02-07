@@ -8,16 +8,16 @@
 #include "sceneinf.hpp"
 #include "colorconfig.hpp"
 
-class Drawer
+class SceneDrawer
 {
 public:
-    Drawer()
+    SceneDrawer()
     {
     }
-    void zBufferAlg(SceneInf *scene, size_t bufheight, size_t bufWidth);
-    void zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &vertices,
+    void zBufferGeneral(SceneInf *scene, size_t bufheight, size_t bufWidth);
+    void zBufferAlgorithm(std::vector<Facet> &facets, std::vector<Vertex> &vertices,
                       Eigen::Matrix4f &transMat, size_t color, SceneInf *scene, size_t bufWidth, size_t bufHeight);
-    void shadowMapForModel(std::vector<Facet> &facets, std::vector<Vertex> &vertices,
+    void computeShadowMapZBuffer(std::vector<Facet> &facets, std::vector<Vertex> &vertices,
                            Eigen::Matrix4f &transMat, Light *light, size_t bufWidth, size_t bufHeight);
 
 
