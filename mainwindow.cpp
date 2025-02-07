@@ -384,7 +384,7 @@ void MainWindow::on_pushButtonAddRAM_clicked()
         switch(motherboardType)
         {
         case ConfigManager::MotherboardType::ATX:
-            slotName = QString::fromStdString(microAtxRamSlotToString(static_cast<MicroATXMotherboardConfig::RAMSlot>(slot)));
+            slotName = QString::fromStdString(atxRamSlotToString(static_cast<ATXMotherboardConfig::RAMSlot>(slot)));
             items << slotName;
             slotMap[slotName] = slot;
             break;
@@ -694,6 +694,59 @@ void MainWindow::on_pushButton_distance_clicked()
     pictureScaleDown();
 }
 
+void MainWindow::on_pushButtonChangeCPUColor_clicked()
+{
+    QColor color = QColorDialog::getColor(Qt::white, this, "Select Color for CPU");
+    if (color.isValid())
+    {
+        QColor shadow = color.darker(150);
+        std::cout << "color: " << color.red() << ", " << color.green() << ", " << color.blue() << std::endl;
+        std::cout << "shadow: " << shadow.red() << ", " << shadow.green() << ", " << shadow.blue() << std::endl;
+        facade->changeCPUColor(color, shadow);
+    }
+
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
+}
+
+
+void MainWindow::on_pushButtonChangeRAMColor_clicked()
+{
+    QColor color = QColorDialog::getColor(Qt::white, this, "Select Color for RAM");
+    if (color.isValid())
+    {
+        QColor shadow = color.darker(150);
+        std::cout << "color: " << color.red() << ", " << color.green() << ", " << color.blue() << std::endl;
+        std::cout << "shadow: " << shadow.red() << ", " << shadow.green() << ", " << shadow.blue() << std::endl;
+        facade->changeRAMColor(color, shadow);
+    }
+
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
+}
+
+
+void MainWindow::on_pushButtonGPUColor_clicked()
+{
+    QColor color = QColorDialog::getColor(Qt::white, this, "Select Color for GPU");
+    if (color.isValid())
+    {
+        QColor shadow = color.darker(150);
+        std::cout << "color: " << color.red() << ", " << color.green() << ", " << color.blue() << std::endl;
+        std::cout << "shadow: " << shadow.red() << ", " << shadow.green() << ", " << shadow.blue() << std::endl;
+        facade->changeGPUColor(color, shadow);
+    }
+
+    QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
+    if (ui->graphicsView->scene())
+        delete ui->graphicsView->scene();
+    ui->graphicsView->setScene(setScene);
+}
+
 /*
  * =========================== DEPRECATED ==========================
 */
@@ -969,3 +1022,4 @@ void MainWindow::on_pushButton_distance_clicked()
 //         delete ui->graphicsView->scene();
 //     ui->graphicsView->setScene(setScene);
 // }
+

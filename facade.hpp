@@ -26,7 +26,7 @@ class Facade
 public:
     Facade(ConfigManager &configManager_);
 
-    void setSceneInf(size_t width_, size_t height_); // not in use (deprecated)
+    // void setSceneInf(size_t width_, size_t height_); // not in use (deprecated)
     void setSceneInfMotherboard(ConfigManager::MotherboardType type);
     void changeSceneInf(size_t newWidth, size_t newheight);
     bool isSceneSet();
@@ -48,6 +48,10 @@ public:
     int addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager::GPUType GPUType, int slotIndex);
 
     void addLight(int xAngle, int yAngle);
+
+    void changeCPUColor(QColor color, QColor shadow);
+    void changeRAMColor(QColor color, QColor shadow);
+    void changeGPUColor(QColor color, QColor shadow);
 
     QGraphicsScene *moveUpScene(double value, QRectF rect);
     QGraphicsScene *moveDownScene(double value, QRectF rect);
@@ -71,9 +75,17 @@ private:
     SceneInf *scene = nullptr;
     Drawer *drawer;
     BaseMotherboardConfig *motherboardConfig = nullptr;
+    CPUConfig cpuConfig;
     RAMConfig ramConfig;
     GPUConfig gpuConfig;
-    CPUConfig cpuConfig;
+    Color cpuColor = Color::GREEN_BLUE;
+    Color cpuShadow = Color::DARK_GREEN_BLUE;
+
+    Color ramColor = Color::GRAY_BLUE;
+    Color ramShadow = Color::DARK_GRAY_BLUE;
+
+    Color gpuColor = Color::GRAY_BLUE;
+    Color gpuShadow = Color::DARK_GRAY_BLUE;
 
 
     void addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets,

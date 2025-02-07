@@ -144,9 +144,9 @@ std::string microAtxRamSlotToString(MicroATXMotherboardConfig::RAMSlot slot)
     case MicroATXMotherboardConfig::RAMSlot::A2:
         return "A2";
     case MicroATXMotherboardConfig::RAMSlot::B1:
-        return "A3";
+        return "B1";
     case MicroATXMotherboardConfig::RAMSlot::B2:
-        return "A4";
+        return "B2";
     }
 }
 

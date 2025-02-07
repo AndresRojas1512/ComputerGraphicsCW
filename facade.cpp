@@ -6,19 +6,17 @@ Facade::Facade(ConfigManager &configManager_) : configManager(configManager_)
     drawer = new Drawer;
 }
 
-void Facade::setSceneInf(size_t width_, size_t height_) // not in use (deprecated)
-{
-    std::cout << "Facade::setSceneInf" << std::endl;
-    if (scene)
-        delete scene;
+// void Facade::setSceneInf(size_t width_, size_t height_) // not in use (deprecated)
+// {
+//     std::cout << "Facade::setSceneInf" << std::endl;
+//     if (scene)
+//         delete scene;
 
-    scene = new SceneInf(width_, height_);
-}
+//     scene = new SceneInf(width_, height_);
+// }
 
 void Facade::setSceneInfMotherboard(ConfigManager::MotherboardType type)
 {
-    std::cout << "Facade::setSceneInfMotherboard" << std::endl;
-    std::cout << "Configuring scene for motherboard type: " << static_cast<int>(type) << std::endl;
     size_t width = 0;
     size_t height = 0;
     size_t widthScaled = 0;
@@ -172,6 +170,31 @@ int Facade::addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager
     return 0;
 }
 
+void Facade::changeCPUColor(QColor color, QColor shadow)
+{
+    Color blockColor(color.red(), color.green(), color.blue());
+    Color shadowColor(shadow.red(), shadow.green(), shadow.blue());
+    cpuColor = blockColor;
+    cpuShadow = shadowColor;
+
+}
+
+void Facade::changeRAMColor(QColor color, QColor shadow)
+{
+    Color blockColor(color.red(), color.green(), color.blue());
+    Color shadowColor(shadow.red(), shadow.green(), shadow.blue());
+    ramColor = blockColor;
+    ramShadow = shadowColor;
+}
+
+void Facade::changeGPUColor(QColor color, QColor shadow)
+{
+    Color blockColor(color.red(), color.green(), color.blue());
+    Color shadowColor(shadow.red(), shadow.green(), shadow.blue());
+    gpuColor = blockColor;
+    gpuShadow = shadowColor;
+}
+
 BaseMotherboardConfig *Facade::getMotherboardConfig()
 {
     return motherboardConfig;
@@ -187,7 +210,7 @@ QGraphicsScene *Facade::drawScene(QRectF rect)
     std::cout << "Facade::drawScene" << std::endl;
     QGraphicsScene *retScene = nullptr;
     if (isSceneSet())
-        retScene = drawer->drawScene(scene, rect);
+        retScene = drawer->drawScene(scene, rect, cpuColor, cpuShadow, ramColor, ramShadow, gpuColor, gpuShadow);
 
     return retScene;
 }
@@ -307,7 +330,6 @@ void Facade::addQuad(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
 void Facade::addTriangle(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
                          int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3)
 {
-    std::cout << "Facade::addTriangle" << std::endl;
     Dot3D dot;
     std::vector<size_t> vec;
 

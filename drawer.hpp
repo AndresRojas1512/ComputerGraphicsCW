@@ -14,7 +14,6 @@ class Drawer
 public:
     Drawer()
     {
-        std::cout << "Drawer::Drawer" << std::endl;
     }
     void zBufferAlg(SceneInf *scene, size_t bufheight, size_t bufWidth);
     void zBufForModel(std::vector<Facet> &facets, std::vector<Vertex> &vertices,
@@ -23,9 +22,9 @@ public:
                            Eigen::Matrix4f &transMat, Light *light, size_t bufWidth, size_t bufHeight);
 
 
-    QGraphicsScene *drawScene(SceneInf *scene, QRectF rect);
+    QGraphicsScene *drawScene(SceneInf *scene, QRectF rect, Color cpuColor, Color cpuShadow, Color ramColor, Color ramShadow, Color gpuColor, Color gpuShadow);
 
-    void color(QImage *image, QRectF rect, std::vector<PolygonModel::model_t> models, Color color, Color shadow);
+    void applyColor(QImage *image, QRectF rect, std::vector<PolygonModel::model_t> models, Color color, Color shadow);
 
 private:
     void interColIntoShadowMap();

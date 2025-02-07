@@ -220,12 +220,8 @@ void SceneInf::setModel(size_t num, PolygonModel &newModel)
 
 void SceneInf::addModel(PolygonModel &model)
 {
-    std::cout << "SceneInf::addModel" << std::endl;
     models.push_back(model);
     modelsNum = models.size();
-    std::cout << "modelsNum: " << modelsNum << std::endl;
-    // markUsedCellsZ(modelsNum - 1);
-    //    printUsedCellsZ();
 }
 
 size_t SceneInf::getLightNum()
@@ -373,7 +369,6 @@ void SceneInf::addFrame(std::vector<Vertex> &vertices, std::vector<Facet> &facet
 void SceneInf::addTriangle(std::vector<Vertex> &vertices, std::vector<Facet> &facets,
                          int x1, int y1, int z1, int x2, int y2, int z2, int x3, int y3, int z3)
 {
-    std::cout << "Facade::addTriangle" << std::endl;
     Dot3D dot;
     std::vector<size_t> vec;
 
