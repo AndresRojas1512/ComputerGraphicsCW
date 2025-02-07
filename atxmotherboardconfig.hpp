@@ -384,15 +384,15 @@ public:
 
     bool isRamSlotAvailable(int slot) override;
     void occupyRamSlot(int slot) override;
+    void freeRamSlot(int slot) override;
     QList<int> getAvailableRamSlots() override;
 
     bool isGpuSlotAvailable(int slot) override;
     void occupyGpuSlot(int slot) override;
+    void freeGpuSlot(int slot) override;
     QList<int> getAvailableGpuSlots() override;
 
     bool isCpuSlotAvailable(void) override;
-
-    void dummy(void);
 };
 
 std::string atxRamSlotToString(ATXMotherboardConfig::RAMSlot slot);

@@ -16,7 +16,7 @@ class ObjectDelete : public QDialog
     Q_OBJECT
 
 public:
-    explicit ObjectDelete(SceneInf *scene_, QWidget *parent = nullptr);
+    explicit ObjectDelete(SceneInf *scene_, BaseMotherboardConfig *mbConfig, QWidget *parent = nullptr);
     ~ObjectDelete();
 
 private slots:
@@ -25,6 +25,7 @@ private slots:
 private:
     Ui::ObjectDelete *ui;
     SceneInf *scene;
+    BaseMotherboardConfig *motherboardConfig;
 
     void recalculationModelsNum();
 };

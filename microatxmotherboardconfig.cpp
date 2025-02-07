@@ -89,6 +89,15 @@ void MicroATXMotherboardConfig::occupyRamSlot(int slot)
     }
 }
 
+
+void MicroATXMotherboardConfig::freeRamSlot(int slot)
+{
+    if (slot >= 0 && ramSlotsOccupied.count(slot))
+    {
+        ramSlotsOccupied[slot] = false;
+    }
+}
+
 QList<int> MicroATXMotherboardConfig::getAvailableRamSlots()
 {
     std::cout << "MicroATXMotherboardConfig::getAvailableRamSlots" << std::endl;
@@ -113,6 +122,14 @@ void MicroATXMotherboardConfig::occupyGpuSlot(int slot)
     if (isGpuSlotAvailable(slot))
     {
         gpuSlotsOccupied[slot] = true;
+    }
+}
+
+void MicroATXMotherboardConfig::freeGpuSlot(int slot)
+{
+    if (slot >= 0 && gpuSlotsOccupied.count(slot))
+    {
+        gpuSlotsOccupied[slot] = false;
     }
 }
 

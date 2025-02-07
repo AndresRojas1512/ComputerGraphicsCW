@@ -93,6 +93,14 @@ void ATXMotherboardConfig::occupyRamSlot(int slot)
     }
 }
 
+void ATXMotherboardConfig::freeRamSlot(int slot)
+{
+    if (slot >= 0 && ramSlotsOccupied.count(slot))
+    {
+        ramSlotsOccupied[slot] = false;
+    }
+}
+
 QList<int> ATXMotherboardConfig::getAvailableRamSlots()
 {
     QList<int> availableSlots;
@@ -116,6 +124,14 @@ void ATXMotherboardConfig::occupyGpuSlot(int slot)
     if (isGpuSlotAvailable(slot))
     {
         gpuSlotsOccupied[slot] = true;
+    }
+}
+
+void ATXMotherboardConfig::freeGpuSlot(int slot)
+{
+    if (slot >= 0 && gpuSlotsOccupied.count(slot))
+    {
+        gpuSlotsOccupied[slot] = false;
     }
 }
 

@@ -27,6 +27,11 @@ public:
     {
     }
 
+    PolygonModel(std::vector<Vertex> vertices_, std::vector<Facet> facets_, QString name_, int slot_)
+        : vertices(vertices_), facets(facets_), modelName(name_), slot(slot_)
+    {
+    }
+
     ~PolygonModel() {}
 
     const std::vector<Vertex> getVertices();
@@ -201,6 +206,7 @@ private:
     std::vector<Vertex> vertices;
     std::vector<Facet> facets;
     QString modelName;
+    int slot = -1;
 
     int xCell, yCell; // not used (deprecated)
     double zCell; // not used (deprecated)

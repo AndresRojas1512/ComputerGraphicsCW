@@ -4,8 +4,8 @@
 #include "objectdelete.hpp"
 #include "ui_objectdelete.h"
 
-ObjectDelete::ObjectDelete(SceneInf *scene_, QWidget *parent)
-    : QDialog(parent), ui(new Ui::ObjectDelete)
+ObjectDelete::ObjectDelete(SceneInf *scene_, BaseMotherboardConfig *mbConfig, QWidget *parent)
+    : QDialog(parent), motherboardConfig(mbConfig), ui(new Ui::ObjectDelete)
 {
     ui->setupUi(this);
     this->setWindowTitle("Удаление объектов сцены");
@@ -58,6 +58,7 @@ void ObjectDelete::on_pushButton_clicked() {
     }
 
     scene->deleteModel(mainModelIndex);
+
     ui->listWidget->takeItem(curRow);
 
     close();

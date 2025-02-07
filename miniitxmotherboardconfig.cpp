@@ -77,6 +77,14 @@ void MiniITXMotherboardConfig::occupyRamSlot(int slot)
     }
 }
 
+void MiniITXMotherboardConfig::freeRamSlot(int slot)
+{
+    if (slot >= 0 && ramSlotsOccupied.count(slot))
+    {
+        ramSlotsOccupied[slot] = false;
+    }
+}
+
 QList<int> MiniITXMotherboardConfig::getAvailableRamSlots()
 {
     std::cout << "MiniITXMotherboardConfig::getAvailableRamSlots" << std::endl;
@@ -101,6 +109,14 @@ void MiniITXMotherboardConfig::occupyGpuSlot(int slot)
     if (isGpuSlotAvailable(slot))
     {
         gpuSlotsOccupied[slot] = true;
+    }
+}
+
+void MiniITXMotherboardConfig::freeGpuSlot(int slot)
+{
+    if (slot >= 0 && gpuSlotsOccupied.count(slot))
+    {
+        gpuSlotsOccupied[slot] = false;
     }
 }
 

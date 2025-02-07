@@ -6,15 +6,6 @@ Facade::Facade(ConfigManager &configManager_) : configManager(configManager_)
     drawer = new Drawer;
 }
 
-// void Facade::setSceneInf(size_t width_, size_t height_) // not in use (deprecated)
-// {
-//     std::cout << "Facade::setSceneInf" << std::endl;
-//     if (scene)
-//         delete scene;
-
-//     scene = new SceneInf(width_, height_);
-// }
-
 void Facade::setSceneInfMotherboard(ConfigManager::MotherboardType type)
 {
     size_t width = 0;

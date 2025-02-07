@@ -18,10 +18,12 @@ public:
 
     virtual bool isRamSlotAvailable(int slot) = 0;
     virtual void occupyRamSlot(int slot) = 0;
+    virtual void freeRamSlot(int slot) = 0;
     virtual QList<int> getAvailableRamSlots() = 0;
 
     virtual bool isGpuSlotAvailable(int slot) = 0;
     virtual void occupyGpuSlot(int slot) = 0;
+    virtual void freeGpuSlot(int) = 0;
     virtual QList<int> getAvailableGpuSlots() = 0;
 
     virtual bool isCpuSlotAvailable(void) = 0;
