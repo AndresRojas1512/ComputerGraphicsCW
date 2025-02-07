@@ -16,30 +16,22 @@ class PolygonModel
 public:
     PolygonModel()
     {
-        // std::cout << "PolygonModel::PolygonModel(default)" << std::endl;
     }
     PolygonModel(std::vector<Vertex> vertices_, std::vector<Facet> facets_)
         : vertices(vertices_), facets(facets_)
     {
-        // std::cout << "PolygonModel::PolygonModel(vertices, facets)" << std::endl;
     }
 
     PolygonModel(std::vector<Vertex> vertices_, std::vector<Facet> facets_, QString name_)
         : vertices(vertices_), facets(facets_), modelName(name_)
     {
-        // std::cout << "PolygonModel::PolygonModel(vertices, facets, name)" << std::endl;
-        // std::cout << "PolygonModel::PolygonModel -> received name: " << name_.toStdString() << std::endl;
     }
 
     ~PolygonModel() {}
 
     const std::vector<Vertex> getVertices();
-    //    void setVertices(std::vector<Vertex> &vertices_);
     const std::vector<Facet> getFacets();
-    //    void setFacets(std::vector<Facet> facets_);
 
-    //    void moveTo(int newXCell, int newYCell);
-    //    void rotateZ(int angle);
 
     void setUsedCell(int xCell_, int yCell_, double zCell_);
     int getUsedXCell();

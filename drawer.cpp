@@ -472,56 +472,56 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect, Color cpuColor, 
     nanoseconds start2 = duration_cast<nanoseconds>(system_clock::now().time_since_epoch());
 
     // ATX color
-    applyColor(image, rect, atxPeripheriaSockets, Color::SILVER, Color::GRAY);
-    applyColor(image, rect, atxCpuSocket, Color::GRAY, Color::DIM_GRAY);
-    applyColor(image, rect, atxRamSockets_01, Color::BLUE, Color::DARK_BLUE);
-    applyColor(image, rect, atxRamSockets_02, Color::YELLOW, Color::OLIVE);
-    applyColor(image, rect, atxGpuSockets, Color::KHAKI, Color::DARK_KHAKI);
-    applyColor(image, rect, atxCapacitors, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
-    applyColor(image, rect, atxSataSockets, Color::RED, Color::DARK_RED);
-    applyColor(image, rect, atxEatxSockets, Color::LIGHT_BLUE, Color::DARK_LIGHT_BLUE);
-    applyColor(image, rect, atxConnectors, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
-    applyColor(image, rect, atxMicrochips, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
-    applyColor(image, rect, atxBattery, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+    applyDefaultColor(image, rect, atxPeripheriaSockets, Color::SILVER, Color::GRAY);
+    applyDefaultColor(image, rect, atxCpuSocket, Color::GRAY, Color::DIM_GRAY);
+    applyDefaultColor(image, rect, atxRamSockets_01, Color::BLUE, Color::DARK_BLUE);
+    applyDefaultColor(image, rect, atxRamSockets_02, Color::YELLOW, Color::OLIVE);
+    applyDefaultColor(image, rect, atxGpuSockets, Color::KHAKI, Color::DARK_KHAKI);
+    applyDefaultColor(image, rect, atxCapacitors, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+    applyDefaultColor(image, rect, atxSataSockets, Color::RED, Color::DARK_RED);
+    applyDefaultColor(image, rect, atxEatxSockets, Color::LIGHT_BLUE, Color::DARK_LIGHT_BLUE);
+    applyDefaultColor(image, rect, atxConnectors, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    applyDefaultColor(image, rect, atxMicrochips, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    applyDefaultColor(image, rect, atxBattery, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
 
     // Micro-ATX color
-    applyColor(image, rect, microAtxPeripheriaSockets, Color::SILVER, Color::GRAY);
-    applyColor(image, rect, microAtxCpuSocket, Color::GRAY, Color::DIM_GRAY);
-    applyColor(image, rect, microAtxRamSockets_01, Color::BLUE, Color::DARK_BLUE);
-    applyColor(image, rect, microAtxRamSockets_02, Color::YELLOW, Color::OLIVE);
-    applyColor(image, rect, microAtxGpuSockets, Color::KHAKI, Color::DARK_KHAKI);
-    applyColor(image, rect, microAtxCapacitors, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
-    applyColor(image, rect, microAtxSataSockets, Color::RED, Color::DARK_RED);
-    applyColor(image, rect, microAtxAtxSockets, Color::LIGHT_BLUE, Color::DARK_LIGHT_BLUE);
-    applyColor(image, rect, microAtxConnectors, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
-    applyColor(image, rect, microAtxMicrochips, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
-    applyColor(image, rect, microAtxBattery, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+    applyDefaultColor(image, rect, microAtxPeripheriaSockets, Color::SILVER, Color::GRAY);
+    applyDefaultColor(image, rect, microAtxCpuSocket, Color::GRAY, Color::DIM_GRAY);
+    applyDefaultColor(image, rect, microAtxRamSockets_01, Color::BLUE, Color::DARK_BLUE);
+    applyDefaultColor(image, rect, microAtxRamSockets_02, Color::YELLOW, Color::OLIVE);
+    applyDefaultColor(image, rect, microAtxGpuSockets, Color::KHAKI, Color::DARK_KHAKI);
+    applyDefaultColor(image, rect, microAtxCapacitors, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+    applyDefaultColor(image, rect, microAtxSataSockets, Color::RED, Color::DARK_RED);
+    applyDefaultColor(image, rect, microAtxAtxSockets, Color::LIGHT_BLUE, Color::DARK_LIGHT_BLUE);
+    applyDefaultColor(image, rect, microAtxConnectors, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    applyDefaultColor(image, rect, microAtxMicrochips, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    applyDefaultColor(image, rect, microAtxBattery, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
 
     // Mini-ITX color
-    applyColor(image, rect, miniItxPeripheriaSockets, Color::SILVER, Color::GRAY);
-    applyColor(image, rect, miniItxCpuSocket, Color::GRAY, Color::DIM_GRAY);
-    applyColor(image, rect, miniItxRamSockets_01, Color::BLUE, Color::DARK_BLUE);
-    applyColor(image, rect, miniItxRamSockets_02, Color::YELLOW, Color::OLIVE);
-    applyColor(image, rect, miniItxGpuSockets, Color::KHAKI, Color::DARK_KHAKI);
-    applyColor(image, rect, miniItxCapacitors, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
-    applyColor(image, rect, miniItxSataSockets, Color::RED, Color::DARK_RED);
-    applyColor(image, rect, miniItxAtxSockets, Color::LIGHT_BLUE, Color::DARK_LIGHT_BLUE);
-    applyColor(image, rect, miniItxConnectors, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
-    applyColor(image, rect, miniItxMicrochips, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
-    applyColor(image, rect, miniItxBattery, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+    applyDefaultColor(image, rect, miniItxPeripheriaSockets, Color::SILVER, Color::GRAY);
+    applyDefaultColor(image, rect, miniItxCpuSocket, Color::GRAY, Color::DIM_GRAY);
+    applyDefaultColor(image, rect, miniItxRamSockets_01, Color::BLUE, Color::DARK_BLUE);
+    applyDefaultColor(image, rect, miniItxRamSockets_02, Color::YELLOW, Color::OLIVE);
+    applyDefaultColor(image, rect, miniItxGpuSockets, Color::KHAKI, Color::DARK_KHAKI);
+    applyDefaultColor(image, rect, miniItxCapacitors, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
+    applyDefaultColor(image, rect, miniItxSataSockets, Color::RED, Color::DARK_RED);
+    applyDefaultColor(image, rect, miniItxAtxSockets, Color::LIGHT_BLUE, Color::DARK_LIGHT_BLUE);
+    applyDefaultColor(image, rect, miniItxConnectors, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    applyDefaultColor(image, rect, miniItxMicrochips, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    applyDefaultColor(image, rect, miniItxBattery, Color::LIGHT_SILVER, Color::DARK_LIGHT_SILVER);
 
     // CPU color
-    applyColor(image, rect, cpuIntelBlock, cpuColor, cpuShadow);
-    applyColor(image, rect, cpuAMDBlock, cpuColor, cpuShadow);
-    applyColor(image, rect, cpuAccBlocks, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
+    applyDefaultColor(image, rect, cpuIntelBlock, cpuColor, cpuShadow);
+    applyDefaultColor(image, rect, cpuAMDBlock, cpuColor, cpuShadow);
+    applyDefaultColor(image, rect, cpuAccBlocks, Color::DARK_GRAY, Color::DARK_DARK_GRAY);
 
     // GPU color
-    applyColor(image, rect, gpuBlocks, gpuColor, gpuShadow);
-    applyColor(image, rect, gpuAccBlocks, Color::GRAY, Color::DIM_GRAY);
+    applyDefaultColor(image, rect, gpuBlocks, gpuColor, gpuShadow);
+    applyDefaultColor(image, rect, gpuAccBlocks, Color::GRAY, Color::DIM_GRAY);
 
     // RAM color
-    applyColor(image, rect, ramBlocks, ramColor, ramShadow);
-    applyColor(image, rect, ramAccBlocks, Color::GRAY, Color::DIM_GRAY);
+    applyDefaultColor(image, rect, ramBlocks, ramColor, ramShadow);
+    applyDefaultColor(image, rect, ramAccBlocks, Color::GRAY, Color::DIM_GRAY);
 
     for (size_t i = 0; i < rect.size().width() - 1; i++)
     {
@@ -556,7 +556,7 @@ QGraphicsScene *Drawer::drawScene(SceneInf *scene, QRectF rect, Color cpuColor, 
     return outScene;
 }
 
-void Drawer::applyColor(QImage *image, QRectF rect, std::vector<PolygonModel::model_t> models, Color color, Color shadow)
+void Drawer::applyDefaultColor(QImage *image, QRectF rect, std::vector<PolygonModel::model_t> models, Color color, Color shadow)
 {
     uint colorUint = qRgb(color.r, color.g, color.b);
     uint shadowUint = qRgb(shadow.r, shadow.g, shadow.b);
@@ -586,3 +586,4 @@ void Drawer::applyColor(QImage *image, QRectF rect, std::vector<PolygonModel::mo
         }
     }
 }
+

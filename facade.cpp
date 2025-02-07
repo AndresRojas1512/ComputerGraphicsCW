@@ -123,7 +123,7 @@ int Facade::addRAM(ConfigManager::MotherboardType motherboardType, ConfigManager
     PolygonModel::model_t ramAccPolygonModelType = parseRAMAccModel(RAMAccType);
 
     QString ramName = QString::fromStdString(mapModelName(ramPolygonModelType));
-    QString ramAccName = QString::fromStdString(mapModelName(ramAccPolygonModelType));
+    QString ramAccName = QString::fromStdString(mapAccessoryName(ramAccPolygonModelType));
 
     scene->addRAMBlock(ramBlock, ramName, RAMType);
     scene->addRAMAccBlock(ramAccBlock, ramAccName, RAMAccType);

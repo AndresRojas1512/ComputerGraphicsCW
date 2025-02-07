@@ -78,6 +78,7 @@ private:
     CPUConfig cpuConfig;
     RAMConfig ramConfig;
     GPUConfig gpuConfig;
+
     Color cpuColor = Color::GREEN_BLUE;
     Color cpuShadow = Color::DARK_GREEN_BLUE;
 

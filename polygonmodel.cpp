@@ -6,7 +6,6 @@ const std::vector<Facet> PolygonModel::getFacets() { return facets; }
 
 QString PolygonModel::getName()
 {
-    std::cout << "PolygonModel::getName" << std::endl;
     return modelName;
 }
 

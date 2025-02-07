@@ -24,7 +24,7 @@ public:
 
     QGraphicsScene *drawScene(SceneInf *scene, QRectF rect, Color cpuColor, Color cpuShadow, Color ramColor, Color ramShadow, Color gpuColor, Color gpuShadow);
 
-    void applyColor(QImage *image, QRectF rect, std::vector<PolygonModel::model_t> models, Color color, Color shadow);
+    void applyDefaultColor(QImage *image, QRectF rect, std::vector<PolygonModel::model_t> models, Color color, Color shadow);
 
 private:
     void interColIntoShadowMap();
@@ -230,7 +230,7 @@ private:
         PolygonModel::AMD_ACC_CPU
     };
 
-    // GPU blocks
+    // GPU block
     std::vector<PolygonModel::model_t> gpuBlocks = {
         PolygonModel::GPU_4GB_BLOCK,
         PolygonModel::GPU_6GB_BLOCK,
@@ -245,7 +245,7 @@ private:
         PolygonModel::GPU_16GB_ACC_BLOCK,
     };
 
-    // RAM block
+    // RAM blocks
     std::vector<PolygonModel::model_t> ramBlocks = {
         PolygonModel::RAM_4GB_BLOCK,
         PolygonModel::RAM_8GB_BLOCK,
