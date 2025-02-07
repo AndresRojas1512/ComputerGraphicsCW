@@ -125,6 +125,16 @@ bool MiniITXMotherboardConfig::isCpuSlotAvailable(void)
     return !cpuSlotOccupied;
 }
 
+void MiniITXMotherboardConfig::occupyCpuSlot(void)
+{
+    cpuSlotOccupied = true;
+}
+
+void MiniITXMotherboardConfig::freeCpuSlot(void)
+{
+    cpuSlotOccupied = false;
+}
+
 QList<int> MiniITXMotherboardConfig::getAvailableGpuSlots()
 {
     QList<int> availableSlots;

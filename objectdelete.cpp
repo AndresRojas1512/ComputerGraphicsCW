@@ -61,15 +61,17 @@ void ObjectDelete::on_pushButton_clicked()
     }
 
     scene->deleteModel(mainModelIndex);
-    std::cout << "TYPE!: " << mainModel.getModelType() << std::endl;
     if (isRamModel(mainModel.getModelType()))
     {
         motherboardConfig->freeRamSlot(mainModel.getSlot());
     }
+    else if (isGpuModel(mainModel.getModelType()))
+    {
+        motherboardConfig->freeGpuSlot(mainModel.getSlot());
+    }
     else
     {
-        std::cout << "HERE!" << std::endl;
-        motherboardConfig->freeGpuSlot(mainModel.getSlot());
+        motherboardConfig->freeCpuSlot();
     }
 
     ui->listWidget->takeItem(curRow);

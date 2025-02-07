@@ -27,6 +27,8 @@ public:
     virtual QList<int> getAvailableGpuSlots() = 0;
 
     virtual bool isCpuSlotAvailable(void) = 0;
+    virtual void occupyCpuSlot(void) = 0;
+    virtual void freeCpuSlot(void) = 0;
 
     virtual Dot3D getStartOfPlate() const = 0;
     virtual Dot3D getEndOfPlate() const = 0;

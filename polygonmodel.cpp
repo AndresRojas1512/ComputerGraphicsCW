@@ -261,3 +261,19 @@ bool isRamModel(PolygonModel::model_t modelType)
     }
     return false;
 }
+
+bool isGpuModel(PolygonModel::model_t modelType)
+{
+    switch (modelType)
+    {
+    case PolygonModel::GPU_4GB_BLOCK:
+        return true;
+    case PolygonModel::GPU_6GB_BLOCK:
+        return true;
+    case PolygonModel::GPU_8GB_BLOCK:
+        return true;
+    case PolygonModel::GPU_16GB_BLOCK:
+        return true;
+    }
+    return false;
+}

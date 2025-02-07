@@ -239,4 +239,6 @@ PolygonModel::model_t mapModelAccessory(PolygonModel::model_t model);
 
 bool isRamModel(PolygonModel::model_t modelType);
 
+bool isGpuModel(PolygonModel::model_t modelType);
+
 #endif // POLYGONMODEL_H

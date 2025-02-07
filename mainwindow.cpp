@@ -303,8 +303,6 @@ void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
 
 void MainWindow::on_pushButtonAddProcessor_clicked()
 {
-    std::cout << "MainWindow::on_PushButtonAddProcessor_clicked" << std::endl;
-
     if (!facade->isSceneSet())
     {
         QErrorMessage err(this);
@@ -330,11 +328,18 @@ void MainWindow::on_pushButtonAddProcessor_clicked()
         return;
     }
 
-    // prepare arguments
+    QMessageBox::StandardButton confirm;
+    confirm = QMessageBox::question(this, "Confirm Processor Installation", "Are you sure you want to add this processor?", QMessageBox::Yes|QMessageBox::No);
+    if (confirm != QMessageBox::Yes)
+    {
+        return;
+    }
+
     ConfigManager::MotherboardType motherboardType = static_cast<ConfigManager::MotherboardType>(ui->comboBoxMotherboardType->currentIndex());
     ConfigManager::CPUType cpuType = static_cast<ConfigManager::CPUType>(currentItem->data(Qt::UserRole).toInt());
 
     facade->addCPU(motherboardType, cpuType);
+    facade->getMotherboardConfig()->occupyCpuSlot();
 
     QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
 
@@ -342,6 +347,7 @@ void MainWindow::on_pushButtonAddProcessor_clicked()
         delete ui->graphicsView->scene();
     ui->graphicsView->setScene(setScene);
 }
+
 
 void MainWindow::on_pushButtonAddRAM_clicked()
 {

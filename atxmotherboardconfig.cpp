@@ -156,6 +156,16 @@ bool ATXMotherboardConfig::isCpuSlotAvailable(void)
     return !cpuSlotOccupied;
 }
 
+void ATXMotherboardConfig::occupyCpuSlot(void)
+{
+    cpuSlotOccupied = true;
+}
+
+void ATXMotherboardConfig::freeCpuSlot(void)
+{
+    cpuSlotOccupied = false;
+}
+
 std::string atxRamSlotToString(ATXMotherboardConfig::RAMSlot slot)
 {
     switch (slot)

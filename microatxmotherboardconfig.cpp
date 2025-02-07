@@ -138,6 +138,16 @@ bool MicroATXMotherboardConfig::isCpuSlotAvailable(void)
     return !cpuSlotOccupied;
 }
 
+void MicroATXMotherboardConfig::occupyCpuSlot(void)
+{
+    cpuSlotOccupied = true;
+}
+
+void MicroATXMotherboardConfig::freeCpuSlot(void)
+{
+    cpuSlotOccupied = false;
+}
+
 QList<int> MicroATXMotherboardConfig::getAvailableGpuSlots()
 {
     std::cout << "MicroATXMotherboardConfig::getAvailableRamSlots" << std::endl;
