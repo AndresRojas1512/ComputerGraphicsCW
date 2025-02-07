@@ -497,19 +497,25 @@ void MainWindow::on_pushButtonAddGPU_clicked()
 
 void MainWindow::on_pushButtonAddLight_clicked()
 {
+    if (facade->isLightSet())
+    {
+        QMessageBox::information(this, "Light Management", "A light source is already set in the scene.");
+        return;
+    }
+
     AddLight lightPlaceWindow(nullptr);
     lightPlaceWindow.setModal(true);
     lightPlaceWindow.exec();
 
     if (lightPlaceWindow.status == AddLight::OK)
-        facade->addLight(
-            lightPlaceWindow.getXAngle(),
-            lightPlaceWindow.getYAngle());
+    {
+        facade->addLight(lightPlaceWindow.getXAngle(),lightPlaceWindow.getYAngle());
+        updateLightButton();
+    }
     else
         return;
 
     QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
-
     if (ui->graphicsView->scene())
         delete ui->graphicsView->scene();
     ui->graphicsView->setScene(setScene);
@@ -747,4 +753,9 @@ void MainWindow::on_pushButtonGPUColor_clicked()
     if (ui->graphicsView->scene())
         delete ui->graphicsView->scene();
     ui->graphicsView->setScene(setScene);
+}
+
+void MainWindow::updateLightButton()
+{
+    ui->pushButtonAddLight->setEnabled(!facade->isLightSet());
 }

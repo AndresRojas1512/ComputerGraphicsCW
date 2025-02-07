@@ -121,40 +121,40 @@ int ObjectChange::changeModel(PolygonModel &model, int newXCell, int newYCell)
 
     PolygonModel::model_t modelType_ = model.getModelType();
 
-    if (modelType_ == PolygonModel::model_t::Brick)
-    {
-        ch = facade->addBrick(newXCell, newYCell,
-                              model.getLengthModel(),
-                              model.getWidthModel());
-    }
-    else if (modelType_ == PolygonModel::model_t::Plate)
-    {
-        ch = facade->addPlate(newXCell, newYCell,
-                              model.getLengthModel(),
-                              model.getWidthModel());
-    }
-    else if (modelType_ == PolygonModel::model_t::Tile)
-    {
-        ch = facade->addTile(newXCell, newYCell,
-                             model.getLengthModel(),
-                             model.getWidthModel());
-    }
-    else if (modelType_ == PolygonModel::model_t::Arc41)
-    {
-        ch = facade->addArc41(newXCell, newYCell);
-    }
-    else if (modelType_ == PolygonModel::model_t::Arc14)
-    {
-        ch = facade->addArc14(newXCell, newYCell);
-    }
-    else if (modelType_ == PolygonModel::model_t::Cylinder1)
-    {
-        ch = facade->addCylinder1(newXCell, newYCell);
-    }
-    else if (modelType_ == PolygonModel::model_t::Cylinder2)
-    {
-        ch = facade->addCylinder2(newXCell, newYCell);
-    }
+    // if (modelType_ == PolygonModel::model_t::Brick)
+    // {
+    //     ch = facade->addBrick(newXCell, newYCell,
+    //                           model.getLengthModel(),
+    //                           model.getWidthModel());
+    // }
+    // else if (modelType_ == PolygonModel::model_t::Plate)
+    // {
+    //     ch = facade->addPlate(newXCell, newYCell,
+    //                           model.getLengthModel(),
+    //                           model.getWidthModel());
+    // }
+    // else if (modelType_ == PolygonModel::model_t::Tile)
+    // {
+    //     ch = facade->addTile(newXCell, newYCell,
+    //                          model.getLengthModel(),
+    //                          model.getWidthModel());
+    // }
+    // else if (modelType_ == PolygonModel::model_t::Arc41)
+    // {
+    //     ch = facade->addArc41(newXCell, newYCell);
+    // }
+    // else if (modelType_ == PolygonModel::model_t::Arc14)
+    // {
+    //     ch = facade->addArc14(newXCell, newYCell);
+    // }
+    // else if (modelType_ == PolygonModel::model_t::Cylinder1)
+    // {
+    //     ch = facade->addCylinder1(newXCell, newYCell);
+    // }
+    // else if (modelType_ == PolygonModel::model_t::Cylinder2)
+    // {
+    //     ch = facade->addCylinder2(newXCell, newYCell);
+    // }
 
     return ch;
 }

@@ -5,13 +5,12 @@
 #include "sceneinf.hpp"
 #include "drawer.hpp"
 #include <QGraphicsScene>
-#include "placeobjects.hpp"
+// #include "placeobjects.hpp"
 #include "QDebug"
 #include "QPen"
 #include <limits>
 #include "math.h"
 #include "config.hpp"
-
 #include "basemotherboardconfig.hpp"
 #include "atxmotherboardconfig.hpp"
 #include "microatxmotherboardconfig.hpp"
@@ -34,13 +33,13 @@ public:
     QGraphicsScene *drawScene(QRectF rect);
 
     // add components lego constructor
-    int addBrick(int xCell, int yCell, int modelLength, int modelWidth);
-    int addPlate(int xCell, int yCell, int modelLength, int modelWidth);
-    int addTile(int xCell, int yCell, int modelLength, int modelWidth);
-    int addArc41(int xCell, int yCell);
-    int addArc14(int xCell, int yCell);
-    int addCylinder1(int xCell, int yCell);
-    int addCylinder2(int xCell, int yCell);
+    // int addBrick(int xCell, int yCell, int modelLength, int modelWidth);
+    // int addPlate(int xCell, int yCell, int modelLength, int modelWidth);
+    // int addTile(int xCell, int yCell, int modelLength, int modelWidth);
+    // int addArc41(int xCell, int yCell);
+    // int addArc14(int xCell, int yCell);
+    // int addCylinder1(int xCell, int yCell);
+    // int addCylinder2(int xCell, int yCell);
 
     // add components motherboard constructor
     int addCPU(ConfigManager::MotherboardType motherboardType, ConfigManager::CPUType CPUType);
@@ -48,6 +47,8 @@ public:
     int addGPU(ConfigManager::MotherboardType motherboardType, ConfigManager::GPUType GPUType, int slotIndex);
 
     void addLight(int xAngle, int yAngle);
+    bool isLightSet(void);
+    void removeLight(void);
 
     void changeCPUColor(QColor color, QColor shadow);
     void changeRAMColor(QColor color, QColor shadow);
@@ -78,6 +79,7 @@ private:
     CPUConfig cpuConfig;
     RAMConfig ramConfig;
     GPUConfig gpuConfig;
+    bool lightSet = false;
 
     Color cpuColor = Color::GREEN_BLUE;
     Color cpuShadow = Color::DARK_GREEN_BLUE;
