@@ -7,7 +7,6 @@
 #include <QDebug>
 #include "config.hpp"
 
-
 class Vertex
 {
 public:

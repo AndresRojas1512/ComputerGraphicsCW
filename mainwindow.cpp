@@ -251,8 +251,8 @@ void MainWindow::on_pushButtonCreateMotherboard_clicked()
     QString selectedType = ui->comboBoxMotherboardType->currentText();
 
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this, "Подверждение типа платы",
-                                  "Выбранный тип модель: " + selectedType + " Уверены, что хотите построить плату?",
+    reply = QMessageBox::question(this, "Подверждение формата материнской платы",
+                                  "Выбранный формат: " + selectedType + ". Уверены, что хотите построить материнскую плату выбранного формата?",
                                   QMessageBox::Yes | QMessageBox::No);
 
     if (reply == QMessageBox::Yes)
@@ -302,7 +302,7 @@ void MainWindow::on_pushButtonAddProcessor_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage err(this);
-        err.showMessage("Необходимо построить плату!");
+        err.showMessage("Необходимо сначала построить материнскую плату!");
         err.exec();
         return;
     }
@@ -310,7 +310,7 @@ void MainWindow::on_pushButtonAddProcessor_clicked()
     if (!currentItem)
     {
         QErrorMessage err(this);
-        err.showMessage("Необходимо выбрать процессор!");
+        err.showMessage("Необходимо сначала построить материнскую плату!");
         err.exec();
         return;
     }
@@ -319,7 +319,7 @@ void MainWindow::on_pushButtonAddProcessor_clicked()
     if (!cpuSlotAvailable)
     {
         QErrorMessage err(this);
-        err.showMessage("Сокет процессора занят!");
+        err.showMessage("Разъём процессора занят!");
         err.exec();
         return;
     }
@@ -350,7 +350,7 @@ void MainWindow::on_pushButtonAddRAM_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage err(this);
-        err.showMessage("Необходимо построить плату!");
+        err.showMessage("Необходимо сначала построить материнскую плату!");
         err.exec();
         return;
     }
@@ -358,7 +358,7 @@ void MainWindow::on_pushButtonAddRAM_clicked()
     if (!currentItem)
     {
         QErrorMessage err(this);
-        err.showMessage("Необходимо выбрать блок памяти RAM!");
+        err.showMessage("Необходимо выбрать модуль RAM!");
         err.exec();
         return;
     }
@@ -366,7 +366,7 @@ void MainWindow::on_pushButtonAddRAM_clicked()
     if (availableSlots.empty())
     {
         QErrorMessage err(this);
-        err.showMessage("Все DDR4 сокеты заняты!");
+        err.showMessage("Все разъёмы для модулей RAM заняты!");
         err.exec();
         return;
     }
@@ -401,9 +401,15 @@ void MainWindow::on_pushButtonAddRAM_clicked()
         }
     }
 
-    QString item = QInputDialog::getItem(this, "Выбор DDR4 сокета", "Доступные сокеты:", items, 0, false, &ok);
+    QInputDialog inputDialog(this);
+    inputDialog.setWindowTitle("Выбор разъёма для модуля RAM");
+    inputDialog.setLabelText("Доступные разъёмы:");
+    inputDialog.setComboBoxItems(items);
+    inputDialog.resize(480, inputDialog.size().height());
+    int ret = inputDialog.exec();
+    QString item = inputDialog.textValue();
 
-    if (ok && !item.isEmpty())
+    if (ret == QDialog::Accepted && !item.isEmpty())
     {
         int slotIndex = slotMap[item];
         facade->addRAM(motherboardType, ramType, slotIndex);
@@ -411,7 +417,6 @@ void MainWindow::on_pushButtonAddRAM_clicked()
     }
 
     QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
-
     if (ui->graphicsView->scene())
         delete ui->graphicsView->scene();
     ui->graphicsView->setScene(setScene);
@@ -423,7 +428,7 @@ void MainWindow::on_pushButtonAddGPU_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage err(this);
-        err.showMessage("Необходимо построить плату!");
+        err.showMessage("Необходимо сначала построить материнскую плату!");
         err.exec();
         return;
     }
@@ -431,7 +436,7 @@ void MainWindow::on_pushButtonAddGPU_clicked()
     if (!currentItem)
     {
         QErrorMessage err(this);
-        err.showMessage("Выберите блок видеопамяти!");
+        err.showMessage("Необходимо выбрать модуль видеокарты!");
         err.exec();
         return;
     }
@@ -439,7 +444,7 @@ void MainWindow::on_pushButtonAddGPU_clicked()
     if (availableSlots.empty())
     {
         QErrorMessage err(this);
-        err.showMessage("Все PCIEX16 сокеты заняты!");
+        err.showMessage("Все разъёмы для виделокарт заняты!");
         err.exec();
         return;
     }
@@ -474,9 +479,15 @@ void MainWindow::on_pushButtonAddGPU_clicked()
         }
     }
 
-    QString item = QInputDialog::getItem(this, "Выбор PCIEX16 сокета", "Доступные сокеты:", items, 0, false, &ok);
+    QInputDialog inputDialog(this);
+    inputDialog.setWindowTitle("Выбор разъёма для видеокарты");
+    inputDialog.setLabelText("Доступные разъёмы:");
+    inputDialog.setComboBoxItems(items);
+    inputDialog.resize(480, inputDialog.size().height());
+    int ret = inputDialog.exec();
+    QString item = inputDialog.textValue();
 
-    if (ok && !item.isEmpty())
+    if (ret == QDialog::Accepted && !item.isEmpty())
     {
         int slotIndex = slotMap[item];
         facade->addGPU(motherboardType, gpuType, slotIndex);
@@ -484,7 +495,6 @@ void MainWindow::on_pushButtonAddGPU_clicked()
     }
 
     QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
-
     if (ui->graphicsView->scene())
         delete ui->graphicsView->scene();
     ui->graphicsView->setScene(setScene);
@@ -522,7 +532,7 @@ void MainWindow::on_pushButton_deleteModel_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -542,7 +552,7 @@ void MainWindow::on_pushButton_sceneToInitianPosition_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -558,7 +568,7 @@ void MainWindow::on_pushButton_up_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -570,7 +580,7 @@ void MainWindow::on_pushButton_down_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -582,7 +592,7 @@ void MainWindow::on_pushButton_left_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -594,7 +604,7 @@ void MainWindow::on_pushButton_right_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -606,7 +616,7 @@ void MainWindow::on_pushButton_leftCircle_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -618,7 +628,7 @@ void MainWindow::on_pushButton_rightCircle_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо создать сцену!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -630,7 +640,7 @@ void MainWindow::on_pushButton_up_scene_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -642,7 +652,7 @@ void MainWindow::on_pushButton_down_scene_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -654,7 +664,7 @@ void MainWindow::on_pushButton_left_scene_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -666,7 +676,7 @@ void MainWindow::on_pushButton_right_scene_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -678,7 +688,7 @@ void MainWindow::on_pushButton_zoom_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -690,7 +700,7 @@ void MainWindow::on_pushButton_distance_clicked()
     if (!facade->isSceneSet())
     {
         QErrorMessage *err = new QErrorMessage();
-        err->showMessage("Необходимо построить плату!");
+        err->showMessage("Необходимо сначала построить материнскую плату!");
         return;
     }
 
@@ -715,7 +725,7 @@ void MainWindow::on_pushButtonChangeCPUColor_clicked()
 
 void MainWindow::on_pushButtonChangeRAMColor_clicked()
 {
-    QColor color = QColorDialog::getColor(Qt::white, this, "Выбор цвета блоков RAM памяти");
+    QColor color = QColorDialog::getColor(Qt::white, this, "Выбор цвета модулей RAM");
     if (color.isValid())
     {
         QColor shadow = color.darker(150);
@@ -733,7 +743,7 @@ void MainWindow::on_pushButtonChangeRAMColor_clicked()
 
 void MainWindow::on_pushButtonGPUColor_clicked()
 {
-    QColor color = QColorDialog::getColor(Qt::white, this, "Выбор цвета блоков вилеокарт");
+    QColor color = QColorDialog::getColor(Qt::white, this, "Выбор цвета модулей видеокарт");
     if (color.isValid())
     {
         QColor shadow = color.darker(150);
