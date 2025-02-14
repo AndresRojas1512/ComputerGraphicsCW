@@ -193,6 +193,7 @@ void SceneInf::addLight(Light &light)
 {
     lightNum++;
     Lights.push_back(light);
+    std::cout << "SceneInf::AddLight " << lightNum << std::endl;
 }
 
 void SceneInf::deleteLight(size_t num)

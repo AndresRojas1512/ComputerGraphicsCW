@@ -36,12 +36,6 @@ public:
     const std::vector<Vertex> getVertices();
     const std::vector<Facet> getFacets();
 
-
-    // void setUsedCell(int xCell_, int yCell_, double zCell_);
-    // int getUsedXCell();
-    // int getUsedYCell();
-    // int getUsedZCell();
-
     void setLengthModel(int widthModel_);
     int  getLengthModel();
     void setWidthModel(int heightModel_);
@@ -203,8 +197,8 @@ private:
     QString modelName;
     int slot = -1;
 
-    int xCell, yCell; // not used (deprecated)
-    double zCell; // not used (deprecated)
+    int xCell, yCell; // deprecated
+    double zCell; // deprecated
     int lengthModel, widthModel;
 
     size_t modelNum;

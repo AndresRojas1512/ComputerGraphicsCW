@@ -21,7 +21,6 @@
 #include "config.hpp"
 #include "addlight.hpp"
 #include "objectdelete.hpp"
-// #include "createscene.hpp"
 #include "specialgraphicsview.hpp"
 #include "configmanager.hpp"
 

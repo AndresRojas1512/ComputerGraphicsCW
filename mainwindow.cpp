@@ -264,6 +264,8 @@ void MainWindow::on_pushButtonCreateMotherboard_clicked()
             delete ui->graphicsView->scene();
         ui->graphicsView->setScene(setScene);
     }
+    facade->removeLight();
+    updateLightButton();
 }
 
 void MainWindow::on_comboBoxMotherboardType_currentIndexChanged(int index)
@@ -310,7 +312,7 @@ void MainWindow::on_pushButtonAddProcessor_clicked()
     if (!currentItem)
     {
         QErrorMessage err(this);
-        err.showMessage("Необходимо сначала построить материнскую плату!");
+        err.showMessage("Необходимо выбрать процессор!");
         err.exec();
         return;
     }
@@ -502,6 +504,13 @@ void MainWindow::on_pushButtonAddGPU_clicked()
 
 void MainWindow::on_pushButtonAddLight_clicked()
 {
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage err(this);
+        err.showMessage("Необходимо сначала построить материнскую плату!");
+        err.exec();
+        return;
+    }
     if (facade->isLightSet())
     {
         QMessageBox::information(this, "Установка источника света", "Источник света уже установлен!");
@@ -536,15 +545,16 @@ void MainWindow::on_pushButton_deleteModel_clicked()
         return;
     }
 
-    ObjectDelete objectDeleteWindow(facade->getScene(), facade->getMotherboardConfig(), nullptr);
+    ObjectDelete objectDeleteWindow(facade->getScene(), facade->getMotherboardConfig(), facade->isLightSet(), facade, nullptr);
     objectDeleteWindow.setModal(true);
     objectDeleteWindow.exec();
 
     QGraphicsScene *setScene = facade->drawScene(ui->graphicsView->rect());
-
     if (ui->graphicsView->scene())
         delete ui->graphicsView->scene();
     ui->graphicsView->setScene(setScene);
+
+    updateLightButton();
 }
 
 void MainWindow::on_pushButton_sceneToInitianPosition_clicked()
@@ -709,6 +719,13 @@ void MainWindow::on_pushButton_distance_clicked()
 
 void MainWindow::on_pushButtonChangeCPUColor_clicked()
 {
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage err(this);
+        err.showMessage("Необходимо сначала построить материнскую плату!");
+        err.exec();
+        return;
+    }
     QColor color = QColorDialog::getColor(Qt::white, this, "Выбор цвета процессора");
     if (color.isValid())
     {
@@ -725,6 +742,13 @@ void MainWindow::on_pushButtonChangeCPUColor_clicked()
 
 void MainWindow::on_pushButtonChangeRAMColor_clicked()
 {
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage err(this);
+        err.showMessage("Необходимо сначала построить материнскую плату!");
+        err.exec();
+        return;
+    }
     QColor color = QColorDialog::getColor(Qt::white, this, "Выбор цвета модулей RAM");
     if (color.isValid())
     {
@@ -743,6 +767,13 @@ void MainWindow::on_pushButtonChangeRAMColor_clicked()
 
 void MainWindow::on_pushButtonGPUColor_clicked()
 {
+    if (!facade->isSceneSet())
+    {
+        QErrorMessage err(this);
+        err.showMessage("Необходимо сначала построить материнскую плату!");
+        err.exec();
+        return;
+    }
     QColor color = QColorDialog::getColor(Qt::white, this, "Выбор цвета модулей видеокарт");
     if (color.isValid())
     {

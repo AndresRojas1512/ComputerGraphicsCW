@@ -5,6 +5,7 @@
 #include "sceneinf.hpp"
 #include <QErrorMessage>
 #include <QDebug>
+#include "facade.hpp"
 
 namespace Ui
 {
@@ -16,7 +17,7 @@ class ObjectDelete : public QDialog
     Q_OBJECT
 
 public:
-    explicit ObjectDelete(SceneInf *scene_, BaseMotherboardConfig *mbConfig, QWidget *parent = nullptr);
+    explicit ObjectDelete(SceneInf *scene_, BaseMotherboardConfig *mbConfig, bool lightSet_, Facade *facade_, QWidget *parent = nullptr);
     ~ObjectDelete();
 
 private slots:
@@ -26,6 +27,8 @@ private:
     Ui::ObjectDelete *ui;
     SceneInf *scene;
     BaseMotherboardConfig *motherboardConfig;
+    bool lightSet = false;
+    Facade *facade;
 
     void recalculationModelsNum();
 };
